@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
+import authService from './services/authService.js'
+import DebugPanel from './components/DebugPanel.jsx'
 
 function Login({ onBackClick }) {
   const [formData, setFormData] = useState({
@@ -7,6 +9,9 @@ function Login({ onBackClick }) {
     password: '',
     rememberMe: false
   })
+  
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -16,15 +21,48 @@ function Login({ onBackClick }) {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Aquí irá la lógica de autenticación
-    console.log('Datos del formulario:', formData)
-    alert('Función de login implementada')
+    setLoading(true)
+    setError('')
+    
+    try {
+      console.log('🚀 Iniciando proceso de login...')
+      
+      const response = await authService.login({
+        email: formData.email,
+        password: formData.password
+      })
+      
+      console.log('✅ Login exitoso:', response)
+      
+      // Verificar si el token se guardó correctamente
+      authService.debugLocalStorage()
+      
+      // Verificar autenticación
+      const isAuth = authService.isAuthenticated()
+      console.log('🔐 Estado de autenticación:', isAuth)
+      
+      if (isAuth) {
+        alert('¡Login exitoso! Token guardado correctamente.')
+        // Aquí puedes redirigir al usuario o actualizar el estado de la app
+      } else {
+        alert('⚠️ Login exitoso pero no se pudo guardar el token. Revisa la consola.')
+      }
+      
+    } catch (error) {
+      console.error('❌ Error en login:', error)
+      setError('Error al iniciar sesión. Verifica tus credenciales.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <div className="login-container">
+      {/* Panel de Debug */}
+      <DebugPanel />
+      
       {/* Fondo decorativo */}
       <div className="login-background">
         <div className="floating-shapes">
@@ -120,6 +158,14 @@ function Login({ onBackClick }) {
                       </div>
                     </div>
 
+                    {/* Mensaje de error */}
+                    {error && (
+                      <div className="alert alert-danger" role="alert">
+                        <i className="bi bi-exclamation-triangle me-2"></i>
+                        {error}
+                      </div>
+                    )}
+
                     {/* Opciones adicionales */}
                     <div className="d-flex justify-content-between align-items-center mb-4">
                       <div className="form-check">
@@ -141,9 +187,22 @@ function Login({ onBackClick }) {
                     </div>
 
                     {/* Botón de login */}
-                    <button type="submit" className="btn btn-primary btn-lg w-100 mb-3">
-                      <i className="bi bi-box-arrow-in-right me-2"></i>
-                      Iniciar Sesión
+                    <button 
+                      type="submit" 
+                      className="btn btn-primary btn-lg w-100 mb-3"
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          Iniciando Sesión...
+                        </>
+                      ) : (
+                        <>
+                          <i className="bi bi-box-arrow-in-right me-2"></i>
+                          Iniciar Sesión
+                        </>
+                      )}
                     </button>
 
                     {/* Separador */}
