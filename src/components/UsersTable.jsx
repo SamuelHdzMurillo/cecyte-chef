@@ -14,60 +14,20 @@ const UsersTable = () => {
   const [usersPerPage] = useState(10)
   const [sortField, setSortField] = useState('id')
   const [sortDirection, setSortDirection] = useState('asc')
-
-  // Datos de ejemplo para mostrar mientras se conecta a la API
-  const sampleUsers = [
-    {
-      id: 1,
-      name: "Administrador",
-      email: "admin@eventos.com",
-      role: "admin",
-      evento_id: 1,
-      email_verified_at: "2025-01-15T10:30:00.000000Z",
-      created_at: "2025-01-15T10:30:00.000000Z",
-      updated_at: "2025-01-15T10:30:00.000000Z"
-    },
-    {
-      id: 2,
-      name: "María González",
-      email: "maria.gonzalez@cecyte.edu.mx",
-      role: "profesor",
-      evento_id: 2,
-      email_verified_at: "2025-01-14T14:20:00.000000Z",
-      created_at: "2025-01-14T14:20:00.000000Z",
-      updated_at: "2025-01-14T14:20:00.000000Z"
-    },
-    {
-      id: 3,
-      name: "Carlos Rodríguez",
-      email: "carlos.rodriguez@cecyte.edu.mx",
-      role: "estudiante",
-      evento_id: 3,
-      email_verified_at: null,
-      created_at: "2025-01-13T09:15:00.000000Z",
-      updated_at: "2025-01-13T09:15:00.000000Z"
-    },
-    {
-      id: 4,
-      name: "Ana Martínez",
-      email: "ana.martinez@cecyte.edu.mx",
-      role: "coordinador",
-      evento_id: 1,
-      email_verified_at: "2025-01-12T16:45:00.000000Z",
-      created_at: "2025-01-12T16:45:00.000000Z",
-      updated_at: "2025-01-12T16:45:00.000000Z"
-    },
-    {
-      id: 5,
-      name: "Luis Fernández",
-      email: "luis.fernandez@cecyte.edu.mx",
-      role: "profesor",
-      evento_id: 2,
-      email_verified_at: "2025-01-11T11:30:00.000000Z",
-      created_at: "2025-01-11T11:30:00.000000Z",
-      updated_at: "2025-01-11T11:30:00.000000Z"
-    }
-  ]
+  
+  // Estados para el modal de edición/creación
+  const [showModal, setShowModal] = useState(false)
+  const [editingUser, setEditingUser] = useState(null)
+  const [isCreating, setIsCreating] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    role: 'usuario',
+    evento_id: ''
+  })
+  const [formErrors, setFormErrors] = useState({})
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
     fetchUsers()
@@ -78,27 +38,21 @@ const UsersTable = () => {
       setLoading(true)
       const token = authService.getToken()
       
-      // Intentar obtener usuarios de la API
-      try {
-        const response = await apiService.get('/admin/users', token)
-        
-        if (response.data) {
-          setUsers(response.data)
-        } else {
-          setUsers([])
-        }
+      // Solo obtener usuarios de la API
+      const response = await apiService.get('/admin/users', token)
+      
+      if (response.data) {
+        setUsers(response.data)
         setError(null)
-      } catch (apiError) {
-        console.log('API no disponible, usando datos de ejemplo:', apiError.message)
-        // Si la API no está disponible, usar datos de ejemplo
-        setUsers(sampleUsers)
+      } else {
+        setUsers([])
         setError(null)
       }
     } catch (err) {
       console.error('Error al obtener usuarios:', err)
-      // En caso de error, usar datos de ejemplo
-      setUsers(sampleUsers)
-      setError(null)
+      // Si la API no responde, no mostrar nada
+      setUsers([])
+      setError('No se pudo conectar con el servidor. Por favor, verifica tu conexión.')
     } finally {
       setLoading(false)
     }
@@ -158,13 +112,11 @@ const UsersTable = () => {
   const getRoleBadgeColor = (role) => {
     switch (role) {
       case 'admin':
+      case 'administrador':
         return 'danger'
-      case 'profesor':
+      case 'usuario':
+      case 'user':
         return 'primary'
-      case 'estudiante':
-        return 'success'
-      case 'coordinador':
-        return 'warning'
       default:
         return 'secondary'
     }
@@ -173,13 +125,11 @@ const UsersTable = () => {
   const getRoleDisplayName = (role) => {
     switch (role) {
       case 'admin':
+      case 'administrador':
         return 'Administrador'
-      case 'profesor':
-        return 'Profesor'
-      case 'estudiante':
-        return 'Estudiante'
-      case 'coordinador':
-        return 'Coordinador'
+      case 'usuario':
+      case 'user':
+        return 'Usuario'
       default:
         return role
     }
@@ -200,14 +150,157 @@ const UsersTable = () => {
     })
   }
 
+  // Funciones para el modal
+  const openCreateModal = () => {
+    setIsCreating(true)
+    setEditingUser(null)
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+      role: 'usuario',
+      evento_id: ''
+    })
+    setFormErrors({})
+    setShowModal(true)
+  }
+
+  const openEditModal = (user) => {
+    setIsCreating(false)
+    setEditingUser(user)
+    setFormData({
+      name: user.name,
+      email: user.email,
+      password: '',
+      role: user.role,
+      evento_id: user.evento_id || ''
+    })
+    setFormErrors({})
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+    setEditingUser(null)
+    setIsCreating(false)
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+      role: 'usuario',
+      evento_id: ''
+    })
+    setFormErrors({})
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+    
+    // Limpiar error del campo cuando el usuario empiece a escribir
+    if (formErrors[name]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }))
+    }
+  }
+
+  const validateForm = () => {
+    const errors = {}
+    
+    if (!formData.name.trim()) {
+      errors.name = 'El nombre es requerido'
+    }
+    
+    if (!formData.email.trim()) {
+      errors.email = 'El email es requerido'
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = 'El email no es válido'
+    }
+    
+    // Validar contraseña solo si es creación o si se está editando y se ingresó una
+    if (isCreating && !formData.password.trim()) {
+      errors.password = 'La contraseña es requerida para nuevos usuarios'
+    } else if (!isCreating && formData.password.trim() && formData.password.length < 6) {
+      errors.password = 'La contraseña debe tener al menos 6 caracteres'
+    }
+    
+    if (!formData.role) {
+      errors.role = 'El rol es requerido'
+    }
+    
+    setFormErrors(errors)
+    return Object.keys(errors).length === 0
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    
+    if (!validateForm()) {
+      return
+    }
+    
+    setSubmitting(true)
+    
+    try {
+      const token = authService.getToken()
+      const endpoint = isCreating ? '/admin/users' : `/admin/users/${editingUser.id}`
+      const method = isCreating ? 'post' : 'put'
+      
+      // Preparar datos para enviar
+      const dataToSend = { ...formData }
+      
+      // Si es edición y no se ingresó contraseña, no enviar el campo password
+      if (!isCreating && !dataToSend.password.trim()) {
+        delete dataToSend.password
+      }
+      
+      const response = await apiService[method](endpoint, dataToSend, token)
+      
+      if (response.success || response.data) {
+        // Actualizar la lista de usuarios
+        if (isCreating) {
+          // Agregar nuevo usuario
+          const newUser = {
+            ...formData,
+            id: response.data?.id || Math.max(...users.map(u => u.id)) + 1,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            email_verified_at: null
+          }
+          setUsers(prev => [...prev, newUser])
+        } else {
+          // Actualizar usuario existente
+          setUsers(prev => prev.map(user => 
+            user.id === editingUser.id 
+              ? { ...user, ...formData, updated_at: new Date().toISOString() }
+              : user
+          ))
+        }
+        
+        closeModal()
+        // Mostrar mensaje de éxito
+        alert(isCreating ? 'Usuario creado exitosamente' : 'Usuario actualizado exitosamente')
+      }
+    } catch (error) {
+      console.error('Error al guardar usuario:', error)
+      alert('Error al guardar el usuario. Por favor, inténtalo de nuevo.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   const handleViewUser = (user) => {
     console.log('Ver usuario:', user)
     // Aquí puedes implementar la lógica para mostrar detalles del usuario
   }
 
   const handleEditUser = (user) => {
-    console.log('Editar usuario:', user)
-    // Aquí puedes implementar la lógica para editar el usuario
+    openEditModal(user)
   }
 
   const handleDeleteUser = (user) => {
@@ -243,249 +336,442 @@ const UsersTable = () => {
     )
   }
 
-  return (
-    <div className="card">
-      <div className="card-header">
-        <div className="d-flex justify-content-between align-items-center">
-          <h5 className="mb-0">
-            <i className="bi bi-people me-2"></i>
-            Gestión de Usuarios
-          </h5>
-          <button
-            className="btn btn-primary"
-            onClick={handleRefresh}
-            disabled={loading}
-          >
-            <i className="bi bi-arrow-clockwise me-2"></i>
-            {loading ? 'Cargando...' : 'Actualizar'}
-          </button>
+  // Si no hay usuarios y no hay error, mostrar mensaje
+  if (users.length === 0) {
+    return (
+      <div className="card">
+        <div className="card-header">
+          <div className="d-flex justify-content-between align-items-center">
+            <h5 className="mb-0">
+              <i className="bi bi-people me-2"></i>
+              Gestión de Usuarios
+            </h5>
+            <button
+              className="btn btn-primary"
+              onClick={handleRefresh}
+              disabled={loading}
+            >
+              <i className="bi bi-arrow-clockwise me-2"></i>
+              Actualizar
+            </button>
+          </div>
+        </div>
+        <div className="card-body text-center py-5">
+          <i className="bi bi-people fs-1 text-muted d-block mb-3"></i>
+          <p className="text-muted mb-3">No hay usuarios disponibles</p>
+          <p className="text-muted small">Verifica tu conexión al servidor o contacta al administrador.</p>
         </div>
       </div>
-      
-      <div className="card-body">
-        {/* Barra de búsqueda */}
-        <div className="row mb-3">
-          <div className="col-md-6">
-            <div className="input-group">
-              <span className="input-group-text">
-                <i className="bi bi-search"></i>
-              </span>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Buscar usuarios por nombre, email o rol..."
-                value={filterText}
-                onChange={(e) => setFilterText(e.target.value)}
-              />
-              {filterText && (
-                <button
-                  className="btn btn-outline-secondary"
-                  type="button"
-                  onClick={() => setFilterText('')}
-                >
-                  <i className="bi bi-x"></i>
-                </button>
-              )}
+    )
+  }
+
+  return (
+    <>
+      <div className="card">
+        <div className="card-header">
+          <div className="d-flex justify-content-between align-items-center">
+            <h5 className="mb-0">
+              <i className="bi bi-people me-2"></i>
+              Gestión de Usuarios
+            </h5>
+            <div className="d-flex gap-2">
+              <button
+                className="btn btn-success"
+                onClick={openCreateModal}
+              >
+                <i className="bi bi-plus-circle me-2"></i>
+                Nuevo Usuario
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={handleRefresh}
+                disabled={loading}
+              >
+                <i className="bi bi-arrow-clockwise me-2"></i>
+                {loading ? 'Cargando...' : 'Actualizar'}
+              </button>
             </div>
           </div>
-          <div className="col-md-6 text-end">
-            <span className="text-muted">
-              Mostrando {currentUsers.length} de {filteredUsers.length} usuarios
-            </span>
-          </div>
         </div>
+        
+        <div className="card-body">
+          {/* Barra de búsqueda */}
+          <div className="row mb-3">
+            <div className="col-md-6">
+              <div className="input-group">
+                <span className="input-group-text">
+                  <i className="bi bi-search"></i>
+                </span>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Buscar usuarios por nombre, email o rol..."
+                  value={filterText}
+                  onChange={(e) => setFilterText(e.target.value)}
+                />
+                {filterText && (
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    onClick={() => setFilterText('')}
+                  >
+                    <i className="bi bi-x"></i>
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="col-md-6 text-end">
+              <span className="text-muted">
+                Mostrando {currentUsers.length} de {filteredUsers.length} usuarios
+              </span>
+            </div>
+          </div>
 
-        {/* Tabla de usuarios */}
-        <div className="table-responsive">
-          <table className="table table-hover">
-            <thead className="table-light">
-              <tr>
-                <th 
-                  scope="col" 
-                  style={{ width: '80px', cursor: 'pointer' }}
-                  onClick={() => handleSort('id')}
-                >
-                  <div className="d-flex align-items-center">
-                    ID {getSortIcon('id')}
-                  </div>
-                </th>
-                <th 
-                  scope="col" 
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => handleSort('name')}
-                >
-                  <div className="d-flex align-items-center">
-                    Nombre {getSortIcon('name')}
-                  </div>
-                </th>
-                <th 
-                  scope="col" 
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => handleSort('email')}
-                >
-                  <div className="d-flex align-items-center">
-                    Email {getSortIcon('email')}
-                  </div>
-                </th>
-                <th 
-                  scope="col" 
-                  style={{ width: '120px', cursor: 'pointer' }}
-                  onClick={() => handleSort('role')}
-                >
-                  <div className="d-flex align-items-center">
-                    Rol {getSortIcon('role')}
-                  </div>
-                </th>
-                <th 
-                  scope="col" 
-                  style={{ width: '100px', cursor: 'pointer' }}
-                  onClick={() => handleSort('evento_id')}
-                >
-                  <div className="d-flex align-items-center">
-                    Evento ID {getSortIcon('evento_id')}
-                  </div>
-                </th>
-                <th 
-                  scope="col" 
-                  style={{ width: '150px', cursor: 'pointer' }}
-                  onClick={() => handleSort('created_at')}
-                >
-                  <div className="d-flex align-items-center">
-                    Fecha Creación {getSortIcon('created_at')}
-                  </div>
-                </th>
-                <th scope="col" style={{ width: '120px' }}>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentUsers.length === 0 ? (
+          {/* Tabla de usuarios */}
+          <div className="table-responsive">
+            <table className="table table-hover">
+              <thead className="table-light">
                 <tr>
-                  <td colSpan="7" className="text-center py-5">
-                    <i className="bi bi-people fs-1 text-muted d-block mb-3"></i>
-                    <p className="text-muted mb-3">No se encontraron usuarios</p>
-                    <button 
-                      className="btn btn-primary btn-sm"
-                      onClick={handleRefresh}
-                    >
-                      Actualizar
-                    </button>
-                  </td>
+                  <th 
+                    scope="col" 
+                    style={{ width: '80px', cursor: 'pointer' }}
+                    onClick={() => handleSort('id')}
+                  >
+                    <div className="d-flex align-items-center">
+                      ID {getSortIcon('id')}
+                    </div>
+                  </th>
+                  <th 
+                    scope="col" 
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => handleSort('name')}
+                  >
+                    <div className="d-flex align-items-center">
+                      Nombre {getSortIcon('name')}
+                    </div>
+                  </th>
+                  <th 
+                    scope="col" 
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => handleSort('email')}
+                  >
+                    <div className="d-flex align-items-center">
+                      Email {getSortIcon('email')}
+                    </div>
+                  </th>
+                  <th 
+                    scope="col" 
+                    style={{ width: '120px', cursor: 'pointer' }}
+                    onClick={() => handleSort('role')}
+                  >
+                    <div className="d-flex align-items-center">
+                      Rol {getSortIcon('role')}
+                    </div>
+                  </th>
+                  <th 
+                    scope="col" 
+                    style={{ width: '100px', cursor: 'pointer' }}
+                    onClick={() => handleSort('evento_id')}
+                  >
+                    <div className="d-flex align-items-center">
+                      Evento ID {getSortIcon('evento_id')}
+                    </div>
+                  </th>
+                  <th 
+                    scope="col" 
+                    style={{ width: '150px', cursor: 'pointer' }}
+                    onClick={() => handleSort('created_at')}
+                  >
+                    <div className="d-flex align-items-center">
+                      Fecha Creación {getSortIcon('created_at')}
+                    </div>
+                  </th>
+                  <th scope="col" style={{ width: '120px' }}>Acciones</th>
                 </tr>
-              ) : (
-                currentUsers.map((user) => (
-                  <tr key={user.id}>
-                    <td className="text-center">
-                      <span className="badge bg-secondary">{user.id}</span>
-                    </td>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <div className="user-avatar me-3">
-                          {user.name.split(' ').map(n => n[0]).join('').toUpperCase()}
-                        </div>
-                        <div>
-                          <div className="fw-bold">{user.name}</div>
-                          <small className="text-muted">ID: {user.id}</small>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>
-                        <div>{user.email}</div>
-                        {user.email_verified_at && (
-                          <small className="text-success">
-                            <i className="bi bi-check-circle-fill me-1"></i>
-                            Verificado
-                          </small>
-                        )}
-                      </div>
-                    </td>
-                    <td className="text-center">
-                      <span className={`badge bg-${getRoleBadgeColor(user.role)}`}>
-                        {getRoleDisplayName(user.role)}
-                      </span>
-                    </td>
-                    <td className="text-center">
-                      <span className="badge bg-info">
-                        {user.evento_id || 'N/A'}
-                      </span>
-                    </td>
-                    <td>
-                      <div>
-                        <div>{formatDate(user.created_at)}</div>
-                        <small className="text-muted">{formatTime(user.created_at)}</small>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="btn-group" role="group">
-                        <button
-                          className="btn btn-sm btn-outline-primary"
-                          title="Ver detalles"
-                          onClick={() => handleViewUser(user)}
-                        >
-                          <i className="bi bi-eye"></i>
-                        </button>
-                        <button
-                          className="btn btn-sm btn-outline-warning"
-                          title="Editar usuario"
-                          onClick={() => handleEditUser(user)}
-                        >
-                          <i className="bi bi-pencil"></i>
-                        </button>
-                        <button
-                          className="btn btn-sm btn-outline-danger"
-                          title="Eliminar usuario"
-                          onClick={() => handleDeleteUser(user)}
-                        >
-                          <i className="bi bi-trash"></i>
-                        </button>
-                      </div>
+              </thead>
+              <tbody>
+                {currentUsers.length === 0 ? (
+                  <tr>
+                    <td colSpan="7" className="text-center py-5">
+                      <i className="bi bi-search fs-1 text-muted d-block mb-3"></i>
+                      <p className="text-muted mb-3">No se encontraron usuarios con la búsqueda actual</p>
+                      <button 
+                        className="btn btn-outline-secondary btn-sm"
+                        onClick={() => setFilterText('')}
+                      >
+                        Limpiar búsqueda
+                      </button>
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
+                ) : (
+                  currentUsers.map((user) => (
+                    <tr key={user.id}>
+                      <td className="text-center">
+                        <span className="badge bg-secondary">{user.id}</span>
+                      </td>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <div className="user-avatar me-3">
+                            {user.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                          </div>
+                          <div>
+                            <div className="fw-bold">{user.name}</div>
+                            <small className="text-muted">ID: {user.id}</small>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <div>{user.email}</div>
+                          {user.email_verified_at && (
+                            <small className="text-success">
+                              <i className="bi bi-check-circle-fill me-1"></i>
+                              Verificado
+                            </small>
+                          )}
+                        </div>
+                      </td>
+                      <td className="text-center">
+                        <span className={`badge bg-${getRoleBadgeColor(user.role)}`}>
+                          {getRoleDisplayName(user.role)}
+                        </span>
+                      </td>
+                      <td className="text-center">
+                        <span className="badge bg-info">
+                          {user.evento_id || 'N/A'}
+                        </span>
+                      </td>
+                      <td>
+                        <div>
+                          <div>{formatDate(user.created_at)}</div>
+                          <small className="text-muted">{formatTime(user.created_at)}</small>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="btn-group" role="group">
+                          <button
+                            className="btn btn-sm btn-outline-primary"
+                            title="Ver detalles"
+                            onClick={() => handleViewUser(user)}
+                          >
+                            <i className="bi bi-eye"></i>
+                          </button>
+                          <button
+                            className="btn btn-sm btn-outline-warning"
+                            title="Editar usuario"
+                            onClick={() => handleEditUser(user)}
+                          >
+                            <i className="bi bi-pencil"></i>
+                          </button>
+                          <button
+                            className="btn btn-sm btn-outline-danger"
+                            title="Eliminar usuario"
+                            onClick={() => handleDeleteUser(user)}
+                          >
+                            <i className="bi bi-trash"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
 
-        {/* Paginación */}
-        {totalPages > 1 && (
-          <nav aria-label="Navegación de páginas">
-            <ul className="pagination justify-content-center">
-              <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                <button 
-                  className="page-link" 
-                  onClick={() => paginate(currentPage - 1)}
-                  disabled={currentPage === 1}
-                >
-                  <i className="bi bi-chevron-left"></i>
-                </button>
-              </li>
-              
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
-                <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+          {/* Paginación */}
+          {totalPages > 1 && (
+            <nav aria-label="Navegación de páginas">
+              <ul className="pagination justify-content-center">
+                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                   <button 
                     className="page-link" 
-                    onClick={() => paginate(number)}
+                    onClick={() => paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
                   >
-                    {number}
+                    <i className="bi bi-chevron-left"></i>
                   </button>
                 </li>
-              ))}
-              
-              <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                <button 
-                  className="page-link" 
-                  onClick={() => paginate(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                >
-                  <i className="bi bi-chevron-right"></i>
-                </button>
-              </li>
-            </ul>
-          </nav>
-        )}
+                
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+                  <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+                    <button 
+                      className="page-link" 
+                      onClick={() => paginate(number)}
+                    >
+                      {number}
+                    </button>
+                  </li>
+                ))}
+                
+                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                  <button 
+                    className="page-link" 
+                    onClick={() => paginate(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                  >
+                    <i className="bi bi-chevron-right"></i>
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          )}
+        </div>
       </div>
-    </div>
+
+      {/* Modal para crear/editar usuario */}
+      {showModal && (
+        <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+                  <i className={`bi ${isCreating ? 'bi-plus-circle' : 'bi-pencil-square'} me-2`}></i>
+                  {isCreating ? 'Crear Nuevo Usuario' : 'Editar Usuario'}
+                </h5>
+                <button 
+                  type="button" 
+                  className="btn-close" 
+                  onClick={closeModal}
+                ></button>
+              </div>
+              
+              <form onSubmit={handleSubmit}>
+                <div className="modal-body">
+                  <div className="row">
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="name" className="form-label">
+                        Nombre completo <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        className={`form-control ${formErrors.name ? 'is-invalid' : ''}`}
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Ingresa el nombre completo"
+                      />
+                      {formErrors.name && (
+                        <div className="invalid-feedback">{formErrors.name}</div>
+                      )}
+                    </div>
+                    
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="email" className="form-label">
+                        Email <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        className={`form-control ${formErrors.email ? 'is-invalid' : ''}`}
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="usuario@ejemplo.com"
+                      />
+                      {formErrors.email && (
+                        <div className="invalid-feedback">{formErrors.email}</div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="row">
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="password" className="form-label">
+                        Contraseña {isCreating ? <span className="text-danger">*</span> : <span className="text-muted">(opcional)</span>}
+                      </label>
+                      <input
+                        type="password"
+                        className={`form-control ${formErrors.password ? 'is-invalid' : ''}`}
+                        id="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        placeholder={isCreating ? "Ingresa la contraseña" : "Deja vacío para mantener la actual"}
+                      />
+                      {formErrors.password && (
+                        <div className="invalid-feedback">{formErrors.password}</div>
+                      )}
+                      {!isCreating && (
+                        <small className="form-text text-muted">
+                          Solo llena este campo si quieres cambiar la contraseña
+                        </small>
+                      )}
+                    </div>
+                    
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="role" className="form-label">
+                        Rol <span className="text-danger">*</span>
+                      </label>
+                      <select
+                        className={`form-select ${formErrors.role ? 'is-invalid' : ''}`}
+                        id="role"
+                        name="role"
+                        value={formData.role}
+                        onChange={handleInputChange}
+                      >
+                        <option value="usuario">Usuario</option>
+                        <option value="admin">Administrador</option>
+                      </select>
+                      {formErrors.role && (
+                        <div className="invalid-feedback">{formErrors.role}</div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="row">
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="evento_id" className="form-label">
+                        ID del Evento
+                      </label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="evento_id"
+                        name="evento_id"
+                        value={formData.evento_id}
+                        onChange={handleInputChange}
+                        placeholder="ID del evento (opcional)"
+                        min="1"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="modal-footer">
+                  <button 
+                    type="button" 
+                    className="btn btn-secondary" 
+                    onClick={closeModal}
+                    disabled={submitting}
+                  >
+                    Cancelar
+                  </button>
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary"
+                    disabled={submitting}
+                  >
+                    {submitting ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" role="status"></span>
+                        Guardando...
+                      </>
+                    ) : (
+                      <>
+                        <i className="bi bi-check-circle me-2"></i>
+                        {isCreating ? 'Crear Usuario' : 'Guardar Cambios'}
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
