@@ -5,6 +5,7 @@ import UsersTable from './UsersTable.jsx'
 import EventsTable from './EventsTable.jsx'
 import EquiposTable from './EquiposTable.jsx'
 import HospedajesTable from './HospedajesTable.jsx'
+import ParticipantesTable from './ParticipantesTable.jsx'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -60,6 +61,7 @@ function Dashboard() {
       case 'equipos': return 'Equipos del Sistema'
       case 'hospedajes': return 'Hospedajes del Sistema'
       case 'usuarios': return 'Usuarios del Sistema'
+      case 'participantes': return 'Participantes del Sistema'
       case 'estadisticas': return 'Estadísticas'
       case 'configuracion': return 'Configuración'
       default: return 'Dashboard'
@@ -159,6 +161,15 @@ function Dashboard() {
             >
               <i className="bi bi-people"></i>
               <span>Usuarios</span>
+            </a>
+            
+            <a 
+              className={`nav-link ${activeSection === 'participantes' ? 'active' : ''}`}
+              onClick={() => handleSectionChange('participantes')}
+              href="#"
+            >
+              <i className="bi bi-person-check"></i>
+              <span>Participantes</span>
             </a>
             
             <a 
@@ -369,6 +380,11 @@ function Dashboard() {
           {/* Contenido de Usuarios */}
           {activeSection === 'usuarios' && (
             <UsersTable />
+          )}
+
+          {/* Contenido de Participantes */}
+          {activeSection === 'participantes' && (
+            <ParticipantesTable />
           )}
 
           {/* Contenido de Estadísticas */}
