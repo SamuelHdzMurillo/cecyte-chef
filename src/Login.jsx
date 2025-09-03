@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
 import './Login.css'
 import authService from './services/authService.js'
 import DebugPanel from './components/DebugPanel.jsx'
 
 function Login({ onBackClick }) {
-  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -14,14 +12,6 @@ function Login({ onBackClick }) {
   
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-
-  // Verificar si el usuario ya está autenticado
-  useEffect(() => {
-    if (authService.isAuthenticated()) {
-      console.log('✅ Usuario ya autenticado, redirigiendo al dashboard...')
-      navigate('/dashboard', { replace: true })
-    }
-  }, [navigate])
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -54,8 +44,8 @@ function Login({ onBackClick }) {
       console.log('🔐 Estado de autenticación:', isAuth)
       
       if (isAuth) {
-        console.log('✅ Login exitoso, redirigiendo al dashboard...')
-        navigate('/dashboard')
+        alert('¡Login exitoso! Token guardado correctamente.')
+        // Aquí puedes redirigir al usuario o actualizar el estado de la app
       } else {
         alert('⚠️ Login exitoso pero no se pudo guardar el token. Revisa la consola.')
       }
