@@ -141,6 +141,53 @@ function ParticipantesTable() {
 
   return (
     <div className="participantes-table-container">
+      {/* Header principal del componente */}
+      <div className="card border-0 shadow-sm mb-3">
+        <div className="card-header bg-primary text-white border-0 py-2">
+          <div className="d-flex justify-content-between align-items-center">
+            <div>
+              <h4 className="mb-1 fw-bold">
+                <i className="bi bi-person-badge-fill me-3"></i>
+                Gestión de Participantes
+              </h4>
+              <p className="mb-0 opacity-75">
+                Administra participantes, sus perfiles, equipos y información personal
+              </p>
+            </div>
+            <div className="d-flex gap-2">
+              <button 
+                className="btn btn-light px-4 py-2"
+                onClick={fetchParticipantes}
+                disabled={loading}
+              >
+                <i className="bi bi-arrow-clockwise me-2"></i>
+                Actualizar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="card-body bg-light py-2">
+          <div className="row align-items-center">
+            <div className="col-md-6">
+              <div className="d-flex align-items-center">
+                <i className="bi bi-info-circle text-primary me-2 fs-5"></i>
+                <span className="text-muted">
+                  Total: <strong className="text-dark">{participantes.length}</strong> participantes registrados
+                </span>
+              </div>
+            </div>
+            <div className="col-md-6 text-md-end">
+              <div className="d-flex align-items-center justify-content-end">
+                <i className="bi bi-funnel text-primary me-2 fs-5"></i>
+                <span className="text-muted">
+                  Filtrados: <strong className="text-dark">{filteredParticipantes.length}</strong> participantes
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Header con estadísticas */}
       <div className="row mb-4">
         <div className="col-md-3">

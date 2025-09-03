@@ -11,9 +11,11 @@ class ApiService {
     const url = buildApiUrl(endpoint)
     const config = {
       method: options.method || 'GET',
-      headers: getAuthHeaders(options.token),
       ...options,
     }
+    
+    // Agregar headers de autenticación
+    config.headers = { ...getAuthHeaders(options.token), ...config.headers }
 
     // Agregar timeout
     const controller = new AbortController()
@@ -59,11 +61,21 @@ class ApiService {
   }
 
   async put(endpoint, data, token = null) {
-    return this.request(endpoint, {
+    const options = {
       method: 'PUT',
-      body: JSON.stringify(data),
       token
-    })
+    }
+    
+    // Si es FormData, enviarlo directamente
+    if (data instanceof FormData) {
+      options.body = data
+    } else {
+      // Si es JSON, convertir y agregar header
+      options.body = JSON.stringify(data)
+      options.headers = { 'Content-Type': 'application/json' }
+    }
+    
+    return this.request(endpoint, options)
   }
 
   async delete(endpoint, token = null) {
