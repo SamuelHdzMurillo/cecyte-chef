@@ -1,7 +1,9 @@
 import React from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import Login from './Login.jsx'
 import './App.css'
 
-function App() {
+function LandingPage({ onLoginClick }) {
   return (
     <div className="App">
       {/* Navbar */}
@@ -27,7 +29,7 @@ function App() {
                 <a className="nav-link" href="#contacto">Contacto</a>
               </li>
               <li className="nav-item">
-                <button className="btn btn-primary ms-2 w-100 w-lg-auto" onClick={() => alert('Función de inicio de sesión')}>
+                <button className="btn btn-primary ms-2 w-100 w-lg-auto" onClick={onLoginClick}>
                   <span className="d-none d-md-inline">Iniciar Sesión</span>
                   <span className="d-inline d-md-none">Entrar</span>
                 </button>
@@ -55,7 +57,7 @@ function App() {
                   <span className="d-none d-sm-inline">Registrarse</span>
                   <span className="d-inline d-sm-none">Registro</span>
                 </button>
-                <button className="btn btn-outline-light btn-lg px-4 py-3 fw-bold" onClick={() => alert('Función de inicio de sesión')}>
+                <button className="btn btn-outline-light btn-lg px-4 py-3 fw-bold" onClick={onLoginClick}>
                   <i className="bi bi-box-arrow-in-right me-2"></i>
                   <span className="d-none d-sm-inline">Iniciar Sesión</span>
                   <span className="d-inline d-sm-none">Entrar</span>
@@ -128,7 +130,7 @@ function App() {
               <p className="lead mb-4">
                 Únete a miles de estudiantes que ya están transformando su pasión por la cocina en una carrera profesional.
               </p>
-              <button className="btn btn-warning btn-lg px-5 py-3 fw-bold w-100 w-sm-auto" onClick={() => alert('Función de inicio de sesión')}>
+              <button className="btn btn-warning btn-lg px-5 py-3 fw-bold w-100 w-sm-auto" onClick={onLoginClick}>
                 <i className="bi bi-box-arrow-in-right me-2"></i>
                 <span className="d-none d-sm-inline">Iniciar Sesión Ahora</span>
                 <span className="d-inline d-sm-none">Entrar Ahora</span>
@@ -162,6 +164,25 @@ function App() {
         </div>
       </footer>
     </div>
+  )
+}
+
+function App() {
+  const navigate = useNavigate()
+
+  const handleLoginClick = () => {
+    navigate('/login')
+  }
+
+  const handleBackToHome = () => {
+    navigate('/')
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage onLoginClick={handleLoginClick} />} />
+      <Route path="/login" element={<Login onBackClick={handleBackToHome} />} />
+    </Routes>
   )
 }
 
