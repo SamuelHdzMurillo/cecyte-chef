@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import apiService from '../services/apiService.js'
 import authService from '../services/authService.js'
 import './EquiposTable.css'
 
 const EquiposTable = () => {
+  const navigate = useNavigate()
   const [equipos, setEquipos] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -12,10 +14,6 @@ const EquiposTable = () => {
   const [equiposPerPage] = useState(10)
   const [sortField, setSortField] = useState('id')
   const [sortDirection, setSortDirection] = useState('asc')
-  
-  // Estados para el modal de detalles del equipo
-  const [showDetailsModal, setShowDetailsModal] = useState(false)
-  const [selectedEquipo, setSelectedEquipo] = useState(null)
 
   // Filtros adicionales
   const [statusFilter, setStatusFilter] = useState('')
@@ -70,6 +68,10 @@ const EquiposTable = () => {
       : <i className="bi bi-arrow-down text-primary"></i>
   }
 
+  const handleViewDetails = (equipoId) => {
+    navigate(`/equipos/${equipoId}`)
+  }
+
   const filteredEquipos = equipos.filter(equipo => {
     const matchesText = 
       equipo.nombre_equipo?.toLowerCase().includes(filterText.toLowerCase()) ||
@@ -112,16 +114,6 @@ const EquiposTable = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber)
-  }
-
-  const handleShowDetails = (equipo) => {
-    setSelectedEquipo(equipo)
-    setShowDetailsModal(true)
-  }
-
-  const closeDetailsModal = () => {
-    setShowDetailsModal(false)
-    setSelectedEquipo(null)
   }
 
   const getStatusBadge = (status) => {
@@ -428,8 +420,8 @@ const EquiposTable = () => {
                         <div className="btn-group" role="group">
                           <button
                             className="btn btn-outline-primary px-3 py-2"
-                            onClick={() => handleShowDetails(equipo)}
-                            title="Ver detalles"
+                            onClick={() => handleViewDetails(equipo.id)}
+                            title="Ver detalles y editar"
                           >
                             <i className="bi bi-eye me-1"></i>
                             Ver
@@ -484,295 +476,6 @@ const EquiposTable = () => {
               </li>
             </ul>
           </nav>
-        </div>
-      )}
-
-      {/* Modal de detalles del equipo */}
-      {showDetailsModal && selectedEquipo && (
-        <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}>
-          <div className="modal-dialog modal-xl">
-            <div className="modal-content border-0 shadow-lg">
-              <div className="modal-header bg-primary text-white border-0 py-3">
-                <h4 className="modal-title fw-bold">
-                  <i className="bi bi-people-fill me-3"></i>
-                  Detalles del Equipo: {selectedEquipo.nombre_equipo}
-                </h4>
-                <button
-                  type="button"
-                  className="btn-close btn-close-white"
-                  onClick={closeDetailsModal}
-                ></button>
-              </div>
-              
-              <div className="modal-body p-2">
-                <div className="row g-3">
-                  {/* Información básica del equipo y anfitrión en una sola fila */}
-                  <div className="col-12">
-                    <div className="card border-0 shadow-sm">
-                      <div className="card-header bg-light border-0 py-2">
-                        <h6 className="mb-0 fw-bold text-primary">
-                          <i className="bi bi-info-circle me-2"></i>
-                          Información General
-                        </h6>
-                      </div>
-                      <div className="card-body py-2">
-                        <div className="row g-3">
-                          <div className="col-md-3">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Nombre del Equipo</label>
-                            <p className="mb-0 fs-6 fw-bold text-primary">{selectedEquipo.nombre_equipo}</p>
-                          </div>
-                          <div className="col-md-3">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Entidad</label>
-                            <p className="mb-0 fs-6">{selectedEquipo.entidad_federativa}</p>
-                          </div>
-                          <div className="col-md-3">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Estatus</label>
-                            <div>{getStatusBadge(selectedEquipo.estatus_del_equipo)}</div>
-                          </div>
-                          <div className="col-md-3">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Fecha Creación</label>
-                            <p className="mb-0 fs-6">{formatDate(selectedEquipo.created_at)}</p>
-                          </div>
-                        </div>
-                        <hr className="my-3" />
-                        <div className="row g-3">
-                          <div className="col-md-4">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Anfitrión</label>
-                            <p className="mb-0 fs-6 fw-bold text-success">{selectedEquipo.nombre_anfitrion}</p>
-                          </div>
-                          <div className="col-md-4">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Teléfono</label>
-                            <p className="mb-0 fs-6">
-                              <i className="bi bi-telephone me-1 text-muted"></i>
-                              {selectedEquipo.telefono_anfitrion}
-                            </p>
-                          </div>
-                          <div className="col-md-4">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Correo</label>
-                            <p className="mb-0 fs-6">
-                              <i className="bi bi-envelope me-1 text-muted"></i>
-                              {selectedEquipo.correo_anfitrion}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Información del evento */}
-                  <div className="mt-3">
-                    <div className="card border-0 shadow-sm">
-                      <div className="card-header bg-light border-0 py-2">
-                        <h6 className="mb-0 fw-bold text-info">
-                          <i className="bi bi-calendar-event me-2"></i>
-                          Evento Asociado
-                        </h6>
-                      </div>
-                      <div className="card-body py-2">
-                        <div className="row g-3">
-                          <div className="col-md-6">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Nombre del Evento</label>
-                            <p className="mb-0 fs-6 fw-bold text-info">{selectedEquipo.evento?.nombre_evento}</p>
-                          </div>
-                          <div className="col-md-6">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Sede</label>
-                            <p className="mb-0 fs-6">
-                              <i className="bi bi-geo-alt me-1 text-muted"></i>
-                              {selectedEquipo.evento?.sede_evento}
-                            </p>
-                          </div>
-                          <div className="col-md-6">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Fecha de Inicio</label>
-                            <p className="mb-0 fs-6">
-                              <i className="bi bi-calendar-plus me-1 text-muted"></i>
-                              {formatDate(selectedEquipo.evento?.inicio_evento)}
-                            </p>
-                          </div>
-                          <div className="col-md-6">
-                            <label className="form-label fw-semibold text-muted mb-1 small">Fecha de Fin</label>
-                            <p className="mb-0 fs-6">
-                              <i className="bi bi-calendar-check me-1 text-muted"></i>
-                              {formatDate(selectedEquipo.evento?.fin_evento)}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Participantes */}
-                  <div className="mt-3">
-                    <div className="card border-0 shadow-sm">
-                      <div className="card-header bg-light border-0 py-2">
-                        <h6 className="mb-0 fw-bold text-warning">
-                          <i className="bi bi-people me-2"></i>
-                          Participantes ({selectedEquipo.participantes?.length || 0})
-                        </h6>
-                      </div>
-                      <div className="card-body py-2">
-                        {selectedEquipo.participantes && selectedEquipo.participantes.length > 0 ? (
-                          <div className="table-responsive">
-                            <table className="table table-sm table-hover mb-0">
-                              <thead className="table-light">
-                                <tr>
-                                  <th className="border-0 py-1 px-2 small">Nombre</th>
-                                  <th className="border-0 py-1 px-2 small">Rol</th>
-                                  <th className="border-0 py-1 px-2 small">Plantel</th>
-                                  <th className="border-0 py-1 px-2 small">Especialidad</th>
-                                  <th className="border-0 py-1 px-2 small">Semestre</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {selectedEquipo.participantes.map((participante) => (
-                                  <tr key={participante.id}>
-                                    <td className="py-1 px-2">
-                                      <strong className="small">{participante.nombre_participante}</strong>
-                                    </td>
-                                    <td className="py-1 px-2">
-                                      <span className="badge bg-primary fs-6 px-2 py-1">{participante.rol_participante}</span>
-                                    </td>
-                                    <td className="py-1 px-2 small">{participante.plantel_participante}</td>
-                                    <td className="py-1 px-2 small">{participante.especialidad_participante}</td>
-                                    <td className="py-1 px-2">
-                                      <span className="badge bg-info fs-6 px-2 py-1">{participante.semestre_participante}</span>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        ) : (
-                          <div className="text-center py-3">
-                            <i className="bi bi-people fs-2 text-muted mb-2 d-block opacity-50"></i>
-                            <p className="text-muted mb-0 small">No hay participantes registrados</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Acompañantes */}
-                  <div className="mt-3">
-                    <div className="card border-0 shadow-sm">
-                      <div className="card-header bg-light border-0 py-2">
-                        <h6 className="mb-0 fw-bold text-secondary">
-                          <i className="bi bi-person-badge me-2"></i>
-                          Acompañantes ({selectedEquipo.acompanantes?.length || 0})
-                        </h6>
-                      </div>
-                      <div className="card-body py-2">
-                        {selectedEquipo.acompanantes && selectedEquipo.acompanantes.length > 0 ? (
-                          <div className="table-responsive">
-                            <table className="table table-sm table-hover mb-0">
-                              <thead className="table-light">
-                                <tr>
-                                  <th className="border-0 py-1 px-2 small">Nombre</th>
-                                  <th className="border-0 py-1 px-2 small">Rol</th>
-                                  <th className="border-0 py-1 px-2 small">Puesto</th>
-                                  <th className="border-0 py-1 px-2 small">Contacto</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {selectedEquipo.acompanantes.map((acompanante) => (
-                                  <tr key={acompanante.id}>
-                                    <td className="py-1 px-2">
-                                      <strong className="small">{acompanante.nombre_acompanante}</strong>
-                                    </td>
-                                    <td className="py-1 px-2">
-                                      <span className="badge bg-info fs-6 px-2 py-1">{acompanante.rol}</span>
-                                    </td>
-                                    <td className="py-1 px-2 small">{acompanante.puesto}</td>
-                                    <td className="py-1 px-2">
-                                      <div>
-                                        <div className="mb-1">
-                                          <i className="bi bi-telephone me-1 text-muted"></i>
-                                          <small>{acompanante.telefono}</small>
-                                        </div>
-                                        <small className="text-muted">
-                                          <i className="bi bi-envelope me-1"></i>
-                                          {acompanante.email}
-                                        </small>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        ) : (
-                          <div className="text-center py-3">
-                            <i className="bi bi-person-badge fs-2 text-muted mb-2 d-block opacity-50"></i>
-                            <p className="text-muted mb-0 small">No hay acompañantes registrados</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Recetas */}
-                  <div className="mt-3">
-                    <div className="card border-0 shadow-sm">
-                      <div className="card-header bg-light border-0 py-2">
-                        <h6 className="mb-0 fw-bold text-danger">
-                          <i className="bi bi-journal-text me-2"></i>
-                          Recetas ({selectedEquipo.recetas?.length || 0})
-                        </h6>
-                      </div>
-                      <div className="card-body py-2">
-                        {selectedEquipo.recetas && selectedEquipo.recetas.length > 0 ? (
-                          <div className="row g-3">
-                            {selectedEquipo.recetas.map((receta) => (
-                              <div key={receta.id} className="col-lg-6 col-md-12">
-                                <div className="card border-0 shadow-sm h-100">
-                                  <div className="card-header bg-danger text-white border-0 py-2">
-                                    <strong className="fs-6">
-                                      <i className="bi bi-tag me-2"></i>
-                                      {receta.tipo_receta}
-                                    </strong>
-                                  </div>
-                                  <div className="card-body py-2">
-                                    <h6 className="fw-bold text-dark mb-2 small">{receta.descripcion}</h6>
-                                    {receta.observaciones && (
-                                      <div className="mb-2">
-                                        <label className="form-label fw-semibold text-muted mb-1 small">Observaciones</label>
-                                        <p className="text-muted small mb-0">{receta.observaciones}</p>
-                                      </div>
-                                    )}
-                                    <div className="d-flex align-items-center">
-                                      <i className="bi bi-person-circle me-1 text-muted"></i>
-                                      <small className="text-muted">
-                                        Creado por: <strong>{receta.creado_por}</strong>
-                                      </small>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="text-center py-3">
-                            <i className="bi bi-journal-text fs-2 text-muted mb-2 d-block opacity-50"></i>
-                            <p className="text-muted mb-0 small">No hay recetas registradas</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="modal-footer bg-light border-0 py-2">
-                <button
-                  type="button"
-                  className="btn btn-secondary px-4 py-2"
-                  onClick={closeDetailsModal}
-                >
-                  <i className="bi bi-x-circle me-2"></i>
-                  Cerrar
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       )}
     </div>

@@ -1,0 +1,94 @@
+/* Estilos para el componente EquipoDetalle */
+.equipos-table-container {
+  padding: 15px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .equipos-table-container {
+    padding: 10px;
+  }
+}
+
+/* Estilos para formularios en modo edición */
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Estilos para botones de acción */
+.btn-group .btn {
+  margin-right: 5px;
+}
+
+.btn-group .btn:last-child {
+  margin-right: 0;
+}
+
+/* Estilos para tablas en modo edición */
+.table .form-control-sm {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.table .form-select-sm {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Estilos para badges */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.65em;
+}
+
+/* Estilos para iconos */
+.bi {
+  line-height: 1;
+}
+
+/* Estilos para cards */
+.card {
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Estilos para botones de edición */
+.btn-outline-warning:hover {
+  color: #fff;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
+}
+
+/* Estilos para formularios de recetas */
+.form-control.bg-transparent {
+  background-color: transparent !important;
+}
+
+.form-control.bg-transparent::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Estilos para textareas */
+textarea.form-control {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Estilos para botones de eliminación */
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
