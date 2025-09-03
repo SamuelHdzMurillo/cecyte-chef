@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Login from './Login.jsx'
 import Dashboard from './components/Dashboard.jsx'
 import EquipoDetalle from './components/EquipoDetalle.jsx'
+import HospedajeDetalle from './components/HospedajeDetalle.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import './App.css'
 
@@ -193,6 +194,11 @@ function App() {
       <Route path="/equipos/:id" element={
         <ProtectedRoute>
           <EquipoDetalle />
+        </ProtectedRoute>
+      } />
+      <Route path="/hospedajes/:id" element={
+        <ProtectedRoute>
+          <HospedajeDetalle />
         </ProtectedRoute>
       } />
     </Routes>

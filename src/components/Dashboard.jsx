@@ -4,6 +4,7 @@ import authService from '../services/authService.js'
 import UsersTable from './UsersTable.jsx'
 import EventsTable from './EventsTable.jsx'
 import EquiposTable from './EquiposTable.jsx'
+import HospedajesTable from './HospedajesTable.jsx'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -57,6 +58,7 @@ function Dashboard() {
       case 'dashboard': return 'Dashboard'
       case 'eventos': return 'Eventos del Sistema'
       case 'equipos': return 'Equipos del Sistema'
+      case 'hospedajes': return 'Hospedajes del Sistema'
       case 'usuarios': return 'Usuarios del Sistema'
       case 'estadisticas': return 'Estadísticas'
       case 'configuracion': return 'Configuración'
@@ -139,6 +141,15 @@ function Dashboard() {
             >
               <i className="bi bi-people-fill"></i>
               <span>Equipos</span>
+            </a>
+            
+            <a 
+              className={`nav-link ${activeSection === 'hospedajes' ? 'active' : ''}`}
+              onClick={() => handleSectionChange('hospedajes')}
+              href="#"
+            >
+              <i className="bi bi-building"></i>
+              <span>Hospedajes</span>
             </a>
             
             <a 
@@ -321,6 +332,17 @@ function Dashboard() {
                             Ir a Equipos
                           </button>
                         </div>
+                        <div className="col-md-4">
+                          <h6 className="text-info">Gestión de Hospedajes</h6>
+                          <p className="text-muted">Administra hoteles y lugares de hospedaje para los participantes del evento.</p>
+                          <button 
+                            className="btn btn-info btn-sm"
+                            onClick={() => handleSectionChange('hospedajes')}
+                          >
+                            <i className="bi bi-arrow-right me-2"></i>
+                            Ir a Hospedajes
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -337,6 +359,11 @@ function Dashboard() {
           {/* Contenido de Equipos */}
           {activeSection === 'equipos' && (
             <EquiposTable />
+          )}
+
+          {/* Contenido de Hospedajes */}
+          {activeSection === 'hospedajes' && (
+            <HospedajesTable />
           )}
 
           {/* Contenido de Usuarios */}

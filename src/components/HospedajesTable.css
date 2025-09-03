@@ -1,0 +1,322 @@
+/* Estilos para la tabla de hospedajes */
+.hospedajes-table-container {
+  padding: 15px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Estilos para el header principal */
+.hospedajes-table-container .card-header.bg-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+}
+
+.hospedajes-table-container .card-header.bg-primary h4 {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.hospedajes-table-container .card-header.bg-primary p {
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.hospedajes-table-container .card-body.bg-light {
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Estilos para los encabezados de tabla clickeables */
+.cursor-pointer {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.cursor-pointer:hover {
+  background-color: rgba(0, 123, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Estilos para los badges de estatus */
+.badge {
+  font-size: 0.75em;
+  padding: 0.5em 0.75em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Estilos para la tabla */
+.table th {
+  border-top: none;
+  font-weight: 600;
+  color: #495057;
+  background-color: #f8f9fa;
+  padding: 12px 10px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 12px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.03);
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilos para los filtros */
+.card {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 1rem 1.25rem;
+}
+
+/* Estilos para los botones */
+.btn-group .btn {
+  margin-right: 2px;
+  transition: all 0.2s ease;
+}
+
+.btn-group .btn:last-child {
+  margin-right: 0;
+}
+
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Estilos para las imágenes de hospedajes */
+.hospedajes-table-container img {
+  border: 2px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.hospedajes-table-container img:hover {
+  border-color: #007bff;
+  transform: scale(1.05);
+}
+
+/* Estilos para los enlaces de teléfono y correo */
+.hospedajes-table-container a {
+  color: #6c757d;
+  transition: all 0.2s ease;
+}
+
+.hospedajes-table-container a:hover {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Estilos para la paginación */
+.pagination .page-link {
+  border-radius: 6px;
+  margin: 0 2px;
+  border: 1px solid #dee2e6;
+  color: #007bff;
+  transition: all 0.2s ease;
+}
+
+.pagination .page-link:hover {
+  background-color: #e9ecef;
+  border-color: #007bff;
+  transform: translateY(-1px);
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+/* Estilos para el estado de carga */
+.hospedajes-table-container .spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Estilos para mensajes de error y estado vacío */
+.hospedajes-table-container .text-danger,
+.hospedajes-table-container .text-muted {
+  font-size: 0.9rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .hospedajes-table-container {
+    padding: 10px;
+  }
+  
+  .hospedajes-table-container .card-header h4 {
+    font-size: 1.1rem;
+  }
+  
+  .hospedajes-table-container .card-header p {
+    font-size: 0.8rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.85rem;
+  }
+  
+  .btn-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Estilos para el contador total */
+.hospedajes-table-container .text-muted strong {
+  color: #495057;
+  font-weight: 600;
+}
+
+/* Estilos para el botón de refresh */
+.hospedajes-table-container .btn-light {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #007bff;
+  transition: all 0.2s ease;
+}
+
+.hospedajes-table-container .btn-light:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  transform: rotate(180deg);
+}
+
+/* Estilos para el modal */
+.modal.fade.show {
+  z-index: 1050;
+}
+
+.modal-dialog {
+  max-width: 800px;
+}
+
+.modal-header.bg-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+}
+
+.modal-header .btn-close-white {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.form-label .text-danger {
+  color: #dc3545 !important;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  transition: all 0.2s ease;
+  padding: 0.75rem;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.invalid-feedback {
+  font-size: 0.875rem;
+  color: #dc3545;
+  margin-top: 0.25rem;
+}
+
+.form-text {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 1.5rem;
+}
+
+.modal-footer .btn {
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.modal-footer .btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.modal-footer .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Estilos para el botón de nuevo hospedaje */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Estilos responsivos para el modal */
+@media (max-width: 768px) {
+  .modal-dialog {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-footer {
+    padding: 1rem;
+  }
+  
+  .modal-footer .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .modal-footer .btn:last-child {
+    margin-bottom: 0;
+  }
+}
