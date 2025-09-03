@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import authService from '../services/authService.js'
 import UsersTable from './UsersTable.jsx'
+import EventsTable from './EventsTable.jsx'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -177,113 +178,138 @@ function Dashboard() {
 
           {/* Contenido del Dashboard */}
           {activeSection === 'dashboard' && (
-            <div className="row">
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-primary shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters align-items-center">
-                      <div className="col mr-2">
-                        <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                          Usuarios Activos
+            <>
+              <div className="row">
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="card border-left-primary shadow h-100 py-2 dashboard-card">
+                    <div className="card-body">
+                      <div className="row no-gutters align-items-center">
+                        <div className="col mr-2">
+                          <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total Eventos
+                          </div>
+                          <div className="h5 mb-0 font-weight-bold text-gray-800">
+                            <i className="bi bi-calendar-event me-2"></i>
+                            Eventos del Sistema
+                          </div>
                         </div>
-                        <div className="h5 mb-0 font-weight-bold text-gray-800">2,350</div>
+                        <div className="col-auto">
+                          <i className="bi bi-calendar-event fa-2x text-gray-300"></i>
+                        </div>
                       </div>
-                      <div className="col-auto">
-                        <i className="bi bi-people fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="card border-left-success shadow h-100 py-2 dashboard-card">
+                    <div className="card-body">
+                      <div className="row no-gutters align-items-center">
+                        <div className="col mr-2">
+                          <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Eventos Activos
+                          </div>
+                          <div className="h5 mb-0 font-weight-bold text-gray-800">
+                            <i className="bi bi-check-circle me-2"></i>
+                            En Curso
+                          </div>
+                        </div>
+                        <div className="col-auto">
+                          <i className="bi bi-check-circle fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="card border-left-info shadow h-100 py-2 dashboard-card">
+                    <div className="card-body">
+                      <div className="row no-gutters align-items-center">
+                        <div className="col mr-2">
+                          <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Total Equipos
+                          </div>
+                          <div className="h5 mb-0 font-weight-bold text-gray-800">
+                            <i className="bi bi-people me-2"></i>
+                            Equipos Registrados
+                          </div>
+                        </div>
+                        <div className="col-auto">
+                          <i className="bi bi-people fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="card border-left-warning shadow h-100 py-2 dashboard-card">
+                    <div className="card-body">
+                      <div className="row no-gutters align-items-center">
+                        <div className="col mr-2">
+                          <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Participantes
+                          </div>
+                          <div className="h5 mb-0 font-weight-bold text-gray-800">
+                            <i className="bi bi-person-check me-2"></i>
+                            Total Registrados
+                          </div>
+                        </div>
+                        <div className="col-auto">
+                          <i className="bi bi-person-check fa-2x text-gray-300"></i>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-success shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters align-items-center">
-                      <div className="col mr-2">
-                        <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                          Eventos Hoy
+              {/* Acceso rápido a Eventos */}
+              <div className="row mt-4">
+                <div className="col-12">
+                  <div className="card border-left-info shadow h-100 quick-access-card">
+                    <div className="card-header bg-info text-white">
+                      <h6 className="m-0 font-weight-bold">
+                        <i className="bi bi-lightning me-2"></i>
+                        Acceso Rápido a Eventos
+                      </h6>
+                    </div>
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-md-6">
+                          <h6 className="text-info">Gestión de Eventos</h6>
+                          <p className="text-muted">Administra todos los eventos del sistema, crea nuevos eventos, gestiona equipos y participantes.</p>
+                          <button 
+                            className="btn btn-info btn-sm"
+                            onClick={() => handleSectionChange('eventos')}
+                          >
+                            <i className="bi bi-arrow-right me-2"></i>
+                            Ir a Eventos
+                          </button>
                         </div>
-                        <div className="h5 mb-0 font-weight-bold text-gray-800">15</div>
-                      </div>
-                      <div className="col-auto">
-                        <i className="bi bi-calendar-event fa-2x text-gray-300"></i>
+                        <div className="col-md-6">
+                          <h6 className="text-primary">Gestión de Usuarios</h6>
+                          <p className="text-muted">Administra usuarios del sistema, roles, permisos y configuraciones de cuenta.</p>
+                          <button 
+                            className="btn btn-primary btn-sm"
+                            onClick={() => handleSectionChange('usuarios')}
+                          >
+                            <i className="bi bi-arrow-right me-2"></i>
+                            Ir a Usuarios
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-info shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters align-items-center">
-                      <div className="col mr-2">
-                        <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                          Cursos Activos
-                        </div>
-                        <div className="h5 mb-0 font-weight-bold text-gray-800">8</div>
-                      </div>
-                      <div className="col-auto">
-                        <i className="bi bi-book fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-warning shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters align-items-center">
-                      <div className="col mr-2">
-                        <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                          Notificaciones
-                        </div>
-                        <div className="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                      </div>
-                      <div className="col-auto">
-                        <i className="bi bi-bell fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </>
           )}
 
           {/* Contenido de Eventos */}
           {activeSection === 'eventos' && (
-            <div className="card">
-              <div className="card-header">
-                <h6 className="m-0 font-weight-bold text-primary">Eventos del Sistema</h6>
-              </div>
-              <div className="card-body">
-                <div className="event-item">
-                  <div className="event-title">Nuevo Usuario Registrado</div>
-                  <div className="event-description">Se ha registrado un nuevo usuario en el sistema</div>
-                  <div className="event-date">Hace 2 horas</div>
-                </div>
-                
-                <div className="event-item">
-                  <div className="event-title">Actualización del Sistema</div>
-                  <div className="event-description">El sistema ha sido actualizado a la versión 2.1.0</div>
-                  <div className="event-date">Hace 1 día</div>
-                </div>
-                
-                <div className="event-item">
-                  <div className="event-title">Mantenimiento Programado</div>
-                  <div className="event-description">Mantenimiento del sistema programado para el próximo fin de semana</div>
-                  <div className="event-date">Hace 3 días</div>
-                </div>
-                
-                <div className="event-item">
-                  <div className="event-title">Backup Completado</div>
-                  <div className="event-description">Backup automático del sistema completado exitosamente</div>
-                  <div className="event-date">Hace 1 semana</div>
-                </div>
-              </div>
-            </div>
+            <EventsTable />
           )}
 
           {/* Contenido de Usuarios */}

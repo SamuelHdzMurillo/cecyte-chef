@@ -241,6 +241,81 @@
   color: #6c757d;
 }
 
+/* Dashboard Cards */
+.dashboard-card {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+}
+
+.dashboard-card .card-body {
+  padding: 1.5rem;
+}
+
+.dashboard-card .h5 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-card .text-xs {
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* Acceso Rápido */
+.quick-access-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.quick-access-card .card-header {
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.quick-access-card .card-body {
+  color: white;
+}
+
+.quick-access-card h6 {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.quick-access-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.quick-access-card .btn {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.quick-access-card .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Iconos del Dashboard */
+.dashboard-card i.fa-2x {
+  font-size: 2.5rem;
+  opacity: 0.7;
+}
+
+.dashboard-card:hover i.fa-2x {
+  opacity: 1;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
 /* Usuarios */
 .user-item {
   display: flex;
