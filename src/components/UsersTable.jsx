@@ -29,6 +29,10 @@ const UsersTable = () => {
   const [formErrors, setFormErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
 
+  // Estados para el modal de detalles del usuario
+  const [showDetailsModal, setShowDetailsModal] = useState(false)
+  const [selectedUser, setSelectedUser] = useState(null)
+
   useEffect(() => {
     fetchUsers()
   }, [])
@@ -296,17 +300,38 @@ const UsersTable = () => {
 
   const handleViewUser = (user) => {
     console.log('Ver usuario:', user)
-    // Aquí puedes implementar la lógica para mostrar detalles del usuario
+    setSelectedUser(user)
+    setShowDetailsModal(true)
   }
 
   const handleEditUser = (user) => {
     openEditModal(user)
   }
 
-  const handleDeleteUser = (user) => {
+  const handleDeleteUser = async (user) => {
     if (window.confirm(`¿Estás seguro de que quieres eliminar al usuario "${user.name}"?`)) {
-      console.log('Eliminar usuario:', user)
-      // Aquí puedes implementar la lógica para eliminar el usuario
+      try {
+        setLoading(true)
+        const token = authService.getToken()
+        
+        // Llamar a la API para eliminar el usuario
+        const response = await apiService.delete(`/admin/users/${user.id}`, token)
+        
+        if (response.success || response.data) {
+          // Remover el usuario de la lista local
+          setUsers(prev => prev.filter(u => u.id !== user.id))
+          
+          // Mostrar mensaje de éxito
+          alert('Usuario eliminado exitosamente')
+        } else {
+          alert('Error al eliminar el usuario. Por favor, inténtalo de nuevo.')
+        }
+      } catch (error) {
+        console.error('Error al eliminar usuario:', error)
+        alert('Error al eliminar el usuario. Por favor, inténtalo de nuevo.')
+      } finally {
+        setLoading(false)
+      }
     }
   }
 
@@ -767,6 +792,56 @@ const UsersTable = () => {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de detalles del usuario */}
+      {showDetailsModal && selectedUser && (
+        <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+                  <i className="bi bi-info-circle me-2"></i>
+                  Detalles del Usuario
+                </h5>
+                <button 
+                  type="button" 
+                  className="btn-close" 
+                  onClick={() => setShowDetailsModal(false)}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div className="row">
+                  <div className="col-md-6">
+                    <h6>Información General</h6>
+                    <p><strong>ID:</strong> {selectedUser.id}</p>
+                    <p><strong>Nombre:</strong> {selectedUser.name}</p>
+                    <p><strong>Email:</strong> {selectedUser.email}</p>
+                    <p><strong>Rol:</strong> {getRoleDisplayName(selectedUser.role)}</p>
+                    <p><strong>Evento ID:</strong> {selectedUser.evento_id || 'N/A'}</p>
+                    <p><strong>Verificado:</strong> {selectedUser.email_verified_at ? 'Sí' : 'No'}</p>
+                  </div>
+                  <div className="col-md-6">
+                    <h6>Detalles de Creación</h6>
+                    <p><strong>Fecha de Creación:</strong> {formatDate(selectedUser.created_at)}</p>
+                    <p><strong>Hora de Creación:</strong> {formatTime(selectedUser.created_at)}</p>
+                    <p><strong>Fecha de Actualización:</strong> {formatDate(selectedUser.updated_at)}</p>
+                    <p><strong>Hora de Actualización:</strong> {formatTime(selectedUser.updated_at)}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button 
+                  type="button" 
+                  className="btn btn-secondary" 
+                  onClick={() => setShowDetailsModal(false)}
+                >
+                  Cerrar
+                </button>
+              </div>
             </div>
           </div>
         </div>
