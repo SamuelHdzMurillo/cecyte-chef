@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import authService from '../services/authService.js'
+import UsersTable from './UsersTable.jsx'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -287,48 +288,7 @@ function Dashboard() {
 
           {/* Contenido de Usuarios */}
           {activeSection === 'usuarios' && (
-            <div className="card">
-              <div className="card-header">
-                <h6 className="m-0 font-weight-bold text-primary">Usuarios del Sistema</h6>
-              </div>
-              <div className="card-body">
-                <div className="user-item">
-                  <div className="user-avatar">JD</div>
-                  <div className="user-info">
-                    <div className="user-name">Juan Doe</div>
-                    <div className="user-email">juan.doe@cecyte.edu.mx</div>
-                    <div className="user-role">Administrador</div>
-                  </div>
-                </div>
-                
-                <div className="user-item">
-                  <div className="user-avatar">MJ</div>
-                  <div className="user-info">
-                    <div className="user-name">María Johnson</div>
-                    <div className="user-email">maria.johnson@cecyte.edu.mx</div>
-                    <div className="user-role">Profesor</div>
-                  </div>
-                </div>
-                
-                <div className="user-item">
-                  <div className="user-avatar">CS</div>
-                  <div className="user-info">
-                    <div className="user-name">Carlos Smith</div>
-                    <div className="user-email">carlos.smith@cecyte.edu.mx</div>
-                    <div className="user-role">Estudiante</div>
-                  </div>
-                </div>
-                
-                <div className="user-item">
-                  <div className="user-avatar">AL</div>
-                  <div className="user-info">
-                    <div className="user-name">Ana López</div>
-                    <div className="user-email">ana.lopez@cecyte.edu.mx</div>
-                    <div className="user-role">Profesor</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <UsersTable />
           )}
 
           {/* Contenido de Estadísticas */}
