@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Login from './Login.jsx'
+import Dashboard from './components/Dashboard.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 import './App.css'
 
 function LandingPage({ onLoginClick }) {
+  const navigate = useNavigate()
+  
+  // Verificar si el usuario ya está autenticado
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) {
+      console.log('✅ Usuario autenticado detectado, redirigiendo al dashboard...')
+      navigate('/dashboard', { replace: true })
+    }
+  }, [navigate])
+
   return (
     <div className="App">
       {/* Navbar */}
@@ -182,6 +194,11 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage onLoginClick={handleLoginClick} />} />
       <Route path="/login" element={<Login onBackClick={handleBackToHome} />} />
+      <Route path="/dashboard" element={
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      } />
     </Routes>
   )
 }
