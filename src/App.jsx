@@ -1,6 +1,8 @@
 import React from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Login from './Login.jsx'
+import Dashboard from './components/Dashboard.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 import './App.css'
 
 function LandingPage({ onLoginClick }) {
@@ -182,6 +184,11 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage onLoginClick={handleLoginClick} />} />
       <Route path="/login" element={<Login onBackClick={handleBackToHome} />} />
+      <Route path="/dashboard" element={
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      } />
     </Routes>
   )
 }
