@@ -1,0 +1,376 @@
+/* Estilos para la tabla de equipos */
+.equipos-table-container {
+  padding: 15px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Estilos para el header principal */
+.equipos-table-container .card-header.bg-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+}
+
+.equipos-table-container .card-header.bg-primary h4 {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.equipos-table-container .card-header.bg-primary p {
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.equipos-table-container .card-body.bg-light {
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Estilos para los encabezados de tabla clickeables */
+.cursor-pointer {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.cursor-pointer:hover {
+  background-color: rgba(0, 123, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Estilos para los badges de estatus */
+.badge {
+  font-size: 0.75em;
+  padding: 0.5em 0.75em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Estilos para la tabla */
+.table th {
+  border-top: none;
+  font-weight: 600;
+  color: #495057;
+  background-color: #f8f9fa;
+  padding: 12px 10px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 12px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.03);
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilos para los filtros */
+.card {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 1rem 1.25rem;
+}
+
+/* Estilos para los botones */
+.btn-group .btn {
+  margin-right: 2px;
+  transition: all 0.2s ease;
+}
+
+.btn-group .btn:last-child {
+  margin-right: 0;
+}
+
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Estilos para la paginación */
+.pagination .page-link {
+  color: #007bff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin: 0 2px;
+  transition: all 0.2s ease;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.pagination .page-link:hover:not(.disabled) {
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  transform: translateY(-1px);
+}
+
+/* Estilos para el modal */
+.modal.show {
+  display: block;
+}
+
+.modal-dialog.modal-xl {
+  max-width: 900px;
+}
+
+.modal-content {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Estilos para las tablas dentro del modal */
+.modal .table-sm th,
+.modal .table-sm td {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Estilos para tablas compactas en el modal */
+.modal .table-sm {
+  font-size: 0.8rem;
+}
+
+.modal .table-sm th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal .table-sm td {
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+
+/* Estilos para badges compactos */
+.modal .badge {
+  font-size: 0.7rem !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+/* Estilos para las tarjetas de recetas */
+.modal .card {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.modal .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.modal .card-header {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+}
+
+/* Estilos para los badges de participantes y acompañantes */
+.badge.bg-primary {
+  background-color: #007bff !important;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+.badge.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+}
+
+.badge.bg-secondary {
+  background-color: #6c757d !important;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+/* Estilos para el estado de carga */
+.spinner-border {
+  width: 4rem;
+  height: 4rem;
+  color: #007bff;
+}
+
+/* Estilos para mensajes de error */
+.alert {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Estilos para el botón de limpiar filtros */
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+/* Estilos para el botón de actualizar */
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+/* Estilos para formularios */
+.form-control, .form-select {
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+/* Estilos para el overlay del modal en móviles */
+@media (max-width: 768px) {
+  .equipos-table-container {
+    padding: 10px;
+  }
+  
+  .modal-dialog.modal-xl {
+    max-width: 95%;
+    margin: 10px auto;
+  }
+  
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+  
+  .btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-header, .modal-footer {
+    padding: 1rem;
+  }
+}
+
+/* Estilos para el estado vacío */
+.text-muted .bi-inbox {
+  opacity: 0.5;
+}
+
+/* Estilos para los iconos de ordenamiento */
+.bi-arrow-down-up,
+.bi-arrow-up,
+.bi-arrow-down {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.bi-arrow-up.text-primary,
+.bi-arrow-down.text-primary {
+  color: #007bff !important;
+}
+
+.bi-arrow-down-up.text-muted {
+  color: #6c757d !important;
+}
+
+/* Estilos adicionales para mejorar la apariencia */
+.table-responsive {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #f1f3f4 !important;
+}
+
+/* Animaciones suaves */
+.card, .table, .btn, .badge {
+  transition: all 0.2s ease;
+}
+
+/* Mejoras en el espaciado general */
+.g-4 > * {
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para el estado de carga mejorado */
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  padding: 3rem;
+}

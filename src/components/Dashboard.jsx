@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import authService from '../services/authService.js'
 import UsersTable from './UsersTable.jsx'
 import EventsTable from './EventsTable.jsx'
+import EquiposTable from './EquiposTable.jsx'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -55,6 +56,7 @@ function Dashboard() {
     switch (activeSection) {
       case 'dashboard': return 'Dashboard'
       case 'eventos': return 'Eventos del Sistema'
+      case 'equipos': return 'Equipos del Sistema'
       case 'usuarios': return 'Usuarios del Sistema'
       case 'estadisticas': return 'Estadísticas'
       case 'configuracion': return 'Configuración'
@@ -128,6 +130,15 @@ function Dashboard() {
             >
               <i className="bi bi-calendar-event"></i>
               <span>Eventos</span>
+            </a>
+            
+            <a 
+              className={`nav-link ${activeSection === 'equipos' ? 'active' : ''}`}
+              onClick={() => handleSectionChange('equipos')}
+              href="#"
+            >
+              <i className="bi bi-people-fill"></i>
+              <span>Equipos</span>
             </a>
             
             <a 
@@ -288,7 +299,7 @@ function Dashboard() {
                             Ir a Eventos
                           </button>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-4">
                           <h6 className="text-primary">Gestión de Usuarios</h6>
                           <p className="text-muted">Administra usuarios del sistema, roles, permisos y configuraciones de cuenta.</p>
                           <button 
@@ -297,6 +308,17 @@ function Dashboard() {
                           >
                             <i className="bi bi-arrow-right me-2"></i>
                             Ir a Usuarios
+                          </button>
+                        </div>
+                        <div className="col-md-4">
+                          <h6 className="text-success">Gestión de Equipos</h6>
+                          <p className="text-muted">Administra equipos participantes, sus integrantes, recetas y acompañantes.</p>
+                          <button 
+                            className="btn btn-success btn-sm"
+                            onClick={() => handleSectionChange('equipos')}
+                          >
+                            <i className="bi bi-arrow-right me-2"></i>
+                            Ir a Equipos
                           </button>
                         </div>
                       </div>
@@ -310,6 +332,11 @@ function Dashboard() {
           {/* Contenido de Eventos */}
           {activeSection === 'eventos' && (
             <EventsTable />
+          )}
+
+          {/* Contenido de Equipos */}
+          {activeSection === 'equipos' && (
+            <EquiposTable />
           )}
 
           {/* Contenido de Usuarios */}
