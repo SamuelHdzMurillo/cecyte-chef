@@ -1,7 +1,7 @@
 /* Estilos para la tabla de equipos */
 .equipos-table-container {
   padding: 15px;
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
   min-height: 100vh;
   max-width: 1400px;
   margin: 0 auto;
@@ -9,7 +9,7 @@
 
 /* Estilos para el header principal */
 .equipos-table-container .card-header.bg-primary {
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+  background: var(--primary-color) !important;
 }
 
 .equipos-table-container .card-header.bg-primary h4 {
@@ -21,18 +21,19 @@
 }
 
 .equipos-table-container .card-body.bg-light {
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid var(--primary-200);
+  background-color: var(--primary-50) !important;
 }
 
 /* Estilos para los encabezados de tabla clickeables */
 .cursor-pointer {
   cursor: pointer;
   user-select: none;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .cursor-pointer:hover {
-  background-color: rgba(0, 123, 255, 0.08);
+  background-color: var(--primary-100);
   transform: translateY(-1px);
 }
 
@@ -48,8 +49,8 @@
 .table th {
   border-top: none;
   font-weight: 600;
-  color: #495057;
-  background-color: #f8f9fa;
+  color: var(--text-primary);
+  background-color: var(--primary-50);
   padding: 12px 10px;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -59,34 +60,34 @@
 .table td {
   padding: 12px 10px;
   vertical-align: middle;
-  border-bottom: 1px solid #f1f3f4;
+  border-bottom: 1px solid var(--primary-200);
 }
 
 .table-hover tbody tr:hover {
-  background-color: rgba(0, 123, 255, 0.03);
+  background-color: var(--primary-100);
   transform: scale(1.01);
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Estilos para los filtros */
 .card {
-  border: 1px solid #dee2e6;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  border-radius: 12px;
+  border: 1px solid var(--primary-200);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius);
   overflow: hidden;
 }
 
 .card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
+  background-color: var(--primary-50);
+  border-bottom: 1px solid var(--primary-200);
   padding: 1rem 1.25rem;
 }
 
 /* Estilos para los botones */
 .btn-group .btn {
   margin-right: 2px;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .btn-group .btn:last-child {
@@ -94,41 +95,41 @@
 }
 
 .btn {
-  border-radius: 8px;
+  border-radius: var(--border-radius-sm);
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow);
 }
 
 /* Estilos para la paginación */
 .pagination .page-link {
-  color: #007bff;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-200);
+  border-radius: var(--border-radius-sm);
   margin: 0 2px;
-  transition: all 0.2s ease;
+  transition: var(--transition);
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow);
 }
 
 .pagination .page-item.disabled .page-link {
-  color: #6c757d;
+  color: var(--text-muted);
   pointer-events: none;
-  background-color: #fff;
-  border-color: #dee2e6;
+  background-color: var(--bg-primary);
+  border-color: var(--primary-200);
 }
 
 .pagination .page-link:hover:not(.disabled) {
-  background-color: #e9ecef;
-  border-color: #dee2e6;
+  background-color: var(--primary-100);
+  border-color: var(--primary-300);
   transform: translateY(-1px);
 }
 
@@ -210,42 +211,42 @@
 
 /* Estilos para los badges de participantes y acompañantes */
 .badge.bg-primary {
-  background-color: #007bff !important;
+  background-color: var(--primary-color) !important;
 }
 
 .badge.bg-warning {
-  background-color: #ffc107 !important;
-  color: #212529 !important;
+  background-color: var(--warning-color) !important;
+  color: var(--text-primary) !important;
 }
 
 .badge.bg-info {
-  background-color: #17a2b8 !important;
+  background-color: var(--info-color) !important;
 }
 
 .badge.bg-success {
-  background-color: #28a745 !important;
+  background-color: var(--success-color) !important;
 }
 
 .badge.bg-secondary {
-  background-color: #6c757d !important;
+  background-color: var(--secondary-color) !important;
 }
 
 .badge.bg-danger {
-  background-color: #dc3545 !important;
+  background-color: var(--danger-color) !important;
 }
 
 /* Estilos para el estado de carga */
 .spinner-border {
   width: 4rem;
   height: 4rem;
-  color: #007bff;
+  color: var(--primary-color);
 }
 
 /* Estilos para mensajes de error */
 .alert {
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   border: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .alert-danger {
@@ -256,34 +257,34 @@
 
 /* Estilos para el botón de limpiar filtros */
 .btn-outline-secondary:hover {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
   color: white;
 }
 
 /* Estilos para el botón de actualizar */
 .btn-outline-primary:hover {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   color: white;
 }
 
 /* Estilos para formularios */
 .form-control, .form-select {
-  border-radius: 8px;
-  border: 2px solid #e9ecef;
-  transition: all 0.2s ease;
+  border-radius: var(--border-radius-sm);
+  border: 2px solid var(--primary-200);
+  transition: var(--transition);
 }
 
 .form-control:focus, .form-select:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem var(--primary-100);
   transform: translateY(-1px);
 }
 
 .form-label {
   font-weight: 600;
-  color: #495057;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -370,7 +371,7 @@
   align-items: center;
   justify-content: center;
   min-height: 400px;
-  background-color: #f8f9fa;
-  border-radius: 16px;
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-xl);
   padding: 3rem;
 }

@@ -60,7 +60,7 @@ const HospedajeDetalle = () => {
     return (
       <div className="hospedaje-detalle-container">
         <div className="text-center py-5">
-          <div className="spinner-border text-primary" role="status">
+          <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
             <span className="visually-hidden">Cargando...</span>
           </div>
           <p className="mt-3">Cargando detalles del hospedaje...</p>
@@ -157,7 +157,7 @@ const HospedajeDetalle = () => {
                     className="bg-light rounded d-flex align-items-center justify-content-center"
                     style={{ width: '100%', height: '300px' }}
                   >
-                    <i className="bi bi-building text-muted" style={{ fontSize: '4rem' }}></i>
+                    <i className="bi bi-building text-muted" style={{ fontSize: '4rem', color: 'var(--text-muted)' }}></i>
                   </div>
                 )}
               </div>

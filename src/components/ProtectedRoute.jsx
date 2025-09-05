@@ -30,7 +30,7 @@ function ProtectedRoute({ children }) {
   if (loading) {
     return (
       <div className="dashboard-loading">
-        <div className="spinner-border text-primary" role="status">
+        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
           <span className="visually-hidden">Verificando autenticación...</span>
         </div>
         <p className="mt-3">Verificando autenticación...</p>

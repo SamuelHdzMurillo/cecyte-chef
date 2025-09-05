@@ -3,6 +3,7 @@
   padding: 15px;
   max-width: 1400px;
   margin: 0 auto;
+  background-color: var(--bg-secondary);
 }
 
 @media (max-width: 768px) {
@@ -14,17 +15,23 @@
 /* Estilos para formularios en modo edición */
 .form-control:focus,
 .form-select:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem var(--primary-100);
 }
 
 /* Estilos para botones de acción */
 .btn-group .btn {
   margin-right: 5px;
+  transition: var(--transition);
 }
 
 .btn-group .btn:last-child {
   margin-right: 0;
+}
+
+.btn {
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
 }
 
 /* Estilos para tablas en modo edición */
@@ -42,6 +49,7 @@
 .badge {
   font-size: 0.75rem;
   padding: 0.35em 0.65em;
+  border-radius: var(--border-radius-sm);
 }
 
 /* Estilos para iconos */

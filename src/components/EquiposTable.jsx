@@ -139,7 +139,7 @@ const EquiposTable = () => {
   if (loading) {
     return (
       <div className="text-center py-5">
-        <div className="spinner-border text-primary" role="status">
+        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
           <span className="visually-hidden">Cargando...</span>
         </div>
         <p className="mt-3">Cargando equipos...</p>
@@ -164,7 +164,7 @@ const EquiposTable = () => {
     <div className="equipos-table-container">
       {/* Header principal del componente */}
       <div className="card border-0 shadow-sm mb-3">
-        <div className="card-header bg-primary text-white border-0 py-2">
+        <div className="card-header text-white border-0 py-2" style={{backgroundColor: 'var(--primary-color)'}}>
           <div className="d-flex justify-content-between align-items-center">
             <div>
               <h4 className="mb-1 fw-bold">
@@ -187,18 +187,18 @@ const EquiposTable = () => {
             </div>
           </div>
         </div>
-        <div className="card-body bg-light py-2">
+        <div className="card-body py-2" style={{backgroundColor: 'var(--primary-50)'}}>
           <div className="row align-items-center">
             <div className="col-md-6">
               <div className="d-flex align-items-center">
-                <i className="bi bi-info-circle text-primary me-2 fs-5"></i>
+                <i className="bi bi-info-circle me-2 fs-5" style={{color: 'var(--primary-color)'}}></i>
                 <span className="text-muted">
                   Total: <strong className="text-dark">{equipos.length}</strong> equipos registrados
                 </span>
               </div>
             </div>
             <div className="col-md-6 text-md-end">
-              <span className="badge bg-success fs-6 px-3 py-2">
+              <span className="badge fs-6 px-3 py-2" style={{backgroundColor: 'var(--success-color)'}}>
                 <i className="bi bi-check-circle me-1"></i>
                 Sistema Operativo
               </span>
@@ -209,9 +209,9 @@ const EquiposTable = () => {
 
       {/* Filtros */}
       <div className="card mb-3 shadow-sm border-0">
-        <div className="card-header bg-light border-0 py-2">
+        <div className="card-header border-0 py-2" style={{backgroundColor: 'var(--primary-50)'}}>
           <h6 className="mb-0 fw-semibold text-dark">
-            <i className="bi bi-funnel me-2 text-primary"></i>
+            <i className="bi bi-funnel me-2" style={{color: 'var(--primary-color)'}}></i>
             Filtros de Búsqueda
           </h6>
         </div>
@@ -282,9 +282,9 @@ const EquiposTable = () => {
 
       {/* Tabla de equipos */}
       <div className="card shadow-sm border-0">
-        <div className="card-header bg-white border-0 py-2">
+        <div className="card-header border-0 py-2" style={{backgroundColor: 'var(--bg-primary)'}}>
           <h6 className="mb-0 fw-semibold text-dark">
-            <i className="bi bi-table me-2 text-primary"></i>
+            <i className="bi bi-table me-2" style={{color: 'var(--primary-color)'}}></i>
             Lista de Equipos
           </h6>
         </div>

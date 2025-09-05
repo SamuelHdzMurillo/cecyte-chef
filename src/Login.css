@@ -3,7 +3,7 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-color);
 }
 
 /* Botón de regreso */
@@ -15,7 +15,7 @@
   border-radius: 25px;
   padding: 0.5rem 1rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -24,7 +24,7 @@
 .back-button:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateX(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
 }
 
 /* Fondo decorativo con formas flotantes */
@@ -106,16 +106,16 @@
 .login-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-xl);
   border: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .login-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 35px 70px rgba(157, 53, 83, 0.2);
 }
 
 .login-card-body {
@@ -137,19 +137,19 @@
 .logo-text {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #6c757d;
+  color: var(--text-secondary);
 }
 
 .login-title {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .login-subtitle {
   font-size: 1.1rem;
-  color: #6c757d;
+  color: var(--text-secondary);
 }
 
 /* Formulario */
@@ -159,29 +159,29 @@
 
 .form-label {
   font-weight: 600;
-  color: #495057;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
 }
 
 .form-control {
-  border: 2px solid #e9ecef;
-  border-radius: 12px;
+  border: 2px solid var(--primary-200);
+  border-radius: var(--border-radius);
   padding: 0.875rem 1rem;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   background: rgba(255, 255, 255, 0.8);
 }
 
 .form-control:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem var(--primary-100);
   background: white;
 }
 
 .form-control::placeholder {
-  color: #adb5bd;
+  color: var(--text-muted);
 }
 
 /* Grupo de contraseña */
@@ -196,58 +196,58 @@
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #6c757d;
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .password-toggle:hover {
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
+  background: var(--primary-100);
+  color: var(--primary-color);
 }
 
 /* Checkbox personalizado */
 .form-check-input {
   width: 1.2em;
   height: 1.2em;
-  border: 2px solid #dee2e6;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  border: 2px solid var(--primary-200);
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition);
 }
 
 .form-check-input:checked {
-  background-color: #667eea;
-  border-color: #667eea;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .form-check-label {
-  color: #495057;
+  color: var(--text-primary);
   font-weight: 500;
 }
 
 /* Enlaces */
 .forgot-password {
-  color: #667eea;
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: var(--transition);
 }
 
 .forgot-password:hover {
-  color: #5a6fd8;
+  color: var(--primary-dark);
   text-decoration: underline;
 }
 
 /* Botón principal */
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-color);
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   font-weight: 600;
   padding: 1rem 2rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   position: relative;
   overflow: hidden;
 }
@@ -269,13 +269,14 @@
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--primary-dark);
 }
 
 /* Separador */
 .separator-text {
   position: relative;
-  color: #6c757d;
+  color: var(--text-secondary);
   font-weight: 500;
   padding: 0 1rem;
 }
@@ -287,7 +288,7 @@
   top: 50%;
   width: 30%;
   height: 1px;
-  background: #dee2e6;
+  background: var(--primary-200);
 }
 
 .separator-text::before {
@@ -301,29 +302,29 @@
 /* Botones sociales */
 .btn-outline-dark,
 .btn-outline-primary {
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   font-weight: 600;
   padding: 0.75rem 1rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   border-width: 2px;
 }
 
 .btn-outline-dark:hover,
 .btn-outline-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 /* Enlace de registro */
 .register-link {
-  color: #667eea;
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: var(--transition);
 }
 
 .register-link:hover {
-  color: #5a6fd8;
+  color: var(--primary-dark);
   text-decoration: underline;
 }
 
@@ -398,7 +399,7 @@
 
 /* Efectos de hover para inputs */
 .form-control:hover {
-  border-color: #adb5bd;
+  border-color: var(--primary-300);
   background: rgba(255, 255, 255, 0.9);
 }
 
@@ -407,12 +408,12 @@
 .btn:focus,
 .form-check-input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px var(--primary-100);
 }
 
 /* Transiciones suaves */
 * {
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 /* Mejoras para dispositivos táctiles */
@@ -426,7 +427,7 @@
   }
   
   .form-control:hover {
-    border-color: #e9ecef;
+    border-color: var(--primary-200);
     background: rgba(255, 255, 255, 0.8);
   }
   

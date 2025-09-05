@@ -197,7 +197,7 @@ function Login({ onBackClick }) {
                     >
                       {loading ? (
                         <>
-                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          <span className="spinner-border spinner-border-sm me-2" style={{color: 'white'}} role="status" aria-hidden="true"></span>
                           Iniciando Sesión...
                         </>
                       ) : (

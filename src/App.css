@@ -29,7 +29,7 @@ html, body {
 
 /* Hero Section Background */
 .hero-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-color);
   position: relative;
   overflow: hidden;
   padding-top: 80px; /* Account for fixed navbar */
@@ -56,22 +56,38 @@ html, body {
 
 /* Card hover effects */
 .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-200);
+  box-shadow: var(--shadow-sm);
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-color: var(--primary-300);
 }
 
 /* Button hover effects */
 .btn {
-  transition: all 0.3s ease;
+  transition: var(--transition);
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
 }
 
 /* Smooth scrolling */
@@ -81,15 +97,15 @@ html {
 
 /* Navbar brand hover effect */
 .navbar-brand:hover {
-  color: #ffc107 !important;
-  transition: color 0.3s ease;
+  color: var(--primary-light) !important;
+  transition: var(--transition);
 }
 
 /* Social media icons hover effect */
 footer a:hover {
-  color: #6c757d !important;
+  color: var(--primary-color) !important;
   transform: scale(1.1);
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 /* Touch-friendly improvements */
@@ -123,7 +139,7 @@ footer a:hover {
 .btn:focus,
 .nav-link:focus,
 .navbar-brand:focus {
-  outline: 2px solid #ffc107;
+  outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 

@@ -374,7 +374,8 @@ const EventsTable = () => {
         <i className="bi bi-exclamation-triangle-fill me-2"></i>
         {error}
         <button 
-          className="btn btn-outline-danger btn-sm ms-3"
+          className="btn btn-sm ms-3"
+          style={{backgroundColor: 'var(--danger-color)', borderColor: 'var(--danger-color)', color: 'white'}}
           onClick={handleRefresh}
         >
           Reintentar
@@ -386,7 +387,7 @@ const EventsTable = () => {
   if (loading) {
     return (
       <div className="text-center p-5">
-        <div className="spinner-border text-primary" role="status">
+        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
           <span className="visually-hidden">Cargando...</span>
         </div>
         <p className="mt-3">Cargando eventos...</p>
@@ -404,7 +405,8 @@ const EventsTable = () => {
               Gestión de Eventos
             </h5>
             <button
-              className="btn btn-primary"
+              className="btn"
+              style={{backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'white'}}
               onClick={handleRefresh}
               disabled={loading}
             >
@@ -423,9 +425,9 @@ const EventsTable = () => {
   }
 
   return (
-    <>
+    <div className="events-table">
       <div className="card shadow-sm">
-        <div className="card-header bg-primary text-white">
+        <div className="card-header text-white" style={{backgroundColor: 'var(--primary-color)'}}>
           <div className="d-flex justify-content-between align-items-center">
             <h5 className="mb-0 text-white">
               <i className="bi bi-calendar-event me-2"></i>
@@ -658,21 +660,24 @@ const EventsTable = () => {
                        <td>
                          <div className="event-actions">
                            <button
-                             className="btn btn-sm btn-outline-primary"
+                             className="btn btn-sm"
+                             style={{backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'white'}}
                              title="Ver detalles"
                              onClick={() => handleViewEvent(event)}
                            >
                              <i className="bi bi-eye"></i>
                            </button>
                            <button
-                             className="btn btn-sm btn-outline-warning"
+                             className="btn btn-sm"
+                             style={{backgroundColor: 'var(--warning-color)', borderColor: 'var(--warning-color)', color: 'var(--text-primary)'}}
                              title="Editar evento"
                              onClick={() => handleEditEvent(event)}
                            >
                              <i className="bi bi-pencil"></i>
                            </button>
                            <button
-                             className="btn btn-sm btn-outline-danger"
+                             className="btn btn-sm"
+                             style={{backgroundColor: 'var(--danger-color)', borderColor: 'var(--danger-color)', color: 'white'}}
                              title="Eliminar evento"
                              onClick={() => handleDeleteEvent(event)}
                            >
@@ -868,7 +873,8 @@ const EventsTable = () => {
                 <div className="modal-footer">
                   <button 
                     type="button" 
-                    className="btn btn-secondary" 
+                    className="btn" 
+                    style={{backgroundColor: 'var(--secondary-color)', borderColor: 'var(--secondary-color)', color: 'white'}}
                     onClick={closeModal}
                     disabled={submitting}
                   >
@@ -876,12 +882,13 @@ const EventsTable = () => {
                   </button>
                   <button 
                     type="submit" 
-                    className="btn btn-primary"
+                    className="btn"
+                    style={{backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'white'}}
                     disabled={submitting}
                   >
                     {submitting ? (
                       <>
-                        <span className="spinner-border spinner-border-sm me-2" role="status"></span>
+                        <span className="spinner-border spinner-border-sm me-2" style={{color: 'white'}} role="status"></span>
                         Guardando...
                       </>
                     ) : (
@@ -968,7 +975,8 @@ const EventsTable = () => {
               <div className="modal-footer">
                 <button 
                   type="button" 
-                  className="btn btn-warning me-2"
+                  className="btn me-2"
+                  style={{backgroundColor: 'var(--warning-color)', borderColor: 'var(--warning-color)', color: 'var(--text-primary)'}}
                   onClick={() => {
                     setShowDetailsModal(false)
                     openEditModal(selectedEvent)
@@ -979,7 +987,8 @@ const EventsTable = () => {
                 </button>
                 <button 
                   type="button" 
-                  className="btn btn-secondary" 
+                  className="btn" 
+                  style={{backgroundColor: 'var(--secondary-color)', borderColor: 'var(--secondary-color)', color: 'white'}}
                   onClick={() => setShowDetailsModal(false)}
                 >
                   Cerrar
@@ -989,7 +998,7 @@ const EventsTable = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

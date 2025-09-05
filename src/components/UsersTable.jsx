@@ -32,9 +32,14 @@ const UsersTable = () => {
   // Estados para el modal de detalles del usuario
   const [showDetailsModal, setShowDetailsModal] = useState(false)
   const [selectedUser, setSelectedUser] = useState(null)
+  
+  // Estados para los eventos
+  const [eventos, setEventos] = useState([])
+  const [loadingEventos, setLoadingEventos] = useState(false)
 
   useEffect(() => {
     fetchUsers()
+    fetchEventos()
   }, [])
 
   const fetchUsers = async () => {
@@ -59,6 +64,27 @@ const UsersTable = () => {
       setError('No se pudo conectar con el servidor. Por favor, verifica tu conexión.')
     } finally {
       setLoading(false)
+    }
+  }
+
+  const fetchEventos = async () => {
+    try {
+      setLoadingEventos(true)
+      const token = authService.getToken()
+      
+      const response = await apiService.get('/eventos/list', token)
+      
+      if (response.success && response.data) {
+        setEventos(response.data)
+      } else {
+        console.error('Error en la respuesta de eventos:', response)
+        setEventos([])
+      }
+    } catch (err) {
+      console.error('Error al obtener eventos:', err)
+      setEventos([])
+    } finally {
+      setLoadingEventos(false)
     }
   }
 
@@ -137,6 +163,12 @@ const UsersTable = () => {
       default:
         return role
     }
+  }
+
+  const getEventoName = (eventoId) => {
+    if (!eventoId) return 'N/A'
+    const evento = eventos.find(e => e.id === eventoId)
+    return evento ? evento.nombre_evento : `ID: ${eventoId}`
   }
 
   const formatDate = (dateString) => {
@@ -341,7 +373,8 @@ const UsersTable = () => {
         <i className="bi bi-exclamation-triangle-fill me-2"></i>
         {error}
         <button 
-          className="btn btn-outline-danger btn-sm ms-3"
+          className="btn btn-sm ms-3"
+          style={{backgroundColor: 'var(--danger-color)', borderColor: 'var(--danger-color)', color: 'white'}}
           onClick={handleRefresh}
         >
           Reintentar
@@ -353,7 +386,7 @@ const UsersTable = () => {
   if (loading) {
     return (
       <div className="text-center p-5">
-        <div className="spinner-border text-primary" role="status">
+        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
           <span className="visually-hidden">Cargando...</span>
         </div>
         <p className="mt-3">Cargando usuarios...</p>
@@ -365,14 +398,15 @@ const UsersTable = () => {
   if (users.length === 0) {
     return (
       <div className="card">
-        <div className="card-header">
+        <div className="card-header" style={{backgroundColor: 'var(--primary-color)', color: 'white'}}>
           <div className="d-flex justify-content-between align-items-center">
-            <h5 className="mb-0">
+            <h5 className="mb-0" style={{color: 'white'}}>
               <i className="bi bi-people me-2"></i>
               Gestión de Usuarios
             </h5>
             <button
-              className="btn btn-primary"
+              className="btn"
+              style={{backgroundColor: 'white', borderColor: 'white', color: 'var(--primary-color)'}}
               onClick={handleRefresh}
               disabled={loading}
             >
@@ -393,22 +427,24 @@ const UsersTable = () => {
   return (
     <>
       <div className="card">
-        <div className="card-header">
+        <div className="card-header" style={{backgroundColor: 'var(--primary-color)', color: 'white'}}>
           <div className="d-flex justify-content-between align-items-center">
-            <h5 className="mb-0">
+            <h5 className="mb-0" style={{color: 'white'}}>
               <i className="bi bi-people me-2"></i>
               Gestión de Usuarios
             </h5>
             <div className="d-flex gap-2">
               <button
-                className="btn btn-success"
+                className="btn"
+                style={{backgroundColor: 'var(--success-color)', borderColor: 'var(--success-color)', color: 'white'}}
                 onClick={openCreateModal}
               >
                 <i className="bi bi-plus-circle me-2"></i>
                 Nuevo Usuario
               </button>
               <button
-                className="btn btn-primary"
+                className="btn"
+                style={{backgroundColor: 'white', borderColor: 'white', color: 'var(--primary-color)'}}
                 onClick={handleRefresh}
                 disabled={loading}
               >
@@ -436,7 +472,8 @@ const UsersTable = () => {
                 />
                 {filterText && (
                   <button
-                    className="btn btn-outline-secondary"
+                    className="btn"
+                    style={{backgroundColor: 'var(--secondary-color)', borderColor: 'var(--secondary-color)', color: 'white'}}
                     type="button"
                     onClick={() => setFilterText('')}
                   >
@@ -495,11 +532,11 @@ const UsersTable = () => {
                   </th>
                   <th 
                     scope="col" 
-                    style={{ width: '100px', cursor: 'pointer' }}
+                    style={{ width: '150px', cursor: 'pointer' }}
                     onClick={() => handleSort('evento_id')}
                   >
                     <div className="d-flex align-items-center">
-                      Evento ID {getSortIcon('evento_id')}
+                      Evento {getSortIcon('evento_id')}
                     </div>
                   </th>
                   <th 
@@ -521,7 +558,8 @@ const UsersTable = () => {
                       <i className="bi bi-search fs-1 text-muted d-block mb-3"></i>
                       <p className="text-muted mb-3">No se encontraron usuarios con la búsqueda actual</p>
                       <button 
-                        className="btn btn-outline-secondary btn-sm"
+                        className="btn btn-sm"
+                        style={{backgroundColor: 'var(--secondary-color)', borderColor: 'var(--secondary-color)', color: 'white'}}
                         onClick={() => setFilterText('')}
                       >
                         Limpiar búsqueda
@@ -562,8 +600,8 @@ const UsersTable = () => {
                         </span>
                       </td>
                       <td className="text-center">
-                        <span className="badge bg-info">
-                          {user.evento_id || 'N/A'}
+                        <span className="badge bg-info" title={user.evento_id ? `ID: ${user.evento_id}` : ''}>
+                          {getEventoName(user.evento_id)}
                         </span>
                       </td>
                       <td>
@@ -575,21 +613,24 @@ const UsersTable = () => {
                       <td>
                         <div className="btn-group" role="group">
                           <button
-                            className="btn btn-sm btn-outline-primary"
+                            className="btn btn-sm"
+                            style={{backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'white'}}
                             title="Ver detalles"
                             onClick={() => handleViewUser(user)}
                           >
                             <i className="bi bi-eye"></i>
                           </button>
                           <button
-                            className="btn btn-sm btn-outline-warning"
+                            className="btn btn-sm"
+                            style={{backgroundColor: 'var(--warning-color)', borderColor: 'var(--warning-color)', color: 'var(--text-primary)'}}
                             title="Editar usuario"
                             onClick={() => handleEditUser(user)}
                           >
                             <i className="bi bi-pencil"></i>
                           </button>
                           <button
-                            className="btn btn-sm btn-outline-danger"
+                            className="btn btn-sm"
+                            style={{backgroundColor: 'var(--danger-color)', borderColor: 'var(--danger-color)', color: 'white'}}
                             title="Eliminar usuario"
                             onClick={() => handleDeleteUser(user)}
                           >
@@ -748,18 +789,29 @@ const UsersTable = () => {
                   <div className="row">
                     <div className="col-md-6 mb-3">
                       <label htmlFor="evento_id" className="form-label">
-                        ID del Evento
+                        Evento
                       </label>
-                      <input
-                        type="number"
-                        className="form-control"
+                      <select
+                        className="form-select"
                         id="evento_id"
                         name="evento_id"
                         value={formData.evento_id}
                         onChange={handleInputChange}
-                        placeholder="ID del evento (opcional)"
-                        min="1"
-                      />
+                        disabled={loadingEventos}
+                      >
+                        <option value="">Seleccionar evento (opcional)</option>
+                        {eventos.map((evento) => (
+                          <option key={evento.id} value={evento.id}>
+                            {evento.nombre_evento}
+                          </option>
+                        ))}
+                      </select>
+                      {loadingEventos && (
+                        <div className="form-text">
+                          <span className="spinner-border spinner-border-sm me-2" style={{color: 'var(--primary-color)'}} role="status"></span>
+                          Cargando eventos...
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -767,7 +819,8 @@ const UsersTable = () => {
                 <div className="modal-footer">
                   <button 
                     type="button" 
-                    className="btn btn-secondary" 
+                    className="btn" 
+                    style={{backgroundColor: 'var(--secondary-color)', borderColor: 'var(--secondary-color)', color: 'white'}}
                     onClick={closeModal}
                     disabled={submitting}
                   >
@@ -775,12 +828,13 @@ const UsersTable = () => {
                   </button>
                   <button 
                     type="submit" 
-                    className="btn btn-primary"
+                    className="btn"
+                    style={{backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'white'}}
                     disabled={submitting}
                   >
                     {submitting ? (
                       <>
-                        <span className="spinner-border spinner-border-sm me-2" role="status"></span>
+                        <span className="spinner-border spinner-border-sm me-2" style={{color: 'white'}} role="status"></span>
                         Guardando...
                       </>
                     ) : (
@@ -821,7 +875,7 @@ const UsersTable = () => {
                     <p><strong>Nombre:</strong> {selectedUser.name}</p>
                     <p><strong>Email:</strong> {selectedUser.email}</p>
                     <p><strong>Rol:</strong> {getRoleDisplayName(selectedUser.role)}</p>
-                    <p><strong>Evento ID:</strong> {selectedUser.evento_id || 'N/A'}</p>
+                    <p><strong>Evento:</strong> {getEventoName(selectedUser.evento_id)}</p>
                     <p><strong>Verificado:</strong> {selectedUser.email_verified_at ? 'Sí' : 'No'}</p>
                   </div>
                   <div className="col-md-6">
@@ -836,7 +890,8 @@ const UsersTable = () => {
               <div className="modal-footer">
                 <button 
                   type="button" 
-                  className="btn btn-secondary" 
+                  className="btn" 
+                  style={{backgroundColor: 'var(--secondary-color)', borderColor: 'var(--secondary-color)', color: 'white'}}
                   onClick={() => setShowDetailsModal(false)}
                 >
                   Cerrar

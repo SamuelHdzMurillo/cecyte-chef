@@ -1,7 +1,7 @@
 /* Estilos para el detalle de hospedaje */
 .hospedaje-detalle-container {
   padding: 15px;
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
   min-height: 100vh;
   max-width: 1200px;
   margin: 0 auto;
@@ -9,7 +9,7 @@
 
 /* Estilos para el header principal */
 .hospedaje-detalle-container .card-header.bg-primary {
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+  background: var(--primary-color) !important;
 }
 
 .hospedaje-detalle-container .card-header.bg-primary h4 {
@@ -22,33 +22,33 @@
 
 /* Estilos para la tarjeta principal */
 .hospedaje-detalle-container .card {
-  border: 1px solid #dee2e6;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  border-radius: 12px;
+  border: 1px solid var(--primary-200);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius);
   overflow: hidden;
 }
 
 /* Estilos para la imagen del hospedaje */
 .hospedaje-detalle-container img {
-  border: 3px solid #e9ecef;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 3px solid var(--primary-200);
+  transition: var(--transition);
+  box-shadow: var(--shadow);
 }
 
 .hospedaje-detalle-container img:hover {
   transform: scale(1.02);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Estilos para el placeholder de imagen */
 .hospedaje-detalle-container .bg-light {
-  background-color: #f8f9fa !important;
-  border: 2px dashed #dee2e6;
+  background-color: var(--primary-50) !important;
+  border: 2px dashed var(--primary-200);
 }
 
 /* Estilos para el título principal */
 .hospedaje-detalle-container h3 {
-  color: #007bff;
+  color: var(--primary-color);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -66,85 +66,88 @@
   font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 .hospedaje-detalle-container h6 i {
-  color: #007bff;
+  color: var(--primary-color);
 }
 
 /* Estilos para el texto de información */
 .hospedaje-detalle-container p {
   font-size: 1rem;
-  color: #495057;
+  color: var(--text-primary);
   margin-bottom: 0;
 }
 
 /* Estilos para los enlaces */
 .hospedaje-detalle-container a {
-  color: #007bff;
-  transition: all 0.2s ease;
+  color: var(--primary-color);
+  transition: var(--transition);
 }
 
 .hospedaje-detalle-container a:hover {
-  color: #0056b3;
+  color: var(--primary-dark);
   text-decoration: none;
 }
 
 /* Estilos para los botones de acción */
 .hospedaje-detalle-container .btn {
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: var(--transition);
   padding: 0.5rem 1rem;
 }
 
 .hospedaje-detalle-container .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .hospedaje-detalle-container .btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: var(--success-color);
+  border-color: var(--success-color);
 }
 
 .hospedaje-detalle-container .btn-success:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+  opacity: 0.9;
 }
 
 .hospedaje-detalle-container .btn-info {
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: var(--info-color);
+  border-color: var(--info-color);
 }
 
 .hospedaje-detalle-container .btn-info:hover {
-  background-color: #138496;
-  border-color: #117a8b;
+  background-color: var(--info-color);
+  border-color: var(--info-color);
+  opacity: 0.9;
 }
 
 .hospedaje-detalle-container .btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
 }
 
 .hospedaje-detalle-container .btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  opacity: 0.9;
 }
 
 /* Estilos para el botón de volver en el header */
 .hospedaje-detalle-container .btn-light {
   background-color: rgba(255, 255, 255, 0.9);
   border-color: rgba(255, 255, 255, 0.3);
-  color: #007bff;
-  transition: all 0.2s ease;
+  color: var(--primary-color);
+  transition: var(--transition);
 }
 
 .hospedaje-detalle-container .btn-light:hover {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: var(--bg-primary);
+  border-color: var(--bg-primary);
   transform: translateX(-2px);
 }
 
@@ -152,17 +155,23 @@
 .hospedaje-detalle-container .spinner-border {
   width: 3rem;
   height: 3rem;
+  color: var(--primary-color);
 }
 
 /* Estilos para mensajes de error y estado vacío */
-.hospedaje-detalle-container .text-danger,
+.hospedaje-detalle-container .text-danger {
+  color: var(--danger-color) !important;
+  font-size: 1.1rem;
+}
+
 .hospedaje-detalle-container .text-muted {
+  color: var(--text-muted) !important;
   font-size: 1.1rem;
 }
 
 .hospedaje-detalle-container .bi-exclamation-triangle,
 .hospedaje-detalle-container .bi-question-circle {
-  color: #6c757d;
+  color: var(--secondary-color);
 }
 
 /* Estilos responsivos */

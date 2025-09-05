@@ -81,7 +81,7 @@ const EquipoDetalle = () => {
   if (loading) {
     return (
       <div className="text-center py-5">
-        <div className="spinner-border text-primary" role="status">
+        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
           <span className="visually-hidden">Cargando...</span>
         </div>
         <p className="mt-3">Cargando detalles del equipo...</p>

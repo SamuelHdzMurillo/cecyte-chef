@@ -71,7 +71,7 @@ function Dashboard() {
   if (loading) {
     return (
       <div className="dashboard-loading">
-        <div className="spinner-border text-primary" role="status">
+        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
           <span className="visually-hidden">Cargando...</span>
         </div>
         <p className="mt-3">Cargando dashboard...</p>
@@ -82,7 +82,7 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{backgroundColor: 'var(--primary-color)'}}>
         <div className="container-fluid">
           {/* Botón para móvil */}
           <button 

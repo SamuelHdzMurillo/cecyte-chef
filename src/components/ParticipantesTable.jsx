@@ -93,7 +93,7 @@ function ParticipantesTable() {
   if (loading) {
     return (
       <div className="text-center py-5">
-        <div className="spinner-border text-primary" role="status">
+        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
           <span className="visually-hidden">Cargando...</span>
         </div>
         <p className="mt-3">Cargando participantes...</p>
@@ -143,7 +143,7 @@ function ParticipantesTable() {
     <div className="participantes-table-container">
       {/* Header principal del componente */}
       <div className="card border-0 shadow-sm mb-3">
-        <div className="card-header bg-primary text-white border-0 py-2">
+        <div className="card-header text-white border-0 py-2" style={{backgroundColor: 'var(--primary-color)'}}>
           <div className="d-flex justify-content-between align-items-center">
             <div>
               <h4 className="mb-1 fw-bold">
@@ -166,11 +166,11 @@ function ParticipantesTable() {
             </div>
           </div>
         </div>
-        <div className="card-body bg-light py-2">
+        <div className="card-body py-2" style={{backgroundColor: 'var(--primary-50)'}}>
           <div className="row align-items-center">
             <div className="col-md-6">
               <div className="d-flex align-items-center">
-                <i className="bi bi-info-circle text-primary me-2 fs-5"></i>
+                <i className="bi bi-info-circle me-2 fs-5" style={{color: 'var(--primary-color)'}}></i>
                 <span className="text-muted">
                   Total: <strong className="text-dark">{participantes.length}</strong> participantes registrados
                 </span>
@@ -178,7 +178,7 @@ function ParticipantesTable() {
             </div>
             <div className="col-md-6 text-md-end">
               <div className="d-flex align-items-center justify-content-end">
-                <i className="bi bi-funnel text-primary me-2 fs-5"></i>
+                <i className="bi bi-funnel me-2 fs-5" style={{color: 'var(--primary-color)'}}></i>
                 <span className="text-muted">
                   Filtrados: <strong className="text-dark">{filteredParticipantes.length}</strong> participantes
                 </span>
@@ -191,7 +191,7 @@ function ParticipantesTable() {
       {/* Header con estadísticas */}
       <div className="row mb-4">
         <div className="col-md-3">
-          <div className="card bg-primary text-white">
+          <div className="card text-white" style={{backgroundColor: 'var(--primary-color)'}}>
             <div className="card-body">
               <h5 className="card-title">Total Participantes</h5>
               <h2 className="mb-0">{participantes.length}</h2>
@@ -199,7 +199,7 @@ function ParticipantesTable() {
           </div>
         </div>
         <div className="col-md-3">
-          <div className="card bg-success text-white">
+          <div className="card text-white" style={{backgroundColor: 'var(--success-color)'}}>
             <div className="card-body">
               <h5 className="card-title">Con Seguro</h5>
               <h2 className="mb-0">{participantes.filter(p => p.seguro_facultativo).length}</h2>
@@ -207,7 +207,7 @@ function ParticipantesTable() {
           </div>
         </div>
         <div className="col-md-3">
-          <div className="card bg-warning text-white">
+          <div className="card text-white" style={{backgroundColor: 'var(--warning-color)'}}>
             <div className="card-body">
               <h5 className="card-title">Con Alergias</h5>
               <h2 className="mb-0">{participantes.filter(p => p.alergico).length}</h2>
@@ -215,7 +215,7 @@ function ParticipantesTable() {
           </div>
         </div>
         <div className="col-md-3">
-          <div className="card bg-info text-white">
+          <div className="card text-white" style={{backgroundColor: 'var(--info-color)'}}>
             <div className="card-body">
               <h5 className="card-title">Equipos Activos</h5>
               <h2 className="mb-0">{[...new Set(participantes.map(p => p.equipo_id))].length}</h2>
@@ -227,7 +227,7 @@ function ParticipantesTable() {
       {/* Filtros y búsqueda */}
       <div className="card mb-4">
         <div className="card-header">
-          <h6 className="m-0 font-weight-bold text-primary">
+          <h6 className="m-0 font-weight-bold" style={{color: 'var(--primary-color)'}}>
             <i className="bi bi-funnel me-2"></i>
             Filtros y Búsqueda
           </h6>
@@ -291,12 +291,13 @@ function ParticipantesTable() {
       {/* Tabla de participantes */}
       <div className="card">
         <div className="card-header d-flex justify-content-between align-items-center">
-          <h6 className="m-0 font-weight-bold text-primary">
+          <h6 className="m-0 font-weight-bold" style={{color: 'var(--primary-color)'}}>
             <i className="bi bi-people me-2"></i>
             Lista de Participantes ({filteredParticipantes.length})
           </h6>
           <button
-            className="btn btn-primary btn-sm"
+            className="btn btn-sm"
+            style={{backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'white'}}
             onClick={fetchParticipantes}
           >
             <i className="bi bi-arrow-clockwise me-1"></i>
@@ -345,12 +346,12 @@ function ParticipantesTable() {
                       </div>
                     </td>
                     <td>
-                      <span className="badge bg-primary">
+                      <span className="badge" style={{backgroundColor: 'var(--primary-color)'}}>
                         {participante.equipo?.nombre_equipo || 'Sin equipo'}
                       </span>
                     </td>
                     <td>
-                      <span className="badge bg-info">{participante.rol_participante}</span>
+                      <span className="badge" style={{backgroundColor: 'var(--info-color)'}}>{participante.rol_participante}</span>
                     </td>
                     <td>
                       <div>
@@ -367,12 +368,12 @@ function ParticipantesTable() {
                     <td>
                       <div className="d-flex flex-column gap-1">
                         {participante.seguro_facultativo && (
-                          <span className="badge bg-success">Seguro</span>
+                          <span className="badge" style={{backgroundColor: 'var(--success-color)'}}>Seguro</span>
                         )}
                         {participante.alergico && (
-                          <span className="badge bg-warning">Alergias</span>
+                          <span className="badge" style={{backgroundColor: 'var(--warning-color)', color: 'var(--text-primary)'}}>Alergias</span>
                         )}
-                        <span className="badge bg-secondary">{participante.semestre_participante}</span>
+                        <span className="badge" style={{backgroundColor: 'var(--secondary-color)'}}>{participante.semestre_participante}</span>
                       </div>
                     </td>
                     <td>

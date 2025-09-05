@@ -12,7 +12,7 @@ function LandingPage({ onLoginClick }) {
   return (
     <div className="App">
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{backgroundColor: 'var(--primary-color)'}}>
         <div className="container">
           <a className="navbar-brand fw-bold" href="#">
             <i className="bi bi-egg-fried me-2"></i>
@@ -50,14 +50,14 @@ function LandingPage({ onLoginClick }) {
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8 col-xl-7">
               <h1 className="display-3 fw-bold mb-4">
-                Bienvenido a <span className="text-warning">CecyteChef</span>
+                Bienvenido a <span style={{color: 'var(--primary-light)'}}>CecyteChef</span>
               </h1>
               <p className="lead mb-5 fs-5">
                 Descubre el arte de la cocina con nuestra plataforma educativa. 
                 Aprende técnicas culinarias, recetas exclusivas y conviértete en un chef profesional.
               </p>
               <div className="d-flex justify-content-center gap-3 flex-wrap flex-column flex-sm-row">
-                <button className="btn btn-warning btn-lg px-4 py-3 fw-bold" onClick={() => alert('Función de registro')}>
+                <button className="btn btn-lg px-4 py-3 fw-bold" style={{backgroundColor: 'var(--primary-light)', borderColor: 'var(--primary-light)', color: 'white'}} onClick={() => alert('Función de registro')}>
                   <i className="bi bi-person-plus me-2"></i>
                   <span className="d-none d-sm-inline">Registrarse</span>
                   <span className="d-inline d-sm-none">Registro</span>
@@ -86,7 +86,7 @@ function LandingPage({ onLoginClick }) {
             <div className="col-12 col-md-6 col-lg-4">
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body text-center p-4">
-                  <div className="bg-primary bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                  <div className="text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px', backgroundColor: 'var(--primary-color)'}}>
                     <i className="bi bi-book fs-1"></i>
                   </div>
                   <h5 className="card-title fw-bold">Aprendizaje Interactivo</h5>
@@ -99,7 +99,7 @@ function LandingPage({ onLoginClick }) {
             <div className="col-12 col-md-6 col-lg-4">
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body text-center p-4">
-                  <div className="bg-success bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                  <div className="text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px', backgroundColor: 'var(--success-color)'}}>
                     <i className="bi bi-people fs-1"></i>
                   </div>
                   <h5 className="card-title fw-bold">Comunidad Activa</h5>
@@ -112,7 +112,7 @@ function LandingPage({ onLoginClick }) {
             <div className="col-12 col-md-6 col-lg-4">
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body text-center p-4">
-                  <div className="bg-warning bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                  <div className="text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px', backgroundColor: 'var(--warning-color)'}}>
                     <i className="bi bi-award fs-1"></i>
                   </div>
                   <h5 className="card-title fw-bold">Certificaciones</h5>
@@ -135,7 +135,7 @@ function LandingPage({ onLoginClick }) {
               <p className="lead mb-4">
                 Únete a miles de estudiantes que ya están transformando su pasión por la cocina en una carrera profesional.
               </p>
-              <button className="btn btn-warning btn-lg px-5 py-3 fw-bold w-100 w-sm-auto" onClick={onLoginClick}>
+              <button className="btn btn-lg px-5 py-3 fw-bold w-100 w-sm-auto" style={{backgroundColor: 'var(--primary-light)', borderColor: 'var(--primary-light)', color: 'white'}} onClick={onLoginClick}>
                 <i className="bi bi-box-arrow-in-right me-2"></i>
                 <span className="d-none d-sm-inline">Iniciar Sesión Ahora</span>
                 <span className="d-inline d-sm-none">Entrar Ahora</span>
