@@ -7,6 +7,8 @@ import EquiposTable from './EquiposTable.jsx'
 import EquipoDetalle from './EquipoDetalle.jsx'
 import HospedajesTable from './HospedajesTable.jsx'
 import ParticipantesTable from './ParticipantesTable.jsx'
+import RestaurantesTable from './RestaurantesTable.jsx'
+import RestauranteDetalle from './RestauranteDetalle.jsx'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -17,6 +19,7 @@ function Dashboard() {
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [selectedEquipoId, setSelectedEquipoId] = useState(null)
+  const [selectedRestauranteId, setSelectedRestauranteId] = useState(null)
 
   useEffect(() => {
     // Obtener datos del usuario ya que la autenticación la verifica ProtectedRoute
@@ -39,6 +42,7 @@ function Dashboard() {
   const handleSectionChange = (section) => {
     setActiveSection(section)
     setSelectedEquipoId(null) // Limpiar equipo seleccionado al cambiar sección
+    setSelectedRestauranteId(null) // Limpiar restaurante seleccionado al cambiar sección
     // En móviles, cerrar el sidebar después de seleccionar una sección
     if (window.innerWidth <= 768) {
       setSidebarMobileOpen(false)
@@ -51,6 +55,14 @@ function Dashboard() {
 
   const handleBackToEquipos = () => {
     setSelectedEquipoId(null)
+  }
+
+  const handleRestauranteSelect = (restauranteId) => {
+    setSelectedRestauranteId(restauranteId)
+  }
+
+  const handleBackToRestaurantes = () => {
+    setSelectedRestauranteId(null)
   }
 
   const toggleSidebar = () => {
@@ -526,32 +538,17 @@ function Dashboard() {
           )}
 
           {/* Contenido de Restaurantes */}
-          {activeSection === 'restaurantes' && (
-            <div className="card">
-              <div className="card-header">
-                <h6 className="m-0 font-weight-bold text-primary">Restaurantes</h6>
-              </div>
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h5>Directorio de Restaurantes</h5>
-                    <p>Lista de restaurantes participantes y recomendados</p>
-                    <div className="bg-light p-3 rounded text-center">
-                      <i className="bi bi-cup-hot fs-1 text-primary"></i>
-                      <p className="mt-2">Restaurantes</p>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <h5>Especialidades</h5>
-                    <p>Platos especiales y menús destacados</p>
-                    <div className="bg-light p-3 rounded text-center">
-                      <i className="bi bi-menu-button-wide fs-1 text-success"></i>
-                      <p className="mt-2">Especialidades</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {activeSection === 'restaurantes' && !selectedRestauranteId && (
+            <RestaurantesTable onRestauranteSelect={handleRestauranteSelect} />
+          )}
+
+          {/* Detalle del Restaurante */}
+          {activeSection === 'restaurantes' && selectedRestauranteId && (
+            <RestauranteDetalle 
+              restauranteId={selectedRestauranteId} 
+              onBack={handleBackToRestaurantes}
+              embedded={true}
+            />
           )}
 
           {/* Contenido de Lugares de Interés */}

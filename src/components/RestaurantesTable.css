@@ -1,0 +1,351 @@
+/* Estilos para el componente RestaurantesTable */
+.restaurantes-table-container {
+  padding: 15px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+  .restaurantes-table-container {
+    padding: 10px;
+  }
+}
+
+/* Estilos para la tabla */
+.table-responsive {
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  margin-bottom: 0;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table th {
+  background-color: var(--bg-primary);
+  border-bottom: 2px solid var(--border-color);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.table td {
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody tr:hover {
+  background-color: var(--bg-hover);
+  transition: background-color 0.2s ease;
+}
+
+/* Estilos para encabezados clickeables */
+.cursor-pointer {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.cursor-pointer:hover {
+  background-color: var(--primary-50);
+}
+
+/* Estilos para badges */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.8em;
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+}
+
+.badge.bg-success {
+  background-color: var(--success-color) !important;
+}
+
+.badge.bg-warning {
+  background-color: var(--warning-color) !important;
+  color: var(--text-dark) !important;
+}
+
+.badge.bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+
+.badge.bg-danger {
+  background-color: var(--danger-color) !important;
+}
+
+/* Estilos para botones */
+.btn {
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-width: 1px;
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.btn-outline-warning {
+  color: var(--warning-color);
+  border-color: var(--warning-color);
+}
+
+.btn-outline-warning:hover {
+  background-color: var(--warning-color);
+  border-color: var(--warning-color);
+  color: var(--text-dark);
+}
+
+.btn-outline-secondary {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: white;
+}
+
+/* Estilos para formularios */
+.form-control,
+.form-select {
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem var(--primary-100);
+}
+
+.form-control-lg,
+.form-select-lg {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+/* Estilos para iconos */
+.bi {
+  line-height: 1;
+}
+
+/* Estilos para enlaces */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Estilos para paginación */
+.pagination {
+  margin-bottom: 0;
+}
+
+.page-link {
+  color: var(--primary-color);
+  border-color: var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.page-link:hover {
+  color: var(--primary-dark);
+  background-color: var(--primary-50);
+  border-color: var(--primary-color);
+}
+
+.page-item.active .page-link {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.page-item.disabled .page-link {
+  color: var(--text-muted);
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+/* Estilos para cards */
+.card {
+  border-radius: var(--border-radius);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+}
+
+/* Estilos para spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Estilos para alertas */
+.alert {
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+.alert-danger {
+  background-color: var(--danger-50);
+  color: var(--danger-dark);
+}
+
+/* Estilos para botones de grupo */
+.btn-group .btn {
+  margin-right: 0;
+  border-radius: 0;
+}
+
+.btn-group .btn:first-child {
+  border-top-left-radius: var(--border-radius-sm);
+  border-bottom-left-radius: var(--border-radius-sm);
+}
+
+.btn-group .btn:last-child {
+  border-top-right-radius: var(--border-radius-sm);
+  border-bottom-right-radius: var(--border-radius-sm);
+}
+
+/* Estilos responsivos */
+@media (max-width: 1200px) {
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.8rem;
+  }
+  
+  .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .badge {
+    font-size: 0.65rem;
+    padding: 0.25em 0.5em;
+  }
+  
+  .pagination-lg .page-link {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.375rem 0.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .restaurantes-table-container {
+    padding: 5px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+  }
+  
+  .btn-group .btn {
+    border-radius: var(--border-radius-sm) !important;
+    margin-bottom: 0.25rem;
+  }
+  
+  .btn-group .btn:last-child {
+    margin-bottom: 0;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.25rem 0.125rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Estilos adicionales para mejorar la tabla */
+.table th,
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table td:nth-child(3), /* Dirección */
+.table td:nth-child(6) { /* Promoción */
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.table td:nth-child(4) { /* Contacto */
+  white-space: normal;
+}
+
+/* Mejorar la visualización de enlaces */
+a[href^="http"] {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--primary-color);
+}
+
+a[href^="http"]:hover {
+  color: var(--primary-dark);
+  border-bottom: 1px solid var(--primary-dark);
+}
+
+/* Estilos para el scroll horizontal */
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
