@@ -57,13 +57,15 @@ function Dashboard() {
   const getSectionTitle = () => {
     switch (activeSection) {
       case 'dashboard': return 'Dashboard'
-      case 'eventos': return 'Eventos del Sistema'
-      case 'equipos': return 'Equipos del Sistema'
-      case 'hospedajes': return 'Hospedajes del Sistema'
       case 'usuarios': return 'Usuarios del Sistema'
+      case 'buzon': return 'Buzón de Asistencia'
+      case 'eventos': return 'Eventos del Sistema'
+      case 'comite': return 'Comité del Sistema'
+      case 'equipos': return 'Equipos del Sistema'
       case 'participantes': return 'Participantes del Sistema'
-      case 'estadisticas': return 'Estadísticas'
-      case 'configuracion': return 'Configuración'
+      case 'restaurantes': return 'Restaurantes'
+      case 'hospedajes': return 'Hospedajes del Sistema'
+      case 'lugares': return 'Lugares de Interés'
       default: return 'Dashboard'
     }
   }
@@ -81,8 +83,145 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
+      {/* Sidebar */}
+      <div className={`sidebar ${effectiveSidebarCollapsed ? 'collapsed' : ''} ${sidebarMobileOpen ? 'show' : ''}`}>
+        <div className="sidebar-sticky">
+          {/* Logo del sistema */}
+          <div className="sidebar-logo">
+            <div className="logo-container">
+              <div className="logo-icon">
+                <img 
+                  src="/src/assets/cecyte_chef_sin fondo.png" 
+                  alt="CECyTE Chef Logo" 
+                  className="logo-image"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <nav className="nav flex-column">
+            <a 
+              className={`nav-link ${activeSection === 'dashboard' ? 'active' : ''}`}
+              onClick={() => handleSectionChange('dashboard')}
+              href="#"
+            >
+              <i className="bi bi-speedometer2"></i>
+              <span>Dashboard</span>
+            </a>
+
+            {/* Administración */}
+            <div className="nav-category">
+              <div className="nav-category-header">
+                <i className="bi bi-gear-fill"></i>
+                <span>Administración</span>
+              </div>
+              <div className="nav-category-items">
+                <a 
+                  className={`nav-link ${activeSection === 'usuarios' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('usuarios')}
+                  href="#"
+                >
+                  <i className="bi bi-people"></i>
+                  <span>Usuarios</span>
+                </a>
+                
+                <a 
+                  className={`nav-link ${activeSection === 'buzon' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('buzon')}
+                  href="#"
+                >
+                  <i className="bi bi-inbox"></i>
+                  <span>Buzón de Asistencia</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Logística */}
+            <div className="nav-category">
+              <div className="nav-category-header">
+                <i className="bi bi-clipboard-data"></i>
+                <span>Logística</span>
+              </div>
+              <div className="nav-category-items">
+                <a 
+                  className={`nav-link ${activeSection === 'eventos' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('eventos')}
+                  href="#"
+                >
+                  <i className="bi bi-calendar-event"></i>
+                  <span>Eventos</span>
+                </a>
+                
+                <a 
+                  className={`nav-link ${activeSection === 'comite' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('comite')}
+                  href="#"
+                >
+                  <i className="bi bi-people-fill"></i>
+                  <span>Comité</span>
+                </a>
+                
+                <a 
+                  className={`nav-link ${activeSection === 'equipos' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('equipos')}
+                  href="#"
+                >
+                  <i className="bi bi-people-fill"></i>
+                  <span>Equipos</span>
+                </a>
+                
+                <a 
+                  className={`nav-link ${activeSection === 'participantes' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('participantes')}
+                  href="#"
+                >
+                  <i className="bi bi-person-check"></i>
+                  <span>Participantes</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Sitio Público */}
+            <div className="nav-category">
+              <div className="nav-category-header">
+                <i className="bi bi-globe"></i>
+                <span>Sitio Público</span>
+              </div>
+              <div className="nav-category-items">
+                <a 
+                  className={`nav-link ${activeSection === 'restaurantes' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('restaurantes')}
+                  href="#"
+                >
+                  <i className="bi bi-cup-hot"></i>
+                  <span>Restaurantes</span>
+                </a>
+                
+                <a 
+                  className={`nav-link ${activeSection === 'hospedajes' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('hospedajes')}
+                  href="#"
+                >
+                  <i className="bi bi-building"></i>
+                  <span>Hospedajes</span>
+                </a>
+                
+                <a 
+                  className={`nav-link ${activeSection === 'lugares' ? 'active' : ''}`}
+                  onClick={() => handleSectionChange('lugares')}
+                  href="#"
+                >
+                  <i className="bi bi-geo-alt"></i>
+                  <span>Lugares de Interés</span>
+                </a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{backgroundColor: 'var(--primary-color)'}}>
+      <nav className={`navbar navbar-expand-lg navbar-dark ${effectiveSidebarCollapsed ? 'sidebar-collapsed' : ''}`} style={{backgroundColor: 'var(--primary-color)'}}>
         <div className="container-fluid">
           {/* Botón para móvil */}
           <button 
@@ -113,98 +252,6 @@ function Dashboard() {
           </div>
         </div>
       </nav>
-
-      {/* Sidebar */}
-      <div className={`sidebar ${effectiveSidebarCollapsed ? 'collapsed' : ''} ${sidebarMobileOpen ? 'show' : ''}`}>
-        <div className="sidebar-sticky">
-          {/* Logo del sistema */}
-          <div className="sidebar-logo">
-            <div className="logo-container">
-              <div className="logo-icon">
-                <img 
-                  src="/src/assets/cecyte_chef_sin fondo.png" 
-                  alt="CECyTE Chef Logo" 
-                  className="logo-image"
-                />
-              </div>
-            </div>
-          </div>
-          
-          <nav className="nav flex-column">
-            <a 
-              className={`nav-link ${activeSection === 'dashboard' ? 'active' : ''}`}
-              onClick={() => handleSectionChange('dashboard')}
-              href="#"
-            >
-              <i className="bi bi-speedometer2"></i>
-              <span>Dashboard</span>
-            </a>
-            
-            <a 
-              className={`nav-link ${activeSection === 'eventos' ? 'active' : ''}`}
-              onClick={() => handleSectionChange('eventos')}
-              href="#"
-            >
-              <i className="bi bi-calendar-event"></i>
-              <span>Eventos</span>
-            </a>
-            
-            <a 
-              className={`nav-link ${activeSection === 'equipos' ? 'active' : ''}`}
-              onClick={() => handleSectionChange('equipos')}
-              href="#"
-            >
-              <i className="bi bi-people-fill"></i>
-              <span>Equipos</span>
-            </a>
-            
-            <a 
-              className={`nav-link ${activeSection === 'hospedajes' ? 'active' : ''}`}
-              onClick={() => handleSectionChange('hospedajes')}
-              href="#"
-            >
-              <i className="bi bi-building"></i>
-              <span>Hospedajes</span>
-            </a>
-            
-            <a 
-              className={`nav-link ${activeSection === 'usuarios' ? 'active' : ''}`}
-              onClick={() => handleSectionChange('usuarios')}
-              href="#"
-            >
-              <i className="bi bi-people"></i>
-              <span>Usuarios</span>
-            </a>
-            
-            <a 
-              className={`nav-link ${activeSection === 'participantes' ? 'active' : ''}`}
-              onClick={() => handleSectionChange('participantes')}
-              href="#"
-            >
-              <i className="bi bi-person-check"></i>
-              <span>Participantes</span>
-            </a>
-            
-            <a 
-              className={`nav-link ${activeSection === 'estadisticas' ? 'active' : ''}`}
-              onClick={() => handleSectionChange('estadisticas')}
-              href="#"
-            >
-              <i className="bi bi-graph-up"></i>
-              <span>Estadísticas</span>
-            </a>
-            
-            <a 
-              className={`nav-link ${activeSection === 'configuracion' ? 'active' : ''}`}
-              onClick={() => handleSectionChange('configuracion')}
-              href="#"
-            >
-              <i className="bi bi-gear"></i>
-              <span>Configuración</span>
-            </a>
-          </nav>
-        </div>
-      </div>
 
       {/* Overlay para móvil */}
       {sidebarMobileOpen && (
@@ -400,28 +447,28 @@ function Dashboard() {
             <ParticipantesTable />
           )}
 
-          {/* Contenido de Estadísticas */}
-          {activeSection === 'estadisticas' && (
+          {/* Contenido de Buzón de Asistencia */}
+          {activeSection === 'buzon' && (
             <div className="card">
               <div className="card-header">
-                <h6 className="m-0 font-weight-bold text-primary">Estadísticas del Sistema</h6>
+                <h6 className="m-0 font-weight-bold text-primary">Buzón de Asistencia</h6>
               </div>
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-6">
-                    <h5>Actividad de Usuarios</h5>
-                    <p>Gráfico de actividad diaria de usuarios</p>
+                    <h5>Mensajes Recibidos</h5>
+                    <p>Gestión de consultas y solicitudes de asistencia</p>
                     <div className="bg-light p-3 rounded text-center">
-                      <i className="bi bi-graph-up fs-1 text-primary"></i>
-                      <p className="mt-2">Gráfico de Actividad</p>
+                      <i className="bi bi-inbox fs-1 text-primary"></i>
+                      <p className="mt-2">Buzón de Entrada</p>
                     </div>
                   </div>
                   <div className="col-md-6">
-                    <h5>Uso del Sistema</h5>
-                    <p>Métricas de uso por sección</p>
+                    <h5>Respuestas Enviadas</h5>
+                    <p>Historial de respuestas y seguimiento</p>
                     <div className="bg-light p-3 rounded text-center">
-                      <i className="bi bi-pie-chart fs-1 text-success"></i>
-                      <p className="mt-2">Métricas de Uso</p>
+                      <i className="bi bi-send fs-1 text-success"></i>
+                      <p className="mt-2">Respuestas</p>
                     </div>
                   </div>
                 </div>
@@ -429,38 +476,86 @@ function Dashboard() {
             </div>
           )}
 
-          {/* Contenido de Configuración */}
-          {activeSection === 'configuracion' && (
+          {/* Contenido de Comité */}
+          {activeSection === 'comite' && (
             <div className="card">
               <div className="card-header">
-                <h6 className="m-0 font-weight-bold text-primary">Configuración del Sistema</h6>
+                <h6 className="m-0 font-weight-bold text-primary">Comité del Sistema</h6>
               </div>
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-6">
-                    <h5>Configuración General</h5>
-                    <div className="mb-3">
-                      <label className="form-label">Nombre del Sistema</label>
-                      <input type="text" className="form-control" defaultValue="Cecyte Chef" />
-                    </div>
-                    <div className="mb-3">
-                      <label className="form-label">Versión</label>
-                      <input type="text" className="form-control" defaultValue="2.1.0" disabled />
+                    <h5>Miembros del Comité</h5>
+                    <p>Gestión de integrantes del comité organizador</p>
+                    <div className="bg-light p-3 rounded text-center">
+                      <i className="bi bi-people-fill fs-1 text-primary"></i>
+                      <p className="mt-2">Miembros</p>
                     </div>
                   </div>
                   <div className="col-md-6">
-                    <h5>Notificaciones</h5>
-                    <div className="form-check mb-2">
-                      <input className="form-check-input" type="checkbox" defaultChecked />
-                      <label className="form-check-label">Email de notificaciones</label>
+                    <h5>Roles y Responsabilidades</h5>
+                    <p>Asignación de roles y tareas específicas</p>
+                    <div className="bg-light p-3 rounded text-center">
+                      <i className="bi bi-clipboard-check fs-1 text-success"></i>
+                      <p className="mt-2">Roles</p>
                     </div>
-                    <div className="form-check mb-2">
-                      <input className="form-check-input" type="checkbox" defaultChecked />
-                      <label className="form-check-label">Notificaciones push</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Contenido de Restaurantes */}
+          {activeSection === 'restaurantes' && (
+            <div className="card">
+              <div className="card-header">
+                <h6 className="m-0 font-weight-bold text-primary">Restaurantes</h6>
+              </div>
+              <div className="card-body">
+                <div className="row">
+                  <div className="col-md-6">
+                    <h5>Directorio de Restaurantes</h5>
+                    <p>Lista de restaurantes participantes y recomendados</p>
+                    <div className="bg-light p-3 rounded text-center">
+                      <i className="bi bi-cup-hot fs-1 text-primary"></i>
+                      <p className="mt-2">Restaurantes</p>
                     </div>
-                    <div className="form-check mb-2">
-                      <input className="form-check-input" type="checkbox" />
-                      <label className="form-check-label">Reportes semanales</label>
+                  </div>
+                  <div className="col-md-6">
+                    <h5>Especialidades</h5>
+                    <p>Platos especiales y menús destacados</p>
+                    <div className="bg-light p-3 rounded text-center">
+                      <i className="bi bi-menu-button-wide fs-1 text-success"></i>
+                      <p className="mt-2">Especialidades</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Contenido de Lugares de Interés */}
+          {activeSection === 'lugares' && (
+            <div className="card">
+              <div className="card-header">
+                <h6 className="m-0 font-weight-bold text-primary">Lugares de Interés</h6>
+              </div>
+              <div className="card-body">
+                <div className="row">
+                  <div className="col-md-6">
+                    <h5>Atracciones Turísticas</h5>
+                    <p>Lugares de interés para visitar durante el evento</p>
+                    <div className="bg-light p-3 rounded text-center">
+                      <i className="bi bi-geo-alt fs-1 text-primary"></i>
+                      <p className="mt-2">Atracciones</p>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <h5>Actividades Culturales</h5>
+                    <p>Eventos culturales y actividades recreativas</p>
+                    <div className="bg-light p-3 rounded text-center">
+                      <i className="bi bi-calendar3 fs-1 text-success"></i>
+                      <p className="mt-2">Actividades</p>
                     </div>
                   </div>
                 </div>
