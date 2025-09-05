@@ -9,7 +9,6 @@ const RestauranteDetalle = ({ restauranteId, onBack, embedded = false }) => {
   const [error, setError] = useState(null)
   const [editMode, setEditMode] = useState(false)
   const [saving, setSaving] = useState(false)
-  const [imagePreview, setImagePreview] = useState(null)
 
   useEffect(() => {
     if (restauranteId) {
@@ -51,31 +50,55 @@ const RestauranteDetalle = ({ restauranteId, onBack, embedded = false }) => {
       setSaving(true)
       const token = authService.getToken()
       
-      // Crear FormData para enviar archivos
-      const formData = new FormData()
-      
-      // Agregar todos los campos del formulario
-      Object.keys(restaurante).forEach(key => {
-        if (key !== 'imagen' && key !== 'created_at' && key !== 'updated_at') {
-          formData.append(key, restaurante[key] || '')
-        }
-      })
-      
-      // Agregar imagen si hay una nueva
-      if (imagePreview && typeof imagePreview === 'object') {
-        formData.append('imagen', imagePreview)
+      // Preparar datos para enviar (como JSON, igual que los otros formularios)
+      const dataToSend = {
+        nombre: restaurante.nombre,
+        estatus: restaurante.estatus,
+        direccion: restaurante.direccion,
+        telefono: restaurante.telefono,
+        correo_electronico: restaurante.correo_electronico,
+        pagina_web: restaurante.pagina_web || null,
+        codigo_promocional: restaurante.codigo_promocional || null,
+        descripcion_codigo_promocional: restaurante.descripcion_codigo_promocional || null
       }
       
-      await apiService.put(`/restaurantes/${restauranteId}`, formData, token)
-      setEditMode(false)
-      setImagePreview(null)
-      fetchRestaurante() // Recargar datos
+      console.log('Datos a enviar para actualizar:', dataToSend)
       
-      // Mostrar mensaje de éxito
-      alert('Restaurante actualizado correctamente')
+      const response = await apiService.put(`/restaurantes/${restauranteId}`, dataToSend, token)
+      
+      console.log('Respuesta del servidor:', response)
+      
+      // Verificar si la respuesta es exitosa
+      if (response && (response.status === 200 || response.success)) {
+        setEditMode(false)
+        fetchRestaurante() // Recargar datos
+        alert('Restaurante actualizado correctamente')
+      } else if (response && response.data && response.data.success) {
+        setEditMode(false)
+        fetchRestaurante()
+        alert('Restaurante actualizado correctamente')
+      } else if (response && response.data) {
+        setEditMode(false)
+        fetchRestaurante()
+        alert('Restaurante actualizado correctamente')
+      } else {
+        console.log('Respuesta no exitosa:', response)
+        alert('Error: No se pudo actualizar el restaurante. Respuesta inesperada del servidor.')
+      }
     } catch (err) {
       console.error('Error al guardar:', err)
-      alert('Error al actualizar el restaurante')
+      
+      // Manejar errores de validación del servidor (422)
+      if (err.response?.status === 422 && err.response?.data?.errors) {
+        console.log('Errores de validación:', err.response.data.errors)
+        alert(`Error de validación: ${Object.values(err.response.data.errors).join(', ')}`)
+      } else if (err.response?.status === 422 && err.response?.data?.message) {
+        alert(`Error de validación: ${err.response.data.message}`)
+      } else if (err.response?.data?.message) {
+        alert(`Error: ${err.response.data.message}`)
+      } else {
+        alert('Error al actualizar el restaurante. Por favor, intenta de nuevo.')
+      }
     } finally {
       setSaving(false)
     }
@@ -83,16 +106,9 @@ const RestauranteDetalle = ({ restauranteId, onBack, embedded = false }) => {
 
   const handleCancel = () => {
     setEditMode(false)
-    setImagePreview(null)
     fetchRestaurante() // Recargar datos originales
   }
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0]
-    if (file) {
-      setImagePreview(file)
-    }
-  }
 
   const getStatusBadge = (status) => {
     const statusClasses = {
@@ -393,58 +409,6 @@ const RestauranteDetalle = ({ restauranteId, onBack, embedded = false }) => {
 
         {/* Panel Lateral */}
         <div className="col-lg-4">
-          {/* Imagen del Restaurante */}
-          <div className="card mb-3 shadow-sm border-0">
-            <div className="card-header bg-light border-0 py-2">
-              <h6 className="mb-0 fw-bold text-info">
-                <i className="bi bi-image me-2"></i>
-                Imagen del Restaurante
-              </h6>
-            </div>
-            <div className="card-body py-3 text-center">
-              {editMode ? (
-                <div>
-                  <div className="mb-3">
-                    <input
-                      type="file"
-                      className="form-control"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                    />
-                    <small className="text-muted d-block mt-1">
-                      Formatos: JPEG, PNG, JPG, GIF (máx. 2MB)
-                    </small>
-                  </div>
-                  {(imagePreview || restaurante.imagen) && (
-                    <div className="image-preview">
-                      <img
-                        src={imagePreview ? URL.createObjectURL(imagePreview) : `/storage/${restaurante.imagen}`}
-                        alt="Vista previa"
-                        className="img-fluid rounded"
-                        style={{maxHeight: '200px'}}
-                      />
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div>
-                  {restaurante.imagen ? (
-                    <img
-                      src={`/storage/${restaurante.imagen}`}
-                      alt={restaurante.nombre}
-                      className="img-fluid rounded"
-                      style={{maxHeight: '200px'}}
-                    />
-                  ) : (
-                    <div className="bg-light p-4 rounded">
-                      <i className="bi bi-image fs-1 text-muted"></i>
-                      <p className="text-muted mt-2 mb-0">Sin imagen</p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
 
           {/* Información del Sistema */}
           <div className="card mb-3 shadow-sm border-0">

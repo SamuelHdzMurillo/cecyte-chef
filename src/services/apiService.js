@@ -26,18 +26,26 @@ class ApiService {
       const response = await fetch(url, config)
       clearTimeout(timeoutId)
 
-      // Manejar respuestas de error
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-
-      // Intentar parsear JSON, si falla devolver texto
+      // Intentar parsear JSON primero
+      let data
       const contentType = response.headers.get('content-type')
       if (contentType && contentType.includes('application/json')) {
-        return await response.json()
+        data = await response.json()
       } else {
-        return await response.text()
+        data = await response.text()
       }
+
+      // Manejar respuestas de error después de parsear
+      if (!response.ok) {
+        const error = new Error(`HTTP error! status: ${response.status}`)
+        error.response = {
+          status: response.status,
+          data: data
+        }
+        throw error
+      }
+
+      return data
     } catch (error) {
       clearTimeout(timeoutId)
       if (error.name === 'AbortError') {
@@ -53,11 +61,21 @@ class ApiService {
   }
 
   async post(endpoint, data, token = null) {
-    return this.request(endpoint, {
+    const options = {
       method: 'POST',
-      body: JSON.stringify(data),
       token
-    })
+    }
+    
+    // Si es FormData, enviarlo directamente
+    if (data instanceof FormData) {
+      options.body = data
+    } else {
+      // Si es JSON, convertir y agregar header
+      options.body = JSON.stringify(data)
+      options.headers = { 'Content-Type': 'application/json' }
+    }
+    
+    return this.request(endpoint, options)
   }
 
   async put(endpoint, data, token = null) {
