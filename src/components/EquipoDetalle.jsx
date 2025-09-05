@@ -4,9 +4,10 @@ import apiService from '../services/apiService.js'
 import authService from '../services/authService.js'
 import './EquipoDetalle.css'
 
-const EquipoDetalle = () => {
-  const { id } = useParams()
+const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
+  const { id: paramId } = useParams()
   const navigate = useNavigate()
+  const id = equipoId || paramId
   const [equipo, setEquipo] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -38,7 +39,11 @@ const EquipoDetalle = () => {
   }
 
   const handleBack = () => {
-    navigate('/dashboard')
+    if (embedded && onBack) {
+      onBack()
+    } else {
+      navigate('/dashboard')
+    }
   }
 
   const handleSave = async () => {
@@ -103,7 +108,7 @@ const EquipoDetalle = () => {
   }
 
   return (
-    <div className="equipos-table-container">
+    <div className={`equipos-table-container ${embedded ? 'embedded' : ''}`}>
       {/* Header principal */}
       <div className="card border-0 shadow-sm mb-3">
         <div className="card-header bg-primary text-white border-0 py-2">

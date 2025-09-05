@@ -4,6 +4,7 @@ import authService from '../services/authService.js'
 import UsersTable from './UsersTable.jsx'
 import EventsTable from './EventsTable.jsx'
 import EquiposTable from './EquiposTable.jsx'
+import EquipoDetalle from './EquipoDetalle.jsx'
 import HospedajesTable from './HospedajesTable.jsx'
 import ParticipantesTable from './ParticipantesTable.jsx'
 import './Dashboard.css'
@@ -15,6 +16,7 @@ function Dashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [selectedEquipoId, setSelectedEquipoId] = useState(null)
 
   useEffect(() => {
     // Obtener datos del usuario ya que la autenticación la verifica ProtectedRoute
@@ -36,10 +38,19 @@ function Dashboard() {
 
   const handleSectionChange = (section) => {
     setActiveSection(section)
+    setSelectedEquipoId(null) // Limpiar equipo seleccionado al cambiar sección
     // En móviles, cerrar el sidebar después de seleccionar una sección
     if (window.innerWidth <= 768) {
       setSidebarMobileOpen(false)
     }
+  }
+
+  const handleEquipoSelect = (equipoId) => {
+    setSelectedEquipoId(equipoId)
+  }
+
+  const handleBackToEquipos = () => {
+    setSelectedEquipoId(null)
   }
 
   const toggleSidebar = () => {
@@ -428,8 +439,17 @@ function Dashboard() {
           )}
 
           {/* Contenido de Equipos */}
-          {activeSection === 'equipos' && (
-            <EquiposTable />
+          {activeSection === 'equipos' && !selectedEquipoId && (
+            <EquiposTable onEquipoSelect={handleEquipoSelect} />
+          )}
+
+          {/* Detalle del Equipo */}
+          {activeSection === 'equipos' && selectedEquipoId && (
+            <EquipoDetalle 
+              equipoId={selectedEquipoId} 
+              onBack={handleBackToEquipos}
+              embedded={true}
+            />
           )}
 
           {/* Contenido de Hospedajes */}

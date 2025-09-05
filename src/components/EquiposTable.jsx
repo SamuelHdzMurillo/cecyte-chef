@@ -4,7 +4,7 @@ import apiService from '../services/apiService.js'
 import authService from '../services/authService.js'
 import './EquiposTable.css'
 
-const EquiposTable = () => {
+const EquiposTable = ({ onEquipoSelect }) => {
   const navigate = useNavigate()
   const [equipos, setEquipos] = useState([])
   const [loading, setLoading] = useState(true)
@@ -69,7 +69,11 @@ const EquiposTable = () => {
   }
 
   const handleViewDetails = (equipoId) => {
-    navigate(`/equipos/${equipoId}`)
+    if (onEquipoSelect) {
+      onEquipoSelect(equipoId)
+    } else {
+      navigate(`/equipos/${equipoId}`)
+    }
   }
 
   const filteredEquipos = equipos.filter(equipo => {

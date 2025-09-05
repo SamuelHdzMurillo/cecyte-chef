@@ -2,7 +2,6 @@ import React from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Login from './Login.jsx'
 import Dashboard from './components/Dashboard.jsx'
-import EquipoDetalle from './components/EquipoDetalle.jsx'
 import HospedajeDetalle from './components/HospedajeDetalle.jsx'
 import ParticipanteDetalle from './components/ParticipanteDetalle.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
@@ -190,11 +189,6 @@ function App() {
       <Route path="/dashboard" element={
         <ProtectedRoute>
           <Dashboard />
-        </ProtectedRoute>
-      } />
-      <Route path="/equipos/:id" element={
-        <ProtectedRoute>
-          <EquipoDetalle />
         </ProtectedRoute>
       } />
       <Route path="/hospedajes/:id" element={

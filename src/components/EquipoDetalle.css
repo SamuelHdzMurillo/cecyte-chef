@@ -6,6 +6,14 @@
   background-color: var(--bg-secondary);
 }
 
+/* Estilos cuando está embebido en el dashboard */
+.equipos-table-container.embedded {
+  padding: 0;
+  max-width: none;
+  margin: 0;
+  background-color: transparent;
+}
+
 @media (max-width: 768px) {
   .equipos-table-container {
     padding: 10px;
