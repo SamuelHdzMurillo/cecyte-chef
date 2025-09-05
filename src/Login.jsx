@@ -99,9 +99,14 @@ function Login({ onBackClick }) {
                   {/* Header con logo */}
                   <div className="text-center mb-4">
                     <div className="logo-container mb-3">
-                      <div className="logo-placeholder">
-                        <i className="bi bi-egg-fried fs-1 text-warning"></i>
-                        <span className="logo-text">Logo</span>
+                      <div className="login-logo">
+                        <div className="logo-icon">
+                          <img 
+                            src="/src/assets/cecyte_chef_sin fondo.png" 
+                            alt="CECyTE Chef Logo" 
+                            className="logo-image"
+                          />
+                        </div>
                       </div>
                     </div>
                     <h2 className="login-title">Bienvenido de Vuelta</h2>

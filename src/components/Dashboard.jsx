@@ -117,6 +117,19 @@ function Dashboard() {
       {/* Sidebar */}
       <div className={`sidebar ${effectiveSidebarCollapsed ? 'collapsed' : ''} ${sidebarMobileOpen ? 'show' : ''}`}>
         <div className="sidebar-sticky">
+          {/* Logo del sistema */}
+          <div className="sidebar-logo">
+            <div className="logo-container">
+              <div className="logo-icon">
+                <img 
+                  src="/src/assets/cecyte_chef_sin fondo.png" 
+                  alt="CECyTE Chef Logo" 
+                  className="logo-image"
+                />
+              </div>
+            </div>
+          </div>
+          
           <nav className="nav flex-column">
             <a 
               className={`nav-link ${activeSection === 'dashboard' ? 'active' : ''}`}
