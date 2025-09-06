@@ -7,6 +7,15 @@
   margin: 0 auto;
 }
 
+/* Estilos para el modo embebido */
+.hospedaje-detalle-embedded {
+  padding: 0;
+  background-color: transparent;
+  min-height: auto;
+  max-width: none;
+  margin: 0;
+}
+
 /* Estilos para el header principal */
 .hospedaje-detalle-container .card-header.bg-primary {
   background: var(--primary-color) !important;
