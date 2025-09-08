@@ -434,20 +434,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.modal-header {
-  background-color: #f8f9fa !important;
-  border-bottom: 1px solid #dee2e6 !important;
-  border-radius: 8px 8px 0 0;
-  padding: 1.25rem 1.5rem;
-}
-
-.modal-header .modal-title {
-  color: white !important;
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
 .modal-header .btn-close {
   filter: invert(1);
   opacity: 0.8;
@@ -464,7 +450,7 @@
 
 .modal-footer {
   background-color: #fafbfc;
-  border-top: 1px solid #e9ecef;
+
   border-radius: 0 0 8px 8px;
   padding: 1.25rem 1.5rem;
 }
