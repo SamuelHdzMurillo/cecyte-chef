@@ -22,6 +22,8 @@
 /* Estilos para la tabla */
 .table {
   margin-bottom: 0;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .table th {
@@ -47,6 +49,14 @@
   vertical-align: middle;
   border-top: 1px solid var(--primary-100);
   color: var(--text-primary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Espaciado adicional para la columna de rol */
+.table td:nth-child(4) {
+  padding-left: 1rem;
+  padding-right: 1.5rem;
 }
 
 .table tbody tr:hover {
@@ -79,29 +89,33 @@
   letter-spacing: 0.3px;
 }
 
-.badge.bg-danger {
-  background-color: var(--danger-color) !important;
-}
-
-.badge.bg-primary {
-  background-color: var(--primary-color) !important;
-}
-
-.badge.bg-success {
-  background-color: var(--success-color) !important;
-}
-
-.badge.bg-warning {
-  background-color: var(--warning-color) !important;
-}
-
-.badge.bg-info {
-  background-color: var(--info-color) !important;
+.badge.bg-light {
+  background-color: #f8f9fa !important;
+  color: #6c757d !important;
+  border: 1px solid #dee2e6;
 }
 
 .badge.bg-secondary {
-  background-color: var(--secondary-color) !important;
+  background-color: #6c757d !important;
+  color: white !important;
 }
+
+/* Estilos para distribución de columnas */
+.table th:nth-child(1) {
+  width: 70px;
+} /* ID */
+.table th:nth-child(2) {
+  width: auto;
+} /* Nombre */
+.table th:nth-child(3) {
+  width: auto;
+} /* Email */
+.table th:nth-child(4) {
+  width: 150px;
+} /* Rol */
+.table th:nth-child(5) {
+  width: 180px;
+} /* Acciones */
 
 /* Estilos para los botones de acción */
 .btn-group .btn {
@@ -114,6 +128,18 @@
 .btn-group .btn:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+  background-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
 }
 
 .btn-outline-primary {
@@ -260,35 +286,35 @@
     border-left: none;
     border-right: none;
   }
-  
+
   .card-header {
     padding: 1rem;
   }
-  
+
   .table th,
   .table td {
     padding: 0.75rem 0.5rem;
   }
-  
+
   .user-avatar {
     width: 32px;
     height: 32px;
     font-size: 12px;
   }
-  
+
   .btn-group .btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
   }
-  
+
   .input-group {
     margin-bottom: 1rem;
   }
-  
+
   .text-end {
     text-align: left !important;
   }
-  
+
   .table-responsive {
     font-size: 0.8rem;
   }
@@ -330,12 +356,12 @@
     flex-direction: column;
     gap: 0.25rem;
   }
-  
+
   .btn-group .btn {
     margin: 0;
     width: 100%;
   }
-  
+
   .table th:last-child,
   .table td:last-child {
     min-width: 100px;
@@ -371,9 +397,27 @@
   border-color: #6c757d;
 }
 
+/* Estilos para el botón de guardar con color personalizado */
+.btn[style*="background-color: #9D3553"]:hover {
+  background-color: #7a2a42 !important;
+  border-color: #7a2a42 !important;
+  color: white !important;
+}
+
 /* Estilos para el modal */
 .modal {
   z-index: 1050;
+}
+
+/* Estilos específicos para el modal de usuarios */
+.modal-content {
+  background-color: #ffffff !important;
+}
+
+.modal-header {
+  background-color: #9d3553 !important;
+  color: white !important;
+  border-bottom: none !important;
 }
 
 .modal.show {
@@ -391,21 +435,22 @@
 }
 
 .modal-header {
-  background-color: #fafbfc;
-  border-bottom: 1px solid #e9ecef;
+  background-color: #f8f9fa !important;
+  border-bottom: 1px solid #dee2e6 !important;
   border-radius: 8px 8px 0 0;
   padding: 1.25rem 1.5rem;
 }
 
 .modal-header .modal-title {
-  color: #212529;
-  font-weight: 500;
+  color: white !important;
+  font-weight: 600;
   font-size: 1.1rem;
+  margin: 0;
 }
 
 .modal-header .btn-close {
-  background-size: 1.2em;
-  opacity: 0.7;
+  filter: invert(1);
+  opacity: 0.8;
   transition: opacity 0.15s ease;
 }
 
@@ -502,16 +547,29 @@
   height: 1rem;
 }
 
-/* Estilos para el botón de nuevo usuario */
-.btn-success {
-  background-color: #198754;
-  border-color: #198754;
+/* Estilos para botones secundarios */
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
   color: white;
 }
 
-.btn-success:hover {
-  background-color: #157347;
-  border-color: #157347;
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #5a6268;
+  color: white;
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+  background-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
 }
 
 /* Estilos para el gap entre botones */
@@ -525,15 +583,15 @@
     margin: 1rem;
     max-width: calc(100% - 2rem);
   }
-  
+
   .modal-body {
     padding: 1rem;
   }
-  
+
   .modal-footer {
     padding: 1rem;
   }
-  
+
   .modal-header {
     padding: 1rem;
   }
@@ -544,21 +602,21 @@
     margin: 0.5rem;
     max-width: calc(100% - 1rem);
   }
-  
+
   .modal-body .row {
     margin: 0;
   }
-  
+
   .modal-body .col-md-6 {
     padding: 0;
     margin-bottom: 1rem;
   }
-  
+
   .modal-footer .btn {
     width: 100%;
     margin-bottom: 0.5rem;
   }
-  
+
   .modal-footer .btn:last-child {
     margin-bottom: 0;
   }

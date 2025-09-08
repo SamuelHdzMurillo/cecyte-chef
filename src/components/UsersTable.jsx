@@ -144,16 +144,7 @@ const UsersTable = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const getRoleBadgeColor = (role) => {
-    switch (role) {
-      case "admin":
-      case "administrador":
-        return "danger";
-      case "usuario":
-      case "user":
-        return "primary";
-      default:
-        return "secondary";
-    }
+    return "secondary";
   };
 
   const getRoleDisplayName = (role) => {
@@ -477,17 +468,12 @@ const UsersTable = () => {
               Gestión de Usuarios
             </h5>
             <div className="d-flex gap-2">
-              <button className="btn btn-success" onClick={openCreateModal}>
+              <button className="btn btn-secondary" onClick={openCreateModal}>
                 <i className="bi bi-plus-circle me-2"></i>
                 Nuevo Usuario
               </button>
               <button
-                className="btn"
-                style={{
-                  backgroundColor: "white",
-                  borderColor: "white",
-                  color: "var(--primary-color)",
-                }}
+                className="btn btn-outline-light"
                 onClick={handleRefresh}
                 disabled={loading}
               >
@@ -544,7 +530,7 @@ const UsersTable = () => {
                 <tr>
                   <th
                     scope="col"
-                    style={{ width: "80px", cursor: "pointer" }}
+                    style={{ width: "70px", cursor: "pointer" }}
                     onClick={() => handleSort("id")}
                   >
                     <div className="d-flex align-items-center">
@@ -571,32 +557,14 @@ const UsersTable = () => {
                   </th>
                   <th
                     scope="col"
-                    style={{ width: "120px", cursor: "pointer" }}
+                    style={{ width: "150px", cursor: "pointer" }}
                     onClick={() => handleSort("role")}
                   >
                     <div className="d-flex align-items-center">
                       Rol {getSortIcon("role")}
                     </div>
                   </th>
-                  <th
-                    scope="col"
-                    style={{ width: "150px", cursor: "pointer" }}
-                    onClick={() => handleSort("evento_id")}
-                  >
-                    <div className="d-flex align-items-center">
-                      Evento {getSortIcon("evento_id")}
-                    </div>
-                  </th>
-                  <th
-                    scope="col"
-                    style={{ width: "150px", cursor: "pointer" }}
-                    onClick={() => handleSort("created_at")}
-                  >
-                    <div className="d-flex align-items-center">
-                      Fecha Creación {getSortIcon("created_at")}
-                    </div>
-                  </th>
-                  <th scope="col" style={{ width: "120px" }}>
+                  <th scope="col" style={{ width: "180px" }}>
                     Acciones
                   </th>
                 </tr>
@@ -604,7 +572,7 @@ const UsersTable = () => {
               <tbody>
                 {currentUsers.length === 0 ? (
                   <tr>
-                    <td colSpan="7" className="text-center py-5">
+                    <td colSpan="5" className="text-center py-5">
                       <i className="bi bi-search fs-1 text-muted d-block mb-3"></i>
                       <p className="text-muted mb-3">
                         No se encontraron usuarios con la búsqueda actual
@@ -626,7 +594,9 @@ const UsersTable = () => {
                   currentUsers.map((user) => (
                     <tr key={user.id}>
                       <td className="text-center">
-                        <span className="badge bg-secondary">{user.id}</span>
+                        <span className="badge bg-light text-dark">
+                          {user.id}
+                        </span>
                       </td>
                       <td>
                         <div className="d-flex align-items-center">
@@ -655,61 +625,28 @@ const UsersTable = () => {
                         </div>
                       </td>
                       <td className="text-center">
-                        <span
-                          className={`badge bg-${getRoleBadgeColor(user.role)}`}
-                        >
+                        <span className="badge bg-light text-dark">
                           {getRoleDisplayName(user.role)}
                         </span>
-                      </td>
-                      <td className="text-center">
-                        <span
-                          className="badge bg-info"
-                          title={user.evento_id ? `ID: ${user.evento_id}` : ""}
-                        >
-                          {getEventoName(user.evento_id)}
-                        </span>
-                      </td>
-                      <td>
-                        <div>
-                          <div>{formatDate(user.created_at)}</div>
-                          <small className="text-muted">
-                            {formatTime(user.created_at)}
-                          </small>
-                        </div>
                       </td>
                       <td>
                         <div className="btn-group" role="group">
                           <button
-                            className="btn btn-sm"
-                            style={{
-                              backgroundColor: "var(--primary-color)",
-                              borderColor: "var(--primary-color)",
-                              color: "white",
-                            }}
+                            className="btn btn-sm btn-outline-secondary"
                             title="Ver detalles"
                             onClick={() => handleViewUser(user)}
                           >
                             <i className="bi bi-eye"></i>
                           </button>
                           <button
-                            className="btn btn-sm"
-                            style={{
-                              backgroundColor: "var(--warning-color)",
-                              borderColor: "var(--warning-color)",
-                              color: "var(--text-primary)",
-                            }}
+                            className="btn btn-sm btn-outline-secondary"
                             title="Editar usuario"
                             onClick={() => handleEditUser(user)}
                           >
                             <i className="bi bi-pencil"></i>
                           </button>
                           <button
-                            className="btn btn-sm"
-                            style={{
-                              backgroundColor: "var(--danger-color)",
-                              borderColor: "var(--danger-color)",
-                              color: "white",
-                            }}
+                            className="btn btn-sm btn-outline-secondary"
                             title="Eliminar usuario"
                             onClick={() => handleDeleteUser(user)}
                           >
@@ -934,7 +871,7 @@ const UsersTable = () => {
                         <div className="form-text">
                           <span
                             className="spinner-border spinner-border-sm me-2"
-                            style={{ color: "var(--primary-color)" }}
+                            style={{ color: "#6c757d" }}
                             role="status"
                           ></span>
                           Cargando eventos...
@@ -947,12 +884,7 @@ const UsersTable = () => {
                 <div className="modal-footer">
                   <button
                     type="button"
-                    className="btn"
-                    style={{
-                      backgroundColor: "var(--secondary-color)",
-                      borderColor: "var(--secondary-color)",
-                      color: "white",
-                    }}
+                    className="btn btn-outline-secondary"
                     onClick={closeModal}
                     disabled={submitting}
                   >
@@ -962,8 +894,8 @@ const UsersTable = () => {
                     type="submit"
                     className="btn"
                     style={{
-                      backgroundColor: "var(--primary-color)",
-                      borderColor: "var(--primary-color)",
+                      backgroundColor: "#9D3553",
+                      borderColor: "#9D3553",
                       color: "white",
                     }}
                     disabled={submitting}
