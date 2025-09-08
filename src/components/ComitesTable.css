@@ -1,0 +1,454 @@
+/* Estilos para la tabla de comités */
+.comites-table-container {
+  padding: 15px;
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Estilos para el header principal */
+.comites-table-container .card-header.bg-primary {
+  background: var(--primary-color) !important;
+}
+
+.comites-table-container .card-header.bg-primary h4 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.comites-table-container .card-header.bg-primary p {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.comites-table-container .card-body.bg-light {
+  border-top: 1px solid var(--primary-200);
+  background-color: var(--primary-50) !important;
+}
+
+/* Estilos para los encabezados de tabla clickeables */
+.cursor-pointer {
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.cursor-pointer:hover {
+  background-color: var(--primary-100);
+  transform: translateY(-1px);
+}
+
+/* Estilos para los badges de rol */
+.badge {
+  font-size: 0.75em;
+  padding: 0.5em 0.75em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Estilos para la tabla */
+.table th {
+  border-top: none;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--primary-50);
+  padding: 12px 10px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 12px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--primary-200);
+}
+
+.table-hover tbody tr:hover {
+  background-color: var(--primary-100);
+  transform: scale(1.01);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Estilos para los filtros */
+.card {
+  border: 1px solid var(--primary-200);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: var(--primary-50);
+  border-bottom: 1px solid var(--primary-200);
+  padding: 1rem 1.25rem;
+}
+
+/* Estilos para los botones */
+.btn-group .btn {
+  margin-right: 2px;
+  transition: var(--transition);
+}
+
+.btn-group .btn:last-child {
+  margin-right: 0;
+}
+
+.btn {
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+/* Estilos para la paginación */
+.pagination .page-link {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-200);
+  border-radius: var(--border-radius-sm);
+  margin: 0 2px;
+  transition: var(--transition);
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow);
+}
+
+.pagination .page-item.disabled .page-link {
+  color: var(--text-muted);
+  pointer-events: none;
+  background-color: var(--bg-primary);
+  border-color: var(--primary-200);
+}
+
+.pagination .page-link:hover:not(.disabled) {
+  background-color: var(--primary-100);
+  border-color: var(--primary-300);
+  transform: translateY(-1px);
+}
+
+/* Estilos para el modal */
+.modal.show {
+  display: block;
+}
+
+.modal-dialog.modal-xl {
+  max-width: 900px;
+}
+
+.modal-content {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Estilos para las tablas dentro del modal */
+.modal .table-sm th,
+.modal .table-sm td {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Estilos para tablas compactas en el modal */
+.modal .table-sm {
+  font-size: 0.8rem;
+}
+
+.modal .table-sm th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal .table-sm td {
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+
+/* Estilos para badges compactos */
+.modal .badge {
+  font-size: 0.7rem !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+/* Estilos para las tarjetas de información */
+.modal .card {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.modal .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.modal .card-header {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+}
+
+/* Estilos para los badges de roles específicos */
+.badge.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.badge.bg-info {
+  background-color: var(--info-color) !important;
+}
+
+.badge.bg-success {
+  background-color: var(--success-color) !important;
+}
+
+.badge.bg-warning {
+  background-color: var(--warning-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.badge.bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+
+.badge.bg-dark {
+  background-color: var(--dark-color) !important;
+}
+
+.badge.bg-danger {
+  background-color: var(--danger-color) !important;
+}
+
+/* Estilos para el estado de carga */
+.spinner-border {
+  width: 4rem;
+  height: 4rem;
+  color: var(--primary-color);
+}
+
+/* Estilos para mensajes de error */
+.alert {
+  border-radius: var(--border-radius);
+  border: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Estilos para el botón de limpiar filtros */
+.btn-outline-secondary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: white;
+}
+
+/* Estilos para el botón de actualizar */
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/* Estilos para formularios */
+.form-control,
+.form-select {
+  border-radius: var(--border-radius-sm);
+  border: 2px solid var(--primary-200);
+  transition: var(--transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem var(--primary-100);
+  transform: translateY(-1px);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Estilos para el overlay del modal en móviles */
+@media (max-width: 768px) {
+  .comites-table-container {
+    padding: 10px;
+  }
+
+  .modal-dialog.modal-xl {
+    max-width: 95%;
+    margin: 10px auto;
+  }
+
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+
+  .btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .modal-header,
+  .modal-footer {
+    padding: 1rem;
+  }
+}
+
+/* Estilos para el estado vacío */
+.text-muted .bi-inbox {
+  opacity: 0.5;
+}
+
+/* Estilos para los iconos de ordenamiento */
+.bi-arrow-down-up,
+.bi-arrow-up,
+.bi-arrow-down {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.bi-arrow-up.text-primary,
+.bi-arrow-down.text-primary {
+  color: #007bff !important;
+}
+
+.bi-arrow-down-up.text-muted {
+  color: #6c757d !important;
+}
+
+/* Estilos adicionales para mejorar la apariencia */
+.table-responsive {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #f1f3f4 !important;
+}
+
+/* Animaciones suaves */
+.card,
+.table,
+.btn,
+.badge {
+  transition: all 0.2s ease;
+}
+
+/* Mejoras en el espaciado general */
+.g-4 > * {
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para el estado de carga mejorado */
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-xl);
+  padding: 3rem;
+}
+
+/* Estilos específicos para la información de contacto */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-info .bi {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+/* Estilos para los badges de rol con colores específicos */
+.badge.bg-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3) !important;
+}
+
+.badge.bg-info {
+  background: linear-gradient(135deg, #17a2b8, #117a8b) !important;
+}
+
+.badge.bg-success {
+  background: linear-gradient(135deg, #28a745, #1e7e34) !important;
+}
+
+.badge.bg-warning {
+  background: linear-gradient(135deg, #ffc107, #e0a800) !important;
+  color: #212529 !important;
+}
+
+.badge.bg-secondary {
+  background: linear-gradient(135deg, #6c757d, #545b62) !important;
+}
+
+.badge.bg-dark {
+  background: linear-gradient(135deg, #343a40, #23272b) !important;
+}
+
+/* Estilos para mejorar la legibilidad de la tabla */
+.table td h6 {
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.table td small {
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+/* Estilos para el hover de las filas con más detalle */
+.table-hover tbody tr:hover {
+  background-color: var(--primary-100);
+  transform: scale(1.005);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los iconos de contacto */
+.bi-telephone,
+.bi-hash {
+  color: var(--info-color);
+}
+
+.bi-calendar3 {
+  color: var(--success-color);
+}
