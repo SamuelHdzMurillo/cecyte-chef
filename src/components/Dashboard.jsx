@@ -11,6 +11,8 @@ import HospedajesTable from "./HospedajesTable.jsx";
 import ParticipantesTable from "./ParticipantesTable.jsx";
 import RestaurantesTable from "./RestaurantesTable.jsx";
 import RestauranteDetalle from "./RestauranteDetalle.jsx";
+import LugaresInteresTable from "./LugaresInteresTable.jsx";
+import LugarDetalle from "./LugarDetalle.jsx";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -23,6 +25,7 @@ function Dashboard() {
   const [selectedEquipoId, setSelectedEquipoId] = useState(null);
   const [selectedRestauranteId, setSelectedRestauranteId] = useState(null);
   const [selectedComiteId, setSelectedComiteId] = useState(null);
+  const [selectedLugarId, setSelectedLugarId] = useState(null);
 
   useEffect(() => {
     // Obtener datos del usuario ya que la autenticación la verifica ProtectedRoute
@@ -47,6 +50,7 @@ function Dashboard() {
     setSelectedEquipoId(null); // Limpiar equipo seleccionado al cambiar sección
     setSelectedRestauranteId(null); // Limpiar restaurante seleccionado al cambiar sección
     setSelectedComiteId(null); // Limpiar comité seleccionado al cambiar sección
+    setSelectedLugarId(null); // Limpiar lugar seleccionado al cambiar sección
     // En móviles, cerrar el sidebar después de seleccionar una sección
     if (window.innerWidth <= 768) {
       setSidebarMobileOpen(false);
@@ -75,6 +79,14 @@ function Dashboard() {
 
   const handleBackToComites = () => {
     setSelectedComiteId(null);
+  };
+
+  const handleLugarSelect = (lugarId) => {
+    setSelectedLugarId(lugarId);
+  };
+
+  const handleBackToLugares = () => {
+    setSelectedLugarId(null);
   };
 
   const toggleSidebar = () => {
@@ -611,34 +623,17 @@ function Dashboard() {
           )}
 
           {/* Contenido de Lugares de Interés */}
-          {activeSection === "lugares" && (
-            <div className="card">
-              <div className="card-header">
-                <h6 className="m-0 font-weight-bold text-primary">
-                  Lugares de Interés
-                </h6>
-              </div>
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h5>Atracciones Turísticas</h5>
-                    <p>Lugares de interés para visitar durante el evento</p>
-                    <div className="bg-light p-3 rounded text-center">
-                      <i className="bi bi-geo-alt fs-1 text-primary"></i>
-                      <p className="mt-2">Atracciones</p>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <h5>Actividades Culturales</h5>
-                    <p>Eventos culturales y actividades recreativas</p>
-                    <div className="bg-light p-3 rounded text-center">
-                      <i className="bi bi-calendar3 fs-1 text-success"></i>
-                      <p className="mt-2">Actividades</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {activeSection === "lugares" && !selectedLugarId && (
+            <LugaresInteresTable onLugarSelect={handleLugarSelect} />
+          )}
+
+          {/* Detalle del Lugar */}
+          {activeSection === "lugares" && selectedLugarId && (
+            <LugarDetalle
+              lugarId={selectedLugarId}
+              onBack={handleBackToLugares}
+              embedded={true}
+            />
           )}
         </div>
       </div>
