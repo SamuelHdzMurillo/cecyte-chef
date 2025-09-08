@@ -490,7 +490,10 @@ const EventsTable = () => {
               Gestión de Eventos
             </h5>
             <div className="d-flex gap-2">
-              <button className="btn btn-success" onClick={openCreateModal}>
+              <button
+                className="btn btn-outline-light"
+                onClick={openCreateModal}
+              >
                 <i className="bi bi-plus-circle me-2"></i>
                 Nuevo Evento
               </button>
@@ -735,36 +738,21 @@ const EventsTable = () => {
                       <td>
                         <div className="event-actions">
                           <button
-                            className="btn btn-sm"
-                            style={{
-                              backgroundColor: "var(--primary-color)",
-                              borderColor: "var(--primary-color)",
-                              color: "white",
-                            }}
+                            className="btn btn-sm btn-outline-secondary"
                             title="Ver detalles"
                             onClick={() => handleViewEvent(event)}
                           >
                             <i className="bi bi-eye"></i>
                           </button>
                           <button
-                            className="btn btn-sm"
-                            style={{
-                              backgroundColor: "var(--warning-color)",
-                              borderColor: "var(--warning-color)",
-                              color: "var(--text-primary)",
-                            }}
+                            className="btn btn-sm btn-outline-secondary"
                             title="Editar evento"
                             onClick={() => handleEditEvent(event)}
                           >
                             <i className="bi bi-pencil"></i>
                           </button>
                           <button
-                            className="btn btn-sm"
-                            style={{
-                              backgroundColor: "var(--danger-color)",
-                              borderColor: "var(--danger-color)",
-                              color: "white",
-                            }}
+                            className="btn btn-sm btn-outline-secondary"
                             title="Eliminar evento"
                             onClick={() => handleDeleteEvent(event)}
                           >
