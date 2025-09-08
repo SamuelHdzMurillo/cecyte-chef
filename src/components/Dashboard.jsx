@@ -13,6 +13,7 @@ import RestaurantesTable from "./RestaurantesTable.jsx";
 import RestauranteDetalle from "./RestauranteDetalle.jsx";
 import LugaresInteresTable from "./LugaresInteresTable.jsx";
 import LugarDetalle from "./LugarDetalle.jsx";
+import BuzonAsistenciaTable from "./BuzonAsistenciaTable.jsx";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -578,35 +579,7 @@ function Dashboard() {
           {activeSection === "participantes" && <ParticipantesTable />}
 
           {/* Contenido de Buzón de Asistencia */}
-          {activeSection === "buzon" && (
-            <div className="card">
-              <div className="card-header">
-                <h6 className="m-0 font-weight-bold text-primary">
-                  Buzón de Asistencia
-                </h6>
-              </div>
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h5>Mensajes Recibidos</h5>
-                    <p>Gestión de consultas y solicitudes de asistencia</p>
-                    <div className="bg-light p-3 rounded text-center">
-                      <i className="bi bi-inbox fs-1 text-primary"></i>
-                      <p className="mt-2">Buzón de Entrada</p>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <h5>Respuestas Enviadas</h5>
-                    <p>Historial de respuestas y seguimiento</p>
-                    <div className="bg-light p-3 rounded text-center">
-                      <i className="bi bi-send fs-1 text-success"></i>
-                      <p className="mt-2">Respuestas</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          {activeSection === "buzon" && <BuzonAsistenciaTable />}
 
           {/* Contenido de Restaurantes */}
           {activeSection === "restaurantes" && !selectedRestauranteId && (
