@@ -3,8 +3,8 @@
   padding: 15px;
   background-color: var(--bg-secondary);
   min-height: 100vh;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
 }
 
 /* Estilos para el header principal */
@@ -46,6 +46,11 @@
 }
 
 /* Estilos para la tabla */
+.table {
+  width: 100%;
+  table-layout: fixed;
+}
+
 .table th {
   border-top: none;
   font-weight: 600;
@@ -55,6 +60,7 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  width: auto;
 }
 
 .table td {
@@ -63,27 +69,31 @@
   border-bottom: 1px solid var(--primary-200);
 }
 
-/* Espaciado específico para las columnas de equipos */
+/* Distribución de columnas para usar todo el espacio horizontal */
 .equipos-table-container .table th:first-child,
 .equipos-table-container .table td:first-child {
-  padding-right: 35px;
+  width: 40%; /* Nombre del equipo - más espacio */
+  padding-right: 20px;
 }
 
 .equipos-table-container .table th:nth-child(2),
 .equipos-table-container .table td:nth-child(2) {
-  padding-left: 35px;
-  padding-right: 35px;
+  width: 35%; /* Evento - espacio medio */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .equipos-table-container .table th:nth-child(3),
 .equipos-table-container .table td:nth-child(3) {
-  padding-left: 35px;
-  padding-right: 35px;
+  width: 15%; /* Estado - menos espacio */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .equipos-table-container .table th:last-child,
 .equipos-table-container .table td:last-child {
-  padding-left: 35px;
+  width: 10%; /* Acciones - espacio mínimo */
+  padding-left: 20px;
 }
 
 .table-hover tbody tr:hover {
@@ -99,6 +109,7 @@
   box-shadow: var(--shadow-sm);
   border-radius: var(--border-radius);
   overflow: hidden;
+  width: 100%;
 }
 
 .card-header {
@@ -381,6 +392,21 @@
 .table-responsive {
   border-radius: 12px;
   overflow: hidden;
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+/* Asegurar que la tabla use todo el ancho disponible */
+.equipos-table-container .table-responsive {
+  width: 100%;
+  max-width: 100%;
+}
+
+.equipos-table-container .table {
+  min-width: 100%;
+  width: 100%;
 }
 
 .border-bottom {

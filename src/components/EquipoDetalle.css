@@ -1,7 +1,7 @@
 /* Estilos para el componente EquipoDetalle */
 .equipos-table-container {
   padding: 15px;
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   background-color: var(--bg-secondary);
 }
