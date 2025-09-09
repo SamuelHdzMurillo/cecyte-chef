@@ -254,11 +254,8 @@ const EquiposTable = ({ onEquipoSelect }) => {
           className="card-header border-0 py-2"
           style={{ backgroundColor: "var(--primary-50)" }}
         >
-          <h6 className="mb-0 fw-semibold text-dark">
-            <i
-              className="bi bi-funnel me-2"
-              style={{ color: "var(--primary-color)" }}
-            ></i>
+          <h6 className="mb-0 fw-semibold text-white">
+            <i className="bi bi-funnel me-2" style={{ color: "white" }}></i>
             Filtros de Búsqueda
           </h6>
         </div>
@@ -337,11 +334,8 @@ const EquiposTable = ({ onEquipoSelect }) => {
           className="card-header border-0 py-2"
           style={{ backgroundColor: "var(--bg-primary)" }}
         >
-          <h6 className="mb-0 fw-semibold text-dark">
-            <i
-              className="bi bi-table me-2"
-              style={{ color: "var(--primary-color)" }}
-            ></i>
+          <h6 className="mb-0 fw-semibold text-white">
+            <i className="bi bi-table me-2" style={{ color: "white" }}></i>
             Lista de Equipos
           </h6>
         </div>
