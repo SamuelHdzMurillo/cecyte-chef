@@ -232,6 +232,11 @@
   font-size: 0.85rem;
 }
 
+.event-name {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+}
+
 .event-participants {
   text-align: center;
   font-weight: 700;
@@ -262,11 +267,17 @@
   font-size: 0.8rem;
   border-radius: var(--border-radius-sm);
   transition: var(--transition);
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  color: white !important;
 }
 
 .event-actions .btn:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow);
+  background-color: #5a6268 !important;
+  border-color: #5a6268 !important;
+  color: white !important;
 }
 
 /* Paginación mejorada */
@@ -395,31 +406,31 @@
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-  
+
   .event-stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
     padding: 1rem;
   }
-  
+
   .stat-card {
     padding: 1rem;
   }
-  
+
   .stat-number {
     font-size: 1.75rem;
   }
-  
+
   .event-info-grid {
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-  
+
   .table thead th,
   .table tbody td {
     padding: 0.6rem 0.4rem;
   }
-  
+
   .table {
     font-size: 0.8rem;
   }
@@ -429,16 +440,16 @@
   .event-stats {
     grid-template-columns: 1fr;
   }
-  
+
   .event-actions {
     flex-direction: column;
     gap: 0.2rem;
   }
-  
+
   .event-actions .btn {
     width: 100%;
   }
-  
+
   .table-responsive {
     font-size: 0.75rem;
   }

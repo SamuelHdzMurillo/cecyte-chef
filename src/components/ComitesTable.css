@@ -3,8 +3,8 @@
   padding: 15px;
   background-color: var(--bg-secondary);
   min-height: 100vh;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
 }
 
 /* Estilos para el header principal */
@@ -46,6 +46,11 @@
 }
 
 /* Estilos para la tabla */
+.table {
+  width: 100%;
+  table-layout: auto;
+}
+
 .table th {
   border-top: none;
   font-weight: 600;
@@ -55,6 +60,7 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .table td {
@@ -76,6 +82,7 @@
   box-shadow: var(--shadow-sm);
   border-radius: var(--border-radius);
   overflow: hidden;
+  width: 100%;
 }
 
 .card-header {
@@ -298,6 +305,7 @@
 @media (max-width: 768px) {
   .comites-table-container {
     padding: 10px;
+    width: 100%;
   }
 
   .modal-dialog.modal-xl {
@@ -307,6 +315,12 @@
 
   .table-responsive {
     font-size: 0.875rem;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 800px;
   }
 
   .btn-group .btn {
@@ -355,6 +369,11 @@
 .table-responsive {
   border-radius: 12px;
   overflow: hidden;
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .border-bottom {

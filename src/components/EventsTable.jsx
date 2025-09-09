@@ -681,7 +681,7 @@ const EventsTable = () => {
                           </div>
                           <div>
                             <div
-                              className="fw-bold text-truncate"
+                              className="fw-bold text-truncate event-name"
                               style={{ maxWidth: "180px" }}
                               title={event.nombre_evento}
                             >
@@ -738,21 +738,21 @@ const EventsTable = () => {
                       <td>
                         <div className="event-actions">
                           <button
-                            className="btn btn-sm btn-outline-secondary"
+                            className="btn btn-sm"
                             title="Ver detalles"
                             onClick={() => handleViewEvent(event)}
                           >
                             <i className="bi bi-eye"></i>
                           </button>
                           <button
-                            className="btn btn-sm btn-outline-secondary"
+                            className="btn btn-sm"
                             title="Editar evento"
                             onClick={() => handleEditEvent(event)}
                           >
                             <i className="bi bi-pencil"></i>
                           </button>
                           <button
-                            className="btn btn-sm btn-outline-secondary"
+                            className="btn btn-sm"
                             title="Eliminar evento"
                             onClick={() => handleDeleteEvent(event)}
                           >
