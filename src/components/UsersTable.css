@@ -102,7 +102,6 @@
 
 /* Estilos para distribución de columnas */
 .table th:nth-child(1) {
-  width: 70px;
 } /* ID */
 .table th:nth-child(2) {
   width: auto;

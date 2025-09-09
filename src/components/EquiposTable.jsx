@@ -346,15 +346,6 @@ const EquiposTable = ({ onEquipoSelect }) => {
                 <tr>
                   <th
                     className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort("id")}
-                  >
-                    <div className="d-flex align-items-center">
-                      <span className="fw-semibold text-dark">ID</span>
-                      {getSortIcon("id")}
-                    </div>
-                  </th>
-                  <th
-                    className="cursor-pointer border-0 py-3 px-3"
                     onClick={() => handleSort("nombre_equipo")}
                   >
                     <div className="d-flex align-items-center">
@@ -375,33 +366,12 @@ const EquiposTable = ({ onEquipoSelect }) => {
                   </th>
                   <th
                     className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort("entidad_federativa")}
-                  >
-                    <div className="d-flex align-items-center">
-                      <span className="fw-semibold text-dark">Entidad</span>
-                      {getSortIcon("entidad_federativa")}
-                    </div>
-                  </th>
-                  <th
-                    className="cursor-pointer border-0 py-3 px-3"
                     onClick={() => handleSort("estatus_del_equipo")}
                   >
                     <div className="d-flex align-items-center">
-                      <span className="fw-semibold text-dark">Estatus</span>
+                      <span className="fw-semibold text-dark">Estado</span>
                       {getSortIcon("estatus_del_equipo")}
                     </div>
-                  </th>
-                  <th
-                    className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort("nombre_anfitrion")}
-                  >
-                    <div className="d-flex align-items-center">
-                      <span className="fw-semibold text-dark">Anfitrión</span>
-                      {getSortIcon("nombre_anfitrion")}
-                    </div>
-                  </th>
-                  <th className="border-0 py-3 px-3">
-                    <span className="fw-semibold text-dark">Participantes</span>
                   </th>
                   <th className="border-0 py-3 px-3">
                     <span className="fw-semibold text-dark">Acciones</span>
@@ -411,7 +381,7 @@ const EquiposTable = ({ onEquipoSelect }) => {
               <tbody>
                 {currentEquipos.length === 0 ? (
                   <tr>
-                    <td colSpan="8" className="text-center py-5">
+                    <td colSpan="4" className="text-center py-5">
                       <div className="text-muted">
                         <i className="bi bi-inbox fs-1 d-block mb-3 opacity-50"></i>
                         <h6 className="mb-2">No se encontraron equipos</h6>
@@ -424,11 +394,6 @@ const EquiposTable = ({ onEquipoSelect }) => {
                 ) : (
                   currentEquipos.map((equipo) => (
                     <tr key={equipo.id} className="border-bottom">
-                      <td className="py-3 px-3">
-                        <span className="badge bg-secondary fs-6 px-3 py-2">
-                          #{equipo.id}
-                        </span>
-                      </td>
                       <td className="py-3 px-3">
                         <div>
                           <h6 className="mb-1 fw-bold text-dark">
@@ -452,36 +417,7 @@ const EquiposTable = ({ onEquipoSelect }) => {
                         </div>
                       </td>
                       <td className="py-3 px-3">
-                        <span className="badge bg-info fs-6 px-3 py-2">
-                          <i className="bi bi-geo-alt me-1"></i>
-                          {equipo.entidad_federativa}
-                        </span>
-                      </td>
-                      <td className="py-3 px-3">
                         {getStatusBadge(equipo.estatus_del_equipo)}
-                      </td>
-                      <td className="py-3 px-3">
-                        <div>
-                          <h6 className="mb-1 fw-semibold text-dark">
-                            {equipo.nombre_anfitrion}
-                          </h6>
-                          <small className="text-muted d-block">
-                            <i className="bi bi-envelope me-1"></i>
-                            {equipo.correo_anfitrion}
-                          </small>
-                        </div>
-                      </td>
-                      <td className="py-3 px-3">
-                        <div className="d-flex flex-column gap-2">
-                          <span className="badge bg-primary fs-6 px-3 py-2">
-                            <i className="bi bi-people me-1"></i>
-                            {equipo.participantes?.length || 0} participantes
-                          </span>
-                          <span className="badge bg-warning fs-6 px-3 py-2">
-                            <i className="bi bi-person-badge me-1"></i>
-                            {equipo.acompanantes?.length || 0} acompañantes
-                          </span>
-                        </div>
                       </td>
                       <td className="py-3 px-3">
                         <div className="btn-group" role="group">
