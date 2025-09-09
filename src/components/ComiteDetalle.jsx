@@ -239,7 +239,7 @@ const ComiteDetalle = ({ comiteId, onBack, embedded = false }) => {
                 Editar
               </button>
               <button
-                className="btn btn-light px-4 py-2"
+                className="btn btn-outline-light px-4 py-2"
                 onClick={handleBackClick}
               >
                 <i className="bi bi-arrow-left me-2"></i>
@@ -258,10 +258,10 @@ const ComiteDetalle = ({ comiteId, onBack, embedded = false }) => {
               className="card-header border-0 py-2"
               style={{ backgroundColor: "var(--primary-50)" }}
             >
-              <h6 className="mb-0 fw-semibold text-dark">
+              <h6 className="mb-0 fw-semibold text-white">
                 <i
                   className="bi bi-person-circle me-2"
-                  style={{ color: "var(--primary-color)" }}
+                  style={{ color: "white" }}
                 ></i>
                 Información Personal
               </h6>
@@ -314,10 +314,10 @@ const ComiteDetalle = ({ comiteId, onBack, embedded = false }) => {
               className="card-header border-0 py-2"
               style={{ backgroundColor: "var(--primary-50)" }}
             >
-              <h6 className="mb-0 fw-semibold text-dark">
+              <h6 className="mb-0 fw-semibold text-white">
                 <i
                   className="bi bi-telephone me-2"
-                  style={{ color: "var(--primary-color)" }}
+                  style={{ color: "white" }}
                 ></i>
                 Información de Contacto
               </h6>
@@ -330,7 +330,10 @@ const ComiteDetalle = ({ comiteId, onBack, embedded = false }) => {
                   </label>
                   <div className="p-2 bg-light rounded">
                     <h6 className="mb-0 fw-semibold text-dark">
-                      <i className="bi bi-telephone me-2 text-primary"></i>
+                      <i
+                        className="bi bi-telephone me-2"
+                        style={{ color: "var(--text-primary)" }}
+                      ></i>
                       {comite.telefono}
                     </h6>
                   </div>
@@ -356,12 +359,12 @@ const ComiteDetalle = ({ comiteId, onBack, embedded = false }) => {
           <div className="card shadow-sm border-0 mb-3">
             <div
               className="card-header border-0 py-2"
-              style={{ backgroundColor: "var(--success-50)" }}
+              style={{ backgroundColor: "var(--primary-50)" }}
             >
-              <h6 className="mb-0 fw-semibold text-dark">
+              <h6 className="mb-0 fw-semibold text-white">
                 <i
                   className="bi bi-calendar-event me-2"
-                  style={{ color: "var(--success-color)" }}
+                  style={{ color: "white" }}
                 ></i>
                 Evento Asignado
               </h6>
@@ -374,7 +377,10 @@ const ComiteDetalle = ({ comiteId, onBack, embedded = false }) => {
                       Nombre del Evento
                     </label>
                     <div className="p-2 bg-light rounded">
-                      <h6 className="mb-0 fw-bold text-primary">
+                      <h6
+                        className="mb-0 fw-bold"
+                        style={{ color: "var(--text-primary)" }}
+                      >
                         {comite.evento.nombre_evento}
                       </h6>
                     </div>
@@ -457,13 +463,10 @@ const ComiteDetalle = ({ comiteId, onBack, embedded = false }) => {
           <div className="card shadow-sm border-0">
             <div
               className="card-header border-0 py-2"
-              style={{ backgroundColor: "var(--info-50)" }}
+              style={{ backgroundColor: "var(--primary-50)" }}
             >
-              <h6 className="mb-0 fw-semibold text-dark">
-                <i
-                  className="bi bi-clock me-2"
-                  style={{ color: "var(--info-color)" }}
-                ></i>
+              <h6 className="mb-0 fw-semibold text-white">
+                <i className="bi bi-clock me-2" style={{ color: "white" }}></i>
                 Información de Registro
               </h6>
             </div>

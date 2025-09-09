@@ -1,154 +1,177 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import apiService from '../services/apiService.js'
-import authService from '../services/authService.js'
-import './EquiposTable.css'
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import apiService from "../services/apiService.js";
+import authService from "../services/authService.js";
+import "./EquiposTable.css";
 
 const EquiposTable = ({ onEquipoSelect }) => {
-  const navigate = useNavigate()
-  const [equipos, setEquipos] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [filterText, setFilterText] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)
-  const [equiposPerPage] = useState(10)
-  const [sortField, setSortField] = useState('id')
-  const [sortDirection, setSortDirection] = useState('asc')
+  const navigate = useNavigate();
+  const [equipos, setEquipos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [filterText, setFilterText] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [equiposPerPage] = useState(10);
+  const [sortField, setSortField] = useState("id");
+  const [sortDirection, setSortDirection] = useState("asc");
 
   // Filtros adicionales
-  const [statusFilter, setStatusFilter] = useState('')
-  const [entidadFilter, setEntidadFilter] = useState('')
+  const [statusFilter, setStatusFilter] = useState("");
+  const [entidadFilter, setEntidadFilter] = useState("");
 
   useEffect(() => {
-    fetchEquipos()
-  }, [])
+    fetchEquipos();
+  }, []);
 
   const fetchEquipos = async () => {
     try {
-      setLoading(true)
-      const token = authService.getToken()
-      
-      const response = await apiService.get('/equipos', token)
-      
+      setLoading(true);
+      const token = authService.getToken();
+
+      const response = await apiService.get("/equipos", token);
+
       if (response.data) {
-        setEquipos(response.data)
-        setError(null)
+        setEquipos(response.data);
+        setError(null);
       } else {
-        setEquipos([])
-        setError(null)
+        setEquipos([]);
+        setError(null);
       }
     } catch (err) {
-      console.error('Error al obtener equipos:', err)
-      setEquipos([])
-      setError('No se pudo conectar con el servidor. Por favor, verifica tu conexión.')
+      console.error("Error al obtener equipos:", err);
+      setEquipos([]);
+      setError(
+        "No se pudo conectar con el servidor. Por favor, verifica tu conexión."
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleRefresh = () => {
-    fetchEquipos()
-  }
+    fetchEquipos();
+  };
 
   const handleSort = (field) => {
     if (sortField === field) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
+      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
     } else {
-      setSortField(field)
-      setSortDirection('asc')
+      setSortField(field);
+      setSortDirection("asc");
     }
-  }
+  };
 
   const getSortIcon = (field) => {
     if (sortField !== field) {
-      return <i className="bi bi-arrow-down-up text-muted"></i>
+      return <i className="bi bi-arrow-down-up text-muted"></i>;
     }
-    return sortDirection === 'asc' 
-      ? <i className="bi bi-arrow-up text-primary"></i>
-      : <i className="bi bi-arrow-down text-primary"></i>
-  }
+    return sortDirection === "asc" ? (
+      <i className="bi bi-arrow-up text-primary"></i>
+    ) : (
+      <i className="bi bi-arrow-down text-primary"></i>
+    );
+  };
 
   const handleViewDetails = (equipoId) => {
     if (onEquipoSelect) {
-      onEquipoSelect(equipoId)
+      onEquipoSelect(equipoId);
     } else {
-      navigate(`/equipos/${equipoId}`)
+      navigate(`/equipos/${equipoId}`);
     }
-  }
+  };
 
-  const filteredEquipos = equipos.filter(equipo => {
-    const matchesText = 
+  const filteredEquipos = equipos.filter((equipo) => {
+    const matchesText =
       equipo.nombre_equipo?.toLowerCase().includes(filterText.toLowerCase()) ||
-      equipo.nombre_anfitrion?.toLowerCase().includes(filterText.toLowerCase()) ||
-      equipo.entidad_federativa?.toLowerCase().includes(filterText.toLowerCase()) ||
-      equipo.evento?.nombre_evento?.toLowerCase().includes(filterText.toLowerCase())
-    
-    const matchesStatus = !statusFilter || equipo.estatus_del_equipo === statusFilter
-    const matchesEntidad = !entidadFilter || equipo.entidad_federativa === entidadFilter
-    
-    return matchesText && matchesStatus && matchesEntidad
-  })
+      equipo.nombre_anfitrion
+        ?.toLowerCase()
+        .includes(filterText.toLowerCase()) ||
+      equipo.entidad_federativa
+        ?.toLowerCase()
+        .includes(filterText.toLowerCase()) ||
+      equipo.evento?.nombre_evento
+        ?.toLowerCase()
+        .includes(filterText.toLowerCase());
+
+    const matchesStatus =
+      !statusFilter || equipo.estatus_del_equipo === statusFilter;
+    const matchesEntidad =
+      !entidadFilter || equipo.entidad_federativa === entidadFilter;
+
+    return matchesText && matchesStatus && matchesEntidad;
+  });
 
   // Ordenar equipos
   const sortedEquipos = [...filteredEquipos].sort((a, b) => {
-    let aValue = a[sortField]
-    let bValue = b[sortField]
-    
+    let aValue = a[sortField];
+    let bValue = b[sortField];
+
     // Manejar campos anidados
-    if (sortField === 'evento') {
-      aValue = a.evento?.nombre_evento || ''
-      bValue = b.evento?.nombre_evento || ''
+    if (sortField === "evento") {
+      aValue = a.evento?.nombre_evento || "";
+      bValue = b.evento?.nombre_evento || "";
     }
-    
-    if (typeof aValue === 'string') {
-      aValue = aValue.toLowerCase()
-      bValue = bValue.toLowerCase()
+
+    if (typeof aValue === "string") {
+      aValue = aValue.toLowerCase();
+      bValue = bValue.toLowerCase();
     }
-    
-    if (aValue < bValue) return sortDirection === 'asc' ? -1 : 1
-    if (aValue > bValue) return sortDirection === 'asc' ? 1 : -1
-    return 0
-  })
+
+    if (aValue < bValue) return sortDirection === "asc" ? -1 : 1;
+    if (aValue > bValue) return sortDirection === "asc" ? 1 : -1;
+    return 0;
+  });
 
   // Paginación
-  const indexOfLastEquipo = currentPage * equiposPerPage
-  const indexOfFirstEquipo = indexOfLastEquipo - equiposPerPage
-  const currentEquipos = sortedEquipos.slice(indexOfFirstEquipo, indexOfLastEquipo)
-  const totalPages = Math.ceil(sortedEquipos.length / equiposPerPage)
+  const indexOfLastEquipo = currentPage * equiposPerPage;
+  const indexOfFirstEquipo = indexOfLastEquipo - equiposPerPage;
+  const currentEquipos = sortedEquipos.slice(
+    indexOfFirstEquipo,
+    indexOfLastEquipo
+  );
+  const totalPages = Math.ceil(sortedEquipos.length / equiposPerPage);
 
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber)
-  }
+    setCurrentPage(pageNumber);
+  };
 
   const getStatusBadge = (status) => {
     const statusClasses = {
-      'activo': 'badge bg-success',
-      'inactivo': 'badge bg-secondary',
-      'suspendido': 'badge bg-warning',
-      'eliminado': 'badge bg-danger'
-    }
-    return <span className={statusClasses[status] || 'badge bg-secondary'}>{status}</span>
-  }
+      activo: "badge bg-success",
+      inactivo: "badge bg-secondary",
+      suspendido: "badge bg-warning",
+      eliminado: "badge bg-danger",
+    };
+    return (
+      <span className={statusClasses[status] || "badge bg-secondary"}>
+        {status}
+      </span>
+    );
+  };
 
   const formatDate = (dateString) => {
-    if (!dateString) return '-'
-    const date = new Date(dateString)
-    return date.toLocaleDateString('es-ES', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    })
-  }
+    if (!dateString) return "-";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("es-ES", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
 
   if (loading) {
     return (
       <div className="text-center py-5">
-        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
+        <div
+          className="spinner-border"
+          style={{ color: "var(--primary-color)" }}
+          role="status"
+        >
           <span className="visually-hidden">Cargando...</span>
         </div>
         <p className="mt-3">Cargando equipos...</p>
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -161,14 +184,17 @@ const EquiposTable = ({ onEquipoSelect }) => {
           Reintentar
         </button>
       </div>
-    )
+    );
   }
 
   return (
     <div className="equipos-table-container">
       {/* Header principal del componente */}
       <div className="card border-0 shadow-sm mb-3">
-        <div className="card-header text-white border-0 py-2" style={{backgroundColor: 'var(--primary-color)'}}>
+        <div
+          className="card-header text-white border-0 py-2"
+          style={{ backgroundColor: "var(--primary-color)" }}
+        >
           <div className="d-flex justify-content-between align-items-center">
             <div>
               <h4 className="mb-1 fw-bold">
@@ -176,12 +202,13 @@ const EquiposTable = ({ onEquipoSelect }) => {
                 Gestión de Equipos
               </h4>
               <p className="mb-0 opacity-75">
-                Administra equipos participantes, sus integrantes, recetas y acompañantes
+                Administra equipos participantes, sus integrantes, recetas y
+                acompañantes
               </p>
             </div>
             <div className="d-flex gap-2">
-              <button 
-                className="btn btn-light px-4 py-2"
+              <button
+                className="btn btn-outline-light px-4 py-2"
                 onClick={handleRefresh}
                 disabled={loading}
               >
@@ -191,18 +218,28 @@ const EquiposTable = ({ onEquipoSelect }) => {
             </div>
           </div>
         </div>
-        <div className="card-body py-2" style={{backgroundColor: 'var(--primary-50)'}}>
+        <div
+          className="card-body py-2"
+          style={{ backgroundColor: "var(--primary-50)" }}
+        >
           <div className="row align-items-center">
             <div className="col-md-6">
               <div className="d-flex align-items-center">
-                <i className="bi bi-info-circle me-2 fs-5" style={{color: 'var(--primary-color)'}}></i>
+                <i
+                  className="bi bi-info-circle me-2 fs-5"
+                  style={{ color: "var(--primary-color)" }}
+                ></i>
                 <span className="text-muted">
-                  Total: <strong className="text-dark">{equipos.length}</strong> equipos registrados
+                  Total: <strong className="text-dark">{equipos.length}</strong>{" "}
+                  equipos registrados
                 </span>
               </div>
             </div>
             <div className="col-md-6 text-md-end">
-              <span className="badge fs-6 px-3 py-2" style={{backgroundColor: 'var(--success-color)'}}>
+              <span
+                className="badge fs-6 px-3 py-2"
+                style={{ backgroundColor: "var(--success-color)" }}
+              >
                 <i className="bi bi-check-circle me-1"></i>
                 Sistema Operativo
               </span>
@@ -213,9 +250,15 @@ const EquiposTable = ({ onEquipoSelect }) => {
 
       {/* Filtros */}
       <div className="card mb-3 shadow-sm border-0">
-        <div className="card-header border-0 py-2" style={{backgroundColor: 'var(--primary-50)'}}>
+        <div
+          className="card-header border-0 py-2"
+          style={{ backgroundColor: "var(--primary-50)" }}
+        >
           <h6 className="mb-0 fw-semibold text-dark">
-            <i className="bi bi-funnel me-2" style={{color: 'var(--primary-color)'}}></i>
+            <i
+              className="bi bi-funnel me-2"
+              style={{ color: "var(--primary-color)" }}
+            ></i>
             Filtros de Búsqueda
           </h6>
         </div>
@@ -262,18 +305,22 @@ const EquiposTable = ({ onEquipoSelect }) => {
                 onChange={(e) => setEntidadFilter(e.target.value)}
               >
                 <option value="">Todas las entidades</option>
-                {Array.from(new Set(equipos.map(e => e.entidad_federativa))).map(entidad => (
-                  <option key={entidad} value={entidad}>{entidad}</option>
+                {Array.from(
+                  new Set(equipos.map((e) => e.entidad_federativa))
+                ).map((entidad) => (
+                  <option key={entidad} value={entidad}>
+                    {entidad}
+                  </option>
                 ))}
               </select>
             </div>
             <div className="col-lg-2 col-md-6 d-flex align-items-end">
-              <button 
+              <button
                 className="btn btn-outline-secondary w-100 py-2 px-3"
                 onClick={() => {
-                  setFilterText('')
-                  setStatusFilter('')
-                  setEntidadFilter('')
+                  setFilterText("");
+                  setStatusFilter("");
+                  setEntidadFilter("");
                 }}
               >
                 <i className="bi bi-x-circle me-2"></i>
@@ -286,9 +333,15 @@ const EquiposTable = ({ onEquipoSelect }) => {
 
       {/* Tabla de equipos */}
       <div className="card shadow-sm border-0">
-        <div className="card-header border-0 py-2" style={{backgroundColor: 'var(--bg-primary)'}}>
+        <div
+          className="card-header border-0 py-2"
+          style={{ backgroundColor: "var(--bg-primary)" }}
+        >
           <h6 className="mb-0 fw-semibold text-dark">
-            <i className="bi bi-table me-2" style={{color: 'var(--primary-color)'}}></i>
+            <i
+              className="bi bi-table me-2"
+              style={{ color: "var(--primary-color)" }}
+            ></i>
             Lista de Equipos
           </h6>
         </div>
@@ -297,58 +350,60 @@ const EquiposTable = ({ onEquipoSelect }) => {
             <table className="table table-hover mb-0 align-middle">
               <thead className="table-light">
                 <tr>
-                  <th 
+                  <th
                     className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort('id')}
+                    onClick={() => handleSort("id")}
                   >
                     <div className="d-flex align-items-center">
                       <span className="fw-semibold text-dark">ID</span>
-                      {getSortIcon('id')}
+                      {getSortIcon("id")}
                     </div>
                   </th>
-                  <th 
+                  <th
                     className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort('nombre_equipo')}
+                    onClick={() => handleSort("nombre_equipo")}
                   >
                     <div className="d-flex align-items-center">
-                      <span className="fw-semibold text-dark">Nombre del Equipo</span>
-                      {getSortIcon('nombre_equipo')}
+                      <span className="fw-semibold text-dark">
+                        Nombre del Equipo
+                      </span>
+                      {getSortIcon("nombre_equipo")}
                     </div>
                   </th>
-                  <th 
+                  <th
                     className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort('evento')}
+                    onClick={() => handleSort("evento")}
                   >
                     <div className="d-flex align-items-center">
                       <span className="fw-semibold text-dark">Evento</span>
-                      {getSortIcon('evento')}
+                      {getSortIcon("evento")}
                     </div>
                   </th>
-                  <th 
+                  <th
                     className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort('entidad_federativa')}
+                    onClick={() => handleSort("entidad_federativa")}
                   >
                     <div className="d-flex align-items-center">
                       <span className="fw-semibold text-dark">Entidad</span>
-                      {getSortIcon('entidad_federativa')}
+                      {getSortIcon("entidad_federativa")}
                     </div>
                   </th>
-                  <th 
+                  <th
                     className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort('estatus_del_equipo')}
+                    onClick={() => handleSort("estatus_del_equipo")}
                   >
                     <div className="d-flex align-items-center">
                       <span className="fw-semibold text-dark">Estatus</span>
-                      {getSortIcon('estatus_del_equipo')}
+                      {getSortIcon("estatus_del_equipo")}
                     </div>
                   </th>
-                  <th 
+                  <th
                     className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort('nombre_anfitrion')}
+                    onClick={() => handleSort("nombre_anfitrion")}
                   >
                     <div className="d-flex align-items-center">
                       <span className="fw-semibold text-dark">Anfitrión</span>
-                      {getSortIcon('nombre_anfitrion')}
+                      {getSortIcon("nombre_anfitrion")}
                     </div>
                   </th>
                   <th className="border-0 py-3 px-3">
@@ -366,7 +421,9 @@ const EquiposTable = ({ onEquipoSelect }) => {
                       <div className="text-muted">
                         <i className="bi bi-inbox fs-1 d-block mb-3 opacity-50"></i>
                         <h6 className="mb-2">No se encontraron equipos</h6>
-                        <p className="mb-0">Intenta ajustar los filtros de búsqueda</p>
+                        <p className="mb-0">
+                          Intenta ajustar los filtros de búsqueda
+                        </p>
                       </div>
                     </td>
                   </tr>
@@ -374,19 +431,29 @@ const EquiposTable = ({ onEquipoSelect }) => {
                   currentEquipos.map((equipo) => (
                     <tr key={equipo.id} className="border-bottom">
                       <td className="py-3 px-3">
-                        <span className="badge bg-secondary fs-6 px-3 py-2">#{equipo.id}</span>
+                        <span className="badge bg-secondary fs-6 px-3 py-2">
+                          #{equipo.id}
+                        </span>
                       </td>
                       <td className="py-3 px-3">
                         <div>
-                          <h6 className="mb-1 fw-bold text-dark">{equipo.nombre_equipo}</h6>
+                          <h6 className="mb-1 fw-bold text-dark">
+                            {equipo.nombre_equipo}
+                          </h6>
                         </div>
                       </td>
                       <td className="py-3 px-3">
                         <div>
-                          <h6 className="mb-1 fw-bold text-primary">{equipo.evento?.nombre_evento}</h6>
+                          <h6
+                            className="mb-1 fw-bold"
+                            style={{ color: "var(--text-primary)" }}
+                          >
+                            {equipo.evento?.nombre_evento}
+                          </h6>
                           <small className="text-muted d-block">
                             <i className="bi bi-calendar3 me-1"></i>
-                            {formatDate(equipo.evento?.inicio_evento)} - {formatDate(equipo.evento?.fin_evento)}
+                            {formatDate(equipo.evento?.inicio_evento)} -{" "}
+                            {formatDate(equipo.evento?.fin_evento)}
                           </small>
                         </div>
                       </td>
@@ -401,7 +468,9 @@ const EquiposTable = ({ onEquipoSelect }) => {
                       </td>
                       <td className="py-3 px-3">
                         <div>
-                          <h6 className="mb-1 fw-semibold text-dark">{equipo.nombre_anfitrion}</h6>
+                          <h6 className="mb-1 fw-semibold text-dark">
+                            {equipo.nombre_anfitrion}
+                          </h6>
                           <small className="text-muted d-block">
                             <i className="bi bi-envelope me-1"></i>
                             {equipo.correo_anfitrion}
@@ -426,6 +495,10 @@ const EquiposTable = ({ onEquipoSelect }) => {
                             className="btn btn-outline-primary px-3 py-2"
                             onClick={() => handleViewDetails(equipo.id)}
                             title="Ver detalles y editar"
+                            style={{
+                              color: "var(--text-primary)",
+                              borderColor: "var(--text-primary)",
+                            }}
                           >
                             <i className="bi bi-eye me-1"></i>
                             Ver
@@ -446,7 +519,9 @@ const EquiposTable = ({ onEquipoSelect }) => {
         <div className="d-flex justify-content-center mt-3">
           <nav aria-label="Navegación de páginas">
             <ul className="pagination pagination-lg">
-              <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+              <li
+                className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+              >
                 <button
                   className="page-link px-4 py-2"
                   onClick={() => handlePageChange(currentPage - 1)}
@@ -456,19 +531,30 @@ const EquiposTable = ({ onEquipoSelect }) => {
                   Anterior
                 </button>
               </li>
-              
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <li key={page} className={`page-item ${currentPage === page ? 'active' : ''}`}>
-                  <button
-                    className="page-link px-4 py-2"
-                    onClick={() => handlePageChange(page)}
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <li
+                    key={page}
+                    className={`page-item ${
+                      currentPage === page ? "active" : ""
+                    }`}
                   >
-                    {page}
-                  </button>
-                </li>
-              ))}
-              
-              <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                    <button
+                      className="page-link px-4 py-2"
+                      onClick={() => handlePageChange(page)}
+                    >
+                      {page}
+                    </button>
+                  </li>
+                )
+              )}
+
+              <li
+                className={`page-item ${
+                  currentPage === totalPages ? "disabled" : ""
+                }`}
+              >
                 <button
                   className="page-link px-4 py-2"
                   onClick={() => handlePageChange(currentPage + 1)}
@@ -483,7 +569,7 @@ const EquiposTable = ({ onEquipoSelect }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default EquiposTable
+export default EquiposTable;

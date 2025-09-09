@@ -204,7 +204,7 @@ const ComitesTable = ({ onComiteSelect }) => {
             </div>
             <div className="d-flex gap-2">
               <button
-                className="btn btn-light px-4 py-2"
+                className="btn btn-outline-light px-4 py-2"
                 onClick={handleRefresh}
                 disabled={loading}
               >
@@ -439,7 +439,10 @@ const ComitesTable = ({ onComiteSelect }) => {
                       </td>
                       <td className="py-3 px-3">
                         <div>
-                          <h6 className="mb-1 fw-bold text-primary">
+                          <h6
+                            className="mb-1 fw-bold"
+                            style={{ color: "var(--text-primary)" }}
+                          >
                             {comite.evento?.nombre_evento}
                           </h6>
                           <small className="text-muted d-block">
@@ -469,6 +472,10 @@ const ComitesTable = ({ onComiteSelect }) => {
                             className="btn btn-outline-primary px-3 py-2"
                             onClick={() => handleViewDetails(comite.id)}
                             title="Ver detalles y editar"
+                            style={{
+                              color: "var(--text-primary)",
+                              borderColor: "var(--text-primary)",
+                            }}
                           >
                             <i className="bi bi-eye me-1"></i>
                             Ver

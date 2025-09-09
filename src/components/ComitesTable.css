@@ -280,6 +280,13 @@
   color: white;
 }
 
+/* Estilos para el botón Ver en la tabla */
+.btn-outline-primary[style*="var(--text-primary)"]:hover {
+  background-color: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
+  color: white !important;
+}
+
 /* Estilos para formularios */
 .form-control,
 .form-select {
@@ -363,6 +370,10 @@
 
 .bi-arrow-down-up.text-muted {
   color: #6c757d !important;
+}
+
+.text-primary {
+  color: #9d3553 !important;
 }
 
 /* Estilos adicionales para mejorar la apariencia */
