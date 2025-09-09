@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import apiService from "../services/apiService.js";
+import ParticipanteDetalle from "./ParticipanteDetalle.jsx";
 import "./ParticipantesTable.css";
 
 function ParticipantesTable() {
@@ -13,6 +14,7 @@ function ParticipantesTable() {
   const [filterPlantel, setFilterPlantel] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
+  const [selectedParticipanteId, setSelectedParticipanteId] = useState(null);
 
   useEffect(() => {
     fetchParticipantes();
@@ -45,7 +47,11 @@ function ParticipantesTable() {
   };
 
   const handleVerDetalle = (participanteId) => {
-    navigate(`/dashboard/participantes/${participanteId}`);
+    setSelectedParticipanteId(participanteId);
+  };
+
+  const handleBackToParticipantes = () => {
+    setSelectedParticipanteId(null);
   };
 
   const handleSearch = (e) => {
@@ -158,6 +164,17 @@ function ParticipantesTable() {
           Actualizar
         </button>
       </div>
+    );
+  }
+
+  // Si hay un participante seleccionado, mostrar el detalle embebido
+  if (selectedParticipanteId) {
+    return (
+      <ParticipanteDetalle
+        participanteId={selectedParticipanteId}
+        onBack={handleBackToParticipantes}
+        embedded={true}
+      />
     );
   }
 
@@ -282,9 +299,6 @@ function ParticipantesTable() {
                   <th scope="col" style={{ width: "180px" }}>
                     Contacto
                   </th>
-                  <th scope="col" style={{ width: "120px" }}>
-                    Estado
-                  </th>
                   <th scope="col" style={{ width: "80px" }}>
                     Acciones
                   </th>
@@ -293,7 +307,7 @@ function ParticipantesTable() {
               <tbody>
                 {currentParticipantes.length === 0 ? (
                   <tr>
-                    <td colSpan="7" className="text-center py-5">
+                    <td colSpan="6" className="text-center py-5">
                       <i className="bi bi-search fs-1 text-muted d-block mb-3"></i>
                       <p className="text-muted mb-3">
                         No se encontraron participantes con los filtros actuales
@@ -358,14 +372,14 @@ function ParticipantesTable() {
                         </div>
                       </td>
                       <td>
-                        <span className="badge bg-primary">
+                        <div className="fw-bold">
                           {participante.equipo?.nombre_equipo || "Sin equipo"}
-                        </span>
+                        </div>
                       </td>
                       <td>
-                        <span className="badge bg-info">
+                        <div className="fw-bold">
                           {participante.rol_participante}
-                        </span>
+                        </div>
                       </td>
                       <td>
                         <div
@@ -391,21 +405,6 @@ function ParticipantesTable() {
                           >
                             {participante.correo_participante}
                           </small>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="d-flex flex-column gap-1">
-                          {participante.seguro_facultativo && (
-                            <span className="badge bg-success">Seguro</span>
-                          )}
-                          {participante.alergico && (
-                            <span className="badge bg-warning text-dark">
-                              Alergias
-                            </span>
-                          )}
-                          <span className="badge bg-secondary">
-                            {participante.semestre_participante}
-                          </span>
                         </div>
                       </td>
                       <td>
