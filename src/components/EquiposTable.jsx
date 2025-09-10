@@ -344,37 +344,17 @@ const EquiposTable = ({ onEquipoSelect }) => {
             <table className="table table-hover mb-0 align-middle">
               <thead className="table-light">
                 <tr>
-                  <th
-                    className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort("nombre_equipo")}
-                  >
-                    <div className="d-flex align-items-center">
-                      <span className="fw-semibold text-dark">
-                        Nombre del Equipo
-                      </span>
-                      {getSortIcon("nombre_equipo")}
-                    </div>
+                  <th scope="col" style={{ width: "200px" }}>
+                    Nombre del Equipo
                   </th>
-                  <th
-                    className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort("evento")}
-                  >
-                    <div className="d-flex align-items-center">
-                      <span className="fw-semibold text-dark">Evento</span>
-                      {getSortIcon("evento")}
-                    </div>
+                  <th scope="col" style={{ width: "180px" }}>
+                    Contacto
                   </th>
-                  <th
-                    className="cursor-pointer border-0 py-3 px-3"
-                    onClick={() => handleSort("estatus_del_equipo")}
-                  >
-                    <div className="d-flex align-items-center">
-                      <span className="fw-semibold text-dark">Estado</span>
-                      {getSortIcon("estatus_del_equipo")}
-                    </div>
+                  <th scope="col" style={{ width: "100px" }}>
+                    Estatus
                   </th>
-                  <th className="border-0 py-3 px-3">
-                    <span className="fw-semibold text-dark">Acciones</span>
+                  <th scope="col" style={{ width: "80px" }}>
+                    Acciones
                   </th>
                 </tr>
               </thead>
@@ -382,56 +362,55 @@ const EquiposTable = ({ onEquipoSelect }) => {
                 {currentEquipos.length === 0 ? (
                   <tr>
                     <td colSpan="4" className="text-center py-5">
-                      <div className="text-muted">
-                        <i className="bi bi-inbox fs-1 d-block mb-3 opacity-50"></i>
-                        <h6 className="mb-2">No se encontraron equipos</h6>
-                        <p className="mb-0">
-                          Intenta ajustar los filtros de búsqueda
-                        </p>
-                      </div>
+                      <i className="bi bi-search fs-1 text-muted d-block mb-3"></i>
+                      <p className="text-muted mb-3">
+                        No se encontraron equipos con los filtros actuales
+                      </p>
+                      <button
+                        className="btn btn-outline-secondary btn-sm"
+                        onClick={() => {
+                          setFilterText("");
+                          setStatusFilter("");
+                          setEntidadFilter("");
+                        }}
+                      >
+                        Limpiar filtros
+                      </button>
                     </td>
                   </tr>
                 ) : (
                   currentEquipos.map((equipo) => (
-                    <tr key={equipo.id} className="border-bottom">
-                      <td className="py-3 px-3">
-                        <div>
-                          <h6 className="mb-1 fw-bold text-dark">
-                            {equipo.nombre_equipo}
-                          </h6>
+                    <tr key={equipo.id}>
+                      <td>
+                        <div
+                          className="fw-bold text-truncate"
+                          style={{ maxWidth: "150px" }}
+                          title={equipo.nombre_equipo}
+                        >
+                          {equipo.nombre_equipo}
                         </div>
                       </td>
-                      <td className="py-3 px-3">
+                      <td>
                         <div>
-                          <h6
-                            className="mb-1 fw-bold"
-                            style={{ color: "var(--text-primary)" }}
+                          <div>{equipo.nombre_anfitrion}</div>
+                          <small
+                            className="text-muted text-truncate d-block"
+                            style={{ maxWidth: "160px" }}
+                            title={equipo.entidad_federativa}
                           >
-                            {equipo.evento?.nombre_evento}
-                          </h6>
-                          <small className="text-muted d-block">
-                            <i className="bi bi-calendar3 me-1"></i>
-                            {formatDate(equipo.evento?.inicio_evento)} -{" "}
-                            {formatDate(equipo.evento?.fin_evento)}
+                            {equipo.entidad_federativa}
                           </small>
                         </div>
                       </td>
-                      <td className="py-3 px-3">
-                        {getStatusBadge(equipo.estatus_del_equipo)}
-                      </td>
-                      <td className="py-3 px-3">
-                        <div className="btn-group" role="group">
+                      <td>{getStatusBadge(equipo.estatus_del_equipo)}</td>
+                      <td>
+                        <div className="event-actions">
                           <button
-                            className="btn btn-outline-primary px-3 py-2"
+                            className="btn btn-sm"
+                            title="Ver detalles"
                             onClick={() => handleViewDetails(equipo.id)}
-                            title="Ver detalles y editar"
-                            style={{
-                              color: "var(--text-primary)",
-                              borderColor: "var(--text-primary)",
-                            }}
                           >
-                            <i className="bi bi-eye me-1"></i>
-                            Ver
+                            <i className="bi bi-eye"></i>
                           </button>
                         </div>
                       </td>
