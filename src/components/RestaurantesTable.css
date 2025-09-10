@@ -80,45 +80,129 @@
   background-color: var(--danger-color) !important;
 }
 
-/* Estilos para botones */
-.btn {
+/* Estilos para botones - igual que participantes */
+.restaurantes-table-container .btn {
   border-radius: var(--border-radius-sm);
   font-weight: 500;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
   transition: all 0.2s ease;
   border-width: 1px;
 }
 
-.btn-outline-primary {
+.restaurantes-table-container .btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* Estilos específicos para botones del header - igual que participantes */
+.restaurantes-table-container .btn-success {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  border-radius: var(--border-radius-sm) !important;
+  transition: all 0.2s ease !important;
+}
+
+.restaurantes-table-container .btn-success:hover {
+  background-color: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.restaurantes-table-container .btn-light {
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  border-radius: var(--border-radius-sm) !important;
+  transition: all 0.2s ease !important;
+}
+
+.restaurantes-table-container .btn-light:hover {
+  background-color: white !important;
+  border: 2px solid white !important;
+  color: var(--primary-color) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.restaurantes-table-container .btn-outline-primary {
   color: var(--primary-color);
   border-color: var(--primary-color);
 }
 
-.btn-outline-primary:hover {
+.restaurantes-table-container .btn-outline-primary:hover {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
   color: white;
 }
 
-.btn-outline-warning {
+.restaurantes-table-container .btn-outline-warning {
   color: var(--warning-color);
   border-color: var(--warning-color);
 }
 
-.btn-outline-warning:hover {
+.restaurantes-table-container .btn-outline-warning:hover {
   background-color: var(--warning-color);
   border-color: var(--warning-color);
   color: var(--text-dark);
 }
 
-.btn-outline-secondary {
+.restaurantes-table-container .btn-outline-secondary {
   color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
 
-.btn-outline-secondary:hover {
+.restaurantes-table-container .btn-outline-secondary:hover {
   background-color: var(--secondary-color);
   border-color: var(--secondary-color);
   color: white;
+}
+
+/* Estilos para btn-outline-light - igual que participantes */
+.restaurantes-table-container .btn-outline-light {
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  border-radius: var(--border-radius-sm) !important;
+  transition: all 0.2s ease !important;
+}
+
+.restaurantes-table-container .btn-outline-light:hover {
+  background-color: white !important;
+  border: 2px solid white !important;
+  color: var(--primary-color) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+/* Estilos para botones de acción en la tabla - igual que participantes */
+.restaurantes-table-container .table .btn {
+  padding: 0.35rem;
+  font-size: 0.8rem;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  color: white !important;
+}
+
+.restaurantes-table-container .table .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  background-color: #5a6268 !important;
+  border-color: #5a6268 !important;
+  color: white !important;
 }
 
 /* Estilos para formularios */
@@ -298,6 +382,16 @@ a:hover {
   .table td {
     padding: 0.25rem 0.125rem;
     font-size: 0.7rem;
+  }
+
+  /* Estilos responsivos para botones de acción - igual que participantes */
+  .restaurantes-table-container .table .btn {
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
+  .restaurantes-table-container .table .btn:last-child {
+    margin-bottom: 0;
   }
 }
 
