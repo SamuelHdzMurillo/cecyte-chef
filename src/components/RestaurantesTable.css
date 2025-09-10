@@ -191,12 +191,37 @@
   box-shadow: var(--shadow) !important;
 }
 
+/* Acciones de la tabla - igual que participantes */
+.event-actions {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.event-actions .btn {
+  padding: 0.35rem;
+  font-size: 0.8rem;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition);
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  color: white !important;
+}
+
+.event-actions .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  background-color: #5a6268 !important;
+  border-color: #5a6268 !important;
+  color: white !important;
+}
+
 /* Estilos para botones de acción en la tabla - igual que participantes */
 .restaurantes-table-container .table .btn {
   padding: 0.35rem;
   font-size: 0.8rem;
   border-radius: var(--border-radius-sm);
-  transition: all 0.2s ease;
+  transition: var(--transition);
   background-color: #6c757d !important;
   border-color: #6c757d !important;
   color: white !important;
@@ -390,6 +415,15 @@ a:hover {
   }
 
   /* Estilos responsivos para botones de acción - igual que participantes */
+  .event-actions {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .event-actions .btn {
+    width: 100%;
+  }
+
   .restaurantes-table-container .table .btn {
     width: 100%;
     margin-bottom: 0.2rem;
