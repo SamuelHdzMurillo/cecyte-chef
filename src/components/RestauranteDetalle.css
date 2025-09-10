@@ -194,16 +194,16 @@ a:hover {
   .restaurante-detalle-container {
     padding: 5px;
   }
-  
+
   .card-body {
     padding: 1rem;
   }
-  
+
   .btn {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
-  
+
   .form-control,
   .form-select {
     font-size: 0.875rem;
@@ -214,21 +214,21 @@ a:hover {
   .restaurante-detalle-container {
     padding: 0;
   }
-  
+
   .card {
     margin-bottom: 1rem;
   }
-  
+
   .btn {
     padding: 0.375rem 0.75rem;
     font-size: 0.8rem;
   }
-  
+
   .form-control,
   .form-select {
     font-size: 0.8rem;
   }
-  
+
   .badge {
     font-size: 0.7rem;
     padding: 0.3em 0.6em;
@@ -289,15 +289,22 @@ a:hover {
 
 /* Estilos para los botones en el header */
 .card-header .btn-light {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-color: rgba(255, 255, 255, 0.9);
-  color: var(--text-dark);
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  border-radius: var(--border-radius-sm) !important;
+  transition: all 0.2s ease !important;
 }
 
 .card-header .btn-light:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--text-dark);
+  background-color: white !important;
+  border: 2px solid white !important;
+  color: var(--primary-color) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Estilos para el layout de columnas */
@@ -345,7 +352,7 @@ a:hover {
 }
 
 .form-control[type="file"]::before {
-  content: 'Seleccionar archivo';
+  content: "Seleccionar archivo";
   position: absolute;
   left: 0;
   top: 0;

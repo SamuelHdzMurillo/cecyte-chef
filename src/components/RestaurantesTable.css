@@ -6,6 +6,11 @@
   background-color: var(--bg-secondary);
 }
 
+/* Estilos para texto blanco solo en encabezados de filtros y lista */
+.restaurantes-table-container .card-header h6 {
+  color: white !important;
+}
+
 @media (max-width: 768px) {
   .restaurantes-table-container {
     padding: 10px;
