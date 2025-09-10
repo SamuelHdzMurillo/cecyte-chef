@@ -90,18 +90,19 @@
 }
 
 .badge.bg-light {
-  background-color: #f8f9fa !important;
-  color: #6c757d !important;
-  border: 1px solid #dee2e6;
+  background-color: var(--bg-secondary) !important;
+  color: var(--secondary-color) !important;
+  border: 1px solid var(--border-color);
 }
 
 .badge.bg-secondary {
-  background-color: #6c757d !important;
+  background-color: var(--secondary-color) !important;
   color: white !important;
 }
 
 /* Estilos para distribución de columnas */
 .table th:nth-child(1) {
+  width: 5%;
 } /* ID */
 .table th:nth-child(2) {
   width: auto;
@@ -130,14 +131,14 @@
 }
 
 .btn-outline-secondary {
-  color: #6c757d;
-  border-color: #6c757d;
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
   background-color: transparent;
 }
 
 .btn-outline-secondary:hover {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
   color: white;
 }
 
@@ -325,7 +326,7 @@
 }
 
 .table th[style*="cursor: pointer"]:hover {
-  background-color: #f1f3f4;
+  background-color: var(--bg-hover);
 }
 
 .table th .d-flex {
@@ -345,7 +346,7 @@
 /* Estilos para el contador de usuarios */
 .text-muted {
   font-size: 0.8rem;
-  color: #6c757d !important;
+  color: var(--secondary-color) !important;
 }
 
 /* Estilos para los botones de acción en móvil */
@@ -369,37 +370,37 @@
 
 /* Estilos para el botón de actualizar */
 .btn-primary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
   font-size: 0.875rem;
   padding: 0.5rem 1rem;
 }
 
 .btn-primary:hover {
-  background-color: #5a6268;
-  border-color: #5a6268;
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
 }
 
 .btn-primary:disabled {
-  background-color: #adb5bd;
-  border-color: #adb5bd;
+  background-color: var(--text-muted);
+  border-color: var(--text-muted);
 }
 
 /* Estilos para el botón de limpiar búsqueda */
 .btn-outline-secondary {
-  color: #6c757d;
-  border-color: #dee2e6;
+  color: var(--secondary-color);
+  border-color: var(--border-color);
 }
 
 .btn-outline-secondary:hover {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
 }
 
 /* Estilos para el botón de guardar con color personalizado */
 .btn[style*="background-color: #9D3553"]:hover {
-  background-color: #7a2a42 !important;
-  border-color: #7a2a42 !important;
+  background-color: var(--danger-dark) !important;
+  border-color: var(--danger-dark) !important;
   color: white !important;
 }
 
@@ -410,11 +411,11 @@
 
 /* Estilos específicos para el modal de usuarios */
 .modal-content {
-  background-color: #ffffff !important;
+  background-color: var(--bg-primary) !important;
 }
 
 .modal-header {
-  background-color: #9d3553 !important;
+  background-color: var(--danger-color) !important;
   color: white !important;
   border-bottom: none !important;
 }
@@ -448,7 +449,7 @@
 }
 
 .modal-footer {
-  background-color: #fafbfc;
+  background-color: var(--bg-secondary);
 
   border-radius: 0 0 8px 8px;
   padding: 1.25rem 1.5rem;
@@ -457,14 +458,14 @@
 /* Estilos para los campos del formulario */
 .form-label {
   font-weight: 500;
-  color: #495057;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
 }
 
 .form-control,
 .form-select {
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
@@ -473,19 +474,19 @@
 
 .form-control:focus,
 .form-select:focus {
-  border-color: #80bdff;
+  border-color: var(--primary-light);
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .form-control.is-invalid,
 .form-select.is-invalid {
-  border-color: #dc3545;
+  border-color: var(--danger-color);
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
 .invalid-feedback {
   display: block;
-  color: #dc3545;
+  color: var(--danger-color);
   font-size: 0.8rem;
   margin-top: 0.25rem;
 }
@@ -500,25 +501,25 @@
 }
 
 .modal-footer .btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
   color: white;
 }
 
 .modal-footer .btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #5a6268;
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
 }
 
 .modal-footer .btn-primary {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   color: white;
 }
 
 .modal-footer .btn-primary:hover {
-  background-color: #0b5ed7;
-  border-color: #0b5ed7;
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
 }
 
 .modal-footer .btn:disabled {
@@ -534,26 +535,26 @@
 
 /* Estilos para botones secundarios */
 .btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #5a6268;
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
   color: white;
 }
 
 .btn-outline-secondary {
-  color: #6c757d;
-  border-color: #6c757d;
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
   background-color: transparent;
 }
 
 .btn-outline-secondary:hover {
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
   color: white;
 }
 
