@@ -1,7 +1,7 @@
 /* Estilos para el componente RestaurantesTable */
 .restaurantes-table-container {
   padding: 15px;
-  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
   background-color: var(--bg-secondary);
 }
@@ -239,7 +239,7 @@ a:hover {
   .table-responsive {
     font-size: 0.875rem;
   }
-  
+
   .table th,
   .table td {
     padding: 0.5rem 0.25rem;
@@ -250,22 +250,22 @@ a:hover {
   .table-responsive {
     font-size: 0.8rem;
   }
-  
+
   .btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
   }
-  
+
   .badge {
     font-size: 0.65rem;
     padding: 0.25em 0.5em;
   }
-  
+
   .pagination-lg .page-link {
     padding: 0.375rem 0.5rem;
     font-size: 0.8rem;
   }
-  
+
   .table th,
   .table td {
     padding: 0.375rem 0.25rem;
@@ -276,24 +276,24 @@ a:hover {
   .restaurantes-table-container {
     padding: 5px;
   }
-  
+
   .card-body {
     padding: 1rem;
   }
-  
+
   .btn-group {
     flex-direction: column;
   }
-  
+
   .btn-group .btn {
     border-radius: var(--border-radius-sm) !important;
     margin-bottom: 0.25rem;
   }
-  
+
   .btn-group .btn:last-child {
     margin-bottom: 0;
   }
-  
+
   .table th,
   .table td {
     padding: 0.25rem 0.125rem;
@@ -310,12 +310,14 @@ a:hover {
 }
 
 .table td:nth-child(3), /* Dirección */
-.table td:nth-child(6) { /* Promoción */
+.table td:nth-child(6) {
+  /* Promoción */
   white-space: normal;
   word-wrap: break-word;
 }
 
-.table td:nth-child(4) { /* Contacto */
+.table td:nth-child(4) {
+  /* Contacto */
   white-space: normal;
 }
 
