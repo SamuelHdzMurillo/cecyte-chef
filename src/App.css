@@ -52,7 +52,7 @@ body {
 }
 
 .navbar-logo {
-  height: 50px;
+  height: 65px;
   width: auto;
   object-fit: contain;
 }
@@ -139,8 +139,32 @@ body {
   }
 
   .navbar-logo {
-    height: 40px;
+    height: 50px;
   }
+
+  .cintilla-inferior {
+    margin-top: 80px; /* Ajuste para navbar más pequeña en móvil */
+  }
+}
+
+/* ===== CINTILLA INFERIOR ===== */
+.cintilla-inferior {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  margin-top: 90px; /* Altura de la navbar */
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.cintilla-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 /* Asegurar que el contenido esté centrado */
@@ -156,7 +180,7 @@ body {
   background: white;
   position: relative;
   overflow: hidden;
-  padding-top: 120px; /* Account for fixed navbar */
+  padding-top: 200px; /* Account for fixed navbar + cintilla */
   width: 100%;
   left: 0;
   right: 0;
@@ -329,7 +353,7 @@ footer a:hover {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
   .hero-section {
-    padding-top: 100px;
+    padding-top: 180px;
     min-height: 90vh;
   }
 
@@ -375,7 +399,7 @@ footer a:hover {
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   .hero-section {
-    padding-top: 90px;
+    padding-top: 170px;
     min-height: 85vh;
   }
 
@@ -469,7 +493,7 @@ footer a:hover {
 @media (max-height: 500px) and (orientation: landscape) {
   .hero-section {
     min-height: 100vh;
-    padding-top: 80px;
+    padding-top: 160px;
   }
 
   .hero-section h1 {
