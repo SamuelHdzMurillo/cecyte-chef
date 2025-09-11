@@ -519,44 +519,44 @@
     margin-left: 0;
     width: 100%;
   }
-  
+
   .sidebar {
     position: fixed;
     left: -250px;
     width: 250px;
     z-index: 1050;
   }
-  
+
   .sidebar.show {
     left: 0;
   }
-  
+
   .dashboard-content {
     margin-left: 0;
     width: 100%;
     padding-top: 0;
     height: 100vh;
   }
-  
+
   .main-content {
     padding: 1rem;
   }
-  
+
   .section-tabs {
     flex-direction: column;
   }
-  
+
   .section-tab {
     text-align: left;
     border-bottom: none;
     border-left: 3px solid transparent;
   }
-  
+
   .section-tab.active {
     border-left-color: #4e73df;
     border-bottom-color: transparent;
   }
-  
+
   /* Overlay para móvil */
   .sidebar-overlay {
     position: fixed;
@@ -568,7 +568,7 @@
     z-index: 1040;
     display: none;
   }
-  
+
   .sidebar-overlay.show {
     display: block;
   }

@@ -42,15 +42,6 @@ function LandingPage({ onLoginClick }) {
         </div>
       </nav>
 
-      {/* Cintilla inferior */}
-      <div className="cintilla-inferior">
-        <img
-          src="/src/assets/cintilla inferior.jpg"
-          alt="Cintilla decorativa"
-          className="cintilla-image"
-        />
-      </div>
-
       {/* Hero Section */}
       <section
         id="inicio"
