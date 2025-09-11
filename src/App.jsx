@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./Login.jsx";
 import Dashboard from "./components/Dashboard.jsx";
@@ -8,6 +8,16 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "./App.css";
 
 function LandingPage({ onLoginClick }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="App">
       {/* Navbar personalizada centrada */}
@@ -20,27 +30,45 @@ function LandingPage({ onLoginClick }) {
               className="navbar-logo"
             />
           </div>
-          <div className="navbar-menu">
-            <a href="#inicio" className="navbar-link">
+          <div className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
+            <a href="#inicio" className="navbar-link" onClick={closeMenu}>
               Inicio
             </a>
-            <a href="#caracteristicas" className="navbar-link">
+            <a
+              href="#caracteristicas"
+              className="navbar-link"
+              onClick={closeMenu}
+            >
               Características
             </a>
-            <a href="#contacto" className="navbar-link">
+            <a href="#contacto" className="navbar-link" onClick={closeMenu}>
               Contacto
             </a>
-            <button className="navbar-button" onClick={onLoginClick}>
+            <button
+              className="navbar-button"
+              onClick={() => {
+                closeMenu();
+                onLoginClick();
+              }}
+            >
               Iniciar Sesión
             </button>
           </div>
-          <div className="navbar-toggle">
+          <div
+            className={`navbar-toggle ${isMenuOpen ? "active" : ""}`}
+            onClick={toggleMenu}
+          >
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
       </nav>
+
+      {/* Overlay para cerrar el menú móvil */}
+      {isMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={closeMenu}></div>
+      )}
 
       {/* Hero Section */}
       <section
