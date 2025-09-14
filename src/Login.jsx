@@ -174,25 +174,7 @@ function Login({ onBackClick }) {
                       </div>
                     )}
 
-                    {/* Opciones adicionales */}
-                    <div className="d-flex justify-content-between align-items-center mb-4">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="rememberMe"
-                          name="rememberMe"
-                          checked={formData.rememberMe}
-                          onChange={handleChange}
-                        />
-                        <label className="form-check-label" htmlFor="rememberMe">
-                          Recordarme
-                        </label>
-                      </div>
-                      <a href="#" className="forgot-password">
-                        ¿Olvidaste tu contraseña?
-                      </a>
-                    </div>
+                    
 
                     {/* Botón de login */}
                     <button 
@@ -213,32 +195,10 @@ function Login({ onBackClick }) {
                       )}
                     </button>
 
-                    {/* Separador */}
-                    <div className="text-center mb-3">
-                      <span className="separator-text">o</span>
-                    </div>
+                   
+                    
 
-                    {/* Botones sociales */}
-                    <div className="row g-2 mb-4">
-                      <div className="col-6">
-                        <button type="button" className="btn btn-outline-dark w-100">
-                          <i className="bi bi-google me-2"></i>
-                          Google
-                        </button>
-                      </div>
-                      <div className="col-6">
-                        <button type="button" className="btn btn-outline-primary w-100">
-                          <i className="bi bi-facebook me-2"></i>
-                          Facebook
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Enlace de registro */}
-                    <div className="text-center">
-                      <span className="text-muted">¿No tienes una cuenta? </span>
-                      <a href="#" className="register-link">Regístrate aquí</a>
-                    </div>
+                    
 
                   </form>
 
