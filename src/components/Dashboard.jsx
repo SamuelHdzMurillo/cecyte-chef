@@ -528,7 +528,7 @@ function Dashboard() {
             <i className="bi bi-list fs-4"></i>
           </button>
 
-          <span className="navbar-brand">Cecyte Chef Dashboard</span>
+          
           <div className="navbar-nav ms-auto">
             <div className="nav-item dropdown">
               <button
