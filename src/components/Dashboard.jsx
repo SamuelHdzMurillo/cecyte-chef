@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import authService from "../services/authService.js";
+import { useAuth } from "../contexts/AuthContext.jsx";
 import UsersTable from "./UsersTable.jsx";
 import EventsTable from "./EventsTable.jsx";
 import ComitesTable from "./ComitesTable.jsx";
@@ -18,9 +18,9 @@ import BuzonAsistenciaTable from "./BuzonAsistenciaTable.jsx";
 import Header from "./Header.jsx";
 import "./Dashboard.css";
 
-function Dashboard() {
+function AdminDashboard() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const { user, logout } = useAuth();
   const [activeSection, setActiveSection] = useState("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false);
@@ -208,9 +208,6 @@ function Dashboard() {
   };
 
   useEffect(() => {
-    // Obtener datos del usuario ya que la autenticación la verifica ProtectedRoute
-    const userData = authService.getUser();
-    setUser(userData);
     setLoading(false);
 
     // Obtener estadísticas de equipos
@@ -225,11 +222,10 @@ function Dashboard() {
 
   const handleLogout = async () => {
     try {
-      await authService.logout();
+      await logout();
       navigate("/login");
     } catch (error) {
       console.error("Error en logout:", error);
-      authService.clearAuthData();
       navigate("/login");
     }
   };
@@ -1124,4 +1120,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default AdminDashboard;

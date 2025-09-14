@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Login.css'
-import authService from './services/authService.js'
+import { useAuth } from './contexts/AuthContext.jsx'
 import DebugPanel from './components/DebugPanel.jsx'
 
 function Login({ onBackClick }) {
   const navigate = useNavigate()
+  const { login } = useAuth()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -31,26 +32,19 @@ function Login({ onBackClick }) {
     try {
       console.log('🚀 Iniciando proceso de login...')
       
-      const response = await authService.login({
+      const result = await login({
         email: formData.email,
         password: formData.password
       })
       
-      console.log('✅ Login exitoso:', response)
+      console.log('✅ Login exitoso:', result)
       
-      // Verificar si el token se guardó correctamente
-      authService.debugLocalStorage()
-      
-      // Verificar autenticación
-      const isAuth = authService.isAuthenticated()
-      console.log('🔐 Estado de autenticación:', isAuth)
-      
-      if (isAuth) {
+      if (result.success) {
         console.log('✅ Login exitoso, redirigiendo al dashboard...')
         // Redirigir al dashboard después del login exitoso
         navigate('/dashboard')
       } else {
-        alert('⚠️ Login exitoso pero no se pudo guardar el token. Revisa la consola.')
+        setError('Error al iniciar sesión. Verifica tus credenciales.')
       }
       
     } catch (error) {

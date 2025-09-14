@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext.jsx";
 import Login from "./Login.jsx";
-import Dashboard from "./components/Dashboard.jsx";
+import RoleBasedRoute from "./components/RoleBasedRoute.jsx";
 import HospedajeDetalle from "./components/HospedajeDetalle.jsx";
 import ParticipanteDetalle from "./components/ParticipanteDetalle.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -271,37 +272,39 @@ function App() {
   };
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={<LandingPage onLoginClick={handleLoginClick} />}
-      />
-      <Route path="/login" element={<Login onBackClick={handleBackToHome} />} />
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/hospedajes/:id"
-        element={
-          <ProtectedRoute>
-            <HospedajeDetalle />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/dashboard/participantes/:id"
-        element={
-          <ProtectedRoute>
-            <ParticipanteDetalle />
-          </ProtectedRoute>
-        }
-      />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route
+          path="/"
+          element={<LandingPage onLoginClick={handleLoginClick} />}
+        />
+        <Route path="/login" element={<Login onBackClick={handleBackToHome} />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <RoleBasedRoute />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/hospedajes/:id"
+          element={
+            <ProtectedRoute>
+              <HospedajeDetalle />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/participantes/:id"
+          element={
+            <ProtectedRoute>
+              <ParticipanteDetalle />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </AuthProvider>
   );
 }
 

@@ -1,31 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import authService from '../services/authService.js'
+import { useAuth } from '../contexts/AuthContext.jsx'
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(true)
+  const { isAuthenticated, loading } = useAuth()
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        // Verificar si el usuario está autenticado
-        if (!authService.isAuthenticated()) {
-          console.log('❌ Usuario no autenticado, redirigiendo al login...')
-          navigate('/login')
-          return
-        }
-        
-        console.log('✅ Usuario autenticado, permitiendo acceso al dashboard')
-        setLoading(false)
-      } catch (error) {
-        console.error('Error verificando autenticación:', error)
-        navigate('/login')
-      }
+    if (!loading && !isAuthenticated) {
+      console.log('❌ Usuario no autenticado, redirigiendo al login...')
+      navigate('/login')
     }
-
-    checkAuth()
-  }, [navigate])
+  }, [isAuthenticated, loading, navigate])
 
   if (loading) {
     return (
@@ -36,6 +22,10 @@ function ProtectedRoute({ children }) {
         <p className="mt-3">Verificando autenticación...</p>
       </div>
     )
+  }
+
+  if (!isAuthenticated) {
+    return null // No mostrar nada mientras redirige
   }
 
   return children
