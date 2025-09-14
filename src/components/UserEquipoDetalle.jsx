@@ -179,91 +179,107 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
         </div>
       </div>
 
-      {/* Información General del Equipo */}
-      <div className="card mb-3 shadow-sm border-0">
-        <div
-          className="card-header text-white border-0 py-2"
-          style={{ backgroundColor: "var(--primary-color)" }}
-        >
-          <h6 className="mb-0 fw-bold">
-            <i className="bi bi-info-circle me-2"></i>
-            Información General
-          </h6>
+      {/* Formulario de Registro de Equipo */}
+      <div className="team-registration-card mb-4">
+        <div className="team-registration-header">
+          <h5 className="mb-0 fw-bold text-dark d-flex align-items-center">
+            <i className="bi bi-person-circle me-2 text-primary"></i>
+            Registro de mi equipo
+          </h5>
         </div>
-        <div className="card-body py-3">
-          <div className="row g-3">
-            <div className="col-md-6">
-              <label className="form-label fw-semibold text-dark mb-2">
-                Nombre del Equipo
-              </label>
-              <p className="mb-0 fs-6 fw-bold text-dark">
-                {equipo.nombre_equipo}
-              </p>
-            </div>
-            <div className="col-md-6">
-              <label className="form-label fw-semibold text-dark mb-2">
-                Entidad Federativa
-              </label>
-              <p className="mb-0 fs-6">{equipo.entidad_federativa}</p>
-            </div>
-            <div className="col-md-6">
-              <label className="form-label fw-semibold text-dark mb-2">
-                Estatus
-              </label>
-              <div>{getStatusBadge(equipo.estatus_del_equipo)}</div>
-            </div>
-            <div className="col-md-6">
-              <label className="form-label fw-semibold text-dark mb-2">
-                Fecha de Creación
-              </label>
-              <p className="mb-0 fs-6">{formatDate(equipo.created_at)}</p>
+        <div className="team-registration-body">
+          <div className="team-registration-form">
+            <div className="row g-4">
+              {/* Primera fila */}
+              <div className="col-md-4">
+                <label className="form-label">
+                  Evento al que pertenece
+                </label>
+                <input 
+                  type="text" 
+                  className="form-control form-control-lg" 
+                  value={equipo.evento?.nombre_evento || ""} 
+                  readOnly
+                />
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">
+                  Entidad federativa
+                </label>
+                <select 
+                  className="form-select form-select-lg" 
+                  value={equipo.entidad_federativa || ""} 
+                  disabled
+                >
+                  <option value={equipo.entidad_federativa}>{equipo.entidad_federativa}</option>
+                </select>
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">
+                  Estatus del equipo
+                </label>
+                <select 
+                  className="form-select form-select-lg" 
+                  value={equipo.estatus_del_equipo || ""} 
+                  disabled
+                >
+                  <option value={equipo.estatus_del_equipo}>{equipo.estatus_del_equipo}</option>
+                </select>
+              </div>
+              
+              {/* Segunda fila */}
+              <div className="col-md-4">
+                <label className="form-label">
+                  Nombre de anfitrión
+                </label>
+                <input 
+                  type="text" 
+                  className="form-control form-control-lg" 
+                  value={equipo.nombre_anfitrion || ""} 
+                  readOnly
+                />
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">
+                  Teléfono del anfitrión
+                </label>
+                <input 
+                  type="text" 
+                  className="form-control form-control-lg" 
+                  value={equipo.telefono_anfitrion || ""} 
+                  readOnly
+                />
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">
+                  Correo del anfitrión
+                </label>
+                <input 
+                  type="email" 
+                  className="form-control form-control-lg" 
+                  value={equipo.correo_anfitrion || ""} 
+                  readOnly
+                />
+              </div>
+              
+              {/* Tercera fila - Nombre del equipo */}
+              <div className="col-12">
+                <label className="form-label">
+                  Nombre del equipo
+                </label>
+                <input 
+                  type="text" 
+                  className="form-control form-control-lg" 
+                  value={equipo.nombre_equipo || ""} 
+                  readOnly
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Información del Anfitrión */}
-      <div className="card mb-3 shadow-sm border-0">
-        <div
-          className="card-header text-white border-0 py-2"
-          style={{ backgroundColor: "var(--primary-color)" }}
-        >
-          <h6 className="mb-0 fw-bold">
-            <i className="bi bi-person-circle me-2"></i>
-            Información del Anfitrión
-          </h6>
-        </div>
-        <div className="card-body py-3">
-          <div className="row g-3">
-            <div className="col-md-4">
-              <label className="form-label fw-semibold text-dark mb-2">
-                Nombre del Anfitrión
-              </label>
-              <p className="mb-0 fs-6 fw-bold text-dark">
-                {equipo.nombre_anfitrion}
-              </p>
-            </div>
-            <div className="col-md-4">
-              <label className="form-label fw-semibold text-dark mb-2">
-                Teléfono
-              </label>
-              <p className="mb-0 fs-6">
-                <i className="bi bi-telephone me-1 text-muted"></i>
-                {equipo.telefono_anfitrion}
-              </p>
-            </div>
-            <div className="col-md-4">
-              <label className="form-label fw-semibold text-dark mb-2">
-                Correo Electrónico
-              </label>
-              <p className="mb-0 fs-6">
-                <i className="bi bi-envelope me-1 text-muted"></i>
-                {equipo.correo_anfitrion}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       {/* Información del Evento */}
       <div className="card mb-3 shadow-sm border-0">

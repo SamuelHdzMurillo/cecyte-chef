@@ -13,7 +13,6 @@ function UserDashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [selectedEquipoId, setSelectedEquipoId] = useState(null);
 
   // Estados para las estadísticas del dashboard
   const [dashboardStats, setDashboardStats] = useState({
@@ -191,13 +190,7 @@ function UserDashboard() {
     }
   };
 
-  const handleEquipoSelect = (equipoId) => {
-    setSelectedEquipoId(equipoId);
-  };
 
-  const handleBackToEquipos = () => {
-    setSelectedEquipoId(null);
-  };
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
@@ -395,8 +388,6 @@ function UserDashboard() {
           {/* Header con breadcrumb */}
           <Header 
             activeSection={activeSection}
-            selectedItem={selectedEquipoId}
-            onBack={selectedEquipoId ? handleBackToEquipos : null}
           />
 
           {/* Contenido del Dashboard */}
@@ -682,108 +673,11 @@ function UserDashboard() {
                         </small>
                       </div>
                     ) : userEquipo.equipo ? (
-                      <div className="row">
-                        <div className="col-md-8">
-                          <h5 className="fw-bold text-dark mb-3">
-                            {userEquipo.equipo.nombre_equipo}
-                          </h5>
-                          <div className="row g-3">
-                            <div className="col-md-6">
-                              <label className="form-label fw-semibold text-dark mb-1">
-                                Entidad Federativa
-                              </label>
-                              <p className="mb-2">
-                                <i className="bi bi-geo-alt me-1 text-muted"></i>
-                                {userEquipo.equipo.entidad_federativa}
-                              </p>
-                            </div>
-                            <div className="col-md-6">
-                              <label className="form-label fw-semibold text-dark mb-1">
-                                Estatus
-                              </label>
-                              <div className="mb-2">
-                                <span className={`badge ${
-                                  userEquipo.equipo.estatus_del_equipo === 'activo' ? 'bg-success' : 
-                                  userEquipo.equipo.estatus_del_equipo === 'inactivo' ? 'bg-secondary' : 'bg-warning'
-                                }`}>
-                                  {userEquipo.equipo.estatus_del_equipo}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="col-md-6">
-                              <label className="form-label fw-semibold text-dark mb-1">
-                                Anfitrión
-                              </label>
-                              <p className="mb-2">
-                                <i className="bi bi-person me-1 text-muted"></i>
-                                {userEquipo.equipo.nombre_anfitrion}
-                              </p>
-                            </div>
-                            <div className="col-md-6">
-                              <label className="form-label fw-semibold text-dark mb-1">
-                                Teléfono
-                              </label>
-                              <p className="mb-2">
-                                <i className="bi bi-telephone me-1 text-muted"></i>
-                                {userEquipo.equipo.telefono_anfitrion}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-4">
-                          <div className="text-center">
-                            <div className="mb-3">
-                              <i className="bi bi-people-fill" style={{ fontSize: "4rem", color: "var(--primary-color)" }}></i>
-                            </div>
-                            <h6 className="fw-bold text-dark">Estadísticas del Equipo</h6>
-                            <div className="row g-2 text-center">
-                              <div className="col-6">
-                                <div className="border rounded p-2">
-                                  <div className="fw-bold text-primary fs-5">
-                                    {userEquipo.equipo.participantes?.length || 0}
-                                  </div>
-                                  <small className="text-muted">Participantes</small>
-                                </div>
-                              </div>
-                              <div className="col-6">
-                                <div className="border rounded p-2">
-                                  <div className="fw-bold text-success fs-5">
-                                    {userEquipo.equipo.acompanantes?.length || 0}
-                                  </div>
-                                  <small className="text-muted">Acompañantes</small>
-                                </div>
-                              </div>
-                              <div className="col-6">
-                                <div className="border rounded p-2">
-                                  <div className="fw-bold text-info fs-5">
-                                    {userEquipo.equipo.recetas?.length || 0}
-                                  </div>
-                                  <small className="text-muted">Recetas</small>
-                                </div>
-                              </div>
-                              <div className="col-6">
-                                <div className="border rounded p-2">
-                                  <div className="fw-bold text-warning fs-5">
-                                    {userEquipo.equipo.cedulas_registro?.length || 0}
-                                  </div>
-                                  <small className="text-muted">Cédulas</small>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row mt-3">
-                          <div className="col-12 text-center">
-                            <button 
-                              className="btn btn-primary"
-                              onClick={() => setSelectedEquipoId(userEquipo.equipo.id)}
-                            >
-                              <i className="bi bi-eye me-2"></i>
-                              Ver Detalles Completos del Equipo
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                      <UserEquipoDetalle
+                        equipoId={userEquipo.equipo.id}
+                        onBack={() => setActiveSection("dashboard")}
+                        embedded={true}
+                      />
                     ) : (
                       <div className="text-center py-4">
                         <i className="bi bi-people fs-1 text-muted mb-3 d-block opacity-50"></i>
@@ -798,14 +692,6 @@ function UserDashboard() {
             </div>
           )}
 
-          {/* Detalle Completo del Equipo */}
-          {activeSection === "equipos" && selectedEquipoId && (
-            <UserEquipoDetalle
-              equipoId={selectedEquipoId}
-              onBack={handleBackToEquipos}
-              embedded={true}
-            />
-          )}
 
           {/* Contenido de Participantes */}
           {activeSection === "participantes" && (
