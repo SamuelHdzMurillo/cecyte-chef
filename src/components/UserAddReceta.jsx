@@ -31,18 +31,24 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
       const token = authService.getToken();
       
       // Agregar la receta al equipo
-      const response = await apiService.post(
-        `/equipos/${equipoId}/recetas`,
-        {
+      const response = await fetch('http://127.0.0.1:8000/api/recetas', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
           ...formData,
           equipo_id: equipoId,
           creado_por: authService.getUser()?.name || "Usuario",
           fecha_creacion: new Date().toISOString()
-        },
-        token
-      );
+        })
+      });
 
-      if (response.success || response.data) {
+      const responseData = await response.json();
+
+      if (response.ok && responseData.success) {
         onRecetaAdded();
         // Limpiar formulario
         setFormData({
@@ -53,7 +59,7 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
           observaciones: ""
         });
       } else {
-        setError("Error al agregar receta");
+        setError(responseData.message || "Error al agregar receta");
       }
     } catch (err) {
       console.error("Error al agregar receta:", err);

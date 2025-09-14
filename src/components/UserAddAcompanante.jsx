@@ -32,16 +32,22 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
       const token = authService.getToken();
       
       // Agregar el acompañante al equipo
-      const response = await apiService.post(
-        `/equipos/${equipoId}/acompanantes`,
-        {
+      const response = await fetch('http://127.0.0.1:8000/api/acompanantes', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
           ...formData,
           equipo_id: equipoId
-        },
-        token
-      );
+        })
+      });
 
-      if (response.success || response.data) {
+      const responseData = await response.json();
+
+      if (response.ok && responseData.success) {
         onAcompananteAdded();
         // Limpiar formulario
         setFormData({
@@ -53,7 +59,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
           email: ""
         });
       } else {
-        setError("Error al agregar acompañante");
+        setError(responseData.message || "Error al agregar acompañante");
       }
     } catch (err) {
       console.error("Error al agregar acompañante:", err);

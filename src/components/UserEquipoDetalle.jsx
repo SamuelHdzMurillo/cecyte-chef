@@ -5,6 +5,7 @@ import authService from "../services/authService.js";
 import UserAddParticipante from "./UserAddParticipante.jsx";
 import UserAddAcompanante from "./UserAddAcompanante.jsx";
 import UserAddReceta from "./UserAddReceta.jsx";
+import UserEditEquipo from "./UserEditEquipo.jsx";
 import "./EquipoDetalle.css";
 
 const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
@@ -17,6 +18,7 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
   const [showAddParticipante, setShowAddParticipante] = useState(false);
   const [showAddAcompanante, setShowAddAcompanante] = useState(false);
   const [showAddReceta, setShowAddReceta] = useState(false);
+  const [showEditEquipo, setShowEditEquipo] = useState(false);
 
   useEffect(() => {
     fetchEquipo();
@@ -65,6 +67,11 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
 
   const handleRecetaAdded = () => {
     setShowAddReceta(false);
+    fetchEquipo(); // Recargar datos del equipo
+  };
+
+  const handleEquipoUpdated = () => {
+    setShowEditEquipo(false);
     fetchEquipo(); // Recargar datos del equipo
   };
 
@@ -153,6 +160,13 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
               </p>
             </div>
             <div className="d-flex gap-2">
+              <button
+                className="btn btn-warning px-4 py-2"
+                onClick={() => setShowEditEquipo(true)}
+              >
+                <i className="bi bi-pencil-square me-2"></i>
+                Editar Equipo
+              </button>
               <button
                 className="btn btn-outline-light px-4 py-2"
                 onClick={handleBack}
@@ -638,6 +652,20 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 equipoId={equipo.id}
                 onRecetaAdded={handleRecetaAdded}
                 onCancel={() => setShowAddReceta(false)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showEditEquipo && (
+        <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <UserEditEquipo
+                equipo={equipo}
+                onEquipoUpdated={handleEquipoUpdated}
+                onCancel={() => setShowEditEquipo(false)}
               />
             </div>
           </div>

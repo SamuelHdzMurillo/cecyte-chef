@@ -18,7 +18,8 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
     seguro_facultativo: true,
     tipo_sangre_participante: "O+",
     alergico: false,
-    alergias: ""
+    alergias: "",
+    foto_credencial: ""
   });
 
   const [loading, setLoading] = useState(false);
@@ -40,17 +41,27 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
     try {
       const token = authService.getToken();
       
-      // Agregar el participante al equipo
-      const response = await apiService.post(
-        `/equipos/${equipoId}/participantes`,
-        {
-          ...formData,
-          equipo_id: equipoId
-        },
-        token
-      );
+      // Preparar datos para enviar como JSON
+      const dataToSend = {
+        ...formData,
+        equipo_id: equipoId,
+        foto_credencial: formData.foto_credencial || null // Usa la ruta ingresada o null si está vacío
+      };
 
-      if (response.success || response.data) {
+      // Enviar a la API correcta
+      const response = await fetch('http://127.0.0.1:8000/api/participantes', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(dataToSend)
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok && responseData.success) {
         onParticipanteAdded();
         // Limpiar formulario
         setFormData({
@@ -68,10 +79,11 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
           seguro_facultativo: true,
           tipo_sangre_participante: "O+",
           alergico: false,
-          alergias: ""
+          alergias: "",
+          foto_credencial: ""
         });
       } else {
-        setError("Error al agregar participante");
+        setError(responseData.message || "Error al agregar participante");
       }
     } catch (err) {
       console.error("Error al agregar participante:", err);
@@ -346,6 +358,28 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
                 />
               </div>
             )}
+
+            {/* Foto de Credencial */}
+            <div className="col-12">
+              <h6 className="fw-bold text-dark mb-3 mt-4">Documentación</h6>
+            </div>
+
+            <div className="col-12">
+              <label className="form-label fw-semibold">
+                Ruta de Foto de Credencial
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="foto_credencial"
+                value={formData.foto_credencial || ""}
+                onChange={handleChange}
+                placeholder="Ej: credenciales/juan_perez_2024.jpg"
+              />
+              <div className="form-text">
+                Opcional: Ingresa la ruta de la imagen de credencial o déjalo vacío
+              </div>
+            </div>
           </div>
 
           <div className="d-flex gap-2 mt-4">
