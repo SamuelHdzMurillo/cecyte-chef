@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import Header from "./Header.jsx";
+import EquiposTable from "./EquiposTable.jsx";
+import UserEquipoDetalle from "./UserEquipoDetalle.jsx";
 import "./Dashboard.css";
 
 function UserDashboard() {
@@ -11,6 +13,7 @@ function UserDashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [selectedEquipoId, setSelectedEquipoId] = useState(null);
 
   // Estados para las estadísticas del dashboard
   const [dashboardStats, setDashboardStats] = useState({
@@ -21,6 +24,88 @@ function UserDashboard() {
     loading: true,
     error: null,
   });
+
+  // Estados para el equipo del usuario
+  const [userEquipo, setUserEquipo] = useState({
+    equipo: null,
+    loading: true,
+    error: null,
+  });
+
+  // Función para obtener el equipo del usuario
+  const fetchUserEquipo = async () => {
+    try {
+      setUserEquipo((prev) => ({ ...prev, loading: true, error: null }));
+
+      // Primero intentar con equipo_id directo
+      if (user?.equipo_id) {
+        const response = await fetch(`http://127.0.0.1:8000/api/equipos/${user.equipo_id}`);
+        if (response.ok) {
+          const responseData = await response.json();
+          let equipo;
+          if (responseData.success && responseData.data) {
+            equipo = responseData.data;
+          } else if (responseData) {
+            equipo = responseData;
+          }
+          
+          if (equipo) {
+            setUserEquipo({
+              equipo: equipo,
+              loading: false,
+              error: null,
+            });
+            return;
+          }
+        }
+      }
+
+      // Si no tiene equipo_id o no se encontró, buscar por email en participantes
+      const response = await fetch("http://127.0.0.1:8000/api/equipos");
+      if (!response.ok) {
+        throw new Error(`Error HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const responseData = await response.json();
+      let equipos;
+      if (responseData.success && Array.isArray(responseData.data)) {
+        equipos = responseData.data;
+      } else if (Array.isArray(responseData)) {
+        equipos = responseData;
+      } else {
+        throw new Error("Formato de respuesta inesperado");
+      }
+
+      // Buscar el equipo donde el usuario sea participante
+      const userEquipo = equipos.find(equipo => 
+        equipo.participantes && equipo.participantes.some(participante => 
+          participante.correo_participante === user?.email ||
+          participante.nombre_participante === user?.name
+        )
+      );
+
+      if (userEquipo) {
+        setUserEquipo({
+          equipo: userEquipo,
+          loading: false,
+          error: null,
+        });
+      } else {
+        setUserEquipo({
+          equipo: null,
+          loading: false,
+          error: "No se encontró un equipo asociado a tu usuario"
+        });
+      }
+    } catch (error) {
+      console.error("Error al obtener equipo del usuario:", error);
+      setUserEquipo({
+        equipo: null,
+        loading: false,
+        error: error.message,
+      });
+    }
+  };
 
   // Función para obtener estadísticas de equipos
   const fetchEquiposStats = async () => {
@@ -84,7 +169,8 @@ function UserDashboard() {
   useEffect(() => {
     setLoading(false);
     fetchEquiposStats();
-  }, []);
+    fetchUserEquipo();
+  }, [user]);
 
   const handleLogout = async () => {
     try {
@@ -98,10 +184,19 @@ function UserDashboard() {
 
   const handleSectionChange = (section) => {
     setActiveSection(section);
+    setSelectedEquipoId(null); // Limpiar equipo seleccionado al cambiar sección
     // En móviles, cerrar el sidebar después de seleccionar una sección
     if (window.innerWidth <= 768) {
       setSidebarMobileOpen(false);
     }
+  };
+
+  const handleEquipoSelect = (equipoId) => {
+    setSelectedEquipoId(equipoId);
+  };
+
+  const handleBackToEquipos = () => {
+    setSelectedEquipoId(null);
   };
 
   const toggleSidebar = () => {
@@ -300,8 +395,8 @@ function UserDashboard() {
           {/* Header con breadcrumb */}
           <Header 
             activeSection={activeSection}
-            selectedItem={null}
-            onBack={null}
+            selectedItem={selectedEquipoId}
+            onBack={selectedEquipoId ? handleBackToEquipos : null}
           />
 
           {/* Contenido del Dashboard */}
@@ -561,18 +656,155 @@ function UserDashboard() {
                   <div className="card-header bg-primary text-white">
                     <h6 className="m-0 font-weight-bold">
                       <i className="bi bi-people me-2"></i>
-                      Equipos del Evento
+                      Mi Equipo
                     </h6>
                   </div>
                   <div className="card-body">
-                    <p className="text-muted">
-                      Aquí puedes ver información sobre los equipos participantes en el evento.
-                      Esta funcionalidad estará disponible próximamente.
-                    </p>
+                    {userEquipo.loading ? (
+                      <div className="text-center py-4">
+                        <div
+                          className="spinner-border text-primary"
+                          role="status"
+                        >
+                          <span className="visually-hidden">Cargando...</span>
+                        </div>
+                        <p className="mt-2 text-muted">
+                          Cargando información del equipo...
+                        </p>
+                      </div>
+                    ) : userEquipo.error ? (
+                      <div className="alert alert-warning" role="alert">
+                        <i className="bi bi-exclamation-triangle me-2"></i>
+                        <strong>Información:</strong> {userEquipo.error}
+                        <br />
+                        <small className="text-muted">
+                          Si crees que esto es un error, contacta al administrador.
+                        </small>
+                      </div>
+                    ) : userEquipo.equipo ? (
+                      <div className="row">
+                        <div className="col-md-8">
+                          <h5 className="fw-bold text-dark mb-3">
+                            {userEquipo.equipo.nombre_equipo}
+                          </h5>
+                          <div className="row g-3">
+                            <div className="col-md-6">
+                              <label className="form-label fw-semibold text-dark mb-1">
+                                Entidad Federativa
+                              </label>
+                              <p className="mb-2">
+                                <i className="bi bi-geo-alt me-1 text-muted"></i>
+                                {userEquipo.equipo.entidad_federativa}
+                              </p>
+                            </div>
+                            <div className="col-md-6">
+                              <label className="form-label fw-semibold text-dark mb-1">
+                                Estatus
+                              </label>
+                              <div className="mb-2">
+                                <span className={`badge ${
+                                  userEquipo.equipo.estatus_del_equipo === 'activo' ? 'bg-success' : 
+                                  userEquipo.equipo.estatus_del_equipo === 'inactivo' ? 'bg-secondary' : 'bg-warning'
+                                }`}>
+                                  {userEquipo.equipo.estatus_del_equipo}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="col-md-6">
+                              <label className="form-label fw-semibold text-dark mb-1">
+                                Anfitrión
+                              </label>
+                              <p className="mb-2">
+                                <i className="bi bi-person me-1 text-muted"></i>
+                                {userEquipo.equipo.nombre_anfitrion}
+                              </p>
+                            </div>
+                            <div className="col-md-6">
+                              <label className="form-label fw-semibold text-dark mb-1">
+                                Teléfono
+                              </label>
+                              <p className="mb-2">
+                                <i className="bi bi-telephone me-1 text-muted"></i>
+                                {userEquipo.equipo.telefono_anfitrion}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-4">
+                          <div className="text-center">
+                            <div className="mb-3">
+                              <i className="bi bi-people-fill" style={{ fontSize: "4rem", color: "var(--primary-color)" }}></i>
+                            </div>
+                            <h6 className="fw-bold text-dark">Estadísticas del Equipo</h6>
+                            <div className="row g-2 text-center">
+                              <div className="col-6">
+                                <div className="border rounded p-2">
+                                  <div className="fw-bold text-primary fs-5">
+                                    {userEquipo.equipo.participantes?.length || 0}
+                                  </div>
+                                  <small className="text-muted">Participantes</small>
+                                </div>
+                              </div>
+                              <div className="col-6">
+                                <div className="border rounded p-2">
+                                  <div className="fw-bold text-success fs-5">
+                                    {userEquipo.equipo.acompanantes?.length || 0}
+                                  </div>
+                                  <small className="text-muted">Acompañantes</small>
+                                </div>
+                              </div>
+                              <div className="col-6">
+                                <div className="border rounded p-2">
+                                  <div className="fw-bold text-info fs-5">
+                                    {userEquipo.equipo.recetas?.length || 0}
+                                  </div>
+                                  <small className="text-muted">Recetas</small>
+                                </div>
+                              </div>
+                              <div className="col-6">
+                                <div className="border rounded p-2">
+                                  <div className="fw-bold text-warning fs-5">
+                                    {userEquipo.equipo.cedulas_registro?.length || 0}
+                                  </div>
+                                  <small className="text-muted">Cédulas</small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row mt-3">
+                          <div className="col-12 text-center">
+                            <button 
+                              className="btn btn-primary"
+                              onClick={() => setSelectedEquipoId(userEquipo.equipo.id)}
+                            >
+                              <i className="bi bi-eye me-2"></i>
+                              Ver Detalles Completos del Equipo
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-center py-4">
+                        <i className="bi bi-people fs-1 text-muted mb-3 d-block opacity-50"></i>
+                        <p className="text-muted mb-0">
+                          No se encontró información del equipo
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
+          )}
+
+          {/* Detalle Completo del Equipo */}
+          {activeSection === "equipos" && selectedEquipoId && (
+            <UserEquipoDetalle
+              equipoId={selectedEquipoId}
+              onBack={handleBackToEquipos}
+              embedded={true}
+            />
           )}
 
           {/* Contenido de Participantes */}
