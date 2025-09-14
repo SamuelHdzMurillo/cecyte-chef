@@ -242,46 +242,46 @@ const LugarDetalle = ({ lugarId, onBack, embedded = false }) => {
   }
 
   return (
-    <div
-      className={embedded ? "lugar-detalle-embedded" : "container-fluid py-4"}
-    >
-      {/* Header */}
-      <div className="row mb-4">
-        <div className="col-12">
+    <div className={`lugar-detalle-container ${embedded ? 'embedded' : ''}`}>
+      {/* Header principal */}
+      <div className="card border-0 shadow-sm mb-3">
+        <div className="card-header bg-primary text-white border-0 py-2">
           <div className="d-flex justify-content-between align-items-center">
             <div>
-              <h2 className="mb-1 fw-bold text-primary">
-                <i className="bi bi-geo-alt me-2"></i>
-                {lugar.nombre}
-              </h2>
-              <p className="text-muted mb-0">
-                Información completa del lugar de interés
+              <h4 className="mb-1 fw-bold">
+                <i className="bi bi-geo-alt me-3"></i>
+                Detalles del Lugar: {lugar.nombre}
+              </h4>
+              <p className="mb-0 opacity-75">
+                Información completa y edición del lugar de interés
               </p>
             </div>
             <div className="d-flex gap-2">
-              {!editMode && (
-                <button
-                  className="btn btn-primary px-4 py-2"
+              <button 
+                className="btn btn-light px-4 py-2"
+                onClick={handleBack}
+              >
+                <i className="bi bi-arrow-left me-2"></i>
+                Volver
+              </button>
+              {!editMode ? (
+                <button 
+                  className="btn btn-warning px-4 py-2"
                   onClick={() => setEditMode(true)}
                 >
                   <i className="bi bi-pencil me-2"></i>
                   Editar
                 </button>
-              )}
-              {editMode && (
+              ) : (
                 <>
-                  <button
+                  <button 
                     className="btn btn-success px-4 py-2"
                     onClick={handleSave}
                     disabled={saving}
                   >
                     {saving ? (
                       <>
-                        <span
-                          className="spinner-border spinner-border-sm me-2"
-                          role="status"
-                          aria-hidden="true"
-                        ></span>
+                        <span className="spinner-border spinner-border-sm me-2" role="status"></span>
                         Guardando...
                       </>
                     ) : (
@@ -291,7 +291,7 @@ const LugarDetalle = ({ lugarId, onBack, embedded = false }) => {
                       </>
                     )}
                   </button>
-                  <button
+                  <button 
                     className="btn btn-secondary px-4 py-2"
                     onClick={handleCancel}
                     disabled={saving}
@@ -320,36 +320,26 @@ const LugarDetalle = ({ lugarId, onBack, embedded = false }) => {
             <div className="card-body py-3">
               <div className="row g-3">
                 <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-2">
-                    Nombre del Lugar
-                  </label>
+                  <label className="form-label fw-semibold text-dark mb-2">Nombre del Lugar</label>
                   {editMode ? (
                     <input
                       type="text"
                       className="form-control"
-                      value={lugar.nombre || ""}
-                      onChange={(e) =>
-                        handleInputChange("nombre", e.target.value)
-                      }
+                      value={lugar.nombre || ''}
+                      onChange={(e) => handleInputChange('nombre', e.target.value)}
                     />
                   ) : (
-                    <p className="mb-0 fs-6 fw-bold text-primary">
-                      {lugar.nombre}
-                    </p>
+                    <p className="mb-0 fs-6 fw-bold text-primary">{lugar.nombre}</p>
                   )}
                 </div>
                 <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-2">
-                    Dirección
-                  </label>
+                  <label className="form-label fw-semibold text-dark mb-2">Dirección</label>
                   {editMode ? (
                     <textarea
                       className="form-control"
                       rows="2"
-                      value={lugar.direccion || ""}
-                      onChange={(e) =>
-                        handleInputChange("direccion", e.target.value)
-                      }
+                      value={lugar.direccion || ''}
+                      onChange={(e) => handleInputChange('direccion', e.target.value)}
                     />
                   ) : (
                     <p className="mb-0 fs-6">
@@ -359,17 +349,13 @@ const LugarDetalle = ({ lugarId, onBack, embedded = false }) => {
                   )}
                 </div>
                 <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-2">
-                    Descripción
-                  </label>
+                  <label className="form-label fw-semibold text-dark mb-2">Descripción</label>
                   {editMode ? (
                     <textarea
                       className="form-control"
                       rows="3"
-                      value={lugar.descripcion || ""}
-                      onChange={(e) =>
-                        handleInputChange("descripcion", e.target.value)
-                      }
+                      value={lugar.descripcion || ''}
+                      onChange={(e) => handleInputChange('descripcion', e.target.value)}
                       placeholder="Descripción del lugar de interés"
                     />
                   ) : (
@@ -379,27 +365,19 @@ const LugarDetalle = ({ lugarId, onBack, embedded = false }) => {
                   )}
                 </div>
                 <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-2">
-                    Estatus
-                  </label>
+                  <label className="form-label fw-semibold text-dark mb-2">Estatus</label>
                   {editMode ? (
                     <select
                       className="form-control"
-                      value={lugar.estatus || "activo"}
-                      onChange={(e) =>
-                        handleInputChange("estatus", e.target.value)
-                      }
+                      value={lugar.estatus || 'activo'}
+                      onChange={(e) => handleInputChange('estatus', e.target.value)}
                     >
                       <option value="activo">Activo</option>
                       <option value="inactivo">Inactivo</option>
                     </select>
                   ) : (
                     <p className="mb-0 fs-6">
-                      <span
-                        className={`badge bg-${getEstatusBadgeColor(
-                          lugar.estatus
-                        )}`}
-                      >
+                      <span className={`badge bg-${getEstatusBadgeColor(lugar.estatus)}`}>
                         {getEstatusDisplayName(lugar.estatus)}
                       </span>
                     </p>
@@ -409,7 +387,7 @@ const LugarDetalle = ({ lugarId, onBack, embedded = false }) => {
             </div>
           </div>
 
-          {/* Información de Contacto */}
+          {/* Información Web */}
           <div className="card mb-3 shadow-sm border-0">
             <div className="card-header bg-light border-0 py-2">
               <h6 className="mb-0 fw-bold text-success">
@@ -420,15 +398,13 @@ const LugarDetalle = ({ lugarId, onBack, embedded = false }) => {
             <div className="card-body py-3">
               <div className="row g-3">
                 <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-2">
-                    Sitio Web
-                  </label>
+                  <label className="form-label fw-semibold text-dark mb-2">Sitio Web</label>
                   {editMode ? (
                     <input
                       type="url"
                       className="form-control"
-                      value={lugar.web || ""}
-                      onChange={(e) => handleInputChange("web", e.target.value)}
+                      value={lugar.web || ''}
+                      onChange={(e) => handleInputChange('web', e.target.value)}
                       placeholder="https://ejemplo.com"
                     />
                   ) : (
@@ -465,79 +441,33 @@ const LugarDetalle = ({ lugarId, onBack, embedded = false }) => {
               </h6>
             </div>
             <div className="card-body py-3">
-              <div className="row g-2">
-                <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-1">
-                    ID del Lugar
-                  </label>
-                  <p className="mb-2 fs-6">
-                    <span className="badge bg-secondary">#{lugar.id}</span>
-                  </p>
-                </div>
-                <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-1">
-                    Estatus
-                  </label>
-                  <p className="mb-2 fs-6">
-                    <span
-                      className={`badge bg-${getEstatusBadgeColor(
-                        lugar.estatus
-                      )}`}
-                    >
-                      {getEstatusDisplayName(lugar.estatus)}
-                    </span>
-                  </p>
-                </div>
-                <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-1">
-                    Fecha de Registro
-                  </label>
-                  <p className="mb-2 fs-6">
-                    <i className="bi bi-calendar-plus me-1 text-muted"></i>
-                    {formatDate(lugar.created_at)}
-                  </p>
-                </div>
-                <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-1">
-                    Última Actualización
-                  </label>
-                  <p className="mb-0 fs-6">
-                    <i className="bi bi-calendar-check me-1 text-muted"></i>
-                    {formatDate(lugar.updated_at)}
-                  </p>
-                </div>
+              <div className="mb-3">
+                <label className="form-label fw-semibold text-dark mb-1">ID del Lugar</label>
+                <p className="mb-0 fs-6">
+                  <span className="badge bg-secondary fs-6 px-3 py-2">#{lugar.id}</span>
+                </p>
               </div>
-            </div>
-          </div>
-
-          {/* Acciones Rápidas */}
-          <div className="card mb-3 shadow-sm border-0">
-            <div className="card-header bg-light border-0 py-2">
-              <h6 className="mb-0 fw-bold text-info">
-                <i className="bi bi-lightning me-2"></i>
-                Acciones Rápidas
-              </h6>
-            </div>
-            <div className="card-body py-3">
-              <div className="d-grid gap-2">
-                {lugar.web && (
-                  <a
-                    href={lugar.web}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-info btn-sm"
-                  >
-                    <i className="bi bi-globe me-2"></i>
-                    Visitar Sitio Web
-                  </a>
-                )}
-                <button
-                  className="btn btn-outline-secondary btn-sm"
-                  onClick={handleBack}
-                >
-                  <i className="bi bi-arrow-left me-2"></i>
-                  Volver al Dashboard
-                </button>
+              <div className="mb-3">
+                <label className="form-label fw-semibold text-dark mb-1">Estatus</label>
+                <p className="mb-0 fs-6">
+                  <span className={`badge bg-${getEstatusBadgeColor(lugar.estatus)} fs-6 px-3 py-2`}>
+                    {getEstatusDisplayName(lugar.estatus)}
+                  </span>
+                </p>
+              </div>
+              <div className="mb-3">
+                <label className="form-label fw-semibold text-dark mb-1">Fecha de Creación</label>
+                <p className="mb-0 fs-6">
+                  <i className="bi bi-calendar-plus me-1 text-muted"></i>
+                  {formatDate(lugar.created_at)}
+                </p>
+              </div>
+              <div>
+                <label className="form-label fw-semibold text-dark mb-1">Última Actualización</label>
+                <p className="mb-0 fs-6">
+                  <i className="bi bi-calendar-check me-1 text-muted"></i>
+                  {formatDate(lugar.updated_at)}
+                </p>
               </div>
             </div>
           </div>

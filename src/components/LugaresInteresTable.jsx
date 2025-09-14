@@ -339,17 +339,12 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
               Gestión de Lugares de Interés
             </h5>
             <button
-              className="btn"
-              style={{
-                backgroundColor: "white",
-                borderColor: "white",
-                color: "var(--primary-color)",
-              }}
+              className="btn btn-light btn-sm"
               onClick={handleRefresh}
               disabled={loading}
+              title="Actualizar datos"
             >
-              <i className="bi bi-arrow-clockwise me-2"></i>
-              Actualizar
+              <i className="bi bi-arrow-clockwise"></i>
             </button>
           </div>
         </div>
@@ -384,17 +379,12 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
                 Nuevo Lugar
               </button>
               <button
-                className="btn"
-                style={{
-                  backgroundColor: "white",
-                  borderColor: "white",
-                  color: "var(--primary-color)",
-                }}
+                className="btn btn-light btn-sm"
                 onClick={handleRefresh}
                 disabled={loading}
+                title="Actualizar datos"
               >
-                <i className="bi bi-arrow-clockwise me-2"></i>
-                {loading ? "Cargando..." : "Actualizar"}
+                <i className="bi bi-arrow-clockwise"></i>
               </button>
             </div>
           </div>
@@ -567,14 +557,9 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
                         </div>
                       </td>
                       <td>
-                        <div className="btn-group" role="group">
+                        <div className="event-actions">
                           <button
                             className="btn btn-sm"
-                            style={{
-                              backgroundColor: "var(--primary-color)",
-                              borderColor: "var(--primary-color)",
-                              color: "white",
-                            }}
                             title="Ver detalles"
                             onClick={() => handleViewLugar(lugar)}
                           >

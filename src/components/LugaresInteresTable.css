@@ -359,3 +359,41 @@ a:hover {
 .card:hover {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
+
+/* Estilos para los botones de acción */
+.event-actions {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.event-actions .btn {
+  padding: 0.35rem;
+  font-size: 0.8rem;
+  border-radius: var(--border-radius-sm);
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.event-actions .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  background-color: #5a6268 !important;
+  border-color: #5a6268 !important;
+}
+
+/* Estilos para el botón de actualizar */
+.lugares-interes-table .btn-light {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.lugares-interes-table .btn-light:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  transform: rotate(180deg);
+}
