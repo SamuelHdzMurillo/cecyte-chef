@@ -327,19 +327,20 @@ const HospedajesTable = ({ onHospedajeSelect }) => {
             </div>
             <div className="d-flex gap-2">
               <button 
-                className="btn btn-success btn-sm"
+                className="btn btn-outline-light"
                 onClick={handleShowModal}
                 title="Agregar nuevo hospedaje"
               >
-                <i className="bi bi-plus-lg me-1"></i>
+                <i className="bi bi-plus-circle me-2"></i>
                 Nuevo Hospedaje
               </button>
               <button 
-                className="btn btn-light btn-sm"
+                className="btn btn-outline-light"
                 onClick={handleRefresh}
                 title="Actualizar datos"
               >
-                <i className="bi bi-arrow-clockwise"></i>
+                <i className="bi bi-arrow-clockwise me-2"></i>
+                Actualizar
               </button>
             </div>
           </div>

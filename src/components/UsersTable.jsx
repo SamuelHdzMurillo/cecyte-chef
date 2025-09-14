@@ -468,7 +468,7 @@ const UsersTable = () => {
               Gestión de Usuarios
             </h5>
             <div className="d-flex gap-2">
-              <button className="btn btn-secondary" onClick={openCreateModal}>
+              <button className="btn btn-outline-light" onClick={openCreateModal}>
                 <i className="bi bi-plus-circle me-2"></i>
                 Nuevo Usuario
               </button>

@@ -339,12 +339,13 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
               Gestión de Lugares de Interés
             </h5>
             <button
-              className="btn btn-light btn-sm"
+              className="btn btn-outline-light"
               onClick={handleRefresh}
               disabled={loading}
               title="Actualizar datos"
             >
-              <i className="bi bi-arrow-clockwise"></i>
+              <i className="bi bi-arrow-clockwise me-2"></i>
+              Actualizar
             </button>
           </div>
         </div>
@@ -374,17 +375,18 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
               Gestión de Lugares de Interés
             </h5>
             <div className="d-flex gap-2">
-              <button className="btn btn-success" onClick={openCreateModal}>
+              <button className="btn btn-outline-light" onClick={openCreateModal}>
                 <i className="bi bi-plus-circle me-2"></i>
                 Nuevo Lugar
               </button>
               <button
-                className="btn btn-light btn-sm"
+                className="btn btn-outline-light"
                 onClick={handleRefresh}
                 disabled={loading}
                 title="Actualizar datos"
               >
-                <i className="bi bi-arrow-clockwise"></i>
+                <i className="bi bi-arrow-clockwise me-2"></i>
+                Actualizar
               </button>
             </div>
           </div>
