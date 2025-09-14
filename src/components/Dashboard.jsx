@@ -8,6 +8,7 @@ import ComiteDetalle from "./ComiteDetalle.jsx";
 import EquiposTable from "./EquiposTable.jsx";
 import EquipoDetalle from "./EquipoDetalle.jsx";
 import HospedajesTable from "./HospedajesTable.jsx";
+import HospedajeDetalle from "./HospedajeDetalle.jsx";
 import ParticipantesTable from "./ParticipantesTable.jsx";
 import RestaurantesTable from "./RestaurantesTable.jsx";
 import RestauranteDetalle from "./RestauranteDetalle.jsx";
@@ -25,6 +26,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [selectedEquipoId, setSelectedEquipoId] = useState(null);
   const [selectedRestauranteId, setSelectedRestauranteId] = useState(null);
+  const [selectedHospedajeId, setSelectedHospedajeId] = useState(null);
   const [selectedComiteId, setSelectedComiteId] = useState(null);
   const [selectedLugarId, setSelectedLugarId] = useState(null);
 
@@ -235,6 +237,7 @@ function Dashboard() {
     setActiveSection(section);
     setSelectedEquipoId(null); // Limpiar equipo seleccionado al cambiar sección
     setSelectedRestauranteId(null); // Limpiar restaurante seleccionado al cambiar sección
+    setSelectedHospedajeId(null); // Limpiar hospedaje seleccionado al cambiar sección
     setSelectedComiteId(null); // Limpiar comité seleccionado al cambiar sección
     setSelectedLugarId(null); // Limpiar lugar seleccionado al cambiar sección
     // En móviles, cerrar el sidebar después de seleccionar una sección
@@ -257,6 +260,14 @@ function Dashboard() {
 
   const handleBackToRestaurantes = () => {
     setSelectedRestauranteId(null);
+  };
+
+  const handleHospedajeSelect = (hospedajeId) => {
+    setSelectedHospedajeId(hospedajeId);
+  };
+
+  const handleBackToHospedajes = () => {
+    setSelectedHospedajeId(null);
   };
 
   const handleComiteSelect = (comiteId) => {
@@ -1051,7 +1062,18 @@ function Dashboard() {
           )}
 
           {/* Contenido de Hospedajes */}
-          {activeSection === "hospedajes" && <HospedajesTable />}
+          {activeSection === "hospedajes" && !selectedHospedajeId && (
+            <HospedajesTable onHospedajeSelect={handleHospedajeSelect} />
+          )}
+
+          {/* Detalle del Hospedaje */}
+          {activeSection === "hospedajes" && selectedHospedajeId && (
+            <HospedajeDetalle
+              hospedajeId={selectedHospedajeId}
+              onBack={handleBackToHospedajes}
+              embedded={true}
+            />
+          )}
 
           {/* Contenido de Usuarios */}
           {activeSection === "usuarios" && <UsersTable />}

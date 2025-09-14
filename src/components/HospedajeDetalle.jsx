@@ -1,33 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
 import apiService from '../services/apiService.js'
 import authService from '../services/authService.js'
 import './HospedajeDetalle.css'
 
 const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
-  const { id } = useParams()
-  const navigate = useNavigate()
   const [hospedaje, setHospedaje] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [editMode, setEditMode] = useState(false)
   const [saving, setSaving] = useState(false)
 
-  // Usar hospedajeId si viene como prop, sino usar el id de la URL
-  const currentId = hospedajeId || id
-
   useEffect(() => {
-    if (currentId) {
+    if (hospedajeId) {
       fetchHospedaje()
     }
-  }, [currentId])
+  }, [hospedajeId])
 
   const fetchHospedaje = async () => {
     try {
       setLoading(true)
       const token = authService.getToken()
       
-      const response = await apiService.get(`/hospedajes/${currentId}`, token)
+      const response = await apiService.get(`/hospedajes/${hospedajeId}`, token)
       
       if (response.data) {
         setHospedaje(response.data)
@@ -47,7 +41,7 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
     if (embedded && onBack) {
       onBack()
     } else {
-      navigate('/dashboard')
+      window.history.back()
     }
   }
 
@@ -66,7 +60,7 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
       
       console.log('Datos a enviar para actualizar hospedaje:', dataToSend)
       
-      const response = await apiService.put(`/hospedajes/${currentId}`, dataToSend, token)
+      const response = await apiService.put(`/hospedajes/${hospedajeId}`, dataToSend, token)
       
       console.log('Respuesta del servidor:', response)
       
@@ -111,110 +105,74 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
     fetchHospedaje() // Recargar datos originales
   }
 
-  const handleInputChange = (field, value) => {
-    setHospedaje(prev => ({
-      ...prev,
-      [field]: value
-    }))
-  }
-
   const formatDate = (dateString) => {
-    if (!dateString) return 'N/A'
-    try {
-      const date = new Date(dateString)
-      return date.toLocaleDateString('es-ES', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      })
-    } catch (error) {
-      return 'Fecha inválida'
-    }
+    if (!dateString) return '-'
+    const date = new Date(dateString)
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
   }
 
   if (loading) {
     return (
-      <div className="hospedaje-detalle-container">
-        <div className="text-center py-5">
-          <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
-            <span className="visually-hidden">Cargando...</span>
-          </div>
-          <p className="mt-3">Cargando detalles del hospedaje...</p>
+      <div className="text-center py-5">
+        <div className="spinner-border" style={{color: 'var(--primary-color)'}} role="status">
+          <span className="visually-hidden">Cargando...</span>
         </div>
+        <p className="mt-3">Cargando detalles del hospedaje...</p>
       </div>
     )
   }
 
-  if (error) {
+  if (error || !hospedaje) {
     return (
-      <div className="hospedaje-detalle-container">
-        <div className="card">
-          <div className="card-body text-center py-5">
-            <div className="text-danger mb-3">
-              <i className="bi bi-exclamation-triangle fs-1"></i>
-            </div>
-            <h5 className="text-danger">{error}</h5>
-            <button 
-              className="btn btn-primary mt-3"
-              onClick={handleBack}
-            >
-              <i className="bi bi-arrow-left me-2"></i>
-              Volver al Dashboard
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (!hospedaje) {
-    return (
-      <div className="hospedaje-detalle-container">
-        <div className="card">
-          <div className="card-body text-center py-5">
-            <div className="text-muted mb-3">
-              <i className="bi bi-question-circle fs-1"></i>
-            </div>
-            <h5 className="text-muted">Hospedaje no encontrado</h5>
-            <button 
-              className="btn btn-primary mt-3"
-              onClick={handleBack}
-            >
-              <i className="bi bi-arrow-left me-2"></i>
-              Volver al Dashboard
-            </button>
-          </div>
-        </div>
+      <div className="alert alert-danger" role="alert">
+        <h4 className="alert-heading">Error al cargar hospedaje</h4>
+        <p>{error}</p>
+        <button className="btn btn-danger" onClick={handleBack}>
+          <i className="bi bi-arrow-left me-2"></i>
+          Volver
+        </button>
       </div>
     )
   }
 
   return (
-    <div className={embedded ? "hospedaje-detalle-embedded" : "container-fluid py-4"}>
-      {/* Header */}
-      <div className="row mb-4">
-        <div className="col-12">
+    <div className={`hospedaje-detalle-container ${embedded ? 'embedded' : ''}`}>
+      {/* Header principal */}
+      <div className="card border-0 shadow-sm mb-3">
+        <div className="card-header bg-primary text-white border-0 py-2">
           <div className="d-flex justify-content-between align-items-center">
             <div>
-              <h2 className="mb-1 fw-bold text-primary">
-                <i className="bi bi-building me-2"></i>
-                {hospedaje.nombre}
-              </h2>
-              <p className="text-muted mb-0">Información completa del hospedaje</p>
+              <h4 className="mb-1 fw-bold">
+                <i className="bi bi-building me-3"></i>
+                Detalles del Hospedaje: {hospedaje.nombre}
+              </h4>
+              <p className="mb-0 opacity-75">
+                Información completa y edición del hospedaje
+              </p>
             </div>
             <div className="d-flex gap-2">
-              {!editMode && (
+              <button 
+                className="btn btn-light px-4 py-2"
+                onClick={handleBack}
+              >
+                <i className="bi bi-arrow-left me-2"></i>
+                Volver
+              </button>
+              {!editMode ? (
                 <button 
-                  className="btn btn-primary px-4 py-2"
+                  className="btn btn-warning px-4 py-2"
                   onClick={() => setEditMode(true)}
                 >
                   <i className="bi bi-pencil me-2"></i>
                   Editar
                 </button>
-              )}
-              {editMode && (
+              ) : (
                 <>
                   <button 
                     className="btn btn-success px-4 py-2"
@@ -223,7 +181,7 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
                   >
                     {saving ? (
                       <>
-                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        <span className="spinner-border spinner-border-sm me-2" role="status"></span>
                         Guardando...
                       </>
                     ) : (
@@ -268,7 +226,7 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
                       type="text"
                       className="form-control"
                       value={hospedaje.nombre || ''}
-                      onChange={(e) => handleInputChange('nombre', e.target.value)}
+                      onChange={(e) => setHospedaje({...hospedaje, nombre: e.target.value})}
                     />
                   ) : (
                     <p className="mb-0 fs-6 fw-bold text-primary">{hospedaje.nombre}</p>
@@ -281,7 +239,7 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
                       className="form-control"
                       rows="2"
                       value={hospedaje.direccion || ''}
-                      onChange={(e) => handleInputChange('direccion', e.target.value)}
+                      onChange={(e) => setHospedaje({...hospedaje, direccion: e.target.value})}
                     />
                   ) : (
                     <p className="mb-0 fs-6">
@@ -311,17 +269,12 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
                       type="tel"
                       className="form-control"
                       value={hospedaje.numero_telefonico || ''}
-                      onChange={(e) => handleInputChange('numero_telefonico', e.target.value)}
+                      onChange={(e) => setHospedaje({...hospedaje, numero_telefonico: e.target.value})}
                     />
                   ) : (
                     <p className="mb-0 fs-6">
                       <i className="bi bi-telephone me-1 text-muted"></i>
-                      <a 
-                        href={`tel:${hospedaje.numero_telefonico}`}
-                        className="text-decoration-none"
-                      >
-                        {hospedaje.numero_telefonico}
-                      </a>
+                      {hospedaje.numero_telefonico}
                     </p>
                   )}
                 </div>
@@ -332,17 +285,12 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
                       type="email"
                       className="form-control"
                       value={hospedaje.correo || ''}
-                      onChange={(e) => handleInputChange('correo', e.target.value)}
+                      onChange={(e) => setHospedaje({...hospedaje, correo: e.target.value})}
                     />
                   ) : (
                     <p className="mb-0 fs-6">
                       <i className="bi bi-envelope me-1 text-muted"></i>
-                      <a 
-                        href={`mailto:${hospedaje.correo}`}
-                        className="text-decoration-none"
-                      >
-                        {hospedaje.correo}
-                      </a>
+                      {hospedaje.correo}
                     </p>
                   )}
                 </div>
@@ -362,62 +310,25 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
               </h6>
             </div>
             <div className="card-body py-3">
-              <div className="row g-2">
-                <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-1">ID del Hospedaje</label>
-                  <p className="mb-2 fs-6">
-                    <span className="badge bg-secondary">#{hospedaje.id}</span>
-                  </p>
-                </div>
-                <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-1">Fecha de Registro</label>
-                  <p className="mb-2 fs-6">
-                    <i className="bi bi-calendar-plus me-1 text-muted"></i>
-                    {formatDate(hospedaje.created_at)}
-                  </p>
-                </div>
-                <div className="col-12">
-                  <label className="form-label fw-semibold text-dark mb-1">Última Actualización</label>
-                  <p className="mb-0 fs-6">
-                    <i className="bi bi-calendar-check me-1 text-muted"></i>
-                    {formatDate(hospedaje.updated_at)}
-                  </p>
-                </div>
+              <div className="mb-3">
+                <label className="form-label fw-semibold text-dark mb-1">ID del Hospedaje</label>
+                <p className="mb-0 fs-6">
+                  <span className="badge bg-secondary fs-6 px-3 py-2">#{hospedaje.id}</span>
+                </p>
               </div>
-            </div>
-          </div>
-
-          {/* Acciones Rápidas */}
-          <div className="card mb-3 shadow-sm border-0">
-            <div className="card-header bg-light border-0 py-2">
-              <h6 className="mb-0 fw-bold text-info">
-                <i className="bi bi-lightning me-2"></i>
-                Acciones Rápidas
-              </h6>
-            </div>
-            <div className="card-body py-3">
-              <div className="d-grid gap-2">
-                <a 
-                  href={`tel:${hospedaje.numero_telefonico}`}
-                  className="btn btn-success btn-sm"
-                >
-                  <i className="bi bi-telephone me-2"></i>
-                  Llamar
-                </a>
-                <a 
-                  href={`mailto:${hospedaje.correo}`}
-                  className="btn btn-info btn-sm"
-                >
-                  <i className="bi bi-envelope me-2"></i>
-                  Enviar Email
-                </a>
-                <button 
-                  className="btn btn-outline-secondary btn-sm"
-                  onClick={handleBack}
-                >
-                  <i className="bi bi-arrow-left me-2"></i>
-                  Volver al Dashboard
-                </button>
+              <div className="mb-3">
+                <label className="form-label fw-semibold text-dark mb-1">Fecha de Creación</label>
+                <p className="mb-0 fs-6">
+                  <i className="bi bi-calendar-plus me-1 text-muted"></i>
+                  {formatDate(hospedaje.created_at)}
+                </p>
+              </div>
+              <div>
+                <label className="form-label fw-semibold text-dark mb-1">Última Actualización</label>
+                <p className="mb-0 fs-6">
+                  <i className="bi bi-calendar-check me-1 text-muted"></i>
+                  {formatDate(hospedaje.updated_at)}
+                </p>
               </div>
             </div>
           </div>

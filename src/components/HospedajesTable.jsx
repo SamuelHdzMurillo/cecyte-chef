@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import apiService from '../services/apiService.js'
 import authService from '../services/authService.js'
 import './HospedajesTable.css'
 
-const HospedajesTable = () => {
-  const navigate = useNavigate()
+const HospedajesTable = ({ onHospedajeSelect }) => {
   const [hospedajes, setHospedajes] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -242,7 +240,9 @@ const HospedajesTable = () => {
   }
 
   const handleViewDetails = (hospedajeId) => {
-    navigate(`/hospedajes/${hospedajeId}`)
+    if (onHospedajeSelect) {
+      onHospedajeSelect(hospedajeId)
+    }
   }
 
   const filteredHospedajes = hospedajes.filter(hospedaje => {
@@ -489,11 +489,11 @@ const HospedajesTable = () => {
                         </small>
                       </td>
                       <td>
-                        <div className="btn-group btn-group-sm">
+                        <div className="event-actions">
                           <button
-                            className="btn btn-outline-primary"
-                            onClick={() => handleViewDetails(hospedaje.id)}
+                            className="btn btn-sm"
                             title="Ver detalles"
+                            onClick={() => handleViewDetails(hospedaje.id)}
                           >
                             <i className="bi bi-eye"></i>
                           </button>

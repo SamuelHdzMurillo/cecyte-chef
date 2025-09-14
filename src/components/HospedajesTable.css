@@ -3,7 +3,7 @@
   padding: 15px;
   background-color: var(--bg-secondary);
   min-height: 100vh;
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -328,4 +328,29 @@
   .modal-footer .btn:last-child {
     margin-bottom: 0;
   }
+}
+
+/* Acciones de la tabla */
+.event-actions {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.event-actions .btn {
+  padding: 0.35rem;
+  font-size: 0.8rem;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition);
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  color: white !important;
+}
+
+.event-actions .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  background-color: #5a6268 !important;
+  border-color: #5a6268 !important;
+  color: white !important;
 }
