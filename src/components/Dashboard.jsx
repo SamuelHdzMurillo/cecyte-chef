@@ -15,6 +15,7 @@ import RestauranteDetalle from "./RestauranteDetalle.jsx";
 import LugaresInteresTable from "./LugaresInteresTable.jsx";
 import LugarDetalle from "./LugarDetalle.jsx";
 import BuzonAsistenciaTable from "./BuzonAsistenciaTable.jsx";
+import Header from "./Header.jsx";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -570,10 +571,25 @@ function Dashboard() {
         }`}
       >
         <div className="main-content">
-          {/* Título de la sección */}
-          <div className="d-flex justify-content-between align-items-center mb-4">
-            <h2 className="h3 mb-0">{getSectionTitle()}</h2>
-          </div>
+          {/* Header con breadcrumb */}
+          <Header 
+            activeSection={activeSection}
+            selectedItem={
+              selectedEquipoId || 
+              selectedRestauranteId || 
+              selectedHospedajeId || 
+              selectedComiteId || 
+              selectedLugarId
+            }
+            onBack={
+              selectedEquipoId ? handleBackToEquipos :
+              selectedRestauranteId ? handleBackToRestaurantes :
+              selectedHospedajeId ? handleBackToHospedajes :
+              selectedComiteId ? handleBackToComites :
+              selectedLugarId ? handleBackToLugares :
+              null
+            }
+          />
 
           {/* Contenido del Dashboard */}
           {activeSection === "dashboard" && (

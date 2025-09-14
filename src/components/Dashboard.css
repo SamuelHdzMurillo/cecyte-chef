@@ -253,9 +253,23 @@
 
 /* Main Content */
 .main-content {
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 0 2rem 2rem 2rem;
   width: 100%;
   min-height: calc(100vh - 2rem);
+}
+
+/* Header Integration */
+.dashboard-content .main-content {
+  padding-top: 0;
+}
+
+/* Asegurar que el header tenga el fondo blanco correcto */
+.dashboard-header {
+  background: white;
+  border-bottom: 1px solid var(--primary-200);
+  margin: 0 -2rem 2rem -2rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* Cards */
