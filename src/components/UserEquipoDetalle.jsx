@@ -597,53 +597,60 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 <div key={receta.id} className="col-lg-6 col-md-12">
                   <div className="card border-0 shadow-sm h-100">
                     <div
-                      className="card-header text-white border-0 py-2"
+                      className="card-header text-white border-0 py-3"
                       style={{ backgroundColor: "var(--primary-color)" }}
                     >
-                      <strong className="fs-6">
-                        <i className="bi bi-tag me-2"></i>
-                        {receta.tipo_receta}
-                      </strong>
-                    </div>
-                    <div className="card-body">
-                      <h6 className="card-title fw-bold text-dark mb-3">
-                        {receta.descripcion}
-                      </h6>
-                      <div className="mb-3">
-                        <h6 className="fw-semibold text-dark mb-2">
-                          <i className="bi bi-list-ul me-2"></i>
-                          Ingredientes:
-                        </h6>
-                        <p className="text-muted small mb-0">
-                          {receta.ingredientes}
-                        </p>
-                      </div>
-                      <div className="mb-3">
-                        <h6 className="fw-semibold text-dark mb-2">
-                          <i className="bi bi-list-ol me-2"></i>
-                          Preparación:
-                        </h6>
-                        <p className="text-muted small mb-0">
-                          {receta.preparacion?.replace(/\\n/g, '\n')}
-                        </p>
-                      </div>
-                      {receta.observaciones && (
-                        <div className="mb-3">
-                          <h6 className="fw-semibold text-dark mb-2">
-                            <i className="bi bi-chat-square-text me-2"></i>
-                            Observaciones:
-                          </h6>
-                          <p className="text-muted small mb-0">
-                            {receta.observaciones}
-                          </p>
-                        </div>
-                      )}
-                      <div className="mt-auto">
-                        <small className="text-muted">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <strong className="fs-6">
+                          <i className="bi bi-tag me-2"></i>
+                          {receta.tipo_receta}
+                        </strong>
+                        <small className="opacity-75">
                           <i className="bi bi-person me-1"></i>
-                          Creado por: {receta.creado_por}
+                          {receta.creado_por}
                         </small>
                       </div>
+                    </div>
+                    <div className="card-body p-4">
+                      <h5 className="card-title fw-bold text-dark mb-4">
+                        <i className="bi bi-journal-text me-2 text-primary"></i>
+                        {receta.descripcion}
+                      </h5>
+                      <div className="mb-4">
+                        <h6 className="fw-semibold text-dark mb-3 d-flex align-items-center">
+                          <i className="bi bi-list-ul me-2 text-success"></i>
+                          Ingredientes:
+                        </h6>
+                        <div className="bg-light p-3 rounded border-start border-success border-4">
+                          <div className="text-dark" style={{ whiteSpace: 'pre-line', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                            {receta.ingredientes}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mb-4">
+                        <h6 className="fw-semibold text-dark mb-3 d-flex align-items-center">
+                          <i className="bi bi-list-ol me-2 text-info"></i>
+                          Preparación:
+                        </h6>
+                        <div className="bg-light p-3 rounded border-start border-info border-4">
+                          <div className="text-dark" style={{ whiteSpace: 'pre-line', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                            {receta.preparacion?.replace(/\\n/g, '\n')}
+                          </div>
+                        </div>
+                      </div>
+                      {receta.observaciones && (
+                        <div className="mb-4">
+                          <h6 className="fw-semibold text-dark mb-3 d-flex align-items-center">
+                            <i className="bi bi-chat-square-text me-2 text-warning"></i>
+                            Observaciones:
+                          </h6>
+                          <div className="bg-light p-3 rounded border-start border-warning border-4">
+                            <div className="text-dark" style={{ whiteSpace: 'pre-line', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                              {receta.observaciones}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
