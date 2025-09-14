@@ -531,11 +531,17 @@ function Dashboard() {
           <div className="navbar-nav ms-auto">
             <div className="nav-item dropdown">
               <button
-                className="btn btn-link nav-link dropdown-toggle text-white"
+                className="btn btn-link nav-link dropdown-toggle text-white d-flex flex-column align-items-start"
                 type="button"
                 data-bs-toggle="dropdown"
+                style={{ minWidth: "150px", textAlign: "left" }}
               >
-                {user?.name || "Usuario"}
+                <div className="fw-bold">{user?.name || "Usuario"}</div>
+                <small className="opacity-75">
+                  {user?.role === "admin" || user?.role === "administrador" 
+                    ? "Administrador" 
+                    : "Usuario"}
+                </small>
               </button>
               <ul className="dropdown-menu">
                 <li>
