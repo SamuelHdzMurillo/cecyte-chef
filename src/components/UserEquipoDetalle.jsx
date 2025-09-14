@@ -239,136 +239,134 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
         </div>
       </div>
 
-      {/* Formulario de Registro de Equipo */}
-      <div className="team-registration-card mb-4">
-        <div className="team-registration-header">
-          <h5 className="mb-0 fw-bold text-dark d-flex align-items-center">
-            <i className="bi bi-person-circle me-2 text-primary"></i>
+      {/* Formulario de Registro de Equipo - Compacto */}
+      <div className="card mb-3 shadow-sm border-0">
+        <div className="card-header bg-primary text-white border-0 py-2">
+          <h6 className="mb-0 fw-bold">
+            <i className="bi bi-person-circle me-2"></i>
             Registro de mi equipo
-          </h5>
+          </h6>
         </div>
-        <div className="team-registration-body">
-          <div className="team-registration-form">
-            <div className="row g-4">
-              {/* Primera fila */}
-              <div className="col-md-4">
-                <label className="form-label">
-                  Evento al que pertenece
-                </label>
-                <input 
-                  type="text" 
-                  className="form-control form-control-lg" 
-                  value={equipo.evento?.nombre_evento || ""} 
-                  readOnly
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label">
-                  Entidad federativa
-                </label>
-                <input 
-                  type="text" 
-                  className="form-control form-control-lg" 
-                  name="entidad_federativa"
-                  value={isEditing ? formData.entidad_federativa : equipo.entidad_federativa || ""} 
-                  onChange={handleInputChange}
-                  readOnly={!isEditing}
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label">
-                  Estatus del equipo
-                </label>
-                <select 
-                  className="form-select form-select-lg" 
-                  value={equipo.estatus_del_equipo || ""} 
-                  disabled
-                >
-                  <option value={equipo.estatus_del_equipo}>Pendiente</option>
-                </select>
-              </div>
-              
-              {/* Segunda fila */}
-              <div className="col-md-4">
-                <label className="form-label">
-                  Nombre de anfitrión
-                </label>
-                <input 
-                  type="text" 
-                  className="form-control form-control-lg" 
-                  name="nombre_anfitrion"
-                  value={isEditing ? formData.nombre_anfitrion : equipo.nombre_anfitrion || ""} 
-                  onChange={handleInputChange}
-                  readOnly={!isEditing}
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label">
-                  Teléfono del anfitrión
-                </label>
-                <input 
-                  type="text" 
-                  className="form-control form-control-lg" 
-                  name="telefono_anfitrion"
-                  value={isEditing ? formData.telefono_anfitrion : equipo.telefono_anfitrion || ""} 
-                  onChange={handleInputChange}
-                  readOnly={!isEditing}
-                />
-              </div>
-              <div className="col-md-4">
-                <label className="form-label">
-                  Correo del anfitrión
-                </label>
-                <input 
-                  type="email" 
-                  className="form-control form-control-lg" 
-                  name="correo_anfitrion"
-                  value={isEditing ? formData.correo_anfitrion : equipo.correo_anfitrion || ""} 
-                  onChange={handleInputChange}
-                  readOnly={!isEditing}
-                />
-              </div>
-              
-              {/* Tercera fila - Nombre del equipo */}
-              <div className="col-12">
-                <label className="form-label">
-                  Nombre del equipo
-                </label>
-                <input 
-                  type="text" 
-                  className="form-control form-control-lg" 
-                  name="nombre_equipo"
-                  value={isEditing ? formData.nombre_equipo : equipo.nombre_equipo || ""} 
-                  onChange={handleInputChange}
-                  readOnly={!isEditing}
-                />
-              </div>
+        <div className="card-body py-3">
+          <div className="row g-3">
+            {/* Primera fila */}
+            <div className="col-md-4">
+              <label className="form-label small fw-semibold">
+                Evento al que pertenece
+              </label>
+              <input 
+                type="text" 
+                className="form-control form-control-sm" 
+                value={equipo.evento?.nombre_evento || ""} 
+                readOnly
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label small fw-semibold">
+                Entidad federativa
+              </label>
+              <input 
+                type="text" 
+                className="form-control form-control-sm" 
+                name="entidad_federativa"
+                value={isEditing ? formData.entidad_federativa : equipo.entidad_federativa || ""} 
+                onChange={handleInputChange}
+                readOnly={!isEditing}
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label small fw-semibold">
+                Estatus del equipo
+              </label>
+              <select 
+                className="form-select form-select-sm" 
+                value={equipo.estatus_del_equipo || ""} 
+                disabled
+              >
+                <option value={equipo.estatus_del_equipo}>Pendiente</option>
+              </select>
             </div>
             
-            {/* Botones de acción cuando está editando */}
-            {isEditing && (
-              <div className="row mt-4">
-                <div className="col-12 text-center">
-                  <div className="d-flex gap-3 justify-content-center">
-                    <button
-                      className="btn btn-success px-4 py-2"
-                      onClick={handleSave}
-                    >
-                      <i className="bi bi-check-lg me-2"></i>
-                      Guardar Cambios
-                    </button>
-                    <button
-                      className="btn btn-secondary px-4 py-2"
-                      onClick={handleCancel}
-                    >
-                      <i className="bi bi-x-lg me-2"></i>
-                      Cancelar
-                    </button>
-                  </div>
+            {/* Segunda fila */}
+            <div className="col-md-4">
+              <label className="form-label small fw-semibold">
+                Nombre de anfitrión
+              </label>
+              <input 
+                type="text" 
+                className="form-control form-control-sm" 
+                name="nombre_anfitrion"
+                value={isEditing ? formData.nombre_anfitrion : equipo.nombre_anfitrion || ""} 
+                onChange={handleInputChange}
+                readOnly={!isEditing}
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label small fw-semibold">
+                Teléfono del anfitrión
+              </label>
+              <input 
+                type="text" 
+                className="form-control form-control-sm" 
+                name="telefono_anfitrion"
+                value={isEditing ? formData.telefono_anfitrion : equipo.telefono_anfitrion || ""} 
+                onChange={handleInputChange}
+                readOnly={!isEditing}
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label small fw-semibold">
+                Correo del anfitrión
+              </label>
+              <input 
+                type="email" 
+                className="form-control form-control-sm" 
+                name="correo_anfitrion"
+                value={isEditing ? formData.correo_anfitrion : equipo.correo_anfitrion || ""} 
+                onChange={handleInputChange}
+                readOnly={!isEditing}
+              />
+            </div>
+            
+            {/* Tercera fila - Nombre del equipo */}
+            <div className="col-12">
+              <label className="form-label small fw-semibold">
+                Nombre del equipo
+              </label>
+              <input 
+                type="text" 
+                className="form-control form-control-sm" 
+                name="nombre_equipo"
+                value={isEditing ? formData.nombre_equipo : equipo.nombre_equipo || ""} 
+                onChange={handleInputChange}
+                readOnly={!isEditing}
+              />
+            </div>
+          </div>
+          
+          {/* Botones de acción cuando está editando */}
+          {isEditing && (
+            <div className="row mt-3">
+              <div className="col-12 text-center">
+                <div className="d-flex gap-2 justify-content-center">
+                  <button
+                    className="btn btn-success btn-sm px-3 py-1"
+                    onClick={handleSave}
+                  >
+                    <i className="bi bi-check-lg me-1"></i>
+                    Guardar
+                  </button>
+                  <button
+                    className="btn btn-secondary btn-sm px-3 py-1"
+                    onClick={handleCancel}
+                  >
+                    <i className="bi bi-x-lg me-1"></i>
+                    Cancelar
+                  </button>
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
 
