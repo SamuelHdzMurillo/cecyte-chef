@@ -29,6 +29,11 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
     fetchLugares();
   }, []);
 
+  // Efecto para debuggear el estado del modal
+  useEffect(() => {
+    console.log('Estado del modal:', showModal);
+  }, [showModal]);
+
   const fetchLugares = async () => {
     try {
       setLoading(true);
@@ -175,6 +180,20 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
     setFormErrors({});
   };
 
+  const forceCloseModal = () => {
+    console.log('Forzando cierre del modal...');
+    setShowModal(false);
+    setFormData({
+      nombre: "",
+      direccion: "",
+      web: "",
+      estatus: "activo",
+      descripcion: "",
+    });
+    setFormErrors({});
+    setSubmitting(false);
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -221,25 +240,39 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
 
     try {
       const token = authService.getToken();
+      console.log("Enviando datos:", formData);
       const response = await apiService.post(
         "/lugares-interes",
         formData,
         token
       );
+      console.log("Respuesta de la API:", response);
 
-      if (response.success || response.data) {
+      // Verificar diferentes formatos de respuesta
+      if (response && (response.success || response.data || response.id)) {
         // Agregar nuevo lugar
         const newLugar = {
           ...formData,
-          id: response.data?.id || Math.max(...lugares.map((l) => l.id)) + 1,
+          id: response.data?.id || response.id || Math.max(...lugares.map((l) => l.id)) + 1,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         };
         setLugares((prev) => [...prev, newLugar]);
 
-        closeModal();
         // Mostrar mensaje de éxito
         alert("Lugar de interés creado exitosamente");
+        
+        // Cerrar modal inmediatamente
+        forceCloseModal();
+
+        // Respaldo: cerrar modal después de 1 segundo si no se cerró automáticamente
+        setTimeout(() => {
+          console.log('Verificando estado del modal para cierre de respaldo...');
+          forceCloseModal();
+        }, 1000);
+      } else {
+        console.log("Respuesta no válida:", response);
+        alert("Error: Respuesta no válida del servidor");
       }
     } catch (error) {
       console.error("Error al guardar lugar de interés:", error);
