@@ -5,7 +5,6 @@ import authService from "../services/authService.js";
 import UserAddParticipante from "./UserAddParticipante.jsx";
 import UserAddAcompanante from "./UserAddAcompanante.jsx";
 import UserAddReceta from "./UserAddReceta.jsx";
-import UserEditEquipo from "./UserEditEquipo.jsx";
 import "./EquipoDetalle.css";
 
 const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
@@ -19,10 +18,24 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
   const [showAddAcompanante, setShowAddAcompanante] = useState(false);
   const [showAddReceta, setShowAddReceta] = useState(false);
   const [showEditEquipo, setShowEditEquipo] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     fetchEquipo();
   }, [id]);
+
+  useEffect(() => {
+    if (equipo) {
+      setFormData({
+        nombre_equipo: equipo.nombre_equipo || "",
+        entidad_federativa: equipo.entidad_federativa || "",
+        nombre_anfitrion: equipo.nombre_anfitrion || "",
+        telefono_anfitrion: equipo.telefono_anfitrion || "",
+        correo_anfitrion: equipo.correo_anfitrion || "",
+      });
+    }
+  }, [equipo]);
 
   const fetchEquipo = async () => {
     try {
@@ -75,16 +88,63 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
     fetchEquipo(); // Recargar datos del equipo
   };
 
+  const handleEditToggle = () => {
+    setIsEditing(!isEditing);
+    if (!isEditing) {
+      // Al activar la edición, cargar los datos actuales
+      setFormData({
+        nombre_equipo: equipo.nombre_equipo || "",
+        entidad_federativa: equipo.entidad_federativa || "",
+        nombre_anfitrion: equipo.nombre_anfitrion || "",
+        telefono_anfitrion: equipo.telefono_anfitrion || "",
+        correo_anfitrion: equipo.correo_anfitrion || "",
+      });
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSave = async () => {
+    try {
+      const token = authService.getToken();
+      const response = await apiService.put(`/equipos/${equipo.id}`, formData, token);
+      
+      if (response.success) {
+        setIsEditing(false);
+        fetchEquipo(); // Recargar datos del equipo
+        alert("Equipo actualizado correctamente");
+      } else {
+        alert("Error al actualizar el equipo");
+      }
+    } catch (error) {
+      console.error("Error al actualizar equipo:", error);
+      alert("Error al actualizar el equipo");
+    }
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+    // Restaurar datos originales
+    setFormData({
+      nombre_equipo: equipo.nombre_equipo || "",
+      entidad_federativa: equipo.entidad_federativa || "",
+      nombre_anfitrion: equipo.nombre_anfitrion || "",
+      telefono_anfitrion: equipo.telefono_anfitrion || "",
+      correo_anfitrion: equipo.correo_anfitrion || "",
+    });
+  };
+
   const getStatusBadge = (status) => {
-    const statusClasses = {
-      activo: "badge bg-success",
-      inactivo: "badge bg-secondary",
-      suspendido: "badge bg-warning",
-      eliminado: "badge bg-danger",
-    };
+    // En la vista de usuario, siempre mostrar "Pendiente" independientemente del estatus real
     return (
-      <span className={statusClasses[status] || "badge bg-secondary"}>
-        {status}
+      <span className="badge bg-warning">
+        Pendiente
       </span>
     );
   };
@@ -162,10 +222,10 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
             <div className="d-flex gap-2">
               <button
                 className="btn btn-warning px-4 py-2"
-                onClick={() => setShowEditEquipo(true)}
+                onClick={handleEditToggle}
               >
                 <i className="bi bi-pencil-square me-2"></i>
-                Editar Equipo
+                {isEditing ? "Cancelar Edición" : "Editar Equipo"}
               </button>
               <button
                 className="btn btn-outline-light px-4 py-2"
@@ -206,13 +266,14 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 <label className="form-label">
                   Entidad federativa
                 </label>
-                <select 
-                  className="form-select form-select-lg" 
-                  value={equipo.entidad_federativa || ""} 
-                  disabled
-                >
-                  <option value={equipo.entidad_federativa}>{equipo.entidad_federativa}</option>
-                </select>
+                <input 
+                  type="text" 
+                  className="form-control form-control-lg" 
+                  name="entidad_federativa"
+                  value={isEditing ? formData.entidad_federativa : equipo.entidad_federativa || ""} 
+                  onChange={handleInputChange}
+                  readOnly={!isEditing}
+                />
               </div>
               <div className="col-md-4">
                 <label className="form-label">
@@ -223,7 +284,7 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                   value={equipo.estatus_del_equipo || ""} 
                   disabled
                 >
-                  <option value={equipo.estatus_del_equipo}>{equipo.estatus_del_equipo}</option>
+                  <option value={equipo.estatus_del_equipo}>Pendiente</option>
                 </select>
               </div>
               
@@ -235,8 +296,10 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 <input 
                   type="text" 
                   className="form-control form-control-lg" 
-                  value={equipo.nombre_anfitrion || ""} 
-                  readOnly
+                  name="nombre_anfitrion"
+                  value={isEditing ? formData.nombre_anfitrion : equipo.nombre_anfitrion || ""} 
+                  onChange={handleInputChange}
+                  readOnly={!isEditing}
                 />
               </div>
               <div className="col-md-4">
@@ -246,8 +309,10 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 <input 
                   type="text" 
                   className="form-control form-control-lg" 
-                  value={equipo.telefono_anfitrion || ""} 
-                  readOnly
+                  name="telefono_anfitrion"
+                  value={isEditing ? formData.telefono_anfitrion : equipo.telefono_anfitrion || ""} 
+                  onChange={handleInputChange}
+                  readOnly={!isEditing}
                 />
               </div>
               <div className="col-md-4">
@@ -257,8 +322,10 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 <input 
                   type="email" 
                   className="form-control form-control-lg" 
-                  value={equipo.correo_anfitrion || ""} 
-                  readOnly
+                  name="correo_anfitrion"
+                  value={isEditing ? formData.correo_anfitrion : equipo.correo_anfitrion || ""} 
+                  onChange={handleInputChange}
+                  readOnly={!isEditing}
                 />
               </div>
               
@@ -270,11 +337,37 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 <input 
                   type="text" 
                   className="form-control form-control-lg" 
-                  value={equipo.nombre_equipo || ""} 
-                  readOnly
+                  name="nombre_equipo"
+                  value={isEditing ? formData.nombre_equipo : equipo.nombre_equipo || ""} 
+                  onChange={handleInputChange}
+                  readOnly={!isEditing}
                 />
               </div>
             </div>
+            
+            {/* Botones de acción cuando está editando */}
+            {isEditing && (
+              <div className="row mt-4">
+                <div className="col-12 text-center">
+                  <div className="d-flex gap-3 justify-content-center">
+                    <button
+                      className="btn btn-success px-4 py-2"
+                      onClick={handleSave}
+                    >
+                      <i className="bi bi-check-lg me-2"></i>
+                      Guardar Cambios
+                    </button>
+                    <button
+                      className="btn btn-secondary px-4 py-2"
+                      onClick={handleCancel}
+                    >
+                      <i className="bi bi-x-lg me-2"></i>
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -674,19 +767,6 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
         </div>
       )}
 
-      {showEditEquipo && (
-        <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
-              <UserEditEquipo
-                equipo={equipo}
-                onEquipoUpdated={handleEquipoUpdated}
-                onCancel={() => setShowEditEquipo(false)}
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
