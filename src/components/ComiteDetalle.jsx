@@ -542,21 +542,15 @@ const ComiteDetalle = ({ comiteId, onBack, embedded = false }) => {
                         <i className="bi bi-person-badge me-2"></i>
                         Rol en el Comité *
                       </label>
-                      <select
-                        className="form-select"
+                      <input
+                        type="text"
+                        className="form-control"
                         name="rol"
                         value={editForm.rol}
                         onChange={handleEditFormChange}
+                        placeholder="Ej: Presidente, Secretario, Coordinador..."
                         required
-                      >
-                        <option value="">Seleccionar rol</option>
-                        <option value="Presidente">Presidente</option>
-                        <option value="Vicepresidente">Vicepresidente</option>
-                        <option value="Secretario">Secretario</option>
-                        <option value="Tesorero">Tesorero</option>
-                        <option value="Vocal">Vocal</option>
-                        <option value="Coordinador">Coordinador</option>
-                      </select>
+                      />
                     </div>
                     <div className="col-md-6 mb-3">
                       <label className="form-label fw-semibold">

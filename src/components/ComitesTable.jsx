@@ -461,18 +461,13 @@ const ComitesTable = ({ onComiteSelect }) => {
                         </div>
                       </td>
                       <td className="py-3 px-3">
-                        <div className="btn-group" role="group">
+                        <div className="event-actions">
                           <button
-                            className="btn btn-outline-primary px-3 py-2"
+                            className="btn btn-sm"
+                            title="Ver detalles"
                             onClick={() => handleViewDetails(comite.id)}
-                            title="Ver detalles y editar"
-                            style={{
-                              color: "var(--text-primary)",
-                              borderColor: "var(--text-primary)",
-                            }}
                           >
-                            <i className="bi bi-eye me-1"></i>
-                            Ver
+                            <i className="bi bi-eye"></i>
                           </button>
                         </div>
                       </td>
