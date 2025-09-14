@@ -171,24 +171,18 @@
   color: white;
 }
 
-/* Estilos para btn-outline-light - igual que participantes */
+/* Estilos para btn-outline-light - igual que eventos */
 .restaurantes-table-container .btn-outline-light {
   background-color: transparent !important;
-  border: 2px solid white !important;
+  border: 1px solid white !important;
   color: white !important;
-  padding: 0.5rem 1rem !important;
-  font-size: 0.875rem !important;
-  font-weight: 500 !important;
-  border-radius: var(--border-radius-sm) !important;
-  transition: all 0.2s ease !important;
+  font-weight: normal !important;
 }
 
 .restaurantes-table-container .btn-outline-light:hover {
   background-color: white !important;
-  border: 2px solid white !important;
-  color: var(--primary-color) !important;
-  transform: translateY(-1px) !important;
-  box-shadow: var(--shadow) !important;
+  border: 1px solid white !important;
+  color: #000 !important;
 }
 
 /* Acciones de la tabla - igual que participantes */
