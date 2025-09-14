@@ -813,7 +813,7 @@ function Dashboard() {
                                 .map((mensaje) => (
                                   <tr key={mensaje.id}>
                                     <td className="text-center">
-                                      <span className="badge bg-primary text-white">
+                                      <span className="badge bg-secondary text-white">
                                         {mensaje.id}
                                       </span>
                                     </td>
@@ -955,28 +955,13 @@ function Dashboard() {
                                 .map((usuario) => (
                                   <tr key={usuario.id}>
                                     <td className="text-center">
-                                      <span className="badge bg-primary text-white">
+                                      <span className="badge bg-secondary text-white">
                                         {usuario.id}
                                       </span>
                                     </td>
                                     <td>
                                       <div className="d-flex align-items-center">
-                                        <div
-                                          className="me-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold"
-                                          style={{
-                                            width: "40px",
-                                            height: "40px",
-                                            backgroundColor:
-                                              "var(--bs-primary)",
-                                            fontSize: "14px",
-                                          }}
-                                        >
-                                          {usuario.name
-                                            .split(" ")
-                                            .map((n) => n[0])
-                                            .join("")
-                                            .toUpperCase()}
-                                        </div>
+                                        
                                         <div>
                                           <div className="fw-bold">
                                             {usuario.name}
