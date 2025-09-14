@@ -126,12 +126,6 @@ function UserDashboard() {
         return "Mis Equipos";
       case "participantes":
         return "Participantes";
-      case "restaurantes":
-        return "Restaurantes";
-      case "hospedajes":
-        return "Hospedajes";
-      case "lugares":
-        return "Lugares de Interés";
       default:
         return "Mi Dashboard";
     }
@@ -237,47 +231,6 @@ function UserDashboard() {
               </div>
             </div>
 
-            {/* Sitio Público */}
-            <div className="nav-category">
-              <div className="nav-category-header">
-                <i className="bi bi-globe"></i>
-                <span>Información Pública</span>
-              </div>
-              <div className="nav-category-items">
-                <a
-                  className={`nav-link ${
-                    activeSection === "restaurantes" ? "active" : ""
-                  }`}
-                  onClick={() => handleSectionChange("restaurantes")}
-                  href="#"
-                >
-                  <i className="bi bi-cup-hot"></i>
-                  <span>Restaurantes</span>
-                </a>
-
-                <a
-                  className={`nav-link ${
-                    activeSection === "hospedajes" ? "active" : ""
-                  }`}
-                  onClick={() => handleSectionChange("hospedajes")}
-                  href="#"
-                >
-                  <i className="bi bi-building"></i>
-                  <span>Hospedajes</span>
-                </a>
-
-                <a
-                  className={`nav-link ${
-                    activeSection === "lugares" ? "active" : ""
-                  }`}
-                  onClick={() => handleSectionChange("lugares")}
-                  href="#"
-                >
-                  <i className="bi bi-geo-alt"></i>
-                  <span>Lugares de Interés</span>
-                </a>
-              </div>
-            </div>
           </nav>
         </div>
       </div>
@@ -538,9 +491,8 @@ function UserDashboard() {
                           <ul className="list-unstyled">
                             <li><i className="bi bi-check text-success me-2"></i>Ver información de equipos</li>
                             <li><i className="bi bi-check text-success me-2"></i>Consultar participantes</li>
-                            <li><i className="bi bi-check text-success me-2"></i>Ver restaurantes</li>
-                            <li><i className="bi bi-check text-success me-2"></i>Consultar hospedajes</li>
-                            <li><i className="bi bi-check text-success me-2"></i>Ver lugares de interés</li>
+                            <li><i className="bi bi-check text-success me-2"></i>Ver estadísticas del evento</li>
+                            <li><i className="bi bi-check text-success me-2"></i>Gestionar perfil personal</li>
                           </ul>
                         </div>
                       </div>
@@ -645,71 +597,6 @@ function UserDashboard() {
             </div>
           )}
 
-          {/* Contenido de Restaurantes */}
-          {activeSection === "restaurantes" && (
-            <div className="row">
-              <div className="col-12">
-                <div className="card shadow">
-                  <div className="card-header bg-primary text-white">
-                    <h6 className="m-0 font-weight-bold">
-                      <i className="bi bi-cup-hot me-2"></i>
-                      Restaurantes
-                    </h6>
-                  </div>
-                  <div className="card-body">
-                    <p className="text-muted">
-                      Aquí puedes ver información sobre los restaurantes disponibles.
-                      Esta funcionalidad estará disponible próximamente.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Contenido de Hospedajes */}
-          {activeSection === "hospedajes" && (
-            <div className="row">
-              <div className="col-12">
-                <div className="card shadow">
-                  <div className="card-header bg-primary text-white">
-                    <h6 className="m-0 font-weight-bold">
-                      <i className="bi bi-building me-2"></i>
-                      Hospedajes
-                    </h6>
-                  </div>
-                  <div className="card-body">
-                    <p className="text-muted">
-                      Aquí puedes ver información sobre los hospedajes disponibles.
-                      Esta funcionalidad estará disponible próximamente.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Contenido de Lugares de Interés */}
-          {activeSection === "lugares" && (
-            <div className="row">
-              <div className="col-12">
-                <div className="card shadow">
-                  <div className="card-header bg-primary text-white">
-                    <h6 className="m-0 font-weight-bold">
-                      <i className="bi bi-geo-alt me-2"></i>
-                      Lugares de Interés
-                    </h6>
-                  </div>
-                  <div className="card-body">
-                    <p className="text-muted">
-                      Aquí puedes ver información sobre los lugares de interés.
-                      Esta funcionalidad estará disponible próximamente.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
