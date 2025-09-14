@@ -670,32 +670,17 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
                         className="py-3 px-2"
                         style={{ width: "150px", minWidth: "150px" }}
                       >
-                        <div className="d-flex flex-column gap-1">
+                        <div className="event-actions">
                           <button
-                            className="btn btn-outline-primary btn-sm px-2 py-1"
+                            className="btn btn-sm"
                             title="Ver detalles"
-                            style={{ fontSize: "0.75rem" }}
                             onClick={() =>
                               onRestauranteSelect
                                 ? onRestauranteSelect(restaurante.id)
                                 : null
                             }
                           >
-                            <i className="bi bi-eye me-1"></i>
-                            Ver
-                          </button>
-                          <button
-                            className="btn btn-outline-warning btn-sm px-2 py-1"
-                            title="Editar restaurante"
-                            style={{ fontSize: "0.75rem" }}
-                            onClick={() =>
-                              onRestauranteSelect
-                                ? onRestauranteSelect(restaurante.id)
-                                : null
-                            }
-                          >
-                            <i className="bi bi-pencil me-1"></i>
-                            Editar
+                            <i className="bi bi-eye"></i>
                           </button>
                         </div>
                       </td>

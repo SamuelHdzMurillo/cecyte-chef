@@ -630,23 +630,23 @@ const UsersTable = () => {
                         </span>
                       </td>
                       <td>
-                        <div className="btn-group" role="group">
+                        <div className="event-actions">
                           <button
-                            className="btn btn-sm btn-outline-secondary"
+                            className="btn btn-sm"
                             title="Ver detalles"
                             onClick={() => handleViewUser(user)}
                           >
                             <i className="bi bi-eye"></i>
                           </button>
                           <button
-                            className="btn btn-sm btn-outline-secondary"
+                            className="btn btn-sm"
                             title="Editar usuario"
                             onClick={() => handleEditUser(user)}
                           >
                             <i className="bi bi-pencil"></i>
                           </button>
                           <button
-                            className="btn btn-sm btn-outline-secondary"
+                            className="btn btn-sm"
                             title="Eliminar usuario"
                             onClick={() => handleDeleteUser(user)}
                           >
