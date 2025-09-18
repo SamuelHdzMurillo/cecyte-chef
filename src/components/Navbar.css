@@ -47,33 +47,106 @@
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  position: relative;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.main-navbar-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 21, 56, 0.1),
+    rgba(139, 21, 56, 0.05)
+  );
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+}
+
+.main-navbar-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b1538, #6b0f2a);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  border-radius: 1px;
 }
 
 .main-navbar-link:hover {
-  color: #8B1538;
+  color: #8b1538;
+  transform: translateY(-1px);
+  text-shadow: 0 2px 4px rgba(139, 21, 56, 0.2);
+}
+
+.main-navbar-link:hover::before {
+  opacity: 1;
+}
+
+.main-navbar-link:hover::after {
+  width: 80%;
 }
 
 /* Botón de Iniciar Sesión */
 .main-navbar-button {
-  background: #8B1538;
+  background: linear-gradient(135deg, #8b1538, #6b0f2a);
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 0.85rem;
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
+}
+
+.main-navbar-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
 }
 
 .main-navbar-button:hover {
-  background: #6B0F2A;
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #6b0f2a, #4a0a1f);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 21, 56, 0.4);
+}
+
+.main-navbar-button:hover::before {
+  left: 100%;
+}
+
+.main-navbar-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
 }
 
 /* Botón hamburguesa */
@@ -86,14 +159,25 @@
   border: none;
   padding: 0.5rem;
   flex-shrink: 0;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-navbar-toggle:hover {
+  background: rgba(139, 21, 56, 0.1);
+  transform: scale(1.05);
 }
 
 .main-navbar-toggle span {
   width: 20px;
   height: 2px;
   background-color: #333;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 1px;
+}
+
+.main-navbar-toggle:hover span {
+  background-color: #8b1538;
 }
 
 .main-navbar-toggle.active span:nth-child(1) {
@@ -113,15 +197,15 @@
   .main-navbar-container {
     padding: 0.8rem 1rem;
   }
-  
+
   .main-navbar-menu {
     gap: 1rem;
   }
-  
+
   .main-navbar-link {
     font-size: 0.8rem;
   }
-  
+
   .main-navbar-button {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
@@ -133,11 +217,11 @@
   .main-navbar-container {
     padding: 0.8rem 1rem;
   }
-  
+
   .main-navbar-logo {
     height: 35px;
   }
-  
+
   .main-navbar-menu {
     position: fixed;
     top: 70px;
@@ -173,8 +257,10 @@
   }
 
   .main-navbar-link:hover {
-    color: #8B1538 !important;
+    color: #8b1538 !important;
     background: rgba(139, 21, 56, 0.1);
+    transform: translateX(5px);
+    border-left: 3px solid #8b1538;
   }
 
   .main-navbar-link:last-of-type {
@@ -186,12 +272,12 @@
     margin-top: 0.5rem;
     padding: 0.8rem 1rem;
     font-size: 0.9rem;
-    background: #8B1538 !important;
+    background: #8b1538 !important;
     color: white !important;
   }
 
   .main-navbar-button:hover {
-    background: #6B0F2A !important;
+    background: #6b0f2a !important;
   }
 
   .main-navbar-toggle {
@@ -204,20 +290,20 @@
   .main-navbar-container {
     padding: 0.6rem 0.8rem;
   }
-  
+
   .main-navbar-logo {
     height: 30px;
   }
-  
+
   .main-navbar-menu {
     padding: 1rem;
   }
-  
+
   .main-navbar-link {
     font-size: 0.85rem;
     padding: 0.6rem 0;
   }
-  
+
   .main-navbar-button {
     padding: 0.7rem 0.8rem;
     font-size: 0.85rem;
@@ -229,20 +315,20 @@
   .main-navbar-container {
     padding: 0.5rem 0.6rem;
   }
-  
+
   .main-navbar-logo {
     height: 25px;
   }
-  
+
   .main-navbar-menu {
     padding: 0.8rem;
   }
-  
+
   .main-navbar-link {
     font-size: 0.8rem;
     padding: 0.5rem 0;
   }
-  
+
   .main-navbar-button {
     padding: 0.6rem 0.7rem;
     font-size: 0.8rem;

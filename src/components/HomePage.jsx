@@ -16,44 +16,24 @@ function HomePage({ onLoginClick }) {
             {/* Contenido principal - Columna izquierda */}
             <div className="col-12 col-lg-6 col-xl-6">
               <div className="hero-content">
-                <h1 className="display-3 fw-bold mb-4 text-dark">
-                  Bienvenido a{" "}
-                  <span style={{ color: "#8B1538" }}>CecyteChef</span>
-                </h1>
-                <p className="lead mb-5 fs-5 text-muted">
-                  Descubre el arte de la cocina con nuestra plataforma educativa.
-                  Aprende técnicas culinarias, recetas exclusivas y conviértete en
-                  un chef profesional.
-                </p>
-                <div className="d-flex gap-3 flex-wrap flex-column flex-sm-row">
-                  <button
-                    className="btn btn-primary btn-lg px-4 py-3 fw-bold"
-                    onClick={() => alert("Función de registro")}
-                  >
-                    <i className="bi bi-person-plus me-2"></i>
-                    <span className="d-none d-sm-inline">Registrarse</span>
-                    <span className="d-inline d-sm-none">Registro</span>
-                  </button>
-                  <button
-                    className="btn btn-outline-primary btn-lg px-4 py-3 fw-bold"
-                    onClick={onLoginClick}
-                  >
-                    <i className="bi bi-box-arrow-in-right me-2"></i>
-                    <span className="d-none d-sm-inline">Iniciar Sesión</span>
-                    <span className="d-inline d-sm-none">Entrar</span>
-                  </button>
+                <div className="hero-logo-container">
+                  <img
+                    src="/src/assets/cecyte_chef_sin_fondo_horizontal.png"
+                    alt="II Concurso Nacional CECYTE CHEF Baja California Sur"
+                    className="hero-logo"
+                  />
                 </div>
               </div>
             </div>
-            
+
             {/* Galería de platillos - Columna derecha */}
             <div className="col-12 col-lg-6 col-xl-6">
               <div className="hero-gallery">
                 <div className="gallery-grid">
                   <div className="gallery-item gallery-item-large">
-                    <img 
-                      src="/src/assets/platillos/platillo_salmon.webp" 
-                      alt="Platillo de Salmón" 
+                    <img
+                      src="/src/assets/platillos/platillo_salmon.webp"
+                      alt="Platillo de Salmón"
                       className="gallery-image"
                     />
                     <div className="gallery-overlay">
@@ -61,9 +41,9 @@ function HomePage({ onLoginClick }) {
                     </div>
                   </div>
                   <div className="gallery-item">
-                    <img 
-                      src="/src/assets/platillos/platillo_camaron.webp" 
-                      alt="Platillo de Camarón" 
+                    <img
+                      src="/src/assets/platillos/platillo_camaron.webp"
+                      alt="Platillo de Camarón"
                       className="gallery-image"
                     />
                     <div className="gallery-overlay">
@@ -71,9 +51,9 @@ function HomePage({ onLoginClick }) {
                     </div>
                   </div>
                   <div className="gallery-item">
-                    <img 
-                      src="/src/assets/platillos/platillo_naranja.webp" 
-                      alt="Platillo Naranja" 
+                    <img
+                      src="/src/assets/platillos/platillo_naranja.webp"
+                      alt="Platillo Naranja"
                       className="gallery-image"
                     />
                     <div className="gallery-overlay">
@@ -81,9 +61,9 @@ function HomePage({ onLoginClick }) {
                     </div>
                   </div>
                   <div className="gallery-item">
-                    <img 
-                      src="/src/assets/platillos/platillo_totopos.webp" 
-                      alt="Platillo de Totopos" 
+                    <img
+                      src="/src/assets/platillos/platillo_totopos.webp"
+                      alt="Platillo de Totopos"
                       className="gallery-image"
                     />
                     <div className="gallery-overlay">
@@ -91,9 +71,9 @@ function HomePage({ onLoginClick }) {
                     </div>
                   </div>
                   <div className="gallery-item gallery-item-wide">
-                    <img 
-                      src="/src/assets/platillos/platillo_naranjon.webp" 
-                      alt="Platillo Naranjón" 
+                    <img
+                      src="/src/assets/platillos/platillo_naranjon.webp"
+                      alt="Platillo Naranjón"
                       className="gallery-image"
                     />
                     <div className="gallery-overlay">

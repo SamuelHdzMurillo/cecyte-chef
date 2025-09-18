@@ -1,65 +1,63 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './Login.css'
-import { useAuth } from './contexts/AuthContext.jsx'
-import DebugPanel from './components/DebugPanel.jsx'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import { useAuth } from "./contexts/AuthContext.jsx";
+import DebugPanel from "./components/DebugPanel.jsx";
 
 function Login({ onBackClick }) {
-  const navigate = useNavigate()
-  const { login } = useAuth()
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    rememberMe: false
-  })
-  
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
-    setFormData(prev => ({
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
-    
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
     try {
-      console.log('🚀 Iniciando proceso de login...')
-      
+      console.log("🚀 Iniciando proceso de login...");
+
       const result = await login({
         email: formData.email,
-        password: formData.password
-      })
-      
-      console.log('✅ Login exitoso:', result)
-      
+        password: formData.password,
+      });
+
+      console.log("✅ Login exitoso:", result);
+
       if (result.success) {
-        console.log('✅ Login exitoso, redirigiendo al dashboard...')
+        console.log("✅ Login exitoso, redirigiendo al dashboard...");
         // Redirigir al dashboard después del login exitoso
-        navigate('/dashboard')
+        navigate("/dashboard");
       } else {
-        setError('Error al iniciar sesión. Verifica tus credenciales.')
+        setError("Error al iniciar sesión. Verifica tus credenciales.");
       }
-      
     } catch (error) {
-      console.error('❌ Error en login:', error)
-      setError('Error al iniciar sesión. Verifica tus credenciales.')
+      console.error("❌ Error en login:", error);
+      setError("Error al iniciar sesión. Verifica tus credenciales.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="login-container">
       {/* Panel de Debug */}
-      <DebugPanel />
-      
+
       {/* Fondo decorativo */}
       <div className="login-background">
         <div className="floating-shapes">
@@ -71,8 +69,8 @@ function Login({ onBackClick }) {
       </div>
 
       {/* Botón de regreso */}
-      <button 
-        className="btn btn-outline-light back-button" 
+      <button
+        className="btn btn-outline-light back-button"
         onClick={onBackClick}
         aria-label="Volver al inicio"
       >
@@ -85,19 +83,17 @@ function Login({ onBackClick }) {
         <div className="container">
           <div className="row justify-content-center align-items-center min-vh-100">
             <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
-              
               {/* Card de login */}
               <div className="login-card">
                 <div className="login-card-body">
-                  
                   {/* Header con logo */}
                   <div className="text-center mb-4">
                     <div className="logo-container mb-3">
                       <div className="login-logo">
                         <div className="logo-icon">
-                          <img 
-                            src="/src/assets/cecyte_chef_sin fondo.png" 
-                            alt="CECyTE Chef Logo" 
+                          <img
+                            src="/src/assets/cecyte_chef_sin fondo.png"
+                            alt="CECyTE Chef Logo"
                             className="logo-image"
                           />
                         </div>
@@ -111,7 +107,6 @@ function Login({ onBackClick }) {
 
                   {/* Formulario */}
                   <form onSubmit={handleSubmit} className="login-form">
-                    
                     {/* Campo Email */}
                     <div className="form-group mb-3">
                       <label htmlFor="email" className="form-label">
@@ -147,12 +142,13 @@ function Login({ onBackClick }) {
                           placeholder="••••••••"
                           required
                         />
-                        <button 
-                          type="button" 
+                        <button
+                          type="button"
                           className="password-toggle"
                           onClick={() => {
-                            const input = document.getElementById('password')
-                            input.type = input.type === 'password' ? 'text' : 'password'
+                            const input = document.getElementById("password");
+                            input.type =
+                              input.type === "password" ? "text" : "password";
                           }}
                         >
                           <i className="bi bi-eye"></i>
@@ -168,17 +164,20 @@ function Login({ onBackClick }) {
                       </div>
                     )}
 
-                    
-
                     {/* Botón de login */}
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="btn btn-primary btn-lg w-100 mb-3"
                       disabled={loading}
                     >
                       {loading ? (
                         <>
-                          <span className="spinner-border spinner-border-sm me-2" style={{color: 'white'}} role="status" aria-hidden="true"></span>
+                          <span
+                            className="spinner-border spinner-border-sm me-2"
+                            style={{ color: "white" }}
+                            role="status"
+                            aria-hidden="true"
+                          ></span>
                           Iniciando Sesión...
                         </>
                       ) : (
@@ -188,14 +187,7 @@ function Login({ onBackClick }) {
                         </>
                       )}
                     </button>
-
-                   
-                    
-
-                    
-
                   </form>
-
                 </div>
               </div>
 
@@ -205,13 +197,12 @@ function Login({ onBackClick }) {
                   &copy; 2024 CecyteChef. Todos los derechos reservados.
                 </p>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

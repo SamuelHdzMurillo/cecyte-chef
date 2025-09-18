@@ -20,8 +20,8 @@ function Navbar({ onLoginClick }) {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isMenuOpen]);
 
   // Cerrar menú al redimensionar ventana
@@ -32,62 +32,84 @@ function Navbar({ onLoginClick }) {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <>
       <nav className="main-navbar">
         <div className="main-navbar-container">
-          {/* Logo */}
-          <div className="main-navbar-brand">
-            <img 
-              src="/src/assets/cecyte_chef_sin_fondo_horizontal.png" 
-              alt="CecyteChef" 
-              className="main-navbar-logo"
-            />
-          </div>
-
           {/* Menú de navegación */}
-          <div className={`main-navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+          <div className={`main-navbar-menu ${isMenuOpen ? "active" : ""}`}>
             <a href="#inicio" className="main-navbar-link" onClick={closeMenu}>
               INICIO
             </a>
-            <a href="#programa" className="main-navbar-link" onClick={closeMenu}>
+            <a
+              href="#programa"
+              className="main-navbar-link"
+              onClick={closeMenu}
+            >
               PROGRAMA
             </a>
-            <a href="#hospedajes" className="main-navbar-link" onClick={closeMenu}>
+            <a
+              href="#hospedajes"
+              className="main-navbar-link"
+              onClick={closeMenu}
+            >
               HOSPEDAJES
             </a>
-            <a href="#restaurantes" className="main-navbar-link" onClick={closeMenu}>
+            <a
+              href="#restaurantes"
+              className="main-navbar-link"
+              onClick={closeMenu}
+            >
               RESTAURANTES
             </a>
-            <a href="#que-visitar" className="main-navbar-link" onClick={closeMenu}>
+            <a
+              href="#que-visitar"
+              className="main-navbar-link"
+              onClick={closeMenu}
+            >
               ¿QUÉ VISITAR?
             </a>
-            <a href="#directorio" className="main-navbar-link" onClick={closeMenu}>
+            <a
+              href="#directorio"
+              className="main-navbar-link"
+              onClick={closeMenu}
+            >
               DIRECTORIO
             </a>
-            <a href="#servicios-medicos" className="main-navbar-link" onClick={closeMenu}>
+            <a
+              href="#servicios-medicos"
+              className="main-navbar-link"
+              onClick={closeMenu}
+            >
               SERV. MÉDICOS
             </a>
-            <a href="#contacto" className="main-navbar-link" onClick={closeMenu}>
+            <a
+              href="#contacto"
+              className="main-navbar-link"
+              onClick={closeMenu}
+            >
               CONTACTO
             </a>
-            
+
             {/* Botón de Iniciar Sesión */}
-            <button className="main-navbar-button" onClick={() => {
-              closeMenu();
-              onLoginClick();
-            }}>
+            <button
+              className="main-navbar-button"
+              onClick={() => {
+                closeMenu();
+                onLoginClick();
+              }}
+            >
               INICIAR SESIÓN
             </button>
           </div>
 
           {/* Botón hamburguesa */}
-          <button 
-            className={`main-navbar-toggle ${isMenuOpen ? 'active' : ''}`}
+          <button
+            className={`main-navbar-toggle ${isMenuOpen ? "active" : ""}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -100,10 +122,7 @@ function Navbar({ onLoginClick }) {
 
       {/* Overlay para móvil */}
       {isMenuOpen && (
-        <div 
-          className="main-navbar-overlay active" 
-          onClick={closeMenu}
-        ></div>
+        <div className="main-navbar-overlay active" onClick={closeMenu}></div>
       )}
     </>
   );
