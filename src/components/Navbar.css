@@ -140,7 +140,7 @@
   
   .main-navbar-menu {
     position: fixed;
-    top: 100%;
+    top: 70px;
     left: 0;
     right: 0;
     background: white;
@@ -153,6 +153,7 @@
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-top: 1px solid #e0e0e0;
+    z-index: 1001;
   }
 
   .main-navbar-menu.active {
@@ -167,6 +168,13 @@
     text-align: center;
     width: 100%;
     border-bottom: 1px solid #f0f0f0;
+    display: block;
+    color: #333 !important;
+  }
+
+  .main-navbar-link:hover {
+    color: #8B1538 !important;
+    background: rgba(139, 21, 56, 0.1);
   }
 
   .main-navbar-link:last-of-type {
@@ -178,6 +186,12 @@
     margin-top: 0.5rem;
     padding: 0.8rem 1rem;
     font-size: 0.9rem;
+    background: #8B1538 !important;
+    color: white !important;
+  }
+
+  .main-navbar-button:hover {
+    background: #6B0F2A !important;
   }
 
   .main-navbar-toggle {
@@ -252,12 +266,13 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  display: none;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .main-navbar-overlay.active {
-    display: block;
-  }
+.main-navbar-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
