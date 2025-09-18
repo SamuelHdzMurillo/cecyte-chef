@@ -9,67 +9,8 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "./App.css";
 
 function LandingPage({ onLoginClick }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
   return (
     <div className="App">
-      {/* Navbar personalizada centrada */}
-      <nav className="custom-navbar">
-        <div className="navbar-container">
-          <div className="navbar-brand">
-            <img
-              src="/src/assets/cecyte_chef_sin_fondo_horizontal.png"
-              alt="CecyteChef"
-              className="navbar-logo"
-            />
-          </div>
-          <div className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
-            <a href="#inicio" className="navbar-link" onClick={closeMenu}>
-              Inicio
-            </a>
-            <a
-              href="#caracteristicas"
-              className="navbar-link"
-              onClick={closeMenu}
-            >
-              Características
-            </a>
-            <a href="#contacto" className="navbar-link" onClick={closeMenu}>
-              Contacto
-            </a>
-            <button
-              className="navbar-button"
-              onClick={() => {
-                closeMenu();
-                onLoginClick();
-              }}
-            >
-              Iniciar Sesión
-            </button>
-          </div>
-          <div
-            className={`navbar-toggle ${isMenuOpen ? "active" : ""}`}
-            onClick={toggleMenu}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </nav>
-
-      {/* Overlay para cerrar el menú móvil */}
-      {isMenuOpen && (
-        <div className="mobile-menu-overlay" onClick={closeMenu}></div>
-      )}
 
       {/* Hero Section */}
       <section
