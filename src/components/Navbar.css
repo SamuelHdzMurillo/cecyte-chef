@@ -1,0 +1,263 @@
+/* Main Navbar Styles - Sin margins, completamente responsive */
+.main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0;
+  width: 100%;
+}
+
+.main-navbar-container {
+  width: 100%;
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.main-navbar-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.main-navbar-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Menú de navegación */
+.main-navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.main-navbar-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.main-navbar-link:hover {
+  color: #8B1538;
+}
+
+/* Botón de Iniciar Sesión */
+.main-navbar-button {
+  background: #8B1538;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.main-navbar-button:hover {
+  background: #6B0F2A;
+  transform: translateY(-1px);
+}
+
+/* Botón hamburguesa */
+.main-navbar-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 3px;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+.main-navbar-toggle span {
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.main-navbar-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.main-navbar-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.main-navbar-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -5px);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  .main-navbar-container {
+    padding: 0.8rem 1rem;
+  }
+  
+  .main-navbar-menu {
+    gap: 1rem;
+  }
+  
+  .main-navbar-link {
+    font-size: 0.8rem;
+  }
+  
+  .main-navbar-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Responsive - Móvil */
+@media (max-width: 768px) {
+  .main-navbar-container {
+    padding: 0.8rem 1rem;
+  }
+  
+  .main-navbar-logo {
+    height: 35px;
+  }
+  
+  .main-navbar-menu {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 0.5rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .main-navbar-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .main-navbar-link {
+    font-size: 0.9rem;
+    padding: 0.8rem 0;
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .main-navbar-link:last-of-type {
+    border-bottom: none;
+  }
+
+  .main-navbar-button {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .main-navbar-toggle {
+    display: flex;
+  }
+}
+
+/* Responsive - Móvil pequeño */
+@media (max-width: 480px) {
+  .main-navbar-container {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .main-navbar-logo {
+    height: 30px;
+  }
+  
+  .main-navbar-menu {
+    padding: 1rem;
+  }
+  
+  .main-navbar-link {
+    font-size: 0.85rem;
+    padding: 0.6rem 0;
+  }
+  
+  .main-navbar-button {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsive - Móvil muy pequeño */
+@media (max-width: 320px) {
+  .main-navbar-container {
+    padding: 0.5rem 0.6rem;
+  }
+  
+  .main-navbar-logo {
+    height: 25px;
+  }
+  
+  .main-navbar-menu {
+    padding: 0.8rem;
+  }
+  
+  .main-navbar-link {
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+  }
+  
+  .main-navbar-button {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Asegurar que no haya margins */
+.main-navbar * {
+  box-sizing: border-box;
+}
+
+.main-navbar * {
+  margin: 0;
+}
+
+/* Overlay para móvil */
+.main-navbar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .main-navbar-overlay.active {
+    display: block;
+  }
+}

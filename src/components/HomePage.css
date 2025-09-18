@@ -8,6 +8,7 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   position: relative;
   overflow: hidden;
+  padding-top: 80px; /* Espacio para el navbar fijo */
 }
 
 .hero-section::before {
@@ -161,6 +162,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hero-section {
+    padding-top: 80px; /* Menos espacio en móvil */
+  }
+  
   .gallery-grid {
     height: 400px;
     gap: 0.5rem;
@@ -176,6 +181,10 @@
 }
 
 @media (max-width: 576px) {
+  .hero-section {
+    padding-top: 70px; /* Aún menos espacio en móviles pequeños */
+  }
+  
   .gallery-grid {
     height: 300px;
     grid-template-columns: 1fr;

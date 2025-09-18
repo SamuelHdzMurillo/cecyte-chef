@@ -1,9 +1,11 @@
 import React from "react";
 import "./HomePage.css";
+import Navbar from "./Navbar";
 
 function HomePage({ onLoginClick }) {
   return (
     <div className="homepage">
+      <Navbar onLoginClick={onLoginClick} />
       {/* Hero Section */}
       <section
         id="inicio"
