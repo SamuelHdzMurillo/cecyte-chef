@@ -1,8 +1,74 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./HomePage.css";
 import Navbar from "./Navbar";
 
 function HomePage({ onLoginClick }) {
+  const parallaxRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (parallaxRef.current) {
+        const rect = parallaxRef.current.getBoundingClientRect();
+        const scrolled = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // Calcular el progreso de la sección (0 a 1)
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+        const progress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight)));
+        
+        // Parallax para diferentes capas
+        const bgLayer = parallaxRef.current.querySelector('.cecyte-chef-bg-layer-1');
+        const overlay = parallaxRef.current.querySelector('.cecyte-chef-parallax-overlay');
+        const content = parallaxRef.current.querySelector('.cecyte-chef-parallax-content');
+        
+        if (bgLayer) {
+          const bgSpeed = 0.4;
+          const bgY = -(scrolled * bgSpeed);
+          bgLayer.style.transform = `translateY(${bgY}px) scale(1.1)`;
+        }
+        
+        if (overlay) {
+          const overlaySpeed = 0.2;
+          const overlayY = -(scrolled * overlaySpeed);
+          overlay.style.transform = `translateY(${overlayY}px)`;
+        }
+        
+        if (content) {
+          const contentSpeed = 0.1;
+          const contentY = -(scrolled * contentSpeed);
+          content.style.transform = `translateY(${contentY}px)`;
+          
+          // Efecto de fade basado en el progreso
+          const opacity = Math.max(0.3, 1 - progress * 0.7);
+          content.style.opacity = opacity;
+        }
+        
+        // Efecto de parallax en el scroll indicator
+        const scrollIndicator = parallaxRef.current.querySelector('.cecyte-chef-scroll-indicator');
+        if (scrollIndicator) {
+          const indicatorOpacity = Math.max(0, 1 - progress * 3);
+          scrollIndicator.style.opacity = indicatorOpacity;
+        }
+      }
+    };
+
+    // Throttled scroll handler
+    let ticking = false;
+    const optimizedScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', optimizedScroll, { passive: true });
+    return () => window.removeEventListener('scroll', optimizedScroll);
+  }, []);
+
   return (
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
@@ -315,7 +381,7 @@ function HomePage({ onLoginClick }) {
         </div>
       </section>
 
-      {/* Divider 2 - Jueces to Características */}
+      {/* Divider 2 - Jueces to Lugares */}
       <div className="cecyte-chef-divider cecyte-chef-divider-svg">
         <div className="cecyte-chef-divider-content">
           <div className="cecyte-chef-divider-svg-elements">
@@ -327,6 +393,87 @@ function HomePage({ onLoginClick }) {
             <img src="/src/assets/svg/BALLENA.png" alt="Ballena" className="cecyte-chef-divider-svg-item" />
             <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" className="cecyte-chef-divider-svg-item" />
             <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" className="cecyte-chef-divider-svg-item" />
+          </div>
+        </div>
+      </div>
+
+      {/* Lugares de Interés Section - Premium Parallax */}
+      <section className="cecyte-chef-lugares-section" ref={parallaxRef}>
+        <div className="cecyte-chef-parallax-container">
+          {/* Background Layers for Advanced Parallax */}
+          <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
+            <img 
+              src="/src/assets/fondos/LugaresVisita.png" 
+              alt="Lugares de interés en La Paz" 
+              className="cecyte-chef-parallax-image"
+            />
+          </div>
+          
+          {/* Overlay with gradient and texture */}
+          <div className="cecyte-chef-parallax-overlay">
+            <div className="cecyte-chef-overlay-gradient"></div>
+            <div className="cecyte-chef-overlay-texture"></div>
+          </div>
+          
+          {/* Content Layer */}
+          <div className="cecyte-chef-parallax-content">
+            <div className="cecyte-chef-container">
+              <div className="cecyte-chef-lugares-hero">
+                <div className="cecyte-chef-lugares-badge">
+                  <span>Descubre</span>
+                </div>
+                
+                <h1 className="cecyte-chef-lugares-title">
+                  <span className="cecyte-chef-title-line">¿Qué visitar en</span>
+                  <span className="cecyte-chef-title-highlight">La Paz?</span>
+                </h1>
+                
+                <p className="cecyte-chef-lugares-description">
+                  Sumérgete en la belleza natural de Baja California Sur. 
+                  Desde playas cristalinas hasta sitios históricos únicos, 
+                  La Paz te ofrece una experiencia que combina aventura, 
+                  cultura y gastronomía auténtica.
+                </p>
+                
+                <div className="cecyte-chef-lugares-actions">
+                  <button className="cecyte-chef-lugares-button cecyte-chef-btn-primary">
+                    <span>Explorar lugares</span>
+                    <div className="cecyte-chef-btn-icon">
+                      <i className="bi bi-arrow-right"></i>
+                    </div>
+                  </button>
+                  
+                  <button className="cecyte-chef-lugares-button cecyte-chef-btn-secondary">
+                    <span>Ver galería</span>
+                    <div className="cecyte-chef-btn-icon">
+                      <i className="bi bi-images"></i>
+                    </div>
+                  </button>
+                </div>
+                
+                {/* Scroll indicator */}
+                <div className="cecyte-chef-scroll-indicator">
+                  <div className="cecyte-chef-scroll-line"></div>
+                  <span>Desplázate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider 3 - Lugares to Características */}
+      <div className="cecyte-chef-divider cecyte-chef-divider-svg">
+        <div className="cecyte-chef-divider-content">
+          <div className="cecyte-chef-divider-svg-elements">
+            <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/PALMERA.png" alt="Palmera" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/BALLENA.png" alt="Ballena" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/DORADO.png" alt="Dorado" className="cecyte-chef-divider-svg-item" />
           </div>
         </div>
       </div>
