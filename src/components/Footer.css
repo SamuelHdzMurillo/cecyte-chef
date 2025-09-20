@@ -1,0 +1,491 @@
+/* Footer Principal - CECYTE CHEF */
+.cecyte-chef-footer {
+  background: linear-gradient(135deg, #9D3553 0%, #7A2A42 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-top: 4rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Efectos decorativos de fondo */
+.cecyte-chef-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cecyte-chef-footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Contenedor principal */
+.cecyte-chef-footer-main {
+  position: relative;
+  z-index: 2;
+  padding: 3rem 0 2rem;
+}
+
+.cecyte-chef-footer-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Sección de marca/logo */
+.cecyte-chef-footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.cecyte-chef-footer-logo-container {
+  position: relative;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cecyte-chef-footer-logo-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.cecyte-chef-footer-logo {
+  height: 80px;
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
+}
+
+.cecyte-chef-footer-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+}
+
+.cecyte-chef-footer-brand-info {
+  text-align: center;
+}
+
+.cecyte-chef-footer-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cecyte-chef-footer-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cecyte-chef-footer-location {
+  font-size: 0.95rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+/* Enlaces de navegación */
+.cecyte-chef-footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.cecyte-chef-footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cecyte-chef-footer-column-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.cecyte-chef-footer-column-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.5));
+  border-radius: 1px;
+}
+
+.cecyte-chef-footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.cecyte-chef-footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding-left: 0;
+  display: inline-block;
+}
+
+.cecyte-chef-footer-link::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 1px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.cecyte-chef-footer-link:hover {
+  color: white;
+  transform: translateX(5px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cecyte-chef-footer-link:hover::before {
+  width: 10px;
+}
+
+/* Elementos de contacto */
+.cecyte-chef-footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.cecyte-chef-footer-contact-item:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+.cecyte-chef-footer-contact-item i {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  width: 16px;
+  text-align: center;
+}
+
+/* Redes sociales */
+.cecyte-chef-footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.cecyte-chef-social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cecyte-chef-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cecyte-chef-social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cecyte-chef-social-link:hover {
+  transform: translateY(-3px) scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cecyte-chef-social-link:hover::before {
+  opacity: 1;
+}
+
+.cecyte-chef-social-link i {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sección inferior */
+.cecyte-chef-footer-bottom {
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cecyte-chef-footer-bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0 0 0;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.cecyte-chef-footer-copyright {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cecyte-chef-footer-copyright p {
+  margin: 0.2rem 0;
+}
+
+/* Cintilla SVG - Pie de página completo */
+.cecyte-chef-footer-cintilla-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: linear-gradient(135deg, #9D3553 0%, #7A2A42 100%);
+  overflow: hidden;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Asegurar que no haya espacios adicionales */
+.cecyte-chef-footer-cintilla-container * {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.cecyte-chef-cintilla-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cecyte-chef-cintilla-svg:hover {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* Responsive Design */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .cecyte-chef-footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  
+  .cecyte-chef-footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .cecyte-chef-footer-social {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+  }
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+  .cecyte-chef-footer-main {
+    padding: 2rem 0 1.5rem;
+  }
+  
+  .cecyte-chef-footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .cecyte-chef-footer-links {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .cecyte-chef-footer-brand {
+    order: -1;
+  }
+  
+  .cecyte-chef-footer-logo {
+    height: 60px;
+  }
+  
+  .cecyte-chef-footer-title {
+    font-size: 1.5rem;
+  }
+  
+  .cecyte-chef-social-links {
+    gap: 0.8rem;
+  }
+  
+  .cecyte-chef-social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Móvil pequeño */
+@media (max-width: 480px) {
+  .cecyte-chef-footer-main {
+    padding: 1.5rem 0 1rem;
+  }
+  
+  .cecyte-chef-footer-content {
+    gap: 1.5rem;
+  }
+  
+  .cecyte-chef-footer-logo-container {
+    padding: 0.8rem;
+  }
+  
+  .cecyte-chef-footer-logo {
+    height: 50px;
+  }
+  
+  .cecyte-chef-footer-title {
+    font-size: 1.3rem;
+  }
+  
+  .cecyte-chef-footer-subtitle {
+    font-size: 1rem;
+  }
+  
+  .cecyte-chef-footer-column-title {
+    font-size: 1rem;
+  }
+  
+  .cecyte-chef-footer-link,
+  .cecyte-chef-footer-contact-item {
+    font-size: 0.9rem;
+  }
+  
+  .cecyte-chef-social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .cecyte-chef-footer-copyright {
+    font-size: 0.85rem;
+  }
+}
+
+/* Animaciones adicionales */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.cecyte-chef-footer-logo-container:hover .cecyte-chef-footer-logo {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Efectos de hover para las columnas */
+.cecyte-chef-footer-column:hover .cecyte-chef-footer-column-title::after {
+  width: 50px;
+  transition: width 0.3s ease;
+}
+
+/* Mejoras de accesibilidad */
+.cecyte-chef-footer-link:focus,
+.cecyte-chef-social-link:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Efectos de scroll reveal (opcional) */
+.cecyte-chef-footer {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: footerReveal 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes footerReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

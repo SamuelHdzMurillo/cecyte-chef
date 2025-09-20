@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./HomePage.css";
 import Navbar from "./Navbar";
 import CountdownTimer from "./CountdownTimer";
+import Footer from "./Footer";
 
 function HomePage({ onLoginClick }) {
   const parallaxRef = useRef(null);
@@ -702,42 +703,7 @@ function HomePage({ onLoginClick }) {
       </section>
 
       {/* Footer */}
-      <footer id="contacto" className="cecyte-chef-footer">
-        <div className="cecyte-chef-container">
-          <div className="cecyte-chef-footer-content">
-            <div className="cecyte-chef-footer-copyright">
-              <p className="cecyte-chef-footer-copyright-text">
-                &copy; 2024 CecyteChef. Todos los derechos reservados.
-              </p>
-            </div>
-            <div className="cecyte-chef-footer-social">
-              <div className="cecyte-chef-social-links">
-                <a
-                  href="#"
-                  className="cecyte-chef-social-link"
-                  aria-label="Facebook"
-                >
-                  <i className="bi bi-facebook"></i>
-                </a>
-                <a
-                  href="#"
-                  className="cecyte-chef-social-link"
-                  aria-label="Twitter"
-                >
-                  <i className="bi bi-twitter"></i>
-                </a>
-                <a
-                  href="#"
-                  className="cecyte-chef-social-link"
-                  aria-label="Instagram"
-                >
-                  <i className="bi bi-instagram"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
