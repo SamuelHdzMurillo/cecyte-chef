@@ -476,21 +476,6 @@ function HomePage({ onLoginClick }) {
         </div>
       </section>
 
-      {/* Divider 2 - Jueces to Lugares */}
-      <div className="cecyte-chef-divider cecyte-chef-divider-svg">
-        <div className="cecyte-chef-divider-content">
-          <div className="cecyte-chef-divider-svg-elements">
-            <img src="/src/assets/svg/HACHA.png" alt="Hacha" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/PALMERA.png" alt="Palmera" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/DORADO.png" alt="Dorado" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/BALLENA.png" alt="Ballena" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" className="cecyte-chef-divider-svg-item" />
-          </div>
-        </div>
-      </div>
 
       {/* Lugares de Interés Section - Premium Parallax */}
       <section className="cecyte-chef-lugares-section" ref={parallaxRef}>
@@ -557,78 +542,7 @@ function HomePage({ onLoginClick }) {
         </div>
       </section>
 
-      {/* Divider 3 - Lugares to Características */}
-      <div className="cecyte-chef-divider cecyte-chef-divider-svg">
-        <div className="cecyte-chef-divider-content">
-          <div className="cecyte-chef-divider-svg-elements">
-            <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/PALMERA.png" alt="Palmera" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/BALLENA.png" alt="Ballena" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/DORADO.png" alt="Dorado" className="cecyte-chef-divider-svg-item" />
-          </div>
-        </div>
-      </div>
 
-      {/* Características */}
-      <section id="caracteristicas" className="cecyte-chef-features-section">
-        <div className="cecyte-chef-container">
-          <div className="cecyte-chef-features-header">
-            <h2 className="cecyte-chef-features-title">
-              ¿Por qué elegir CecyteChef?
-            </h2>
-            <p className="cecyte-chef-features-subtitle">
-              Descubre todas las ventajas de nuestra plataforma
-            </p>
-          </div>
-          
-          <div className="cecyte-chef-features-grid">
-            <div className="cecyte-chef-feature-card">
-              <div className="cecyte-chef-feature-card-content">
-                <div className="cecyte-chef-feature-icon cecyte-chef-feature-icon-primary">
-                  <i className="bi bi-book"></i>
-                </div>
-                <h5 className="cecyte-chef-feature-title">
-                  Aprendizaje Interactivo
-                </h5>
-                <p className="cecyte-chef-feature-description">
-                  Contenido multimedia con videos, imágenes y explicaciones
-                  paso a paso para un aprendizaje efectivo.
-                </p>
-              </div>
-            </div>
-            
-            <div className="cecyte-chef-feature-card">
-              <div className="cecyte-chef-feature-card-content">
-                <div className="cecyte-chef-feature-icon cecyte-chef-feature-icon-secondary">
-                  <i className="bi bi-people"></i>
-                </div>
-                <h5 className="cecyte-chef-feature-title">Comunidad Activa</h5>
-                <p className="cecyte-chef-feature-description">
-                  Conecta con otros estudiantes y chefs profesionales.
-                  Comparte experiencias y recetas.
-                </p>
-              </div>
-            </div>
-            
-            <div className="cecyte-chef-feature-card">
-              <div className="cecyte-chef-feature-card-content">
-                <div className="cecyte-chef-feature-icon cecyte-chef-feature-icon-tertiary">
-                  <i className="bi bi-award"></i>
-                </div>
-                <h5 className="cecyte-chef-feature-title">Certificaciones</h5>
-                <p className="cecyte-chef-feature-description">
-                  Obtén certificados reconocidos al completar nuestros cursos
-                  y módulos especializados.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Hoteles Section - Premium Parallax */}
       <section className="cecyte-chef-hoteles-section" ref={hotelesParallaxRef}>

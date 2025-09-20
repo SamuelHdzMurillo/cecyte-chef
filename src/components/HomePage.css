@@ -1712,101 +1712,6 @@
   transform: translateX(100%);
 }
 
-/* ========================================
-   FEATURES SECTION
-   ======================================== */
-.cecyte-chef-features-section {
-  padding: 5rem 0;
-  background: var(--cecyte-chef-white);
-}
-
-.cecyte-chef-features-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.cecyte-chef-features-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--cecyte-chef-dark);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.cecyte-chef-features-subtitle {
-  font-size: 1.25rem;
-  color: var(--cecyte-chef-muted);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.cecyte-chef-features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-}
-
-.cecyte-chef-feature-card {
-  width: 100%;
-  max-width: 350px;
-  background: var(--cecyte-chef-white);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px var(--cecyte-chef-shadow);
-  transition: var(--cecyte-chef-transition);
-  overflow: hidden;
-}
-
-.cecyte-chef-feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px var(--cecyte-chef-shadow-hover);
-}
-
-.cecyte-chef-feature-card-content {
-  padding: 2rem;
-  text-align: center;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.cecyte-chef-feature-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  color: var(--cecyte-chef-white);
-  font-size: 2rem;
-}
-
-.cecyte-chef-feature-icon-primary {
-  background: var(--cecyte-chef-primary);
-}
-
-.cecyte-chef-feature-icon-secondary {
-  background: var(--cecyte-chef-secondary);
-}
-
-.cecyte-chef-feature-icon-tertiary {
-  background: var(--cecyte-chef-tertiary);
-}
-
-.cecyte-chef-feature-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--cecyte-chef-dark);
-  margin-bottom: 1rem;
-}
-
-.cecyte-chef-feature-description {
-  color: var(--cecyte-chef-muted);
-  line-height: 1.6;
-  margin: 0;
-}
 
 /* ========================================
    CTA SECTION
@@ -2096,22 +2001,6 @@
     width: 35px;
   }
   
-  .cecyte-chef-features-section {
-    padding: 3rem 0;
-  }
-  
-  .cecyte-chef-features-title {
-    font-size: 2rem;
-  }
-  
-  .cecyte-chef-features-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .cecyte-chef-features-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
   
   .cecyte-chef-cta-section {
     padding: 3rem 0;
@@ -2341,9 +2230,6 @@
     width: 25px;
   }
   
-  .cecyte-chef-features-title {
-    font-size: 1.75rem;
-  }
   
   .cecyte-chef-cta-title {
     font-size: 1.25rem;
