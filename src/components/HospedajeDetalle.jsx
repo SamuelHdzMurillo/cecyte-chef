@@ -55,7 +55,8 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
         nombre: hospedaje.nombre,
         direccion: hospedaje.direccion,
         numero_telefonico: hospedaje.numero_telefonico,
-        correo: hospedaje.correo
+        correo: hospedaje.correo,
+        img: hospedaje.img
       }
       
       console.log('Datos a enviar para actualizar hospedaje:', dataToSend)
@@ -246,6 +247,71 @@ const HospedajeDetalle = ({ hospedajeId, onBack, embedded = false }) => {
                       <i className="bi bi-geo-alt me-1 text-muted"></i>
                       {hospedaje.direccion}
                     </p>
+                  )}
+                </div>
+                <div className="col-12">
+                  <label className="form-label fw-semibold text-dark mb-2">Imagen del Hospedaje</label>
+                  {editMode ? (
+                    <div>
+                      <input
+                        type="url"
+                        className="form-control mb-2"
+                        value={hospedaje.img || ''}
+                        onChange={(e) => setHospedaje({...hospedaje, img: e.target.value})}
+                        placeholder="https://ejemplo.com/imagen.jpg"
+                      />
+                      <div className="form-text">
+                        Ingresa la URL de una imagen representativa del hospedaje
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      {hospedaje.img ? (
+                        <div className="text-center">
+                          <img
+                            src={hospedaje.img}
+                            alt={hospedaje.nombre}
+                            className="img-fluid rounded shadow-sm"
+                            style={{
+                              maxWidth: "300px",
+                              maxHeight: "200px",
+                              objectFit: "cover",
+                            }}
+                            onError={(e) => {
+                              e.target.style.display = "none";
+                              e.target.nextSibling.style.display = "block";
+                            }}
+                          />
+                          <div
+                            className="d-flex align-items-center justify-content-center bg-light rounded"
+                            style={{
+                              width: "300px",
+                              height: "200px",
+                              margin: "0 auto",
+                              display: "none",
+                            }}
+                          >
+                            <div className="text-center">
+                              <i className="bi bi-image fs-1 text-muted"></i>
+                              <p className="text-muted mt-2">Imagen no disponible</p>
+                            </div>
+                          </div>
+                          <p className="mt-2 mb-0">
+                            <small className="text-muted">
+                              <i className="bi bi-link-45deg me-1"></i>
+                              <a href={hospedaje.img} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                                Ver imagen original
+                              </a>
+                            </small>
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="text-center py-4 bg-light rounded">
+                          <i className="bi bi-image fs-1 text-muted"></i>
+                          <p className="text-muted mt-2 mb-0">No hay imagen disponible</p>
+                        </div>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>
