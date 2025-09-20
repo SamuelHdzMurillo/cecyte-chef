@@ -220,7 +220,7 @@
    ======================================== */
 .cecyte-chef-hero-section {
   position: relative;
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   background: #F5E6D3;
@@ -529,8 +529,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 120px);
-  padding-top: 10px;
+  min-height: 100vh;
+  padding-top: 0;
 }
 
 .cecyte-chef-logo-wrapper {
@@ -1031,8 +1031,8 @@
   }
   
   .cecyte-chef-hero-content {
-    min-height: calc(100vh - 100px);
-    padding-top: 5px;
+    min-height: 100vh;
+    padding-top: 0;
   }
   
   .cecyte-chef-logo-wrapper {
@@ -1174,12 +1174,12 @@
 /* Small Mobile */
 @media (max-width: 576px) {
   .cecyte-chef-hero-section {
-    min-height: calc(100vh - 60px);
+    min-height: 100vh;
   }
   
   .cecyte-chef-hero-content {
-    min-height: calc(100vh - 80px);
-    padding-top: 5px;
+    min-height: 100vh;
+    padding-top: 0;
   }
   
   .cecyte-chef-logo-wrapper {
