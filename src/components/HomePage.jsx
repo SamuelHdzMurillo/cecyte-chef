@@ -11,6 +11,44 @@ function HomePage({ onLoginClick }) {
       <section id="inicio" className="cecyte-chef-hero-section">
         <div className="cecyte-chef-hero-background">
           <div className="cecyte-chef-hero-pattern"></div>
+          <div className="cecyte-chef-paper-texture"></div>
+          
+          {/* SVGs decorativos */}
+          <div className="cecyte-chef-svg-decorations">
+            <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" className="cecyte-chef-svg-decoration cecyte-chef-svg-cuchillo" />
+            <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" className="cecyte-chef-svg-decoration cecyte-chef-svg-cuchara" />
+            <img src="/src/assets/svg/SARTEN.png" alt="Sartén" className="cecyte-chef-svg-decoration cecyte-chef-svg-sarten" />
+            <img src="/src/assets/svg/PILON.png" alt="Pilón" className="cecyte-chef-svg-decoration cecyte-chef-svg-pilon" />
+            <img src="/src/assets/svg/CAMARON.png" alt="Camarón" className="cecyte-chef-svg-decoration cecyte-chef-svg-camaron" />
+            <img src="/src/assets/svg/CHILE.png" alt="Chile" className="cecyte-chef-svg-decoration cecyte-chef-svg-chile" />
+            <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" className="cecyte-chef-svg-decoration cecyte-chef-svg-pitahaya" />
+            <img src="/src/assets/svg/PEZ.png" alt="Pez" className="cecyte-chef-svg-decoration cecyte-chef-svg-pez" />
+            
+            {/* SVGs adicionales */}
+            <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" className="cecyte-chef-svg-decoration cecyte-chef-svg-cubiertos" />
+            <img src="/src/assets/svg/HACHA.png" alt="Hacha" className="cecyte-chef-svg-decoration cecyte-chef-svg-hacha" />
+            <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" className="cecyte-chef-svg-decoration cecyte-chef-svg-langosta" />
+            <img src="/src/assets/svg/PALMERA.png" alt="Palmera" className="cecyte-chef-svg-decoration cecyte-chef-svg-palmera" />
+            <img src="/src/assets/svg/DORADO.png" alt="Dorado" className="cecyte-chef-svg-decoration cecyte-chef-svg-dorado" />
+            <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" className="cecyte-chef-svg-decoration cecyte-chef-svg-arco" />
+            <img src="/src/assets/svg/BALLENA.png" alt="Ballena" className="cecyte-chef-svg-decoration cecyte-chef-svg-ballena" />
+            <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" className="cecyte-chef-svg-decoration cecyte-chef-svg-balandra" />
+            
+            {/* SVGs extra (5% más) */}
+            <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" className="cecyte-chef-svg-decoration cecyte-chef-svg-triangulos" />
+            <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" className="cecyte-chef-svg-decoration cecyte-chef-svg-rupestres" />
+            <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" className="cecyte-chef-svg-decoration cecyte-chef-svg-cola-ballena" />
+            
+            {/* SVGs adicionales (5% más) para llenar espacios */}
+            <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-cuchillo-2" />
+            <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-cuchara-2" />
+            <img src="/src/assets/svg/SARTEN.png" alt="Sartén 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-sarten-2" />
+            <img src="/src/assets/svg/PILON.png" alt="Pilón 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-pilon-2" />
+            <img src="/src/assets/svg/CAMARON.png" alt="Camarón 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-camaron-2" />
+            <img src="/src/assets/svg/CHILE.png" alt="Chile 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-chile-2" />
+            <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-pitahaya-2" />
+            <img src="/src/assets/svg/PEZ.png" alt="Pez 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-pez-2" />
+          </div>
         </div>
         
         <div className="cecyte-chef-container">

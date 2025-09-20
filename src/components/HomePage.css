@@ -41,7 +41,7 @@
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--cecyte-chef-light) 0%, var(--cecyte-chef-lighter) 100%);
+  background: #F5E6D3;
   overflow: hidden;
 }
 
@@ -54,6 +54,21 @@
   z-index: 1;
 }
 
+.cecyte-chef-paper-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(245, 230, 211, 0.3) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(250, 235, 215, 0.3) 50%, transparent 70%),
+    radial-gradient(circle at 20% 20%, rgba(245, 230, 211, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(250, 235, 215, 0.4) 0%, transparent 50%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0"/></filter></defs><rect width="100" height="100" filter="url(%23noise)"/></svg>');
+  opacity: 0.4;
+}
+
 .cecyte-chef-hero-pattern {
   position: absolute;
   top: 0;
@@ -61,10 +76,258 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(107, 15, 42, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(74, 10, 28, 0.03) 0%, transparent 50%);
   animation: cecyte-chef-background-shift 20s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+/* ========================================
+   SVG DECORATIONS
+   ======================================== */
+.cecyte-chef-svg-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cecyte-chef-svg-decoration {
+  position: absolute;
+  opacity: 0.4;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
+  animation: cecyte-chef-svg-float 6s ease-in-out infinite;
+}
+
+.cecyte-chef-svg-decoration:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Posicionamiento específico de cada SVG - Expandido */
+.cecyte-chef-svg-cuchillo {
+  top: 8%;
+  left: 3%;
+  width: 60px;
+  height: auto;
+  animation-delay: 0s;
+}
+
+.cecyte-chef-svg-cuchara {
+  top: 18%;
+  right: 5%;
+  width: 50px;
+  height: auto;
+  animation-delay: 1s;
+}
+
+.cecyte-chef-svg-sarten {
+  top: 55%;
+  left: 1%;
+  width: 70px;
+  height: auto;
+  animation-delay: 2s;
+}
+
+.cecyte-chef-svg-pilon {
+  top: 75%;
+  right: 2%;
+  width: 55px;
+  height: auto;
+  animation-delay: 3s;
+}
+
+.cecyte-chef-svg-camaron {
+  top: 12%;
+  left: 45%;
+  width: 45px;
+  height: auto;
+  animation-delay: 4s;
+}
+
+.cecyte-chef-svg-chile {
+  top: 85%;
+  left: 15%;
+  width: 40px;
+  height: auto;
+  animation-delay: 5s;
+}
+
+.cecyte-chef-svg-pitahaya {
+  top: 25%;
+  right: 12%;
+  width: 65px;
+  height: auto;
+  animation-delay: 6s;
+}
+
+.cecyte-chef-svg-pez {
+  top: 45%;
+  right: 20%;
+  width: 50px;
+  height: auto;
+  animation-delay: 7s;
+}
+
+/* SVGs adicionales - Expandidos */
+.cecyte-chef-svg-cubiertos {
+  top: 3%;
+  left: 20%;
+  width: 55px;
+  height: auto;
+  animation-delay: 8s;
+}
+
+.cecyte-chef-svg-hacha {
+  top: 22%;
+  left: 12%;
+  width: 45px;
+  height: auto;
+  animation-delay: 9s;
+}
+
+.cecyte-chef-svg-langosta {
+  top: 38%;
+  left: 5%;
+  width: 60px;
+  height: auto;
+  animation-delay: 10s;
+}
+
+.cecyte-chef-svg-palmera {
+  top: 5%;
+  right: 15%;
+  width: 70px;
+  height: auto;
+  animation-delay: 11s;
+}
+
+.cecyte-chef-svg-dorado {
+  top: 32%;
+  right: 8%;
+  width: 40px;
+  height: auto;
+  animation-delay: 12s;
+}
+
+.cecyte-chef-svg-arco {
+  top: 62%;
+  left: 8%;
+  width: 65px;
+  height: auto;
+  animation-delay: 13s;
+}
+
+.cecyte-chef-svg-ballena {
+  top: 72%;
+  right: 12%;
+  width: 55px;
+  height: auto;
+  animation-delay: 14s;
+}
+
+.cecyte-chef-svg-balandra {
+  top: 42%;
+  left: 30%;
+  width: 50px;
+  height: auto;
+  animation-delay: 15s;
+}
+
+/* SVGs extra (5% más) - Expandidos */
+.cecyte-chef-svg-triangulos {
+  top: 10%;
+  left: 35%;
+  width: 35px;
+  height: auto;
+  animation-delay: 16s;
+}
+
+.cecyte-chef-svg-rupestres {
+  top: 52%;
+  left: 22%;
+  width: 45px;
+  height: auto;
+  animation-delay: 17s;
+}
+
+.cecyte-chef-svg-cola-ballena {
+  top: 88%;
+  left: 25%;
+  width: 40px;
+  height: auto;
+  animation-delay: 18s;
+}
+
+/* SVGs adicionales (5% más) para llenar espacios */
+.cecyte-chef-svg-cuchillo-2 {
+  top: 15%;
+  left: 60%;
+  width: 40px;
+  height: auto;
+  animation-delay: 19s;
+}
+
+.cecyte-chef-svg-cuchara-2 {
+  top: 35%;
+  left: 55%;
+  width: 35px;
+  height: auto;
+  animation-delay: 20s;
+}
+
+.cecyte-chef-svg-sarten-2 {
+  top: 68%;
+  left: 50%;
+  width: 45px;
+  height: auto;
+  animation-delay: 21s;
+}
+
+.cecyte-chef-svg-pilon-2 {
+  top: 82%;
+  left: 45%;
+  width: 40px;
+  height: auto;
+  animation-delay: 22s;
+}
+
+.cecyte-chef-svg-camaron-2 {
+  top: 28%;
+  left: 65%;
+  width: 35px;
+  height: auto;
+  animation-delay: 23s;
+}
+
+.cecyte-chef-svg-chile-2 {
+  top: 48%;
+  left: 60%;
+  width: 30px;
+  height: auto;
+  animation-delay: 24s;
+}
+
+.cecyte-chef-svg-pitahaya-2 {
+  top: 78%;
+  left: 55%;
+  width: 50px;
+  height: auto;
+  animation-delay: 25s;
+}
+
+.cecyte-chef-svg-pez-2 {
+  top: 58%;
+  left: 70%;
+  width: 35px;
+  height: auto;
+  animation-delay: 26s;
 }
 
 .cecyte-chef-hero-grid {
@@ -73,7 +336,7 @@
   gap: 3rem;
   align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
 }
 
@@ -520,6 +783,21 @@
   }
 }
 
+@keyframes cecyte-chef-svg-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(0.5deg);
+  }
+}
+
 @keyframes cecyte-chef-fade-in-up {
   from {
     opacity: 0;
@@ -581,6 +859,44 @@
   .cecyte-chef-gallery-grid {
     max-width: 400px;
     gap: 0.8rem;
+  }
+  
+  /* Ajustar SVGs en tablet */
+  .cecyte-chef-svg-decoration {
+    opacity: 0.3;
+  }
+  
+  .cecyte-chef-svg-cuchillo,
+  .cecyte-chef-svg-cuchara,
+  .cecyte-chef-svg-sarten,
+  .cecyte-chef-svg-pilon,
+  .cecyte-chef-svg-cubiertos,
+  .cecyte-chef-svg-langosta,
+  .cecyte-chef-svg-palmera,
+  .cecyte-chef-svg-arco {
+    width: 40px;
+  }
+  
+  .cecyte-chef-svg-camaron,
+  .cecyte-chef-svg-chile,
+  .cecyte-chef-svg-pitahaya,
+  .cecyte-chef-svg-pez,
+  .cecyte-chef-svg-hacha,
+  .cecyte-chef-svg-dorado,
+  .cecyte-chef-svg-ballena,
+  .cecyte-chef-svg-balandra,
+  .cecyte-chef-svg-triangulos,
+  .cecyte-chef-svg-rupestres,
+  .cecyte-chef-svg-cola-ballena,
+  .cecyte-chef-svg-cuchillo-2,
+  .cecyte-chef-svg-cuchara-2,
+  .cecyte-chef-svg-sarten-2,
+  .cecyte-chef-svg-pilon-2,
+  .cecyte-chef-svg-camaron-2,
+  .cecyte-chef-svg-chile-2,
+  .cecyte-chef-svg-pitahaya-2,
+  .cecyte-chef-svg-pez-2 {
+    width: 35px;
   }
   
   .cecyte-chef-features-section {
@@ -661,6 +977,44 @@
   .cecyte-chef-gallery-grid {
     max-width: 350px;
     gap: 0.6rem;
+  }
+  
+  /* Ajustar SVGs en móvil */
+  .cecyte-chef-svg-decoration {
+    opacity: 0.25;
+  }
+  
+  .cecyte-chef-svg-cuchillo,
+  .cecyte-chef-svg-cuchara,
+  .cecyte-chef-svg-sarten,
+  .cecyte-chef-svg-pilon,
+  .cecyte-chef-svg-cubiertos,
+  .cecyte-chef-svg-langosta,
+  .cecyte-chef-svg-palmera,
+  .cecyte-chef-svg-arco {
+    width: 30px;
+  }
+  
+  .cecyte-chef-svg-camaron,
+  .cecyte-chef-svg-chile,
+  .cecyte-chef-svg-pitahaya,
+  .cecyte-chef-svg-pez,
+  .cecyte-chef-svg-hacha,
+  .cecyte-chef-svg-dorado,
+  .cecyte-chef-svg-ballena,
+  .cecyte-chef-svg-balandra,
+  .cecyte-chef-svg-triangulos,
+  .cecyte-chef-svg-rupestres,
+  .cecyte-chef-svg-cola-ballena,
+  .cecyte-chef-svg-cuchillo-2,
+  .cecyte-chef-svg-cuchara-2,
+  .cecyte-chef-svg-sarten-2,
+  .cecyte-chef-svg-pilon-2,
+  .cecyte-chef-svg-camaron-2,
+  .cecyte-chef-svg-chile-2,
+  .cecyte-chef-svg-pitahaya-2,
+  .cecyte-chef-svg-pez-2 {
+    width: 25px;
   }
   
   .cecyte-chef-features-title {
