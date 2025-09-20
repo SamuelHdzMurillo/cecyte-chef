@@ -140,6 +140,63 @@ function HomePage({ onLoginClick }) {
         </div>
       </section>
 
+      {/* Objetivo Section */}
+      <section className="cecyte-chef-objetivo-section">
+        <div className="cecyte-chef-container">
+          <div className="cecyte-chef-objetivo-grid">
+            {/* Imagen central del chef */}
+            <div className="cecyte-chef-chef-image-container">
+              <div className="cecyte-chef-chef-circle">
+                <img
+                  src="/src/assets/chef-cooking.jpg"
+                  alt="Chef CECYTE preparando platillos"
+                  className="cecyte-chef-chef-image"
+                />
+              </div>
+              
+              {/* Elementos decorativos alrededor del chef */}
+              <div className="cecyte-chef-decorative-elements">
+                <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" className="cecyte-chef-decorative-element cecyte-chef-element-1" />
+                <img src="/src/assets/svg/SARTEN.png" alt="Sartén" className="cecyte-chef-decorative-element cecyte-chef-element-2" />
+                <img src="/src/assets/svg/CAMARON.png" alt="Camarón" className="cecyte-chef-decorative-element cecyte-chef-element-3" />
+                <img src="/src/assets/svg/CHILE.png" alt="Chile" className="cecyte-chef-decorative-element cecyte-chef-element-4" />
+                <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" className="cecyte-chef-decorative-element cecyte-chef-element-5" />
+                <img src="/src/assets/svg/PEZ.png" alt="Pez" className="cecyte-chef-decorative-element cecyte-chef-element-6" />
+                <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" className="cecyte-chef-decorative-element cecyte-chef-element-7" />
+                <img src="/src/assets/svg/PILON.png" alt="Pilón" className="cecyte-chef-decorative-element cecyte-chef-element-8" />
+              </div>
+            </div>
+
+            {/* Contenido de texto */}
+            <div className="cecyte-chef-objetivo-content">
+              <div className="cecyte-chef-objetivo-header">
+                <span className="cecyte-chef-objetivo-label">OBJETIVO</span>
+                <h2 className="cecyte-chef-objetivo-title">
+                  Sobre el concurso y participación
+                </h2>
+              </div>
+              
+              <p className="cecyte-chef-objetivo-description">
+                El CECYTE Chef tiene como finalidad demostrar la creatividad, originalidad y conocimiento 
+                de los estudiantes de la carrera de Técnico en Servicios de Hotelería y carreras afines, 
+                en el manejo de sus competencias para la elaboración de platillos y preparación de bebidas.
+              </p>
+              
+              <div className="cecyte-chef-objetivo-buttons">
+                <button className="cecyte-chef-objetivo-button">
+                  <span>VER CONVOCATORIA</span>
+                  <i className="bi bi-arrow-right"></i>
+                </button>
+                <button className="cecyte-chef-objetivo-button">
+                  <span>VER EVALUACIÓN</span>
+                  <i className="bi bi-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Características */}
       <section id="caracteristicas" className="cecyte-chef-features-section">
         <div className="cecyte-chef-container">
