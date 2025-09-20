@@ -216,6 +216,167 @@
 }
 
 /* ========================================
+   JUECES SECTION
+   ======================================== */
+.cecyte-chef-jueces-section {
+  padding: 5rem 0;
+  background: var(--cecyte-chef-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.cecyte-chef-jueces-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cecyte-chef-jueces-label {
+  display: inline-block;
+  background: linear-gradient(135deg, #BC9561, #A8824F);
+  color: var(--cecyte-chef-white);
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.cecyte-chef-jueces-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--cecyte-chef-dark);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.cecyte-chef-jueces-subtitle {
+  font-size: 1.2rem;
+  color: var(--cecyte-chef-muted);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cecyte-chef-jueces-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cecyte-chef-juez-card {
+  background: var(--cecyte-chef-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(188, 149, 97, 0.1);
+}
+
+.cecyte-chef-juez-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cecyte-chef-juez-image-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.cecyte-chef-juez-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.cecyte-chef-juez-card:hover .cecyte-chef-juez-image {
+  transform: scale(1.05);
+}
+
+.cecyte-chef-juez-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(100, 171, 167, 0.9), rgba(188, 149, 97, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 1.5rem;
+}
+
+.cecyte-chef-juez-card:hover .cecyte-chef-juez-overlay {
+  opacity: 1;
+}
+
+.cecyte-chef-juez-quote {
+  color: var(--cecyte-chef-white);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.cecyte-chef-juez-info {
+  padding: 2rem;
+}
+
+.cecyte-chef-juez-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cecyte-chef-dark);
+  margin-bottom: 0.5rem;
+}
+
+.cecyte-chef-juez-title {
+  font-size: 1rem;
+  color: #BC9561;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.cecyte-chef-juez-description {
+  font-size: 0.95rem;
+  color: var(--cecyte-chef-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.cecyte-chef-juez-experience {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cecyte-chef-juez-years,
+.cecyte-chef-juez-specialty {
+  background: linear-gradient(135deg, #64ABA7, #5A9B97);
+  color: var(--cecyte-chef-white);
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cecyte-chef-juez-specialty {
+  background: linear-gradient(135deg, #BC9561, #A8824F);
+}
+
+/* ========================================
    HERO SECTION
    ======================================== */
 .cecyte-chef-hero-section {
@@ -1161,6 +1322,20 @@
     min-width: 200px;
   }
   
+  /* Jueces Section Tablet */
+  .cecyte-chef-jueces-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .cecyte-chef-jueces-title {
+    font-size: 2.4rem;
+  }
+  
+  .cecyte-chef-juez-image-container {
+    height: 280px;
+  }
+  
   .cecyte-chef-footer-content {
     flex-direction: column;
     text-align: center;
@@ -1267,6 +1442,24 @@
   .cecyte-chef-objetivo-button {
     width: 100%;
     min-width: auto;
+  }
+  
+  /* Jueces Section Responsive */
+  .cecyte-chef-jueces-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .cecyte-chef-jueces-title {
+    font-size: 2.2rem;
+  }
+  
+  .cecyte-chef-juez-image-container {
+    height: 250px;
+  }
+  
+  .cecyte-chef-juez-info {
+    padding: 1.5rem;
   }
   
   .cecyte-chef-container {

@@ -148,7 +148,7 @@ function HomePage({ onLoginClick }) {
             <div className="cecyte-chef-chef-image-container">
               <div className="cecyte-chef-chef-circle">
                 <img
-                  src="/src/assets/chef-cooking.jpg"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
                   alt="Chef CECYTE preparando platillos"
                   className="cecyte-chef-chef-image"
                 />
@@ -191,6 +191,107 @@ function HomePage({ onLoginClick }) {
                   <span>VER EVALUACIÓN</span>
                   <i className="bi bi-arrow-right"></i>
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Jueces Section */}
+      <section className="cecyte-chef-jueces-section">
+        <div className="cecyte-chef-container">
+          <div className="cecyte-chef-jueces-header">
+            <span className="cecyte-chef-jueces-label">CONOCE A TUS JUECES</span>
+            <h2 className="cecyte-chef-jueces-title">
+              Expertos culinarios que evaluarán tu talento
+            </h2>
+            <p className="cecyte-chef-jueces-subtitle">
+              Nuestros jueces son reconocidos profesionales de la gastronomía con años de experiencia
+            </p>
+          </div>
+
+          <div className="cecyte-chef-jueces-grid">
+            {/* Juez 1 */}
+            <div className="cecyte-chef-juez-card">
+              <div className="cecyte-chef-juez-image-container">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  alt="Chef María González"
+                  className="cecyte-chef-juez-image"
+                />
+                <div className="cecyte-chef-juez-overlay">
+                  <div className="cecyte-chef-juez-quote">
+                    "La creatividad y la técnica deben ir de la mano para crear platillos excepcionales"
+                  </div>
+                </div>
+              </div>
+              <div className="cecyte-chef-juez-info">
+                <h3 className="cecyte-chef-juez-name">Chef María González</h3>
+                <p className="cecyte-chef-juez-title">Chef Ejecutiva - Hotel Marriott</p>
+                <p className="cecyte-chef-juez-description">
+                  Con más de 15 años de experiencia en cocina internacional, especialista en 
+                  gastronomía mediterránea y fusion cuisine. Graduada del Instituto Culinario de México.
+                </p>
+                <div className="cecyte-chef-juez-experience">
+                  <span className="cecyte-chef-juez-years">15+ años</span>
+                  <span className="cecyte-chef-juez-specialty">Cocina Internacional</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Juez 2 */}
+            <div className="cecyte-chef-juez-card">
+              <div className="cecyte-chef-juez-image-container">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  alt="Chef Carlos Mendoza"
+                  className="cecyte-chef-juez-image"
+                />
+                <div className="cecyte-chef-juez-overlay">
+                  <div className="cecyte-chef-juez-quote">
+                    "La pasión por los ingredientes locales es la base de una cocina auténtica"
+                  </div>
+                </div>
+              </div>
+              <div className="cecyte-chef-juez-info">
+                <h3 className="cecyte-chef-juez-name">Chef Carlos Mendoza</h3>
+                <p className="cecyte-chef-juez-title">Propietario - Restaurante El Sabor</p>
+                <p className="cecyte-chef-juez-description">
+                  Chef especializado en cocina tradicional mexicana y técnicas ancestrales. 
+                  Reconocido por su trabajo con ingredientes locales y sostenibilidad culinaria.
+                </p>
+                <div className="cecyte-chef-juez-experience">
+                  <span className="cecyte-chef-juez-years">12+ años</span>
+                  <span className="cecyte-chef-juez-specialty">Cocina Tradicional</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Juez 3 */}
+            <div className="cecyte-chef-juez-card">
+              <div className="cecyte-chef-juez-image-container">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  alt="Chef Ana Rodríguez"
+                  className="cecyte-chef-juez-image"
+                />
+                <div className="cecyte-chef-juez-overlay">
+                  <div className="cecyte-chef-juez-quote">
+                    "La presentación es tan importante como el sabor para crear una experiencia memorable"
+                  </div>
+                </div>
+              </div>
+              <div className="cecyte-chef-juez-info">
+                <h3 className="cecyte-chef-juez-name">Chef Ana Rodríguez</h3>
+                <p className="cecyte-chef-juez-title">Instructora - CECYTE Culinary</p>
+                <p className="cecyte-chef-juez-description">
+                  Especialista en pastelería y repostería artística. Con formación en Francia, 
+                  combina técnicas clásicas con innovación moderna en la presentación de platillos.
+                </p>
+                <div className="cecyte-chef-juez-experience">
+                  <span className="cecyte-chef-juez-years">10+ años</span>
+                  <span className="cecyte-chef-juez-specialty">Pastelería Artística</span>
+                </div>
               </div>
             </div>
           </div>
