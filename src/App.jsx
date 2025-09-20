@@ -7,6 +7,12 @@ import RoleBasedRoute from "./components/RoleBasedRoute.jsx";
 import HospedajeDetalle from "./components/HospedajeDetalle.jsx";
 import ParticipanteDetalle from "./components/ParticipanteDetalle.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import Inicio from "./pages/Inicio.jsx";
+import Programa from "./pages/Programa.jsx";
+import Hospedajes from "./pages/Hospedajes.jsx";
+import Restaurantes from "./pages/Restaurantes.jsx";
+import QueVisitar from "./pages/QueVisitar.jsx";
+import Contacto from "./pages/Contacto.jsx";
 import "./App.css";
 
 
@@ -27,6 +33,30 @@ function App() {
         <Route
           path="/"
           element={<HomePage onLoginClick={handleLoginClick} />}
+        />
+        <Route
+          path="/inicio"
+          element={<Inicio onLoginClick={handleLoginClick} />}
+        />
+        <Route
+          path="/programa"
+          element={<Programa onLoginClick={handleLoginClick} />}
+        />
+        <Route
+          path="/hospedajes"
+          element={<Hospedajes onLoginClick={handleLoginClick} />}
+        />
+        <Route
+          path="/restaurantes"
+          element={<Restaurantes onLoginClick={handleLoginClick} />}
+        />
+        <Route
+          path="/que-visitar"
+          element={<QueVisitar onLoginClick={handleLoginClick} />}
+        />
+        <Route
+          path="/contacto"
+          element={<Contacto onLoginClick={handleLoginClick} />}
         />
         <Route path="/login" element={<Login onBackClick={handleBackToHome} />} />
         <Route

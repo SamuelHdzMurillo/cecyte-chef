@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar({ onLoginClick }) {
@@ -42,44 +43,44 @@ function Navbar({ onLoginClick }) {
         <div className="main-navbar-container">
           {/* Menú de navegación */}
           <div className={`main-navbar-menu ${isMenuOpen ? "active" : ""}`}>
-            <a href="#inicio" className="main-navbar-link" onClick={closeMenu}>
+            <Link to="/inicio" className="main-navbar-link" onClick={closeMenu}>
               INICIO
-            </a>
-            <a
-              href="#programa"
+            </Link>
+            <Link
+              to="/programa"
               className="main-navbar-link"
               onClick={closeMenu}
             >
               PROGRAMA
-            </a>
-            <a
-              href="#hospedajes"
+            </Link>
+            <Link
+              to="/hospedajes"
               className="main-navbar-link"
               onClick={closeMenu}
             >
               HOSPEDAJES
-            </a>
-            <a
-              href="#restaurantes"
+            </Link>
+            <Link
+              to="/restaurantes"
               className="main-navbar-link"
               onClick={closeMenu}
             >
               RESTAURANTES
-            </a>
-            <a
-              href="#que-visitar"
+            </Link>
+            <Link
+              to="/que-visitar"
               className="main-navbar-link"
               onClick={closeMenu}
             >
               ¿QUÉ VISITAR?
-            </a>
-            <a
-              href="#contacto"
+            </Link>
+            <Link
+              to="/contacto"
               className="main-navbar-link"
               onClick={closeMenu}
             >
               CONTACTO
-            </a>
+            </Link>
 
             {/* Botón de Iniciar Sesión */}
             <button
