@@ -140,6 +140,7 @@ function HomePage({ onLoginClick }) {
         </div>
       </section>
 
+
       {/* Objetivo Section */}
       <section className="cecyte-chef-objetivo-section">
         <div className="cecyte-chef-container">
@@ -196,6 +197,22 @@ function HomePage({ onLoginClick }) {
           </div>
         </div>
       </section>
+
+      {/* Divider 1 - Objetivo to Jueces */}
+      <div className="cecyte-chef-divider cecyte-chef-divider-svg">
+        <div className="cecyte-chef-divider-content">
+          <div className="cecyte-chef-divider-svg-elements">
+            <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/SARTEN.png" alt="Sartén" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/CAMARON.png" alt="Camarón" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/CHILE.png" alt="Chile" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/PEZ.png" alt="Pez" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/PILON.png" alt="Pilón" className="cecyte-chef-divider-svg-item" />
+          </div>
+        </div>
+      </div>
 
       {/* Jueces Section */}
       <section className="cecyte-chef-jueces-section">
@@ -297,6 +314,22 @@ function HomePage({ onLoginClick }) {
           </div>
         </div>
       </section>
+
+      {/* Divider 2 - Jueces to Características */}
+      <div className="cecyte-chef-divider cecyte-chef-divider-svg">
+        <div className="cecyte-chef-divider-content">
+          <div className="cecyte-chef-divider-svg-elements">
+            <img src="/src/assets/svg/HACHA.png" alt="Hacha" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/PALMERA.png" alt="Palmera" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/DORADO.png" alt="Dorado" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/BALLENA.png" alt="Ballena" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" className="cecyte-chef-divider-svg-item" />
+            <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" className="cecyte-chef-divider-svg-item" />
+          </div>
+        </div>
+      </div>
 
       {/* Características */}
       <section id="caracteristicas" className="cecyte-chef-features-section">
