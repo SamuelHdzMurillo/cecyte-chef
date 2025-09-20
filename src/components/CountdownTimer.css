@@ -1,0 +1,445 @@
+/* Countdown Timer Section - Premium Design */
+.cecyte-chef-countdown-section {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.cecyte-chef-countdown-container {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 40px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Background SVG Elements */
+.cecyte-chef-countdown-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cecyte-chef-countdown-svg {
+  position: absolute;
+  opacity: 0.1;
+  filter: drop-shadow(0 0 20px rgba(188, 149, 97, 0.3));
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.cecyte-chef-svg-1 {
+  top: 10%;
+  left: 5%;
+  width: 80px;
+  animation-delay: 0s;
+}
+
+.cecyte-chef-svg-2 {
+  top: 20%;
+  right: 10%;
+  width: 70px;
+  animation-delay: 1s;
+}
+
+.cecyte-chef-svg-3 {
+  top: 40%;
+  left: 8%;
+  width: 60px;
+  animation-delay: 2s;
+}
+
+.cecyte-chef-svg-4 {
+  top: 60%;
+  right: 15%;
+  width: 55px;
+  animation-delay: 3s;
+}
+
+.cecyte-chef-svg-5 {
+  top: 80%;
+  left: 12%;
+  width: 90px;
+  animation-delay: 4s;
+}
+
+.cecyte-chef-svg-6 {
+  top: 15%;
+  left: 50%;
+  width: 50px;
+  animation-delay: 5s;
+}
+
+.cecyte-chef-svg-7 {
+  top: 70%;
+  right: 5%;
+  width: 75px;
+  animation-delay: 1.5s;
+}
+
+.cecyte-chef-svg-8 {
+  top: 50%;
+  right: 25%;
+  width: 85px;
+  animation-delay: 2.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+/* Overlay */
+.cecyte-chef-countdown-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(188, 149, 97, 0.1) 0%, rgba(0, 0, 0, 0.3) 70%);
+  z-index: 1;
+}
+
+/* Content */
+.cecyte-chef-countdown-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+}
+
+/* Header */
+.cecyte-chef-countdown-header {
+  margin-bottom: 60px;
+}
+
+.cecyte-chef-countdown-badge {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.cecyte-chef-countdown-badge-text {
+  background: linear-gradient(135deg, #BC9561 0%, #A8824F 50%, #BC9561 100%);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 8px 25px rgba(188, 149, 97, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.cecyte-chef-countdown-badge-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cecyte-chef-countdown-badge:hover .cecyte-chef-countdown-badge-text::before {
+  left: 100%;
+}
+
+.cecyte-chef-countdown-title {
+  margin-bottom: 20px;
+}
+
+.cecyte-chef-countdown-title-main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #BC9561 0%, #F4E4BC 50%, #BC9561 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(188, 149, 97, 0.5);
+  margin-bottom: 10px;
+  animation: glow 2s ease-in-out infinite alternate;
+  letter-spacing: 3px;
+}
+
+.cecyte-chef-countdown-title-sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #F4E4BC;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(188, 149, 97, 0.5);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(188, 149, 97, 0.8), 0 0 40px rgba(188, 149, 97, 0.3);
+  }
+}
+
+.cecyte-chef-countdown-description {
+  font-size: 1.2rem;
+  color: #E0E0E0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Timer */
+.cecyte-chef-countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.cecyte-chef-countdown-item {
+  text-align: center;
+  position: relative;
+}
+
+.cecyte-chef-countdown-number {
+  font-size: 5.5rem;
+  font-weight: 800;
+  color: #BC9561;
+  text-shadow: 0 0 20px rgba(188, 149, 97, 0.5);
+  margin-bottom: 10px;
+  position: relative;
+  background: linear-gradient(135deg, #BC9561 0%, #F4E4BC 50%, #BC9561 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pulse 2s ease-in-out infinite;
+  min-width: 120px;
+}
+
+.cecyte-chef-countdown-number::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(135deg, rgba(188, 149, 97, 0.1) 0%, rgba(244, 228, 188, 0.1) 50%, rgba(188, 149, 97, 0.1) 100%);
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cecyte-chef-countdown-item:hover .cecyte-chef-countdown-number::before {
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.cecyte-chef-countdown-label {
+  font-size: 1rem;
+  color: #F4E4BC;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.cecyte-chef-countdown-separator {
+  font-size: 4rem;
+  color: #BC9561;
+  font-weight: 300;
+  animation: blink 1s ease-in-out infinite;
+  margin: 0 10px;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
+
+/* Actions */
+.cecyte-chef-countdown-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cecyte-chef-countdown-button {
+  position: relative;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.cecyte-chef-countdown-button-primary {
+  background: linear-gradient(135deg, #BC9561 0%, #A8824F 50%, #BC9561 100%);
+  color: white;
+  box-shadow: 0 10px 30px rgba(188, 149, 97, 0.3);
+}
+
+.cecyte-chef-countdown-button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(188, 149, 97, 0.4);
+}
+
+.cecyte-chef-countdown-button-secondary {
+  background: transparent;
+  color: #BC9561;
+  border: 2px solid #BC9561;
+  backdrop-filter: blur(10px);
+}
+
+.cecyte-chef-countdown-button-secondary:hover {
+  background: rgba(188, 149, 97, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(188, 149, 97, 0.2);
+}
+
+.cecyte-chef-countdown-button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cecyte-chef-countdown-button-primary:hover .cecyte-chef-countdown-button-glow {
+  left: 100%;
+}
+
+.cecyte-chef-countdown-button-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cecyte-chef-countdown-section {
+    height: 100vh;
+    padding: 0;
+  }
+
+  .cecyte-chef-countdown-title-main {
+    font-size: 4rem;
+  }
+
+  .cecyte-chef-countdown-title-sub {
+    font-size: 1.5rem;
+  }
+
+  .cecyte-chef-countdown-number {
+    font-size: 4rem;
+    min-width: 100px;
+  }
+
+  .cecyte-chef-countdown-timer {
+    gap: 30px;
+    max-width: 100%;
+  }
+
+  .cecyte-chef-countdown-separator {
+    font-size: 3rem;
+  }
+
+  .cecyte-chef-countdown-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cecyte-chef-countdown-button {
+    min-width: 250px;
+  }
+
+  .cecyte-chef-countdown-svg {
+    width: 50px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cecyte-chef-countdown-container {
+    padding: 0 20px;
+  }
+
+  .cecyte-chef-countdown-title-main {
+    font-size: 3rem;
+  }
+
+  .cecyte-chef-countdown-title-sub {
+    font-size: 1.2rem;
+  }
+
+  .cecyte-chef-countdown-number {
+    font-size: 3rem;
+    min-width: 80px;
+  }
+
+  .cecyte-chef-countdown-timer {
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  .cecyte-chef-countdown-separator {
+    font-size: 2rem;
+  }
+
+  .cecyte-chef-countdown-description {
+    font-size: 1rem;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./HomePage.css";
 import Navbar from "./Navbar";
+import CountdownTimer from "./CountdownTimer";
 
 function HomePage({ onLoginClick }) {
   const parallaxRef = useRef(null);
@@ -673,6 +674,9 @@ function HomePage({ onLoginClick }) {
           </div>
         </div>
       </section>
+
+      {/* Countdown Timer Section */}
+      <CountdownTimer />
 
       {/* CTA Section */}
       <section className="cecyte-chef-cta-section">
