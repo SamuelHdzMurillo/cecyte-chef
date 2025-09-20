@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import RestauranteCard from "../components/RestauranteCard";
+import restaurantesService from "../services/restaurantesService";
 import "../components/HomePage.css";
+import "../components/RestauranteCard.css";
 
 function Restaurantes({ onLoginClick }) {
+  const [restaurantes, setRestaurantes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchRestaurantes = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await restaurantesService.getRestaurantes();
+        setRestaurantes(response.data || []);
+      } catch (err) {
+        console.error('Error al cargar restaurantes:', err);
+        setError('Error al cargar los restaurantes. Por favor, intenta de nuevo.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRestaurantes();
+  }, []);
+
   return (
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
@@ -93,12 +118,7 @@ function Restaurantes({ onLoginClick }) {
                   </div>
                 </button>
                 
-                <button className="cecyte-chef-btn cecyte-chef-btn-secondary">
-                  <span>Menús especiales</span>
-                  <div className="cecyte-chef-btn-icon">
-                    <i className="bi bi-menu-button-wide"></i>
-                  </div>
-                </button>
+                
               </div>
             </div>
 
@@ -113,6 +133,61 @@ function Restaurantes({ onLoginClick }) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Sección de tarjetas de restaurantes */}
+      <section className="cecyte-chef-restaurantes-cards-section">
+        <div className="cecyte-chef-container">
+          <div className="cecyte-chef-restaurantes-header">
+            
+            <h2 className="cecyte-chef-restaurantes-title">
+              Restaurantes <span className="cecyte-chef-title-highlight">recomendados</span>
+            </h2>
+            <p className="cecyte-chef-restaurantes-description">
+              Descubre los mejores restaurantes y sabores únicos de La Paz, Baja California Sur
+            </p>
+          </div>
+
+          {/* Estados de carga y error */}
+          {loading && (
+            <div className="cecyte-chef-loading">
+              <div className="cecyte-chef-spinner"></div>
+              <p>Cargando restaurantes...</p>
+            </div>
+          )}
+
+          {error && (
+            <div className="cecyte-chef-error">
+              <i className="bi bi-exclamation-triangle"></i>
+              <p>{error}</p>
+              <button 
+                className="cecyte-chef-btn cecyte-chef-btn-primary"
+                onClick={() => window.location.reload()}
+              >
+                <span>Reintentar</span>
+                <div className="cecyte-chef-btn-icon">
+                  <i className="bi bi-arrow-clockwise"></i>
+                </div>
+              </button>
+            </div>
+          )}
+
+          {/* Grid de tarjetas de restaurantes */}
+          {!loading && !error && restaurantes.length > 0 && (
+            <div className="cecyte-chef-restaurantes-grid">
+              {restaurantes.map((restaurante) => (
+                <RestauranteCard key={restaurante.id} restaurante={restaurante} />
+              ))}
+            </div>
+          )}
+
+          {!loading && !error && restaurantes.length === 0 && (
+            <div className="cecyte-chef-empty">
+              <i className="bi bi-utensils"></i>
+              <p>No hay restaurantes disponibles en este momento</p>
+            </div>
+          )}
         </div>
       </section>
 
