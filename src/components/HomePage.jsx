@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 function HomePage({ onLoginClick }) {
   const parallaxRef = useRef(null);
   const hotelesParallaxRef = useRef(null);
+  const restaurantesParallaxRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,6 +95,52 @@ function HomePage({ onLoginClick }) {
         
         // Efecto de parallax en el scroll indicator
         const scrollIndicator = hotelesParallaxRef.current.querySelector('.cecyte-chef-scroll-indicator');
+        if (scrollIndicator) {
+          const indicatorOpacity = Math.max(0, 1 - progress * 3);
+          scrollIndicator.style.opacity = indicatorOpacity;
+        }
+      }
+
+      // Parallax para sección de restaurantes
+      if (restaurantesParallaxRef.current) {
+        const rect = restaurantesParallaxRef.current.getBoundingClientRect();
+        const scrolled = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // Calcular el progreso de la sección (0 a 1)
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+        const progress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight)));
+        
+        // Parallax para diferentes capas
+        const bgLayer = restaurantesParallaxRef.current.querySelector('.cecyte-chef-bg-layer-1');
+        const overlay = restaurantesParallaxRef.current.querySelector('.cecyte-chef-parallax-overlay');
+        const content = restaurantesParallaxRef.current.querySelector('.cecyte-chef-parallax-content');
+        
+        if (bgLayer) {
+          const bgSpeed = 0.4;
+          const bgY = -(scrolled * bgSpeed);
+          bgLayer.style.transform = `translateY(${bgY}px) scale(1.1)`;
+        }
+        
+        if (overlay) {
+          const overlaySpeed = 0.2;
+          const overlayY = -(scrolled * overlaySpeed);
+          overlay.style.transform = `translateY(${overlayY}px)`;
+        }
+        
+        if (content) {
+          const contentSpeed = 0.1;
+          const contentY = -(scrolled * contentSpeed);
+          content.style.transform = `translateY(${contentY}px)`;
+          
+          // Efecto de fade basado en el progreso
+          const opacity = Math.max(0.3, 1 - progress * 0.7);
+          content.style.opacity = opacity;
+        }
+        
+        // Efecto de parallax en el scroll indicator
+        const scrollIndicator = restaurantesParallaxRef.current.querySelector('.cecyte-chef-scroll-indicator');
         if (scrollIndicator) {
           const indicatorOpacity = Math.max(0, 1 - progress * 3);
           scrollIndicator.style.opacity = indicatorOpacity;
@@ -633,6 +680,71 @@ function HomePage({ onLoginClick }) {
                     <span>Reservar ahora</span>
                     <div className="cecyte-chef-btn-icon">
                       <i className="bi bi-calendar-check"></i>
+                    </div>
+                  </button>
+                </div>
+                
+                {/* Scroll indicator */}
+                <div className="cecyte-chef-scroll-indicator">
+                  <div className="cecyte-chef-scroll-line"></div>
+                  <span>Desplázate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Restaurantes Section - Premium Parallax */}
+      <section className="cecyte-chef-restaurantes-section" ref={restaurantesParallaxRef}>
+        <div className="cecyte-chef-parallax-container">
+          {/* Background Layers for Advanced Parallax */}
+          <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
+            <img 
+              src="/src/assets/fondos/restaurante.png" 
+              alt="Restaurantes y gastronomía en La Paz" 
+              className="cecyte-chef-parallax-image"
+            />
+          </div>
+          
+          {/* Overlay with gradient and texture */}
+          <div className="cecyte-chef-parallax-overlay">
+            <div className="cecyte-chef-overlay-gradient"></div>
+            <div className="cecyte-chef-overlay-texture"></div>
+          </div>
+          
+          {/* Content Layer */}
+          <div className="cecyte-chef-parallax-content">
+            <div className="cecyte-chef-container">
+              <div className="cecyte-chef-restaurantes-hero">
+                <div className="cecyte-chef-restaurantes-badge">
+                  <span>Gastronomía</span>
+                </div>
+                
+                <h1 className="cecyte-chef-restaurantes-title">
+                  <span className="cecyte-chef-title-line">¿Dónde</span>
+                  <span className="cecyte-chef-title-highlight">comer?</span>
+                </h1>
+                
+                <p className="cecyte-chef-restaurantes-description">
+                  Saborea la auténtica cocina de La Paz, Baja California Sur. 
+                  Desde elegantes restaurantes con vista al mar hasta acogedores 
+                  locales tradicionales, descubre una experiencia gastronómica 
+                  única que combina ingredientes frescos del mar con sabores locales.
+                </p>
+                
+                <div className="cecyte-chef-restaurantes-actions">
+                  <button className="cecyte-chef-restaurantes-button cecyte-chef-btn-primary">
+                    <span>Ver restaurantes</span>
+                    <div className="cecyte-chef-btn-icon">
+                      <i className="bi bi-utensils"></i>
+                    </div>
+                  </button>
+                  
+                  <button className="cecyte-chef-restaurantes-button cecyte-chef-btn-secondary">
+                    <span>Menú del día</span>
+                    <div className="cecyte-chef-btn-icon">
+                      <i className="bi bi-menu-button-wide"></i>
                     </div>
                   </button>
                 </div>
