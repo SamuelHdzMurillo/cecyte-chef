@@ -74,20 +74,6 @@ function Navbar({ onLoginClick }) {
               ¿QUÉ VISITAR?
             </a>
             <a
-              href="#directorio"
-              className="main-navbar-link"
-              onClick={closeMenu}
-            >
-              DIRECTORIO
-            </a>
-            <a
-              href="#servicios-medicos"
-              className="main-navbar-link"
-              onClick={closeMenu}
-            >
-              SERV. MÉDICOS
-            </a>
-            <a
               href="#contacto"
               className="main-navbar-link"
               onClick={closeMenu}
