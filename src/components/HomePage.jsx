@@ -265,10 +265,7 @@ function HomePage({ onLoginClick }) {
                   <span>Participar Ahora</span>
                   <i className="bi bi-arrow-right"></i>
                 </button>
-                <button className="cecyte-chef-btn cecyte-chef-btn-secondary">
-                  <span>Ver Convocatoria</span>
-                  <i className="bi bi-file-text"></i>
-                </button>
+                
               </div>
             </div>
             
@@ -854,12 +851,7 @@ function HomePage({ onLoginClick }) {
                     </div>
                   </button>
                   
-                  <button className="cecyte-chef-lugares-button cecyte-chef-btn-secondary">
-                    <span>Ver galería</span>
-                    <div className="cecyte-chef-btn-icon">
-                      <i className="bi bi-images"></i>
-                    </div>
-                  </button>
+                  
                 </div>
                 
                 {/* Scroll indicator */}
@@ -921,12 +913,7 @@ function HomePage({ onLoginClick }) {
                     </div>
                   </button>
                   
-                  <button className="cecyte-chef-hoteles-button cecyte-chef-btn-secondary">
-                    <span>Reservar ahora</span>
-                    <div className="cecyte-chef-btn-icon">
-                      <i className="bi bi-calendar-check"></i>
-                    </div>
-                  </button>
+                  
                 </div>
                 
                 {/* Scroll indicator */}
@@ -982,16 +969,11 @@ function HomePage({ onLoginClick }) {
                   <button className="cecyte-chef-restaurantes-button cecyte-chef-btn-primary">
                     <span>Ver restaurantes</span>
                     <div className="cecyte-chef-btn-icon">
-                      <i className="bi bi-utensils"></i>
+                      <i className="bi bi-shop"></i>
                     </div>
                   </button>
                   
-                  <button className="cecyte-chef-restaurantes-button cecyte-chef-btn-secondary">
-                    <span>Menú del día</span>
-                    <div className="cecyte-chef-btn-icon">
-                      <i className="bi bi-menu-button-wide"></i>
-                    </div>
-                  </button>
+                  
                 </div>
                 
                 {/* Scroll indicator */}

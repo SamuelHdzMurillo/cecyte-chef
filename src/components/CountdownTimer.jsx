@@ -94,9 +94,7 @@ const CountdownTimer = () => {
               <span className="cecyte-chef-countdown-button-text">Registrarse</span>
               <div className="cecyte-chef-countdown-button-glow"></div>
             </button>
-            <button className="cecyte-chef-countdown-button cecyte-chef-countdown-button-secondary">
-              <span className="cecyte-chef-countdown-button-text">Más Información</span>
-            </button>
+            
           </div>
         </div>
       </div>
