@@ -1222,14 +1222,14 @@
 }
 
 /* ========================================
-   HERO SECTION
+   HERO SECTION - CLEAN & MODERN DESIGN
    ======================================== */
 .cecyte-chef-hero-section {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: #F5E6D3;
+  background: #F8F9FA;
   overflow: hidden;
 }
 
@@ -1242,21 +1242,6 @@
   z-index: 1;
 }
 
-.cecyte-chef-paper-texture {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(45deg, transparent 30%, rgba(245, 230, 211, 0.3) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(250, 235, 215, 0.3) 50%, transparent 70%),
-    radial-gradient(circle at 20% 20%, rgba(245, 230, 211, 0.4) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(250, 235, 215, 0.4) 0%, transparent 50%),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0"/></filter></defs><rect width="100" height="100" filter="url(%23noise)"/></svg>');
-  opacity: 0.4;
-}
-
 .cecyte-chef-hero-pattern {
   position: absolute;
   top: 0;
@@ -1264,17 +1249,16 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(107, 15, 42, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(74, 10, 28, 0.03) 0%, transparent 50%);
-  animation: cecyte-chef-background-shift 20s ease-in-out infinite;
-  opacity: 0.3;
+    radial-gradient(circle at 20% 20%, rgba(52, 58, 64, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(52, 58, 64, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(52, 58, 64, 0.01) 0%, transparent 50%);
+  opacity: 0.6;
 }
 
 /* ========================================
-   SVG DECORATIONS
+   MINIMALIST ICONS
    ======================================== */
-.cecyte-chef-svg-decorations {
+.cecyte-chef-minimal-icons {
   position: absolute;
   top: 0;
   left: 0;
@@ -1284,382 +1268,359 @@
   pointer-events: none;
 }
 
-.cecyte-chef-svg-decoration {
+.cecyte-chef-minimal-icon {
   position: absolute;
-  opacity: 0.4;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  opacity: 0.15;
+  filter: brightness(0) saturate(100%) invert(20%) sepia(8%) saturate(1000%) hue-rotate(180deg) brightness(95%) contrast(85%);
   transition: all 0.3s ease;
-  animation: cecyte-chef-svg-float 6s ease-in-out infinite;
+  animation: cecyte-chef-minimal-float 8s ease-in-out infinite;
 }
 
-.cecyte-chef-svg-decoration:hover {
-  opacity: 0.6;
-  transform: scale(1.1);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-}
-
-/* Posicionamiento específico de cada SVG - Expandido */
-.cecyte-chef-svg-cuchillo {
-  top: 8%;
-  left: 3%;
-  width: 60px;
+.cecyte-chef-minimal-icon img {
+  width: 100%;
   height: auto;
+}
+
+.cecyte-chef-minimal-icon:hover {
+  opacity: 0.25;
+  transform: scale(1.1);
+}
+
+/* Icon Positions */
+.cecyte-chef-minimal-1 {
+  top: 15%;
+  left: 8%;
+  width: 40px;
   animation-delay: 0s;
 }
 
-.cecyte-chef-svg-cuchara {
-  top: 18%;
-  right: 5%;
-  width: 50px;
-  height: auto;
+.cecyte-chef-minimal-2 {
+  top: 25%;
+  right: 12%;
+  width: 35px;
   animation-delay: 1s;
 }
 
-.cecyte-chef-svg-sarten {
-  top: 55%;
-  left: 1%;
-  width: 70px;
-  height: auto;
+.cecyte-chef-minimal-3 {
+  top: 65%;
+  left: 5%;
+  width: 30px;
   animation-delay: 2s;
 }
 
-.cecyte-chef-svg-pilon {
+.cecyte-chef-minimal-4 {
   top: 75%;
-  right: 2%;
-  width: 55px;
-  height: auto;
+  right: 10%;
+  width: 25px;
   animation-delay: 3s;
 }
 
-.cecyte-chef-svg-camaron {
-  top: 12%;
-  left: 45%;
-  width: 45px;
-  height: auto;
+.cecyte-chef-minimal-5 {
+  top: 10%;
+  right: 25%;
+  width: 32px;
   animation-delay: 4s;
 }
 
-.cecyte-chef-svg-chile {
-  top: 85%;
-  left: 15%;
-  width: 40px;
-  height: auto;
+.cecyte-chef-minimal-6 {
+  top: 45%;
+  left: 2%;
+  width: 28px;
   animation-delay: 5s;
 }
 
-.cecyte-chef-svg-pitahaya {
-  top: 25%;
-  right: 12%;
-  width: 65px;
-  height: auto;
+.cecyte-chef-minimal-7 {
+  top: 35%;
+  right: 5%;
+  width: 26px;
   animation-delay: 6s;
 }
 
-.cecyte-chef-svg-pez {
-  top: 45%;
-  right: 20%;
-  width: 50px;
-  height: auto;
+.cecyte-chef-minimal-8 {
+  top: 85%;
+  left: 15%;
+  width: 24px;
   animation-delay: 7s;
 }
 
-/* SVGs adicionales - Expandidos */
-.cecyte-chef-svg-cubiertos {
-  top: 3%;
-  left: 20%;
-  width: 55px;
-  height: auto;
+.cecyte-chef-minimal-9 {
+  top: 55%;
+  right: 20%;
+  width: 30px;
   animation-delay: 8s;
 }
 
-.cecyte-chef-svg-hacha {
-  top: 22%;
-  left: 12%;
-  width: 45px;
-  height: auto;
+.cecyte-chef-minimal-10 {
+  top: 5%;
+  left: 25%;
+  width: 22px;
   animation-delay: 9s;
 }
 
-.cecyte-chef-svg-langosta {
-  top: 38%;
-  left: 5%;
-  width: 60px;
-  height: auto;
+.cecyte-chef-minimal-11 {
+  top: 20%;
+  right: 30%;
+  width: 28px;
   animation-delay: 10s;
 }
 
-.cecyte-chef-svg-palmera {
-  top: 5%;
-  right: 15%;
-  width: 70px;
-  height: auto;
+.cecyte-chef-minimal-12 {
+  top: 50%;
+  left: 12%;
+  width: 26px;
   animation-delay: 11s;
 }
 
-.cecyte-chef-svg-dorado {
-  top: 32%;
+.cecyte-chef-minimal-13 {
+  top: 40%;
   right: 8%;
-  width: 40px;
-  height: auto;
+  width: 24px;
   animation-delay: 12s;
 }
 
-.cecyte-chef-svg-arco {
-  top: 62%;
-  left: 8%;
-  width: 65px;
-  height: auto;
+.cecyte-chef-minimal-14 {
+  top: 90%;
+  left: 20%;
+  width: 30px;
   animation-delay: 13s;
 }
 
-.cecyte-chef-svg-ballena {
-  top: 72%;
-  right: 12%;
-  width: 55px;
-  height: auto;
+.cecyte-chef-minimal-15 {
+  top: 60%;
+  right: 15%;
+  width: 32px;
   animation-delay: 14s;
 }
 
-.cecyte-chef-svg-balandra {
-  top: 42%;
-  left: 30%;
-  width: 50px;
-  height: auto;
+.cecyte-chef-minimal-16 {
+  top: 12%;
+  left: 35%;
+  width: 20px;
   animation-delay: 15s;
 }
 
-/* SVGs extra (5% más) - Expandidos */
-.cecyte-chef-svg-triangulos {
-  top: 10%;
-  left: 35%;
-  width: 35px;
-  height: auto;
+.cecyte-chef-minimal-17 {
+  top: 80%;
+  right: 25%;
+  width: 18px;
   animation-delay: 16s;
 }
 
-.cecyte-chef-svg-rupestres {
-  top: 52%;
-  left: 22%;
-  width: 45px;
-  height: auto;
-  animation-delay: 17s;
-}
-
-.cecyte-chef-svg-cola-ballena {
-  top: 88%;
-  left: 25%;
-  width: 40px;
-  height: auto;
-  animation-delay: 18s;
-}
-
-/* SVGs adicionales (5% más) para llenar espacios */
-.cecyte-chef-svg-cuchillo-2 {
-  top: 15%;
-  left: 60%;
-  width: 40px;
-  height: auto;
-  animation-delay: 19s;
-}
-
-.cecyte-chef-svg-cuchara-2 {
-  top: 35%;
-  left: 55%;
-  width: 35px;
-  height: auto;
-  animation-delay: 20s;
-}
-
-.cecyte-chef-svg-sarten-2 {
-  top: 68%;
-  left: 50%;
-  width: 45px;
-  height: auto;
-  animation-delay: 21s;
-}
-
-.cecyte-chef-svg-pilon-2 {
-  top: 82%;
-  left: 45%;
-  width: 40px;
-  height: auto;
-  animation-delay: 22s;
-}
-
-.cecyte-chef-svg-camaron-2 {
-  top: 28%;
-  left: 65%;
-  width: 35px;
-  height: auto;
-  animation-delay: 23s;
-}
-
-.cecyte-chef-svg-chile-2 {
-  top: 48%;
-  left: 60%;
-  width: 30px;
-  height: auto;
-  animation-delay: 24s;
-}
-
-.cecyte-chef-svg-pitahaya-2 {
-  top: 78%;
-  left: 55%;
-  width: 50px;
-  height: auto;
-  animation-delay: 25s;
-}
-
-.cecyte-chef-svg-pez-2 {
-  top: 58%;
-  left: 70%;
-  width: 35px;
-  height: auto;
-  animation-delay: 26s;
-}
-
-.cecyte-chef-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+/* ========================================
+   HERO LAYOUT
+   ======================================== */
+.cecyte-chef-hero-layout {
   position: relative;
   z-index: 3;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 
 /* ========================================
-   HERO CONTENT - LOGO
+   HERO LEFT COLUMN - CONTENT & LOGO
    ======================================== */
-.cecyte-chef-hero-content {
+.cecyte-chef-hero-left {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  min-height: 100vh;
-  padding-top: 0;
-}
-
-.cecyte-chef-logo-wrapper {
-  position: relative;
-  text-align: center;
-  width: 100%;
-  max-width: 600px;
+  gap: 2rem;
 }
 
 .cecyte-chef-logo-container {
-  position: relative;
-  z-index: 2;
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.2s both;
 }
 
 .cecyte-chef-main-logo {
   width: 100%;
+  max-width: 500px;
   height: auto;
-  max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 4px 8px var(--cecyte-chef-shadow));
-  transition: var(--cecyte-chef-transition);
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
 }
 
 .cecyte-chef-main-logo:hover {
   transform: scale(1.02);
-  filter: drop-shadow(0 6px 12px var(--cecyte-chef-shadow-hover));
-}
-
-.cecyte-chef-logo-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle, rgba(139, 21, 56, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: cecyte-chef-logo-glow 3s ease-in-out infinite alternate;
-  z-index: 1;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.15));
 }
 
 /* ========================================
-   INVITATION TEXT
+   HERO RIGHT COLUMN - FOOD GALLERY
    ======================================== */
-.cecyte-chef-invitation-text {
-  margin-top: 2rem;
-  text-align: center;
-  position: relative;
-  z-index: 2;
+.cecyte-chef-hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cecyte-chef-invitation-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--cecyte-chef-primary);
-  margin-bottom: 1rem;
-  line-height: 1.2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.3s both;
+/* Event Badge */
+.cecyte-chef-event-badge {
+  display: inline-block;
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.4s both;
 }
 
-.cecyte-chef-invitation-subtitle {
-  font-size: 1.25rem;
-  color: var(--cecyte-chef-muted);
-  line-height: 1.6;
-  margin: 0;
-  max-width: 500px;
-  margin: 0 auto;
-  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.5s both;
+.cecyte-chef-event-badge span {
+  display: inline-block;
+  background: #9D3553;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(157, 53, 83, 0.3);
+}
+
+/* Hero Title */
+.cecyte-chef-hero-title {
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.6s both;
+}
+
+.cecyte-chef-title-line-1 {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #343A40;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.cecyte-chef-title-line-2 {
+  display: block;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #9D3553;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0.1em 0;
+}
+
+.cecyte-chef-title-line-3 {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #343A40;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Hero Description */
+.cecyte-chef-hero-description {
+  font-size: 1.2rem;
+  color: #6C757D;
+  line-height: 1.7;
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.8s both;
+}
+
+/* Hero Actions */
+.cecyte-chef-hero-actions {
+  display: flex;
+  gap: 1rem;
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 1s both;
+}
+
+.cecyte-chef-btn {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cecyte-chef-btn-primary {
+  background: #9D3553;
+  color: white;
+  box-shadow: 0 4px 15px rgba(157, 53, 83, 0.3);
+}
+
+.cecyte-chef-btn-primary:hover {
+  background: #7D2A42;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(157, 53, 83, 0.4);
+}
+
+.cecyte-chef-btn-secondary {
+  background: transparent;
+  color: #9D3553;
+  border: 2px solid #9D3553;
+}
+
+.cecyte-chef-btn-secondary:hover {
+  background: #9D3553;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(157, 53, 83, 0.3);
+}
+
+.cecyte-chef-btn i {
+  transition: transform 0.3s ease;
+}
+
+.cecyte-chef-btn:hover i {
+  transform: translateX(3px);
 }
 
 /* ========================================
-   HERO GALLERY
+   FOOD GALLERY
    ======================================== */
-.cecyte-chef-hero-gallery {
-  position: relative;
-  z-index: 2;
-}
-
-.cecyte-chef-gallery-container {
+.cecyte-chef-food-gallery {
   width: 100%;
+  max-width: 500px;
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 1.4s both;
 }
 
 .cecyte-chef-gallery-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
   width: 100%;
-  max-width: 500px;
   aspect-ratio: 1;
-  margin: 0 auto;
 }
 
 .cecyte-chef-gallery-item {
   position: relative;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 25px var(--cecyte-chef-shadow-hover);
-  transition: var(--cecyte-chef-transition);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
   cursor: pointer;
   aspect-ratio: 1;
+  animation: cecyte-chef-fade-in-up 0.8s ease-out both;
 }
+
+.cecyte-chef-gallery-1 { animation-delay: 1.6s; }
+.cecyte-chef-gallery-2 { animation-delay: 1.8s; }
+.cecyte-chef-gallery-3 { animation-delay: 2s; }
+.cecyte-chef-gallery-4 { animation-delay: 2.2s; }
 
 .cecyte-chef-gallery-item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-.cecyte-chef-gallery-image-wrapper {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.cecyte-chef-gallery-image {
+.cecyte-chef-gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--cecyte-chef-transition);
+  transition: all 0.3s ease;
 }
 
-.cecyte-chef-gallery-item:hover .cecyte-chef-gallery-image {
+.cecyte-chef-gallery-item:hover img {
   transform: scale(1.05);
 }
 
@@ -1668,48 +1629,52 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  background: rgba(0, 0, 0, 0.8);
   padding: 1.5rem 1rem 1rem;
   transform: translateY(100%);
-  transition: var(--cecyte-chef-transition);
-  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
 }
 
 .cecyte-chef-gallery-item:hover .cecyte-chef-gallery-overlay {
   transform: translateY(0);
 }
 
-.cecyte-chef-gallery-label {
-  color: var(--cecyte-chef-white);
-  font-weight: 700;
-  font-size: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-  letter-spacing: 0.5px;
+.cecyte-chef-gallery-overlay span {
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* Efectos uniformes para todas las imágenes */
-.cecyte-chef-gallery-label {
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-/* Efecto de brillo en hover */
-.cecyte-chef-gallery-item::before {
-  content: '';
+/* Scroll Indicator */
+.cecyte-chef-scroll-indicator {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-  z-index: 1;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: cecyte-chef-fade-in-up 1s ease-out 2.5s both;
+  z-index: 3;
 }
 
-.cecyte-chef-gallery-item:hover::before {
-  transform: translateX(100%);
+.cecyte-chef-scroll-line {
+  width: 2px;
+  height: 40px;
+  background: #9D3553;
+  border-radius: 2px;
+  animation: cecyte-chef-scroll-pulse 2s ease-in-out infinite;
+}
+
+.cecyte-chef-scroll-indicator span {
+  color: #6C757D;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 
@@ -1841,27 +1806,53 @@
 @keyframes cecyte-chef-background-shift {
   0%, 100% {
     background: 
-      radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(107, 15, 42, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(74, 10, 28, 0.02) 0%, transparent 50%);
   }
   25% {
     background: 
-      radial-gradient(circle at 80% 20%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 20% 80%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 60% 60%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 80% 20%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(107, 15, 42, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(74, 10, 28, 0.02) 0%, transparent 50%);
   }
   50% {
     background: 
-      radial-gradient(circle at 40% 40%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 60% 60%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 20% 80%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 40% 40%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(107, 15, 42, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(74, 10, 28, 0.02) 0%, transparent 50%);
   }
   75% {
     background: 
-      radial-gradient(circle at 60% 60%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 60% 60%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(107, 15, 42, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(74, 10, 28, 0.02) 0%, transparent 50%);
+  }
+}
+
+@keyframes cecyte-chef-minimal-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(0.5deg);
+  }
+}
+
+@keyframes cecyte-chef-scroll-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.2);
   }
 }
 
@@ -1876,18 +1867,18 @@
   }
 }
 
-@keyframes cecyte-chef-svg-float {
+@keyframes cecyte-chef-float-premium {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px) rotate(0deg) scale(1);
   }
   25% {
-    transform: translateY(-10px) rotate(1deg);
+    transform: translateY(-8px) rotate(1deg) scale(1.02);
   }
   50% {
-    transform: translateY(-5px) rotate(-1deg);
+    transform: translateY(-4px) rotate(-1deg) scale(0.98);
   }
   75% {
-    transform: translateY(-15px) rotate(0.5deg);
+    transform: translateY(-12px) rotate(0.5deg) scale(1.01);
   }
 }
 
@@ -1936,69 +1927,82 @@
     min-height: calc(100vh - 70px);
   }
   
-  .cecyte-chef-hero-grid {
+  .cecyte-chef-hero-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .cecyte-chef-hero-content {
+    gap: 3rem;
     min-height: 100vh;
-    padding-top: 0;
+    padding: 2rem 0;
   }
   
-  .cecyte-chef-logo-wrapper {
-    max-width: 500px;
+  .cecyte-chef-hero-left {
+    order: 2;
+    align-items: center;
+    text-align: center;
   }
   
-  .cecyte-chef-invitation-title {
-    font-size: 2rem;
+  .cecyte-chef-hero-right {
+    order: 1;
   }
   
-  .cecyte-chef-invitation-subtitle {
+  .cecyte-chef-main-logo {
+    max-width: 400px;
+  }
+  
+  .cecyte-chef-title-line-1,
+  .cecyte-chef-title-line-3 {
+    font-size: 2.5rem;
+  }
+  
+  .cecyte-chef-title-line-2 {
+    font-size: 3rem;
+  }
+  
+  .cecyte-chef-hero-description {
     font-size: 1.1rem;
+  }
+  
+  .cecyte-chef-hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .cecyte-chef-btn {
+    width: 100%;
+    max-width: 300px;
   }
   
   .cecyte-chef-gallery-grid {
     max-width: 400px;
-    gap: 0.8rem;
+    gap: 1rem;
   }
   
-  /* Ajustar SVGs en tablet */
-  .cecyte-chef-svg-decoration {
-    opacity: 0.3;
+  /* Ajustar elementos en tablet */
+  .cecyte-chef-minimal-icon {
+    opacity: 0.1;
   }
   
-  .cecyte-chef-svg-cuchillo,
-  .cecyte-chef-svg-cuchara,
-  .cecyte-chef-svg-sarten,
-  .cecyte-chef-svg-pilon,
-  .cecyte-chef-svg-cubiertos,
-  .cecyte-chef-svg-langosta,
-  .cecyte-chef-svg-palmera,
-  .cecyte-chef-svg-arco {
-    width: 40px;
+  .cecyte-chef-minimal-1,
+  .cecyte-chef-minimal-2,
+  .cecyte-chef-minimal-5,
+  .cecyte-chef-minimal-9,
+  .cecyte-chef-minimal-11,
+  .cecyte-chef-minimal-14,
+  .cecyte-chef-minimal-15 {
+    width: 25px;
   }
   
-  .cecyte-chef-svg-camaron,
-  .cecyte-chef-svg-chile,
-  .cecyte-chef-svg-pitahaya,
-  .cecyte-chef-svg-pez,
-  .cecyte-chef-svg-hacha,
-  .cecyte-chef-svg-dorado,
-  .cecyte-chef-svg-ballena,
-  .cecyte-chef-svg-balandra,
-  .cecyte-chef-svg-triangulos,
-  .cecyte-chef-svg-rupestres,
-  .cecyte-chef-svg-cola-ballena,
-  .cecyte-chef-svg-cuchillo-2,
-  .cecyte-chef-svg-cuchara-2,
-  .cecyte-chef-svg-sarten-2,
-  .cecyte-chef-svg-pilon-2,
-  .cecyte-chef-svg-camaron-2,
-  .cecyte-chef-svg-chile-2,
-  .cecyte-chef-svg-pitahaya-2,
-  .cecyte-chef-svg-pez-2 {
-    width: 35px;
+  .cecyte-chef-minimal-3,
+  .cecyte-chef-minimal-4,
+  .cecyte-chef-minimal-6,
+  .cecyte-chef-minimal-7,
+  .cecyte-chef-minimal-8,
+  .cecyte-chef-minimal-10,
+  .cecyte-chef-minimal-12,
+  .cecyte-chef-minimal-13,
+  .cecyte-chef-minimal-16,
+  .cecyte-chef-minimal-17 {
+    width: 20px;
   }
   
   
@@ -2170,64 +2174,60 @@
     min-height: 100vh;
   }
   
-  .cecyte-chef-hero-content {
+  .cecyte-chef-hero-layout {
     min-height: 100vh;
-    padding-top: 0;
+    padding: 1rem 0;
+    gap: 2rem;
   }
   
-  .cecyte-chef-logo-wrapper {
-    max-width: 400px;
+  .cecyte-chef-main-logo {
+    max-width: 300px;
   }
   
-  .cecyte-chef-invitation-title {
-    font-size: 1.75rem;
+  .cecyte-chef-title-line-1,
+  .cecyte-chef-title-line-3 {
+    font-size: 2rem;
   }
   
-  .cecyte-chef-invitation-subtitle {
+  .cecyte-chef-title-line-2 {
+    font-size: 2.5rem;
+  }
+  
+  .cecyte-chef-hero-description {
     font-size: 1rem;
   }
   
   .cecyte-chef-gallery-grid {
     max-width: 350px;
-    gap: 0.6rem;
+    gap: 0.8rem;
   }
   
-  /* Ajustar SVGs en móvil */
-  .cecyte-chef-svg-decoration {
-    opacity: 0.25;
+  /* Ajustar elementos en móvil */
+  .cecyte-chef-minimal-icon {
+    opacity: 0.08;
   }
   
-  .cecyte-chef-svg-cuchillo,
-  .cecyte-chef-svg-cuchara,
-  .cecyte-chef-svg-sarten,
-  .cecyte-chef-svg-pilon,
-  .cecyte-chef-svg-cubiertos,
-  .cecyte-chef-svg-langosta,
-  .cecyte-chef-svg-palmera,
-  .cecyte-chef-svg-arco {
-    width: 30px;
+  .cecyte-chef-minimal-1,
+  .cecyte-chef-minimal-2,
+  .cecyte-chef-minimal-5,
+  .cecyte-chef-minimal-9,
+  .cecyte-chef-minimal-11,
+  .cecyte-chef-minimal-14,
+  .cecyte-chef-minimal-15 {
+    width: 18px;
   }
   
-  .cecyte-chef-svg-camaron,
-  .cecyte-chef-svg-chile,
-  .cecyte-chef-svg-pitahaya,
-  .cecyte-chef-svg-pez,
-  .cecyte-chef-svg-hacha,
-  .cecyte-chef-svg-dorado,
-  .cecyte-chef-svg-ballena,
-  .cecyte-chef-svg-balandra,
-  .cecyte-chef-svg-triangulos,
-  .cecyte-chef-svg-rupestres,
-  .cecyte-chef-svg-cola-ballena,
-  .cecyte-chef-svg-cuchillo-2,
-  .cecyte-chef-svg-cuchara-2,
-  .cecyte-chef-svg-sarten-2,
-  .cecyte-chef-svg-pilon-2,
-  .cecyte-chef-svg-camaron-2,
-  .cecyte-chef-svg-chile-2,
-  .cecyte-chef-svg-pitahaya-2,
-  .cecyte-chef-svg-pez-2 {
-    width: 25px;
+  .cecyte-chef-minimal-3,
+  .cecyte-chef-minimal-4,
+  .cecyte-chef-minimal-6,
+  .cecyte-chef-minimal-7,
+  .cecyte-chef-minimal-8,
+  .cecyte-chef-minimal-10,
+  .cecyte-chef-minimal-12,
+  .cecyte-chef-minimal-13,
+  .cecyte-chef-minimal-16,
+  .cecyte-chef-minimal-17 {
+    width: 15px;
   }
   
   

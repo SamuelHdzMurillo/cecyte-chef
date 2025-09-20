@@ -170,136 +170,149 @@ function HomePage({ onLoginClick }) {
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
       
-      {/* Hero Section */}
+      {/* Hero Section - Clean & Modern Design */}
       <section id="inicio" className="cecyte-chef-hero-section">
+        {/* Clean Background */}
         <div className="cecyte-chef-hero-background">
           <div className="cecyte-chef-hero-pattern"></div>
-          <div className="cecyte-chef-paper-texture"></div>
           
-          {/* SVGs decorativos */}
-          <div className="cecyte-chef-svg-decorations">
-            <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" className="cecyte-chef-svg-decoration cecyte-chef-svg-cuchillo" />
-            <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" className="cecyte-chef-svg-decoration cecyte-chef-svg-cuchara" />
-            <img src="/src/assets/svg/SARTEN.png" alt="Sartén" className="cecyte-chef-svg-decoration cecyte-chef-svg-sarten" />
-            <img src="/src/assets/svg/PILON.png" alt="Pilón" className="cecyte-chef-svg-decoration cecyte-chef-svg-pilon" />
-            <img src="/src/assets/svg/CAMARON.png" alt="Camarón" className="cecyte-chef-svg-decoration cecyte-chef-svg-camaron" />
-            <img src="/src/assets/svg/CHILE.png" alt="Chile" className="cecyte-chef-svg-decoration cecyte-chef-svg-chile" />
-            <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" className="cecyte-chef-svg-decoration cecyte-chef-svg-pitahaya" />
-            <img src="/src/assets/svg/PEZ.png" alt="Pez" className="cecyte-chef-svg-decoration cecyte-chef-svg-pez" />
-            
-            {/* SVGs adicionales */}
-            <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" className="cecyte-chef-svg-decoration cecyte-chef-svg-cubiertos" />
-            <img src="/src/assets/svg/HACHA.png" alt="Hacha" className="cecyte-chef-svg-decoration cecyte-chef-svg-hacha" />
-            <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" className="cecyte-chef-svg-decoration cecyte-chef-svg-langosta" />
-            <img src="/src/assets/svg/PALMERA.png" alt="Palmera" className="cecyte-chef-svg-decoration cecyte-chef-svg-palmera" />
-            <img src="/src/assets/svg/DORADO.png" alt="Dorado" className="cecyte-chef-svg-decoration cecyte-chef-svg-dorado" />
-            <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" className="cecyte-chef-svg-decoration cecyte-chef-svg-arco" />
-            <img src="/src/assets/svg/BALLENA.png" alt="Ballena" className="cecyte-chef-svg-decoration cecyte-chef-svg-ballena" />
-            <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" className="cecyte-chef-svg-decoration cecyte-chef-svg-balandra" />
-            
-            {/* SVGs extra (5% más) */}
-            <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" className="cecyte-chef-svg-decoration cecyte-chef-svg-triangulos" />
-            <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" className="cecyte-chef-svg-decoration cecyte-chef-svg-rupestres" />
-            <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" className="cecyte-chef-svg-decoration cecyte-chef-svg-cola-ballena" />
-            
-            {/* SVGs adicionales (5% más) para llenar espacios */}
-            <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-cuchillo-2" />
-            <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-cuchara-2" />
-            <img src="/src/assets/svg/SARTEN.png" alt="Sartén 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-sarten-2" />
-            <img src="/src/assets/svg/PILON.png" alt="Pilón 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-pilon-2" />
-            <img src="/src/assets/svg/CAMARON.png" alt="Camarón 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-camaron-2" />
-            <img src="/src/assets/svg/CHILE.png" alt="Chile 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-chile-2" />
-            <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-pitahaya-2" />
-            <img src="/src/assets/svg/PEZ.png" alt="Pez 2" className="cecyte-chef-svg-decoration cecyte-chef-svg-pez-2" />
+          {/* Minimalist Icons */}
+          <div className="cecyte-chef-minimal-icons">
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-1">
+              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-2">
+              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-3">
+              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-4">
+              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-5">
+              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-6">
+              <img src="/src/assets/svg/PILON.png" alt="Pilón" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-7">
+              <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-8">
+              <img src="/src/assets/svg/PEZ.png" alt="Pez" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-9">
+              <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-10">
+              <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-11">
+              <img src="/src/assets/svg/DORADO.png" alt="Dorado" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-12">
+              <img src="/src/assets/svg/HACHA.png" alt="Hacha" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-13">
+              <img src="/src/assets/svg/PALMERA.png" alt="Palmera" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-14">
+              <img src="/src/assets/svg/BALLENA.png" alt="Ballena" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-15">
+              <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-16">
+              <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" />
+            </div>
+            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-17">
+              <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" />
+            </div>
           </div>
         </div>
         
         <div className="cecyte-chef-container">
-          <div className="cecyte-chef-hero-grid">
-            {/* Contenido principal - Logo */}
-            <div className="cecyte-chef-hero-content">
-              <div className="cecyte-chef-logo-wrapper">
-                <div className="cecyte-chef-logo-container">
-                  <img
-                    src="/src/assets/cecyte_chef_sin_fondo_horizontal.png"
-                    alt="II Concurso Nacional CECYTE CHEF Baja California Sur"
-                    className="cecyte-chef-main-logo"
-                  />
-                </div>
-                <div className="cecyte-chef-logo-glow"></div>
-                
-                <div className="cecyte-chef-invitation-text">
-                  <h1 className="cecyte-chef-invitation-title">
-                    ¡Te invitamos al concurso CECYTE CHEF!
-                  </h1>
-                  <p className="cecyte-chef-invitation-subtitle">
-                    Será un evento increíble donde podrás demostrar tus habilidades culinarias
-                    y competir con los mejores chefs estudiantiles del país.
-                  </p>
-                </div>
+          <div className="cecyte-chef-hero-layout">
+            {/* Left Column - Content & Logo */}
+            <div className="cecyte-chef-hero-left">
+              {/* Logo */}
+              <div className="cecyte-chef-logo-container">
+                <img
+                  src="/src/assets/cecyte_chef_sin_fondo_horizontal.png"
+                  alt="CECYTE CHEF Baja California Sur"
+                  className="cecyte-chef-main-logo"
+                />
+              </div>
+              
+              {/* Event Badge */}
+              <div className="cecyte-chef-event-badge">
+                <span>II Concurso Nacional</span>
+              </div>
+              
+              
+              
+              {/* Description */}
+              <p className="cecyte-chef-hero-description">
+                Únete al concurso más prestigioso de gastronomía estudiantil. 
+                Compite con los mejores chefs del país y vive una experiencia 
+                única en Baja California Sur.
+              </p>
+              
+              {/* Action Buttons */}
+              <div className="cecyte-chef-hero-actions">
+                <button className="cecyte-chef-btn cecyte-chef-btn-primary" onClick={onLoginClick}>
+                  <span>Participar Ahora</span>
+                  <i className="bi bi-arrow-right"></i>
+                </button>
+                <button className="cecyte-chef-btn cecyte-chef-btn-secondary">
+                  <span>Ver Convocatoria</span>
+                  <i className="bi bi-file-text"></i>
+                </button>
               </div>
             </div>
-
-            {/* Galería de platillos */}
-            <div className="cecyte-chef-hero-gallery">
-              <div className="cecyte-chef-gallery-container">
+            
+            {/* Right Column - Food Gallery */}
+            <div className="cecyte-chef-hero-right">
+              <div className="cecyte-chef-food-gallery">
                 <div className="cecyte-chef-gallery-grid">
-                  {/* Cuadro perfecto 2x2 */}
-                  <div className="cecyte-chef-gallery-item">
-                    <div className="cecyte-chef-gallery-image-wrapper">
-                      <img
-                        src="/src/assets/platillos/platillo_salmon.webp"
-                        alt="Platillo de Salmón"
-                        className="cecyte-chef-gallery-image"
-                      />
-                    </div>
+                  <div className="cecyte-chef-gallery-item cecyte-chef-gallery-1">
+                    <img src="/src/assets/platillos/platillo_salmon.webp" alt="Salmón Premium" />
                     <div className="cecyte-chef-gallery-overlay">
-                      <span className="cecyte-chef-gallery-label">Salmón Premium</span>
+                      <span>Salmón Premium</span>
                     </div>
                   </div>
                   
-                  <div className="cecyte-chef-gallery-item">
-                    <div className="cecyte-chef-gallery-image-wrapper">
-                      <img
-                        src="/src/assets/platillos/platillo_camaron.webp"
-                        alt="Platillo de Camarón"
-                        className="cecyte-chef-gallery-image"
-                      />
-                    </div>
+                  <div className="cecyte-chef-gallery-item cecyte-chef-gallery-2">
+                    <img src="/src/assets/platillos/platillo_camaron.webp" alt="Camarones del Mar" />
                     <div className="cecyte-chef-gallery-overlay">
-                      <span className="cecyte-chef-gallery-label">Camarones</span>
+                      <span>Camarones del Mar</span>
                     </div>
                   </div>
                   
-                  <div className="cecyte-chef-gallery-item">
-                    <div className="cecyte-chef-gallery-image-wrapper">
-                      <img
-                        src="/src/assets/platillos/platillo_naranja.webp"
-                        alt="Platillo Naranja"
-                        className="cecyte-chef-gallery-image"
-                      />
-                    </div>
+                  <div className="cecyte-chef-gallery-item cecyte-chef-gallery-3">
+                    <img src="/src/assets/platillos/platillo_naranja.webp" alt="Especialidad Local" />
                     <div className="cecyte-chef-gallery-overlay">
-                      <span className="cecyte-chef-gallery-label">Especialidad</span>
+                      <span>Especialidad Local</span>
                     </div>
                   </div>
                   
-                  <div className="cecyte-chef-gallery-item">
-                    <div className="cecyte-chef-gallery-image-wrapper">
-                      <img
-                        src="/src/assets/platillos/platillo_naranjon.webp"
-                        alt="Platillo Naranjón"
-                        className="cecyte-chef-gallery-image"
-                      />
-                    </div>
+                  <div className="cecyte-chef-gallery-item cecyte-chef-gallery-4">
+                    <img src="/src/assets/platillos/platillo_naranjon.webp" alt="Creación del Chef" />
                     <div className="cecyte-chef-gallery-overlay">
-                      <span className="cecyte-chef-gallery-label">Creación Chef</span>
+                      <span>Creación del Chef</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="cecyte-chef-scroll-indicator">
+          <div className="cecyte-chef-scroll-line"></div>
+          <span>Desplázate para descubrir</span>
         </div>
       </section>
 
