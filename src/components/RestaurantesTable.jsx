@@ -29,7 +29,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
     pagina_web: "",
     codigo_promocional: "",
     descripcion_codigo_promocional: "",
-    img: "",
+    imagen: "",
   });
   const [formErrors, setFormErrors] = useState({});
 
@@ -77,7 +77,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
       pagina_web: "",
       codigo_promocional: "",
       descripcion_codigo_promocional: "",
-      img: "",
+      imagen: "",
     });
     setFormErrors({});
     setShowModal(true);
@@ -94,7 +94,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
       pagina_web: "",
       codigo_promocional: "",
       descripcion_codigo_promocional: "",
-      img: "",
+      imagen: "",
     });
     setFormErrors({});
   };
@@ -166,7 +166,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
         codigo_promocional: formData.codigo_promocional || null,
         descripcion_codigo_promocional:
           formData.descripcion_codigo_promocional || null,
-        img: formData.img || null,
+        imagen: formData.imagen || null,
       };
 
       console.log("Datos a enviar:", dataToSend);
@@ -929,16 +929,16 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
                       <input
                         type="url"
                         className={`form-control ${
-                          formErrors.img ? "is-invalid" : ""
+                          formErrors.imagen ? "is-invalid" : ""
                         }`}
-                        name="img"
-                        value={formData.img}
+                        name="imagen"
+                        value={formData.imagen}
                         onChange={handleInputChange}
                         placeholder="https://ejemplo.com/imagen.jpg"
                       />
-                      {formErrors.img && (
+                      {formErrors.imagen && (
                         <div className="invalid-feedback">
-                          {formErrors.img}
+                          {formErrors.imagen}
                         </div>
                       )}
                       <small className="form-text text-muted">

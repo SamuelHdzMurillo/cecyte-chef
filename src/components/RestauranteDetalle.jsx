@@ -60,7 +60,7 @@ const RestauranteDetalle = ({ restauranteId, onBack, embedded = false }) => {
         pagina_web: restaurante.pagina_web || null,
         codigo_promocional: restaurante.codigo_promocional || null,
         descripcion_codigo_promocional: restaurante.descripcion_codigo_promocional || null,
-        img: restaurante.img || null
+        imagen: restaurante.imagen || null
       }
       
       console.log('Datos a enviar para actualizar:', dataToSend)
@@ -286,8 +286,8 @@ const RestauranteDetalle = ({ restauranteId, onBack, embedded = false }) => {
                       <input
                         type="url"
                         className="form-control mb-2"
-                        value={restaurante.img || ''}
-                        onChange={(e) => setRestaurante({...restaurante, img: e.target.value})}
+                        value={restaurante.imagen || ''}
+                        onChange={(e) => setRestaurante({...restaurante, imagen: e.target.value})}
                         placeholder="https://ejemplo.com/imagen.jpg"
                       />
                       <div className="form-text">
@@ -296,10 +296,10 @@ const RestauranteDetalle = ({ restauranteId, onBack, embedded = false }) => {
                     </div>
                   ) : (
                     <div>
-                      {restaurante.img ? (
+                      {restaurante.imagen ? (
                         <div className="text-center">
                           <img
-                            src={restaurante.img}
+                            src={restaurante.imagen}
                             alt={restaurante.nombre}
                             className="img-fluid rounded shadow-sm"
                             style={{
@@ -329,7 +329,7 @@ const RestauranteDetalle = ({ restauranteId, onBack, embedded = false }) => {
                           <p className="mt-2 mb-0">
                             <small className="text-muted">
                               <i className="bi bi-link-45deg me-1"></i>
-                              <a href={restaurante.img} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                              <a href={restaurante.imagen} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
                                 Ver imagen original
                               </a>
                             </small>
