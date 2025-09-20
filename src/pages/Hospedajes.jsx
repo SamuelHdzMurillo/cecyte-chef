@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import HospedajeCard from "../components/HospedajeCard";
+import hospedajesService from "../services/hospedajesService";
 import "../components/HomePage.css";
+import "../components/HospedajeCard.css";
 
 function Hospedajes({ onLoginClick }) {
+  const [hospedajes, setHospedajes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchHospedajes = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await hospedajesService.getHospedajes();
+        setHospedajes(response.data || []);
+      } catch (err) {
+        console.error('Error al cargar hospedajes:', err);
+        setError('Error al cargar los hospedajes. Por favor, intenta de nuevo.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHospedajes();
+  }, []);
+
   return (
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
@@ -92,12 +117,7 @@ function Hospedajes({ onLoginClick }) {
                   </div>
                 </button>
                 
-                <button className="cecyte-chef-btn cecyte-chef-btn-secondary">
-                  <span>Reservar ahora</span>
-                  <div className="cecyte-chef-btn-icon">
-                    <i className="bi bi-calendar-check"></i>
-                  </div>
-                </button>
+                
               </div>
             </div>
 
@@ -112,6 +132,61 @@ function Hospedajes({ onLoginClick }) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Sección de tarjetas de hospedajes */}
+      <section className="cecyte-chef-hospedajes-cards-section">
+        <div className="cecyte-chef-container">
+          <div className="cecyte-chef-hospedajes-header">
+            
+            <h2 className="cecyte-chef-hospedajes-title">
+              Opciones de <span className="cecyte-chef-title-highlight">Hospedajes</span>
+            </h2>
+            <p className="cecyte-chef-hospedajes-description">
+              Descubre los mejores hoteles y hospedajes disponibles en La Paz, Baja California Sur
+            </p>
+          </div>
+
+          {/* Estados de carga y error */}
+          {loading && (
+            <div className="cecyte-chef-loading">
+              <div className="cecyte-chef-spinner"></div>
+              <p>Cargando hospedajes...</p>
+            </div>
+          )}
+
+          {error && (
+            <div className="cecyte-chef-error">
+              <i className="bi bi-exclamation-triangle"></i>
+              <p>{error}</p>
+              <button 
+                className="cecyte-chef-btn cecyte-chef-btn-primary"
+                onClick={() => window.location.reload()}
+              >
+                <span>Reintentar</span>
+                <div className="cecyte-chef-btn-icon">
+                  <i className="bi bi-arrow-clockwise"></i>
+                </div>
+              </button>
+            </div>
+          )}
+
+          {/* Grid de tarjetas de hospedajes */}
+          {!loading && !error && hospedajes.length > 0 && (
+            <div className="cecyte-chef-hospedajes-grid">
+              {hospedajes.map((hospedaje) => (
+                <HospedajeCard key={hospedaje.id} hospedaje={hospedaje} />
+              ))}
+            </div>
+          )}
+
+          {!loading && !error && hospedajes.length === 0 && (
+            <div className="cecyte-chef-empty">
+              <i className="bi bi-building"></i>
+              <p>No hay hospedajes disponibles en este momento</p>
+            </div>
+          )}
         </div>
       </section>
 

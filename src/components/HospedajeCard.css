@@ -1,0 +1,239 @@
+/* Estilos para las tarjetas de hospedajes */
+.hospedaje-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.hospedaje-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.hospedaje-card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.hospedaje-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hospedaje-card:hover .hospedaje-card-image img {
+  transform: scale(1.05);
+}
+
+.hospedaje-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.hospedaje-card-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hospedaje-card-badge i {
+  font-size: 16px;
+}
+
+.hospedaje-card-content {
+  padding: 24px;
+}
+
+.hospedaje-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.hospedaje-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.hospedaje-card-rating {
+  display: flex;
+  gap: 2px;
+  margin-left: 12px;
+}
+
+.hospedaje-card-rating i {
+  color: #f39c12;
+  font-size: 14px;
+}
+
+.hospedaje-card-rating i:last-child {
+  color: #bdc3c7;
+}
+
+.hospedaje-card-info {
+  margin-bottom: 24px;
+}
+
+.hospedaje-card-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.hospedaje-card-location i {
+  color: #e74c3c;
+  font-size: 16px;
+}
+
+.hospedaje-card-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hospedaje-card-phone,
+.hospedaje-card-email {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.hospedaje-card-phone i {
+  color: #27ae60;
+  font-size: 16px;
+}
+
+.hospedaje-card-email i {
+  color: #3498db;
+  font-size: 16px;
+}
+
+.hospedaje-card-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.hospedaje-card-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.hospedaje-card-btn-primary {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: white;
+}
+
+.hospedaje-card-btn-primary:hover {
+  background: linear-gradient(135deg, #128c7e 0%, #0f7a6b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.hospedaje-card-btn-secondary {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+}
+
+.hospedaje-card-btn-secondary:hover {
+  background: linear-gradient(135deg, #2980b9 0%, #1f5f8b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.hospedaje-card-btn i {
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hospedaje-card {
+    margin-bottom: 20px;
+  }
+  
+  .hospedaje-card-content {
+    padding: 20px;
+  }
+  
+  .hospedaje-card-title {
+    font-size: 18px;
+  }
+  
+  .hospedaje-card-actions {
+    flex-direction: column;
+  }
+  
+  .hospedaje-card-btn {
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hospedaje-card-image {
+    height: 180px;
+  }
+  
+  .hospedaje-card-content {
+    padding: 16px;
+  }
+  
+  .hospedaje-card-title {
+    font-size: 16px;
+  }
+  
+  .hospedaje-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .hospedaje-card-rating {
+    margin-left: 0;
+  }
+}
