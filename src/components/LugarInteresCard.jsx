@@ -1,5 +1,6 @@
 import React from 'react'
 import './LugarInteresCard.css'
+import { LUGARES_VISITA } from '../assets/images'
 
 function LugarInteresCard({ lugar }) {
   const handleWeb = () => {
@@ -18,10 +19,10 @@ function LugarInteresCard({ lugar }) {
     <div className="lugar-interes-card">
       <div className="lugar-interes-card-image">
         <img 
-          src={lugar.img || "/src/assets/fondos/LugaresVisita.png"} 
+          src={lugar.img || LUGARES_VISITA} 
           alt={lugar.nombre}
           onError={(e) => {
-            e.target.src = '/src/assets/fondos/LugaresVisita.png'
+            e.target.src = LUGARES_VISITA
           }}
         />
         <div className="lugar-interes-card-overlay">

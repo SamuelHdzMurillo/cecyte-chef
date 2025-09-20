@@ -3,6 +3,28 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CountdownTimer from "../components/CountdownTimer";
 import "../components/HomePage.css";
+import {
+  CUCHILLO,
+  SARTEN,
+  CAMARON,
+  CHILE,
+  CUCHARA,
+  PILON,
+  PITAHAYA,
+  PEZ,
+  LANGOSTA,
+  CUBIERTOS,
+  DORADO,
+  HACHA,
+  PALMERA,
+  BALLENA,
+  BALANDRA,
+  EL_ARCO,
+  RUPESTRES,
+  TRIANGULOS,
+  COLA_DE_LA_BALLENA,
+  CECYTE_CHEF_SIN_FONDO_HORIZONTAL
+} from "../assets/images";
 
 function Inicio({ onLoginClick }) {
   return (
@@ -18,61 +40,61 @@ function Inicio({ onLoginClick }) {
           {/* Minimalist Icons */}
           <div className="cecyte-chef-minimal-icons">
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-1">
-              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+              <img src={CUCHILLO} alt="Cuchillo" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-2">
-              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+              <img src={SARTEN} alt="Sartén" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-3">
-              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+              <img src={CAMARON} alt="Camarón" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-4">
-              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+              <img src={CHILE} alt="Chile" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-5">
-              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+              <img src={CUCHARA} alt="Cuchara" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-6">
-              <img src="/src/assets/svg/PILON.png" alt="Pilón" />
+              <img src={PILON} alt="Pilón" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-7">
-              <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" />
+              <img src={PITAHAYA} alt="Pitahaya" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-8">
-              <img src="/src/assets/svg/PEZ.png" alt="Pez" />
+              <img src={PEZ} alt="Pez" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-9">
-              <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" />
+              <img src={LANGOSTA} alt="Langosta" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-10">
-              <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" />
+              <img src={CUBIERTOS} alt="Cubiertos" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-11">
-              <img src="/src/assets/svg/DORADO.png" alt="Dorado" />
+              <img src={DORADO} alt="Dorado" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-12">
-              <img src="/src/assets/svg/HACHA.png" alt="Hacha" />
+              <img src={HACHA} alt="Hacha" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-13">
-              <img src="/src/assets/svg/PALMERA.png" alt="Palmera" />
+              <img src={PALMERA} alt="Palmera" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-14">
-              <img src="/src/assets/svg/BALLENA.png" alt="Ballena" />
+              <img src={BALLENA} alt="Ballena" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-15">
-              <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" />
+              <img src={BALANDRA} alt="Balandra" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-16">
-              <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" />
+              <img src={EL_ARCO} alt="El Arco" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-17">
-              <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" />
+              <img src={RUPESTRES} alt="Rupestres" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-18">
-              <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" />
+              <img src={TRIANGULOS} alt="Triángulos" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-19">
-              <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" />
+              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
             </div>
           </div>
         </div>
@@ -85,7 +107,7 @@ function Inicio({ onLoginClick }) {
               <div className="cecyte-chef-hero-main">
                 <div className="cecyte-chef-logo-container">
                   <img 
-                    src="/src/assets/cecyte_chef_sin_fondo_horizontal.png" 
+                    src={CECYTE_CHEF_SIN_FONDO_HORIZONTAL} 
                     alt="CECYTE Chef Logo" 
                     className="cecyte-chef-logo"
                   />

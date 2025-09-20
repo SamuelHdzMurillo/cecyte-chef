@@ -5,6 +5,7 @@ import Header from "./Header.jsx";
 import EquiposTable from "./EquiposTable.jsx";
 import UserEquipoDetalle from "./UserEquipoDetalle.jsx";
 import "./Dashboard.css";
+import { CECYTE_CHEF_SIN_FONDO } from "../assets/images";
 
 function UserDashboard() {
   const navigate = useNavigate();
@@ -175,7 +176,7 @@ function UserDashboard() {
             <div className="logo-container">
               <div className="logo-icon">
                 <img
-                  src="/src/assets/cecyte_chef_sin fondo.png"
+                  src={CECYTE_CHEF_SIN_FONDO}
                   alt="CECyTE Chef Logo"
                   className="logo-image"
                 />

@@ -1,5 +1,6 @@
 import React from 'react'
 import './RestauranteCard.css'
+import { RESTAURANTE } from '../assets/images'
 
 function RestauranteCard({ restaurante }) {
   const handleContactar = () => {
@@ -28,10 +29,10 @@ function RestauranteCard({ restaurante }) {
     <div className="restaurante-card">
       <div className="restaurante-card-image">
         <img 
-          src={restaurante.imagen || '/src/assets/fondos/restaurante.png'} 
+          src={restaurante.imagen || RESTAURANTE} 
           alt={restaurante.nombre}
           onError={(e) => {
-            e.target.src = '/src/assets/fondos/restaurante.png'
+            e.target.src = RESTAURANTE
           }}
         />
         <div className="restaurante-card-overlay">

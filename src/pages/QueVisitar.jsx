@@ -5,6 +5,7 @@ import LugarInteresCard from "../components/LugarInteresCard";
 import lugaresInteresService from "../services/lugaresInteresService";
 import "../components/HomePage.css";
 import "../components/LugarInteresCard.css";
+import { LUGARES_VISITA } from "../assets/images";
 
 function QueVisitar({ onLoginClick }) {
   const [lugares, setLugares] = useState([]);
@@ -53,7 +54,7 @@ function QueVisitar({ onLoginClick }) {
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
             <img 
-              src="/src/assets/fondos/LugaresVisita.png" 
+              src={LUGARES_VISITA} 
               alt="Lugares para visitar en La Paz" 
               className="cecyte-chef-parallax-image"
             />

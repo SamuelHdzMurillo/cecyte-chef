@@ -3,6 +3,35 @@ import "./HomePage.css";
 import Navbar from "./Navbar";
 import CountdownTimer from "./CountdownTimer";
 import Footer from "./Footer";
+import {
+  CUCHILLO,
+  SARTEN,
+  CAMARON,
+  CHILE,
+  CUCHARA,
+  PILON,
+  PITAHAYA,
+  PEZ,
+  LANGOSTA,
+  CUBIERTOS,
+  DORADO,
+  HACHA,
+  PALMERA,
+  BALLENA,
+  BALANDRA,
+  EL_ARCO,
+  RUPESTRES,
+  TRIANGULOS,
+  COLA_DE_LA_BALLENA,
+  CECYTE_CHEF_SIN_FONDO_HORIZONTAL,
+  PLATILLO_SALMON,
+  PLATILLO_CAMARON,
+  PLATILLO_NARANJA,
+  PLATILLO_NARANJON,
+  LUGARES_VISITA,
+  HOTELES,
+  RESTAURANTE
+} from "../assets/images";
 
 function HomePage({ onLoginClick }) {
   const parallaxRef = useRef(null);
@@ -179,55 +208,55 @@ function HomePage({ onLoginClick }) {
           {/* Minimalist Icons */}
           <div className="cecyte-chef-minimal-icons">
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-1">
-              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+              <img src={CUCHILLO} alt="Cuchillo" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-2">
-              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+              <img src={SARTEN} alt="Sartén" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-3">
-              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+              <img src={CAMARON} alt="Camarón" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-4">
-              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+              <img src={CHILE} alt="Chile" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-5">
-              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+              <img src={CUCHARA} alt="Cuchara" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-6">
-              <img src="/src/assets/svg/PILON.png" alt="Pilón" />
+              <img src={PILON} alt="Pilón" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-7">
-              <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" />
+              <img src={PITAHAYA} alt="Pitahaya" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-8">
-              <img src="/src/assets/svg/PEZ.png" alt="Pez" />
+              <img src={PEZ} alt="Pez" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-9">
-              <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" />
+              <img src={LANGOSTA} alt="Langosta" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-10">
-              <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" />
+              <img src={CUBIERTOS} alt="Cubiertos" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-11">
-              <img src="/src/assets/svg/DORADO.png" alt="Dorado" />
+              <img src={DORADO} alt="Dorado" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-12">
-              <img src="/src/assets/svg/HACHA.png" alt="Hacha" />
+              <img src={HACHA} alt="Hacha" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-13">
-              <img src="/src/assets/svg/PALMERA.png" alt="Palmera" />
+              <img src={PALMERA} alt="Palmera" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-14">
-              <img src="/src/assets/svg/BALLENA.png" alt="Ballena" />
+              <img src={BALLENA} alt="Ballena" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-15">
-              <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" />
+              <img src={BALANDRA} alt="Balandra" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-16">
-              <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" />
+              <img src={EL_ARCO} alt="El Arco" />
             </div>
             <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-17">
-              <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" />
+              <img src={RUPESTRES} alt="Rupestres" />
             </div>
           </div>
         </div>
@@ -239,7 +268,7 @@ function HomePage({ onLoginClick }) {
               {/* Logo */}
               <div className="cecyte-chef-logo-container">
                 <img
-                  src="/src/assets/cecyte_chef_sin_fondo_horizontal.png"
+                  src={CECYTE_CHEF_SIN_FONDO_HORIZONTAL}
                   alt="CECYTE CHEF Baja California Sur"
                   className="cecyte-chef-main-logo"
                 />
@@ -274,28 +303,28 @@ function HomePage({ onLoginClick }) {
               <div className="cecyte-chef-food-gallery">
                 <div className="cecyte-chef-gallery-grid">
                   <div className="cecyte-chef-gallery-item cecyte-chef-gallery-1">
-                    <img src="/src/assets/platillos/platillo_salmon.webp" alt="Salmón Premium" />
+                    <img src={PLATILLO_SALMON} alt="Salmón Premium" />
                     <div className="cecyte-chef-gallery-overlay">
                       <span>Salmón Premium</span>
                     </div>
                   </div>
                   
                   <div className="cecyte-chef-gallery-item cecyte-chef-gallery-2">
-                    <img src="/src/assets/platillos/platillo_camaron.webp" alt="Camarones del Mar" />
+                    <img src={PLATILLO_CAMARON} alt="Camarones del Mar" />
                     <div className="cecyte-chef-gallery-overlay">
                       <span>Camarones del Mar</span>
                     </div>
                   </div>
                   
                   <div className="cecyte-chef-gallery-item cecyte-chef-gallery-3">
-                    <img src="/src/assets/platillos/platillo_naranja.webp" alt="Especialidad Local" />
+                    <img src={PLATILLO_NARANJA} alt="Especialidad Local" />
                     <div className="cecyte-chef-gallery-overlay">
                       <span>Especialidad Local</span>
                     </div>
                   </div>
                   
                   <div className="cecyte-chef-gallery-item cecyte-chef-gallery-4">
-                    <img src="/src/assets/platillos/platillo_naranjon.webp" alt="Creación del Chef" />
+                    <img src={PLATILLO_NARANJON} alt="Creación del Chef" />
                     <div className="cecyte-chef-gallery-overlay">
                       <span>Creación del Chef</span>
                     </div>
@@ -330,14 +359,14 @@ function HomePage({ onLoginClick }) {
               
               {/* Elementos decorativos alrededor del chef */}
               <div className="cecyte-chef-decorative-elements">
-                <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" className="cecyte-chef-decorative-element cecyte-chef-element-1" />
-                <img src="/src/assets/svg/SARTEN.png" alt="Sartén" className="cecyte-chef-decorative-element cecyte-chef-element-2" />
-                <img src="/src/assets/svg/CAMARON.png" alt="Camarón" className="cecyte-chef-decorative-element cecyte-chef-element-3" />
-                <img src="/src/assets/svg/CHILE.png" alt="Chile" className="cecyte-chef-decorative-element cecyte-chef-element-4" />
-                <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" className="cecyte-chef-decorative-element cecyte-chef-element-5" />
-                <img src="/src/assets/svg/PEZ.png" alt="Pez" className="cecyte-chef-decorative-element cecyte-chef-element-6" />
-                <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" className="cecyte-chef-decorative-element cecyte-chef-element-7" />
-                <img src="/src/assets/svg/PILON.png" alt="Pilón" className="cecyte-chef-decorative-element cecyte-chef-element-8" />
+                <img src={CUCHILLO} alt="Cuchillo" className="cecyte-chef-decorative-element cecyte-chef-element-1" />
+                <img src={SARTEN} alt="Sartén" className="cecyte-chef-decorative-element cecyte-chef-element-2" />
+                <img src={CAMARON} alt="Camarón" className="cecyte-chef-decorative-element cecyte-chef-element-3" />
+                <img src={CHILE} alt="Chile" className="cecyte-chef-decorative-element cecyte-chef-element-4" />
+                <img src={PITAHAYA} alt="Pitahaya" className="cecyte-chef-decorative-element cecyte-chef-element-5" />
+                <img src={PEZ} alt="Pez" className="cecyte-chef-decorative-element cecyte-chef-element-6" />
+                <img src={CUCHARA} alt="Cuchara" className="cecyte-chef-decorative-element cecyte-chef-element-7" />
+                <img src={PILON} alt="Pilón" className="cecyte-chef-decorative-element cecyte-chef-element-8" />
               </div>
             </div>
 
@@ -375,14 +404,14 @@ function HomePage({ onLoginClick }) {
       <div className="cecyte-chef-divider cecyte-chef-divider-svg">
         <div className="cecyte-chef-divider-content">
           <div className="cecyte-chef-divider-svg-elements">
-            <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/SARTEN.png" alt="Sartén" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/CAMARON.png" alt="Camarón" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/CHILE.png" alt="Chile" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/PEZ.png" alt="Pez" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" className="cecyte-chef-divider-svg-item" />
-            <img src="/src/assets/svg/PILON.png" alt="Pilón" className="cecyte-chef-divider-svg-item" />
+            <img src={CUCHILLO} alt="Cuchillo" className="cecyte-chef-divider-svg-item" />
+            <img src={SARTEN} alt="Sartén" className="cecyte-chef-divider-svg-item" />
+            <img src={CAMARON} alt="Camarón" className="cecyte-chef-divider-svg-item" />
+            <img src={CHILE} alt="Chile" className="cecyte-chef-divider-svg-item" />
+            <img src={PITAHAYA} alt="Pitahaya" className="cecyte-chef-divider-svg-item" />
+            <img src={PEZ} alt="Pez" className="cecyte-chef-divider-svg-item" />
+            <img src={CUCHARA} alt="Cuchara" className="cecyte-chef-divider-svg-item" />
+            <img src={PILON} alt="Pilón" className="cecyte-chef-divider-svg-item" />
           </div>
         </div>
       </div>
@@ -393,314 +422,314 @@ function HomePage({ onLoginClick }) {
         <div className="cecyte-chef-jueces-background">
           <div className="cecyte-chef-jueces-svgs">
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-1">
-              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+              <img src={CUCHILLO} alt="Cuchillo" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-2">
-              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+              <img src={SARTEN} alt="Sartén" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-3">
-              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+              <img src={CAMARON} alt="Camarón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-4">
-              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+              <img src={CHILE} alt="Chile" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-5">
-              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+              <img src={CUCHARA} alt="Cuchara" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-6">
-              <img src="/src/assets/svg/PILON.png" alt="Pilón" />
+              <img src={PILON} alt="Pilón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-7">
-              <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" />
+              <img src={LANGOSTA} alt="Langosta" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-8">
-              <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" />
+              <img src={CUBIERTOS} alt="Cubiertos" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-9">
-              <img src="/src/assets/svg/DORADO.png" alt="Dorado" />
+              <img src={DORADO} alt="Dorado" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-10">
-              <img src="/src/assets/svg/PEZ.png" alt="Pez" />
+              <img src={PEZ} alt="Pez" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-11">
-              <img src="/src/assets/svg/BALLENA.png" alt="Ballena" />
+              <img src={BALLENA} alt="Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-12">
-              <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" />
+              <img src={BALANDRA} alt="Balandra" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-13">
-              <img src="/src/assets/svg/PALMERA.png" alt="Palmera" />
+              <img src={PALMERA} alt="Palmera" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-14">
-              <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" />
+              <img src={PITAHAYA} alt="Pitahaya" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-15">
-              <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" />
+              <img src={EL_ARCO} alt="El Arco" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-16">
-              <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" />
+              <img src={RUPESTRES} alt="Rupestres" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-17">
-              <img src="/src/assets/svg/HACHA.png" alt="Hacha" />
+              <img src={HACHA} alt="Hacha" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-18">
-              <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" />
+              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-19">
-              <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" />
+              <img src={TRIANGULOS} alt="Triángulos" />
             </div>
             
             {/* Duplicados y variaciones para crear ~100 elementos */}
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-20">
-              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+              <img src={CUCHILLO} alt="Cuchillo" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-21">
-              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+              <img src={SARTEN} alt="Sartén" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-22">
-              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+              <img src={CAMARON} alt="Camarón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-23">
-              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+              <img src={CHILE} alt="Chile" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-24">
-              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+              <img src={CUCHARA} alt="Cuchara" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-25">
-              <img src="/src/assets/svg/PILON.png" alt="Pilón" />
+              <img src={PILON} alt="Pilón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-26">
-              <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" />
+              <img src={LANGOSTA} alt="Langosta" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-27">
-              <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" />
+              <img src={CUBIERTOS} alt="Cubiertos" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-28">
-              <img src="/src/assets/svg/DORADO.png" alt="Dorado" />
+              <img src={DORADO} alt="Dorado" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-29">
-              <img src="/src/assets/svg/PEZ.png" alt="Pez" />
+              <img src={PEZ} alt="Pez" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-30">
-              <img src="/src/assets/svg/BALLENA.png" alt="Ballena" />
+              <img src={BALLENA} alt="Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-31">
-              <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" />
+              <img src={BALANDRA} alt="Balandra" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-32">
-              <img src="/src/assets/svg/PALMERA.png" alt="Palmera" />
+              <img src={PALMERA} alt="Palmera" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-33">
-              <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" />
+              <img src={PITAHAYA} alt="Pitahaya" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-34">
-              <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" />
+              <img src={EL_ARCO} alt="El Arco" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-35">
-              <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" />
+              <img src={RUPESTRES} alt="Rupestres" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-36">
-              <img src="/src/assets/svg/HACHA.png" alt="Hacha" />
+              <img src={HACHA} alt="Hacha" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-37">
-              <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" />
+              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-38">
-              <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" />
+              <img src={TRIANGULOS} alt="Triángulos" />
             </div>
             
             {/* Tercera ronda */}
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-39">
-              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+              <img src={CUCHILLO} alt="Cuchillo" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-40">
-              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+              <img src={SARTEN} alt="Sartén" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-41">
-              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+              <img src={CAMARON} alt="Camarón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-42">
-              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+              <img src={CHILE} alt="Chile" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-43">
-              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+              <img src={CUCHARA} alt="Cuchara" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-44">
-              <img src="/src/assets/svg/PILON.png" alt="Pilón" />
+              <img src={PILON} alt="Pilón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-45">
-              <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" />
+              <img src={LANGOSTA} alt="Langosta" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-46">
-              <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" />
+              <img src={CUBIERTOS} alt="Cubiertos" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-47">
-              <img src="/src/assets/svg/DORADO.png" alt="Dorado" />
+              <img src={DORADO} alt="Dorado" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-48">
-              <img src="/src/assets/svg/PEZ.png" alt="Pez" />
+              <img src={PEZ} alt="Pez" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-49">
-              <img src="/src/assets/svg/BALLENA.png" alt="Ballena" />
+              <img src={BALLENA} alt="Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-50">
-              <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" />
+              <img src={BALANDRA} alt="Balandra" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-51">
-              <img src="/src/assets/svg/PALMERA.png" alt="Palmera" />
+              <img src={PALMERA} alt="Palmera" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-52">
-              <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" />
+              <img src={PITAHAYA} alt="Pitahaya" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-53">
-              <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" />
+              <img src={EL_ARCO} alt="El Arco" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-54">
-              <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" />
+              <img src={RUPESTRES} alt="Rupestres" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-55">
-              <img src="/src/assets/svg/HACHA.png" alt="Hacha" />
+              <img src={HACHA} alt="Hacha" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-56">
-              <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" />
+              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-57">
-              <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" />
+              <img src={TRIANGULOS} alt="Triángulos" />
             </div>
             
             {/* Cuarta ronda */}
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-58">
-              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+              <img src={CUCHILLO} alt="Cuchillo" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-59">
-              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+              <img src={SARTEN} alt="Sartén" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-60">
-              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+              <img src={CAMARON} alt="Camarón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-61">
-              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+              <img src={CHILE} alt="Chile" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-62">
-              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+              <img src={CUCHARA} alt="Cuchara" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-63">
-              <img src="/src/assets/svg/PILON.png" alt="Pilón" />
+              <img src={PILON} alt="Pilón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-64">
-              <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" />
+              <img src={LANGOSTA} alt="Langosta" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-65">
-              <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" />
+              <img src={CUBIERTOS} alt="Cubiertos" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-66">
-              <img src="/src/assets/svg/DORADO.png" alt="Dorado" />
+              <img src={DORADO} alt="Dorado" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-67">
-              <img src="/src/assets/svg/PEZ.png" alt="Pez" />
+              <img src={PEZ} alt="Pez" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-68">
-              <img src="/src/assets/svg/BALLENA.png" alt="Ballena" />
+              <img src={BALLENA} alt="Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-69">
-              <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" />
+              <img src={BALANDRA} alt="Balandra" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-70">
-              <img src="/src/assets/svg/PALMERA.png" alt="Palmera" />
+              <img src={PALMERA} alt="Palmera" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-71">
-              <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" />
+              <img src={PITAHAYA} alt="Pitahaya" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-72">
-              <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" />
+              <img src={EL_ARCO} alt="El Arco" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-73">
-              <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" />
+              <img src={RUPESTRES} alt="Rupestres" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-74">
-              <img src="/src/assets/svg/HACHA.png" alt="Hacha" />
+              <img src={HACHA} alt="Hacha" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-75">
-              <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" />
+              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-76">
-              <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" />
+              <img src={TRIANGULOS} alt="Triángulos" />
             </div>
             
             {/* Quinta ronda */}
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-77">
-              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+              <img src={CUCHILLO} alt="Cuchillo" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-78">
-              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+              <img src={SARTEN} alt="Sartén" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-79">
-              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+              <img src={CAMARON} alt="Camarón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-80">
-              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+              <img src={CHILE} alt="Chile" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-81">
-              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+              <img src={CUCHARA} alt="Cuchara" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-82">
-              <img src="/src/assets/svg/PILON.png" alt="Pilón" />
+              <img src={PILON} alt="Pilón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-83">
-              <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" />
+              <img src={LANGOSTA} alt="Langosta" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-84">
-              <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" />
+              <img src={CUBIERTOS} alt="Cubiertos" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-85">
-              <img src="/src/assets/svg/DORADO.png" alt="Dorado" />
+              <img src={DORADO} alt="Dorado" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-86">
-              <img src="/src/assets/svg/PEZ.png" alt="Pez" />
+              <img src={PEZ} alt="Pez" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-87">
-              <img src="/src/assets/svg/BALLENA.png" alt="Ballena" />
+              <img src={BALLENA} alt="Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-88">
-              <img src="/src/assets/svg/BALANDRA.png" alt="Balandra" />
+              <img src={BALANDRA} alt="Balandra" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-89">
-              <img src="/src/assets/svg/PALMERA.png" alt="Palmera" />
+              <img src={PALMERA} alt="Palmera" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-90">
-              <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" />
+              <img src={PITAHAYA} alt="Pitahaya" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-91">
-              <img src="/src/assets/svg/EL ARCO.png" alt="El Arco" />
+              <img src={EL_ARCO} alt="El Arco" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-92">
-              <img src="/src/assets/svg/RUPESTRES.png" alt="Rupestres" />
+              <img src={RUPESTRES} alt="Rupestres" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-93">
-              <img src="/src/assets/svg/HACHA.png" alt="Hacha" />
+              <img src={HACHA} alt="Hacha" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-94">
-              <img src="/src/assets/svg/COLA DE LA BALLENA.png" alt="Cola de la Ballena" />
+              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-95">
-              <img src="/src/assets/svg/TRIANGULOS.png" alt="Triángulos" />
+              <img src={TRIANGULOS} alt="Triángulos" />
             </div>
             
             {/* Sexta ronda - últimos elementos para llegar a 100 */}
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-96">
-              <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" />
+              <img src={CUCHILLO} alt="Cuchillo" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-97">
-              <img src="/src/assets/svg/SARTEN.png" alt="Sartén" />
+              <img src={SARTEN} alt="Sartén" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-98">
-              <img src="/src/assets/svg/CAMARON.png" alt="Camarón" />
+              <img src={CAMARON} alt="Camarón" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-99">
-              <img src="/src/assets/svg/CHILE.png" alt="Chile" />
+              <img src={CHILE} alt="Chile" />
             </div>
             <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-100">
-              <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" />
+              <img src={CUCHARA} alt="Cuchara" />
             </div>
           </div>
         </div>
@@ -811,7 +840,7 @@ function HomePage({ onLoginClick }) {
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
             <img 
-              src="/src/assets/fondos/LugaresVisita.png" 
+              src={LUGARES_VISITA} 
               alt="Lugares de interés en La Paz" 
               className="cecyte-chef-parallax-image"
             />
@@ -873,7 +902,7 @@ function HomePage({ onLoginClick }) {
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
             <img 
-              src="/src/assets/fondos/Hoteles.png" 
+              src={HOTELES} 
               alt="Hoteles y hospedaje en La Paz" 
               className="cecyte-chef-parallax-image"
             />
@@ -933,7 +962,7 @@ function HomePage({ onLoginClick }) {
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
             <img 
-              src="/src/assets/fondos/restaurante.png" 
+              src={RESTAURANTE} 
               alt="Restaurantes y gastronomía en La Paz" 
               className="cecyte-chef-parallax-image"
             />

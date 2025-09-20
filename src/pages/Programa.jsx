@@ -2,6 +2,16 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../components/HomePage.css";
+import {
+  CUCHILLO,
+  SARTEN,
+  CAMARON,
+  CHILE,
+  CUCHARA,
+  PILON,
+  PITAHAYA,
+  PEZ
+} from "../assets/images";
 
 function Programa({ onLoginClick }) {
   return (
@@ -24,14 +34,14 @@ function Programa({ onLoginClick }) {
               
               {/* Elementos decorativos alrededor del chef */}
               <div className="cecyte-chef-decorative-elements">
-                <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" className="cecyte-chef-decorative-element cecyte-chef-element-1" />
-                <img src="/src/assets/svg/SARTEN.png" alt="Sartén" className="cecyte-chef-decorative-element cecyte-chef-element-2" />
-                <img src="/src/assets/svg/CAMARON.png" alt="Camarón" className="cecyte-chef-decorative-element cecyte-chef-element-3" />
-                <img src="/src/assets/svg/CHILE.png" alt="Chile" className="cecyte-chef-decorative-element cecyte-chef-element-4" />
-                <img src="/src/assets/svg/PITAHAYA.png" alt="Pitahaya" className="cecyte-chef-decorative-element cecyte-chef-element-5" />
-                <img src="/src/assets/svg/PEZ.png" alt="Pez" className="cecyte-chef-decorative-element cecyte-chef-element-6" />
-                <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" className="cecyte-chef-decorative-element cecyte-chef-element-7" />
-                <img src="/src/assets/svg/PILON.png" alt="Pilón" className="cecyte-chef-decorative-element cecyte-chef-element-8" />
+                <img src={CUCHILLO} alt="Cuchillo" className="cecyte-chef-decorative-element cecyte-chef-element-1" />
+                <img src={SARTEN} alt="Sartén" className="cecyte-chef-decorative-element cecyte-chef-element-2" />
+                <img src={CAMARON} alt="Camarón" className="cecyte-chef-decorative-element cecyte-chef-element-3" />
+                <img src={CHILE} alt="Chile" className="cecyte-chef-decorative-element cecyte-chef-element-4" />
+                <img src={PITAHAYA} alt="Pitahaya" className="cecyte-chef-decorative-element cecyte-chef-element-5" />
+                <img src={PEZ} alt="Pez" className="cecyte-chef-decorative-element cecyte-chef-element-6" />
+                <img src={CUCHARA} alt="Cuchara" className="cecyte-chef-decorative-element cecyte-chef-element-7" />
+                <img src={PILON} alt="Pilón" className="cecyte-chef-decorative-element cecyte-chef-element-8" />
               </div>
             </div>
 

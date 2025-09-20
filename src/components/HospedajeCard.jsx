@@ -1,5 +1,6 @@
 import React from 'react'
 import './HospedajeCard.css'
+import { HOTELES } from '../assets/images'
 
 function HospedajeCard({ hospedaje }) {
   const handleContactar = () => {
@@ -21,10 +22,10 @@ function HospedajeCard({ hospedaje }) {
     <div className="hospedaje-card">
       <div className="hospedaje-card-image">
         <img 
-          src={hospedaje.img || '/src/assets/fondos/Hoteles.png'} 
+          src={hospedaje.img || HOTELES} 
           alt={hospedaje.nombre}
           onError={(e) => {
-            e.target.src = '/src/assets/fondos/Hoteles.png'
+            e.target.src = HOTELES
           }}
         />
         <div className="hospedaje-card-overlay">

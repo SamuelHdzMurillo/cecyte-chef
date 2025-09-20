@@ -5,6 +5,7 @@ import RestauranteCard from "../components/RestauranteCard";
 import restaurantesService from "../services/restaurantesService";
 import "../components/HomePage.css";
 import "../components/RestauranteCard.css";
+import { RESTAURANTE } from "../assets/images";
 
 function Restaurantes({ onLoginClick }) {
   const [restaurantes, setRestaurantes] = useState([]);
@@ -51,7 +52,7 @@ function Restaurantes({ onLoginClick }) {
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
             <img 
-              src="/src/assets/fondos/restaurante.png" 
+              src={RESTAURANTE} 
               alt="Restaurantes en La Paz" 
               className="cecyte-chef-parallax-image"
             />

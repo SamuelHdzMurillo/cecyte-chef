@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import { CECYTE_CHEF_SIN_FONDO, CINTILLA_INFERIOR_SVG } from '../assets/images';
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
             <div className="cecyte-chef-footer-brand">
               <div className="cecyte-chef-footer-logo-container">
                 <img
-                  src="/src/assets/cecyte_chef_sin fondo.png"
+                  src={CECYTE_CHEF_SIN_FONDO}
                   alt="CECYTE CHEF - II Concurso Nacional"
                   className="cecyte-chef-footer-logo"
                 />
@@ -117,7 +118,7 @@ const Footer = () => {
       {/* Cintilla SVG - Pie de página completo */}
       <div className="cecyte-chef-footer-cintilla-container">
         <img
-          src="/src/assets/cintilla inferior.svg"
+          src={CINTILLA_INFERIOR_SVG}
           alt="Cintilla decorativa CECYTE CHEF"
           className="cecyte-chef-cintilla-svg"
         />

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useAuth } from "./contexts/AuthContext.jsx";
 import DebugPanel from "./components/DebugPanel.jsx";
+import { CECYTE_CHEF_SIN_FONDO } from "./assets/images";
 
 function Login({ onBackClick }) {
   const navigate = useNavigate();
@@ -92,7 +93,7 @@ function Login({ onBackClick }) {
                       <div className="login-logo">
                         <div className="logo-icon">
                           <img
-                            src="/src/assets/cecyte_chef_sin fondo.png"
+                            src={CECYTE_CHEF_SIN_FONDO}
                             alt="CECyTE Chef Logo"
                             className="logo-image"
                           />

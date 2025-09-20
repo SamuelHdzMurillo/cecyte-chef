@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './CountdownTimer.css';
+import {
+  CUBIERTOS,
+  SARTEN,
+  CUCHILLO,
+  CUCHARA,
+  PILON,
+  CHILE,
+  CAMARON,
+  LANGOSTA
+} from '../assets/images';
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -38,14 +48,14 @@ const CountdownTimer = () => {
       <div className="cecyte-chef-countdown-container">
         {/* Background SVG Elements */}
         <div className="cecyte-chef-countdown-bg">
-          <img src="/src/assets/svg/CUBIERTOS.png" alt="Cubiertos" className="cecyte-chef-countdown-svg cecyte-chef-svg-1" />
-          <img src="/src/assets/svg/SARTEN.png" alt="Sartén" className="cecyte-chef-countdown-svg cecyte-chef-svg-2" />
-          <img src="/src/assets/svg/CUCHILLO.png" alt="Cuchillo" className="cecyte-chef-countdown-svg cecyte-chef-svg-3" />
-          <img src="/src/assets/svg/CUCHARA.png" alt="Cuchara" className="cecyte-chef-countdown-svg cecyte-chef-svg-4" />
-          <img src="/src/assets/svg/PILON.png" alt="Pilón" className="cecyte-chef-countdown-svg cecyte-chef-svg-5" />
-          <img src="/src/assets/svg/CHILE.png" alt="Chile" className="cecyte-chef-countdown-svg cecyte-chef-svg-6" />
-          <img src="/src/assets/svg/CAMARON.png" alt="Camarón" className="cecyte-chef-countdown-svg cecyte-chef-svg-7" />
-          <img src="/src/assets/svg/LANGOSTA.png" alt="Langosta" className="cecyte-chef-countdown-svg cecyte-chef-svg-8" />
+          <img src={CUBIERTOS} alt="Cubiertos" className="cecyte-chef-countdown-svg cecyte-chef-svg-1" />
+          <img src={SARTEN} alt="Sartén" className="cecyte-chef-countdown-svg cecyte-chef-svg-2" />
+          <img src={CUCHILLO} alt="Cuchillo" className="cecyte-chef-countdown-svg cecyte-chef-svg-3" />
+          <img src={CUCHARA} alt="Cuchara" className="cecyte-chef-countdown-svg cecyte-chef-svg-4" />
+          <img src={PILON} alt="Pilón" className="cecyte-chef-countdown-svg cecyte-chef-svg-5" />
+          <img src={CHILE} alt="Chile" className="cecyte-chef-countdown-svg cecyte-chef-svg-6" />
+          <img src={CAMARON} alt="Camarón" className="cecyte-chef-countdown-svg cecyte-chef-svg-7" />
+          <img src={LANGOSTA} alt="Langosta" className="cecyte-chef-countdown-svg cecyte-chef-svg-8" />
         </div>
 
         {/* Overlay */}

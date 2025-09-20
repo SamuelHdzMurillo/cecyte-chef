@@ -17,6 +17,7 @@ import LugarDetalle from "./LugarDetalle.jsx";
 import BuzonAsistenciaTable from "./BuzonAsistenciaTable.jsx";
 import Header from "./Header.jsx";
 import "./Dashboard.css";
+import { CECYTE_CHEF_SIN_FONDO } from "../assets/images";
 
 function AdminDashboard() {
   const navigate = useNavigate();
@@ -351,7 +352,7 @@ function AdminDashboard() {
             <div className="logo-container">
               <div className="logo-icon">
                 <img
-                  src="/src/assets/cecyte_chef_sin fondo.png"
+                  src={CECYTE_CHEF_SIN_FONDO}
                   alt="CECyTE Chef Logo"
                   className="logo-image"
                 />
