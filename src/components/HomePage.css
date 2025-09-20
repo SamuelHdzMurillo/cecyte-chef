@@ -1,289 +1,526 @@
-/* HomePage Styles */
-.homepage {
+/* ========================================
+   CECYTE CHEF HOMEPAGE STYLES
+   ======================================== */
+
+/* Variables CSS para consistencia */
+:root {
+  --cecyte-chef-primary: #8B1538;
+  --cecyte-chef-secondary: #6B0F2A;
+  --cecyte-chef-tertiary: #4A0A1C;
+  --cecyte-chef-light: #f8f9fa;
+  --cecyte-chef-lighter: #e9ecef;
+  --cecyte-chef-dark: #333333;
+  --cecyte-chef-muted: #6c757d;
+  --cecyte-chef-white: #ffffff;
+  --cecyte-chef-shadow: rgba(0, 0, 0, 0.1);
+  --cecyte-chef-shadow-hover: rgba(0, 0, 0, 0.15);
+  --cecyte-chef-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+.cecyte-chef-homepage {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--cecyte-chef-dark);
+  overflow-x: hidden;
 }
 
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+.cecyte-chef-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.cecyte-chef-hero-section {
   position: relative;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--cecyte-chef-light) 0%, var(--cecyte-chef-lighter) 100%);
   overflow: hidden;
-  padding-top: 0; /* Sin padding superior */
-  min-height: 100vh;
-  margin-top: 0; /* Sin margen superior */
 }
 
-.hero-section::before {
-  content: "";
+.cecyte-chef-hero-background {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-      circle at 20% 80%,
-      rgba(139, 21, 56, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(107, 15, 42, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 40%,
-      rgba(74, 10, 28, 0.05) 0%,
-      transparent 50%
-    );
-  animation: backgroundShift 20s ease-in-out infinite;
-  pointer-events: none;
+  z-index: 1;
 }
 
-.hero-section::after {
-  content: "";
+.cecyte-chef-hero-pattern {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="floating-dots" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%238B1538" opacity="0.1"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="3s" repeatCount="indefinite"/></circle><circle cx="10" cy="10" r="0.5" fill="%236B0F2A" opacity="0.05"><animate attributeName="opacity" values="0.05;0.2;0.05" dur="4s" repeatCount="indefinite"/></circle><circle cx="40" cy="40" r="0.8" fill="%234A0A1C" opacity="0.08"><animate attributeName="opacity" values="0.08;0.25;0.08" dur="5s" repeatCount="indefinite"/></circle></pattern></defs><rect width="100" height="100" fill="url(%23floating-dots)"/></svg>');
-  animation: floatPattern 15s linear infinite;
-  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
+  animation: cecyte-chef-background-shift 20s ease-in-out infinite;
 }
 
-.hero-content {
+.cecyte-chef-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
   position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+/* ========================================
+   HERO CONTENT - LOGO
+   ======================================== */
+.cecyte-chef-hero-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 80px); /* Altura total menos altura del navbar */
-  padding-top: 20px; /* Espacio mínimo desde el navbar */
+  min-height: calc(100vh - 120px);
+  padding-top: 10px;
 }
 
-.hero-logo-container {
+.cecyte-chef-logo-wrapper {
+  position: relative;
   text-align: center;
   width: 100%;
   max-width: 600px;
 }
 
-.hero-logo {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-  transition: all 0.3s ease;
-}
-
-.hero-logo:hover {
-  transform: scale(1.02);
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
-}
-
-.hero-content h1 {
-  font-weight: 800;
-  line-height: 1.2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.hero-content .lead {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: #6c757d !important;
-}
-
-/* Gallery Styles */
-.hero-gallery {
+.cecyte-chef-logo-container {
   position: relative;
   z-index: 2;
 }
 
-.gallery-grid {
+.cecyte-chef-main-logo {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px var(--cecyte-chef-shadow));
+  transition: var(--cecyte-chef-transition);
+}
+
+.cecyte-chef-main-logo:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 6px 12px var(--cecyte-chef-shadow-hover));
+}
+
+.cecyte-chef-logo-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(139, 21, 56, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: cecyte-chef-logo-glow 3s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* ========================================
+   INVITATION TEXT
+   ======================================== */
+.cecyte-chef-invitation-text {
+  margin-top: 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.cecyte-chef-invitation-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--cecyte-chef-primary);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.3s both;
+}
+
+.cecyte-chef-invitation-subtitle {
+  font-size: 1.25rem;
+  color: var(--cecyte-chef-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.5s both;
+}
+
+/* ========================================
+   HERO GALLERY
+   ======================================== */
+.cecyte-chef-hero-gallery {
+  position: relative;
+  z-index: 2;
+}
+
+.cecyte-chef-gallery-container {
+  width: 100%;
+}
+
+.cecyte-chef-gallery-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 1rem;
-  height: 500px;
-  max-height: 500px;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1;
+  margin: 0 auto;
 }
 
-.gallery-item {
+.cecyte-chef-gallery-item {
   position: relative;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px var(--cecyte-chef-shadow-hover);
+  transition: var(--cecyte-chef-transition);
   cursor: pointer;
+  aspect-ratio: 1;
 }
 
-.gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+.cecyte-chef-gallery-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
-.gallery-item-large {
-  grid-column: 1 / 2;
-  grid-row: 1 / 3;
+.cecyte-chef-gallery-image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.gallery-item-wide {
-  grid-column: 1 / 3;
-  grid-row: 3 / 4;
-}
-
-.gallery-image {
+.cecyte-chef-gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: var(--cecyte-chef-transition);
 }
 
-.gallery-item:hover .gallery-image {
+.cecyte-chef-gallery-item:hover .cecyte-chef-gallery-image {
   transform: scale(1.05);
 }
 
-.gallery-overlay {
+.cecyte-chef-gallery-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-  padding: 1rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: 1.5rem 1rem 1rem;
   transform: translateY(100%);
-  transition: transform 0.3s ease;
+  transition: var(--cecyte-chef-transition);
+  backdrop-filter: blur(2px);
 }
 
-.gallery-item:hover .gallery-overlay {
+.cecyte-chef-gallery-item:hover .cecyte-chef-gallery-overlay {
   transform: translateY(0);
 }
 
-.gallery-label {
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+.cecyte-chef-gallery-label {
+  color: var(--cecyte-chef-white);
+  font-weight: 700;
+  font-size: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-/* Cards Section */
-.card {
-  transition: all 0.3s ease;
+/* Efectos uniformes para todas las imágenes */
+.cecyte-chef-gallery-label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Efecto de brillo en hover */
+.cecyte-chef-gallery-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: 1;
+}
+
+.cecyte-chef-gallery-item:hover::before {
+  transform: translateX(100%);
+}
+
+/* ========================================
+   FEATURES SECTION
+   ======================================== */
+.cecyte-chef-features-section {
+  padding: 5rem 0;
+  background: var(--cecyte-chef-white);
+}
+
+.cecyte-chef-features-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.cecyte-chef-features-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--cecyte-chef-dark);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.cecyte-chef-features-subtitle {
+  font-size: 1.25rem;
+  color: var(--cecyte-chef-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cecyte-chef-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.cecyte-chef-feature-card {
+  width: 100%;
+  max-width: 350px;
+  background: var(--cecyte-chef-white);
   border-radius: 12px;
+  box-shadow: 0 4px 15px var(--cecyte-chef-shadow);
+  transition: var(--cecyte-chef-transition);
+  overflow: hidden;
 }
 
-.card:hover {
+.cecyte-chef-feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 35px var(--cecyte-chef-shadow-hover);
 }
 
-.card-body {
-  border-radius: 12px;
+.cecyte-chef-feature-card-content {
+  padding: 2rem;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Buttons */
-.btn {
+.cecyte-chef-feature-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--cecyte-chef-white);
+  font-size: 2rem;
+}
+
+.cecyte-chef-feature-icon-primary {
+  background: var(--cecyte-chef-primary);
+}
+
+.cecyte-chef-feature-icon-secondary {
+  background: var(--cecyte-chef-secondary);
+}
+
+.cecyte-chef-feature-icon-tertiary {
+  background: var(--cecyte-chef-tertiary);
+}
+
+.cecyte-chef-feature-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cecyte-chef-dark);
+  margin-bottom: 1rem;
+}
+
+.cecyte-chef-feature-description {
+  color: var(--cecyte-chef-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+.cecyte-chef-cta-section {
+  padding: 5rem 0;
+  background: var(--cecyte-chef-white);
+  text-align: center;
+}
+
+.cecyte-chef-cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cecyte-chef-cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cecyte-chef-dark);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.cecyte-chef-cta-description {
+  font-size: 1.25rem;
+  color: var(--cecyte-chef-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cecyte-chef-cta-button {
+  background: linear-gradient(135deg, var(--cecyte-chef-primary) 0%, var(--cecyte-chef-secondary) 100%);
+  color: var(--cecyte-chef-white);
+  border: none;
+  padding: 1rem 2.5rem;
   border-radius: 8px;
   font-weight: 600;
-  transition: all 0.3s ease;
-  text-transform: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--cecyte-chef-transition);
+  text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #8b1538 0%, #6b0f2a 100%);
-  border: none;
   box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(135deg, #6b0f2a 0%, #4a0a1c 100%);
+.cecyte-chef-cta-button:hover {
+  background: linear-gradient(135deg, var(--cecyte-chef-secondary) 0%, var(--cecyte-chef-tertiary) 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(139, 21, 56, 0.4);
 }
 
-.btn-outline-primary {
-  border: 2px solid #8b1538;
-  color: #8b1538;
-  background: transparent;
+.cecyte-chef-cta-button-icon {
+  font-size: 1.2rem;
 }
 
-.btn-outline-primary:hover {
-  background: #8b1538;
-  border-color: #8b1538;
+.cecyte-chef-cta-button-text-mobile {
+  display: none;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.cecyte-chef-footer {
+  background: var(--cecyte-chef-light);
+  border-top: 1px solid var(--cecyte-chef-lighter);
+  padding: 2rem 0;
+}
+
+.cecyte-chef-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cecyte-chef-footer-copyright {
+  flex: 1;
+  min-width: 200px;
+}
+
+.cecyte-chef-footer-copyright-text {
+  color: var(--cecyte-chef-muted);
+  margin: 0;
+  text-align: center;
+}
+
+.cecyte-chef-footer-social {
+  flex: 1;
+  min-width: 200px;
+}
+
+.cecyte-chef-social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cecyte-chef-social-link {
+  color: var(--cecyte-chef-muted);
+  text-decoration: none;
+  font-size: 1.25rem;
+  transition: var(--cecyte-chef-transition);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.cecyte-chef-social-link:hover {
+  color: var(--cecyte-chef-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(139, 21, 56, 0.3);
+  background: rgba(139, 21, 56, 0.1);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-section {
-    padding-top: 0; /* Sin padding en móvil */
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes cecyte-chef-background-shift {
+  0%, 100% {
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
   }
-
-  .gallery-grid {
-    height: 400px;
-    gap: 0.5rem;
+  25% {
+    background: 
+      radial-gradient(circle at 80% 20%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
   }
-
-  .hero-content {
-    min-height: calc(
-      100vh - 70px
-    ); /* Altura total menos altura del navbar en móvil */
-    padding-top: 15px; /* Espacio mínimo desde el navbar en móvil */
+  50% {
+    background: 
+      radial-gradient(circle at 40% 40%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
   }
-
-  .hero-logo-container {
-    max-width: 500px;
-  }
-
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content .lead {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-section {
-    padding-top: 0; /* Sin padding en móviles pequeños */
-  }
-
-  .gallery-grid {
-    height: 300px;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
-  }
-
-  .gallery-item-large {
-    grid-column: 1;
-    grid-row: 1 / 2;
-  }
-
-  .gallery-item-wide {
-    grid-column: 1;
-    grid-row: 4 / 5;
-  }
-
-  .hero-content {
-    min-height: calc(
-      100vh - 60px
-    ); /* Altura total menos altura del navbar en móviles pequeños */
-    padding-top: 10px; /* Espacio mínimo desde el navbar en móviles pequeños */
-  }
-
-  .hero-logo-container {
-    max-width: 400px;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
+  75% {
+    background: 
+      radial-gradient(circle at 60% 60%, rgba(139, 21, 56, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(107, 15, 42, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(74, 10, 28, 0.05) 0%, transparent 50%);
   }
 }
 
-/* Animations */
-@keyframes fadeInUp {
+@keyframes cecyte-chef-logo-glow {
+  0% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes cecyte-chef-fade-in-up {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -294,122 +531,176 @@
   }
 }
 
-@keyframes backgroundShift {
-  0%,
-  100% {
-    background: radial-gradient(
-        circle at 20% 80%,
-        rgba(139, 21, 56, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 80% 20%,
-        rgba(107, 15, 42, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 40% 40%,
-        rgba(74, 10, 28, 0.05) 0%,
-        transparent 50%
-      );
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .cecyte-chef-hero-grid {
+    gap: 2rem;
   }
-  25% {
-    background: radial-gradient(
-        circle at 80% 20%,
-        rgba(139, 21, 56, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 20% 80%,
-        rgba(107, 15, 42, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 60% 60%,
-        rgba(74, 10, 28, 0.05) 0%,
-        transparent 50%
-      );
+  
+  .cecyte-chef-features-title {
+    font-size: 2.25rem;
   }
-  50% {
-    background: radial-gradient(
-        circle at 40% 40%,
-        rgba(139, 21, 56, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 60% 60%,
-        rgba(107, 15, 42, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 20% 80%,
-        rgba(74, 10, 28, 0.05) 0%,
-        transparent 50%
-      );
-  }
-  75% {
-    background: radial-gradient(
-        circle at 60% 60%,
-        rgba(139, 21, 56, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 40% 40%,
-        rgba(107, 15, 42, 0.1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 80% 20%,
-        rgba(74, 10, 28, 0.05) 0%,
-        transparent 50%
-      );
+  
+  .cecyte-chef-cta-title {
+    font-size: 1.75rem;
   }
 }
 
-@keyframes floatPattern {
-  0% {
-    transform: translateX(0) translateY(0);
+/* Mobile */
+@media (max-width: 768px) {
+  .cecyte-chef-hero-section {
+    min-height: calc(100vh - 70px);
   }
-  25% {
-    transform: translateX(-10px) translateY(-5px);
+  
+  .cecyte-chef-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-  50% {
-    transform: translateX(0) translateY(-10px);
+  
+  .cecyte-chef-hero-content {
+    min-height: calc(100vh - 100px);
+    padding-top: 5px;
   }
-  75% {
-    transform: translateX(10px) translateY(-5px);
+  
+  .cecyte-chef-logo-wrapper {
+    max-width: 500px;
   }
-  100% {
-    transform: translateX(0) translateY(0);
+  
+  .cecyte-chef-invitation-title {
+    font-size: 2rem;
+  }
+  
+  .cecyte-chef-invitation-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .cecyte-chef-gallery-grid {
+    max-width: 400px;
+    gap: 0.8rem;
+  }
+  
+  .cecyte-chef-features-section {
+    padding: 3rem 0;
+  }
+  
+  .cecyte-chef-features-title {
+    font-size: 2rem;
+  }
+  
+  .cecyte-chef-features-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .cecyte-chef-features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .cecyte-chef-cta-section {
+    padding: 3rem 0;
+  }
+  
+  .cecyte-chef-cta-title {
+    font-size: 1.5rem;
+  }
+  
+  .cecyte-chef-cta-description {
+    font-size: 1.1rem;
+  }
+  
+  .cecyte-chef-cta-button {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .cecyte-chef-cta-button-text-desktop {
+    display: none;
+  }
+  
+  .cecyte-chef-cta-button-text-mobile {
+    display: inline;
+  }
+  
+  .cecyte-chef-footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cecyte-chef-footer-copyright-text {
+    text-align: center;
   }
 }
 
-.hero-content {
-  animation: fadeInUp 0.8s ease-out;
+/* Small Mobile */
+@media (max-width: 576px) {
+  .cecyte-chef-hero-section {
+    min-height: calc(100vh - 60px);
+  }
+  
+  .cecyte-chef-hero-content {
+    min-height: calc(100vh - 80px);
+    padding-top: 5px;
+  }
+  
+  .cecyte-chef-logo-wrapper {
+    max-width: 400px;
+  }
+  
+  .cecyte-chef-invitation-title {
+    font-size: 1.75rem;
+  }
+  
+  .cecyte-chef-invitation-subtitle {
+    font-size: 1rem;
+  }
+  
+  .cecyte-chef-gallery-grid {
+    max-width: 350px;
+    gap: 0.6rem;
+  }
+  
+  .cecyte-chef-features-title {
+    font-size: 1.75rem;
+  }
+  
+  .cecyte-chef-cta-title {
+    font-size: 1.25rem;
+  }
+  
+  .cecyte-chef-cta-description {
+    font-size: 1rem;
+  }
+  
+  .cecyte-chef-container {
+    padding: 0 0.8rem;
+  }
 }
 
-.gallery-grid {
-  animation: fadeInUp 0.8s ease-out 0.2s both;
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.cecyte-chef-fade-in {
+  animation: cecyte-chef-fade-in-up 0.8s ease-out;
 }
 
-/* Footer */
-footer {
-  background: #f8f9fa !important;
-  border-top: 1px solid #e9ecef !important;
+.cecyte-chef-fade-in-delay {
+  animation: cecyte-chef-fade-in-up 0.8s ease-out 0.2s both;
 }
 
-footer a:hover {
-  color: #8b1538 !important;
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
-}
-
-/* Smooth scrolling */
+/* ========================================
+   SCROLL BEHAVIOR
+   ======================================== */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -419,10 +710,10 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8b1538;
+  background: var(--cecyte-chef-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b0f2a;
+  background: var(--cecyte-chef-secondary);
 }
