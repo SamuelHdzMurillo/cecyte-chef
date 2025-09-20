@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   
+  // Configuración de la base URL para producción
+  base: './',
+  
   // Configuración para variables de entorno
   define: {
     // Hacer que las variables de entorno estén disponibles en el cliente
