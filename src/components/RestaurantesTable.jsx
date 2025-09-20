@@ -29,6 +29,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
     pagina_web: "",
     codigo_promocional: "",
     descripcion_codigo_promocional: "",
+    img: "",
   });
   const [formErrors, setFormErrors] = useState({});
 
@@ -76,6 +77,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
       pagina_web: "",
       codigo_promocional: "",
       descripcion_codigo_promocional: "",
+      img: "",
     });
     setFormErrors({});
     setShowModal(true);
@@ -92,6 +94,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
       pagina_web: "",
       codigo_promocional: "",
       descripcion_codigo_promocional: "",
+      img: "",
     });
     setFormErrors({});
   };
@@ -163,6 +166,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
         codigo_promocional: formData.codigo_promocional || null,
         descripcion_codigo_promocional:
           formData.descripcion_codigo_promocional || null,
+        img: formData.img || null,
       };
 
       console.log("Datos a enviar:", dataToSend);
@@ -897,7 +901,7 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
                       )}
                     </div>
 
-                    <div className="col-12">
+                    <div className="col-md-6">
                       <label className="form-label fw-semibold text-dark mb-2">
                         Página Web
                       </label>
@@ -916,6 +920,30 @@ const RestaurantesTable = ({ onRestauranteSelect }) => {
                           {formErrors.pagina_web}
                         </div>
                       )}
+                    </div>
+
+                    <div className="col-md-6">
+                      <label className="form-label fw-semibold text-dark mb-2">
+                        URL de la Imagen
+                      </label>
+                      <input
+                        type="url"
+                        className={`form-control ${
+                          formErrors.img ? "is-invalid" : ""
+                        }`}
+                        name="img"
+                        value={formData.img}
+                        onChange={handleInputChange}
+                        placeholder="https://ejemplo.com/imagen.jpg"
+                      />
+                      {formErrors.img && (
+                        <div className="invalid-feedback">
+                          {formErrors.img}
+                        </div>
+                      )}
+                      <small className="form-text text-muted">
+                        Opcional. URL de la imagen del restaurante.
+                      </small>
                     </div>
 
                     {/* Información de Promociones */}
