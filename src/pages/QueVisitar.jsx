@@ -1,9 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import LugarInteresCard from "../components/LugarInteresCard";
+import lugaresInteresService from "../services/lugaresInteresService";
 import "../components/HomePage.css";
+import "../components/LugarInteresCard.css";
 
 function QueVisitar({ onLoginClick }) {
+  const [lugares, setLugares] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchLugares = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        console.log('Iniciando petición a lugares de interés...');
+        const response = await lugaresInteresService.getLugaresInteres();
+        console.log('Respuesta recibida:', response);
+        
+        // Intentar diferentes estructuras de respuesta
+        let lugaresData = [];
+        if (Array.isArray(response)) {
+          lugaresData = response;
+        } else if (response.data && Array.isArray(response.data)) {
+          lugaresData = response.data;
+        } else if (response.lugares && Array.isArray(response.lugares)) {
+          lugaresData = response.lugares;
+        }
+        
+        setLugares(lugaresData);
+        console.log('Lugares establecidos:', lugaresData);
+      } catch (err) {
+        console.error('Error al cargar lugares de interés:', err);
+        setError('Error al cargar los lugares de interés. Por favor, intenta de nuevo.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLugares();
+  }, []);
+
   return (
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
@@ -93,12 +132,7 @@ function QueVisitar({ onLoginClick }) {
                   </div>
                 </button>
                 
-                <button className="cecyte-chef-btn cecyte-chef-btn-secondary">
-                  <span>Rutas turísticas</span>
-                  <div className="cecyte-chef-btn-icon">
-                    <i className="bi bi-map"></i>
-                  </div>
-                </button>
+                
               </div>
             </div>
 
@@ -113,6 +147,64 @@ function QueVisitar({ onLoginClick }) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Sección de tarjetas de lugares de interés */}
+      <section className="cecyte-chef-lugares-cards-section">
+        <div className="cecyte-chef-container">
+          <div className="cecyte-chef-lugares-header">
+            
+            <h2 className="cecyte-chef-lugares-title">
+              Lugares de <span className="cecyte-chef-title-highlight">interés</span>
+            </h2>
+            <p className="cecyte-chef-lugares-description">
+              Descubre los atractivos turísticos más importantes de La Paz, Baja California Sur
+            </p>
+          </div>
+
+          {/* Estados de carga y error */}
+          {loading && (
+            <div className="cecyte-chef-loading">
+              <div className="cecyte-chef-spinner"></div>
+              <p>Cargando lugares de interés...</p>
+            </div>
+          )}
+
+          {error && (
+            <div className="cecyte-chef-error">
+              <i className="bi bi-exclamation-triangle"></i>
+              <p>{error}</p>
+              <button 
+                className="cecyte-chef-btn cecyte-chef-btn-primary"
+                onClick={() => window.location.reload()}
+              >
+                <span>Reintentar</span>
+                <div className="cecyte-chef-btn-icon">
+                  <i className="bi bi-arrow-clockwise"></i>
+                </div>
+              </button>
+            </div>
+          )}
+
+          {/* Grid de tarjetas de lugares de interés */}
+          {!loading && !error && lugares.length > 0 && (
+            <div className="cecyte-chef-lugares-grid">
+              {console.log('Renderizando lugares:', lugares)}
+              {lugares.map((lugar) => (
+                <LugarInteresCard key={lugar.id} lugar={lugar} />
+              ))}
+            </div>
+          )}
+
+          
+
+          {!loading && !error && lugares.length === 0 && (
+            <div className="cecyte-chef-empty">
+              <i className="bi bi-geo-alt"></i>
+              <p>No hay lugares de interés disponibles en este momento</p>
+            </div>
+          )}
         </div>
       </section>
 

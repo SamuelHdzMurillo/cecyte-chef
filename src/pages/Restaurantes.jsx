@@ -17,7 +17,19 @@ function Restaurantes({ onLoginClick }) {
         setLoading(true);
         setError(null);
         const response = await restaurantesService.getRestaurantes();
-        setRestaurantes(response.data || []);
+        console.log('Respuesta restaurantes:', response);
+        
+        // Intentar diferentes estructuras de respuesta
+        let restaurantesData = [];
+        if (Array.isArray(response)) {
+          restaurantesData = response;
+        } else if (response.data && Array.isArray(response.data)) {
+          restaurantesData = response.data;
+        } else if (response.restaurantes && Array.isArray(response.restaurantes)) {
+          restaurantesData = response.restaurantes;
+        }
+        
+        setRestaurantes(restaurantesData);
       } catch (err) {
         console.error('Error al cargar restaurantes:', err);
         setError('Error al cargar los restaurantes. Por favor, intenta de nuevo.');

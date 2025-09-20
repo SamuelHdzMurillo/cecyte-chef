@@ -17,7 +17,19 @@ function Hospedajes({ onLoginClick }) {
         setLoading(true);
         setError(null);
         const response = await hospedajesService.getHospedajes();
-        setHospedajes(response.data || []);
+        console.log('Respuesta hospedajes:', response);
+        
+        // Intentar diferentes estructuras de respuesta
+        let hospedajesData = [];
+        if (Array.isArray(response)) {
+          hospedajesData = response;
+        } else if (response.data && Array.isArray(response.data)) {
+          hospedajesData = response.data;
+        } else if (response.hospedajes && Array.isArray(response.hospedajes)) {
+          hospedajesData = response.hospedajes;
+        }
+        
+        setHospedajes(hospedajesData);
       } catch (err) {
         console.error('Error al cargar hospedajes:', err);
         setError('Error al cargar los hospedajes. Por favor, intenta de nuevo.');
