@@ -4,9 +4,11 @@ import Navbar from "./Navbar";
 
 function HomePage({ onLoginClick }) {
   const parallaxRef = useRef(null);
+  const hotelesParallaxRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
+      // Parallax para sección de lugares
       if (parallaxRef.current) {
         const rect = parallaxRef.current.getBoundingClientRect();
         const scrolled = window.pageYOffset;
@@ -46,6 +48,52 @@ function HomePage({ onLoginClick }) {
         
         // Efecto de parallax en el scroll indicator
         const scrollIndicator = parallaxRef.current.querySelector('.cecyte-chef-scroll-indicator');
+        if (scrollIndicator) {
+          const indicatorOpacity = Math.max(0, 1 - progress * 3);
+          scrollIndicator.style.opacity = indicatorOpacity;
+        }
+      }
+
+      // Parallax para sección de hoteles
+      if (hotelesParallaxRef.current) {
+        const rect = hotelesParallaxRef.current.getBoundingClientRect();
+        const scrolled = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // Calcular el progreso de la sección (0 a 1)
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+        const progress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight)));
+        
+        // Parallax para diferentes capas
+        const bgLayer = hotelesParallaxRef.current.querySelector('.cecyte-chef-bg-layer-1');
+        const overlay = hotelesParallaxRef.current.querySelector('.cecyte-chef-parallax-overlay');
+        const content = hotelesParallaxRef.current.querySelector('.cecyte-chef-parallax-content');
+        
+        if (bgLayer) {
+          const bgSpeed = 0.4;
+          const bgY = -(scrolled * bgSpeed);
+          bgLayer.style.transform = `translateY(${bgY}px) scale(1.1)`;
+        }
+        
+        if (overlay) {
+          const overlaySpeed = 0.2;
+          const overlayY = -(scrolled * overlaySpeed);
+          overlay.style.transform = `translateY(${overlayY}px)`;
+        }
+        
+        if (content) {
+          const contentSpeed = 0.1;
+          const contentY = -(scrolled * contentSpeed);
+          content.style.transform = `translateY(${contentY}px)`;
+          
+          // Efecto de fade basado en el progreso
+          const opacity = Math.max(0.3, 1 - progress * 0.7);
+          content.style.opacity = opacity;
+        }
+        
+        // Efecto de parallax en el scroll indicator
+        const scrollIndicator = hotelesParallaxRef.current.querySelector('.cecyte-chef-scroll-indicator');
         if (scrollIndicator) {
           const indicatorOpacity = Math.max(0, 1 - progress * 3);
           scrollIndicator.style.opacity = indicatorOpacity;
@@ -529,6 +577,71 @@ function HomePage({ onLoginClick }) {
                   Obtén certificados reconocidos al completar nuestros cursos
                   y módulos especializados.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hoteles Section - Premium Parallax */}
+      <section className="cecyte-chef-hoteles-section" ref={hotelesParallaxRef}>
+        <div className="cecyte-chef-parallax-container">
+          {/* Background Layers for Advanced Parallax */}
+          <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
+            <img 
+              src="/src/assets/fondos/Hoteles.png" 
+              alt="Hoteles y hospedaje en La Paz" 
+              className="cecyte-chef-parallax-image"
+            />
+          </div>
+          
+          {/* Overlay with gradient and texture */}
+          <div className="cecyte-chef-parallax-overlay">
+            <div className="cecyte-chef-overlay-gradient"></div>
+            <div className="cecyte-chef-overlay-texture"></div>
+          </div>
+          
+          {/* Content Layer */}
+          <div className="cecyte-chef-parallax-content">
+            <div className="cecyte-chef-container">
+              <div className="cecyte-chef-hoteles-hero">
+                <div className="cecyte-chef-hoteles-badge">
+                  <span>Hospedaje</span>
+                </div>
+                
+                <h1 className="cecyte-chef-hoteles-title">
+                  <span className="cecyte-chef-title-line">¿Dónde</span>
+                  <span className="cecyte-chef-title-highlight">hospedarte?</span>
+                </h1>
+                
+                <p className="cecyte-chef-hoteles-description">
+                  Descubre los mejores hoteles y resorts de La Paz, Baja California Sur. 
+                  Desde lujosos complejos turísticos hasta acogedores hoteles boutique, 
+                  encuentra el lugar perfecto para tu estadía con vistas espectaculares 
+                  al mar y comodidades de primera clase.
+                </p>
+                
+                <div className="cecyte-chef-hoteles-actions">
+                  <button className="cecyte-chef-hoteles-button cecyte-chef-btn-primary">
+                    <span>Ver hospedajes</span>
+                    <div className="cecyte-chef-btn-icon">
+                      <i className="bi bi-building"></i>
+                    </div>
+                  </button>
+                  
+                  <button className="cecyte-chef-hoteles-button cecyte-chef-btn-secondary">
+                    <span>Reservar ahora</span>
+                    <div className="cecyte-chef-btn-icon">
+                      <i className="bi bi-calendar-check"></i>
+                    </div>
+                  </button>
+                </div>
+                
+                {/* Scroll indicator */}
+                <div className="cecyte-chef-scroll-indicator">
+                  <div className="cecyte-chef-scroll-line"></div>
+                  <span>Desplázate</span>
+                </div>
               </div>
             </div>
           </div>
