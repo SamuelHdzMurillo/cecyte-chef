@@ -225,6 +225,260 @@
   overflow: hidden;
 }
 
+/* ========================================
+   JUECES BACKGROUND SVGs
+   ======================================== */
+.cecyte-chef-jueces-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cecyte-chef-jueces-svgs {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cecyte-chef-jueces-svg {
+  position: absolute;
+  opacity: 0.08;
+  filter: brightness(0) saturate(100%) invert(20%) sepia(8%) saturate(1000%) hue-rotate(180deg) brightness(95%) contrast(85%);
+  transition: all 0.3s ease;
+  animation: cecyte-chef-jueces-float 12s ease-in-out infinite;
+}
+
+.cecyte-chef-jueces-svg img {
+  width: 100%;
+  height: auto;
+}
+
+.cecyte-chef-jueces-svg:hover {
+  opacity: 0.12;
+  transform: scale(1.1);
+}
+
+/* Jueces SVG Positions */
+.cecyte-chef-jueces-svg-1 {
+  top: 10%;
+  left: 5%;
+  width: 35px;
+  animation-delay: 0s;
+}
+
+.cecyte-chef-jueces-svg-2 {
+  top: 20%;
+  right: 8%;
+  width: 30px;
+  animation-delay: 2s;
+}
+
+.cecyte-chef-jueces-svg-3 {
+  top: 60%;
+  left: 3%;
+  width: 28px;
+  animation-delay: 4s;
+}
+
+.cecyte-chef-jueces-svg-4 {
+  top: 70%;
+  right: 5%;
+  width: 25px;
+  animation-delay: 6s;
+}
+
+.cecyte-chef-jueces-svg-5 {
+  top: 15%;
+  right: 20%;
+  width: 32px;
+  animation-delay: 8s;
+}
+
+.cecyte-chef-jueces-svg-6 {
+  top: 45%;
+  left: 1%;
+  width: 26px;
+  animation-delay: 10s;
+}
+
+.cecyte-chef-jueces-svg-7 {
+  top: 35%;
+  right: 3%;
+  width: 24px;
+  animation-delay: 12s;
+}
+
+.cecyte-chef-jueces-svg-8 {
+  top: 80%;
+  left: 12%;
+  width: 22px;
+  animation-delay: 14s;
+}
+
+.cecyte-chef-jueces-svg-9 {
+  top: 25%;
+  right: 25%;
+  width: 28px;
+  animation-delay: 16s;
+}
+
+.cecyte-chef-jueces-svg-10 {
+  top: 55%;
+  left: 8%;
+  width: 26px;
+  animation-delay: 18s;
+}
+
+.cecyte-chef-jueces-svg-11 {
+  top: 75%;
+  right: 12%;
+  width: 30px;
+  animation-delay: 20s;
+}
+
+.cecyte-chef-jueces-svg-12 {
+  top: 40%;
+  right: 18%;
+  width: 24px;
+  animation-delay: 22s;
+}
+
+.cecyte-chef-jueces-svg-13 {
+  top: 15%;
+  left: 15%;
+  width: 32px;
+  animation-delay: 24s;
+}
+
+.cecyte-chef-jueces-svg-14 {
+  top: 65%;
+  left: 20%;
+  width: 26px;
+  animation-delay: 26s;
+}
+
+.cecyte-chef-jueces-svg-15 {
+  top: 35%;
+  left: 25%;
+  width: 20px;
+  animation-delay: 28s;
+}
+
+.cecyte-chef-jueces-svg-16 {
+  top: 85%;
+  right: 8%;
+  width: 18px;
+  animation-delay: 30s;
+}
+
+.cecyte-chef-jueces-svg-17 {
+  top: 50%;
+  right: 30%;
+  width: 22px;
+  animation-delay: 32s;
+}
+
+.cecyte-chef-jueces-svg-18 {
+  top: 5%;
+  right: 15%;
+  width: 25px;
+  animation-delay: 34s;
+}
+
+.cecyte-chef-jueces-svg-19 {
+  top: 90%;
+  left: 18%;
+  width: 16px;
+  animation-delay: 36s;
+}
+
+/* Elementos 20-100 con posicionamiento automático */
+.cecyte-chef-jueces-svg-20 { top: 8%; left: 12%; width: 24px; animation-delay: 38s; }
+.cecyte-chef-jueces-svg-21 { top: 18%; right: 22%; width: 28px; animation-delay: 40s; }
+.cecyte-chef-jueces-svg-22 { top: 28%; left: 7%; width: 26px; animation-delay: 42s; }
+.cecyte-chef-jueces-svg-23 { top: 38%; right: 14%; width: 22px; animation-delay: 44s; }
+.cecyte-chef-jueces-svg-24 { top: 48%; left: 25%; width: 30px; animation-delay: 46s; }
+.cecyte-chef-jueces-svg-25 { top: 58%; right: 6%; width: 24px; animation-delay: 48s; }
+.cecyte-chef-jueces-svg-26 { top: 68%; left: 14%; width: 26px; animation-delay: 50s; }
+.cecyte-chef-jueces-svg-27 { top: 78%; right: 18%; width: 20px; animation-delay: 52s; }
+.cecyte-chef-jueces-svg-28 { top: 88%; left: 6%; width: 28px; animation-delay: 54s; }
+.cecyte-chef-jueces-svg-29 { top: 12%; right: 8%; width: 24px; animation-delay: 56s; }
+.cecyte-chef-jueces-svg-30 { top: 22%; left: 20%; width: 26px; animation-delay: 58s; }
+.cecyte-chef-jueces-svg-31 { top: 32%; right: 12%; width: 22px; animation-delay: 60s; }
+.cecyte-chef-jueces-svg-32 { top: 42%; left: 3%; width: 30px; animation-delay: 62s; }
+.cecyte-chef-jueces-svg-33 { top: 52%; right: 25%; width: 24px; animation-delay: 64s; }
+.cecyte-chef-jueces-svg-34 { top: 62%; left: 16%; width: 26px; animation-delay: 66s; }
+.cecyte-chef-jueces-svg-35 { top: 72%; right: 4%; width: 20px; animation-delay: 68s; }
+.cecyte-chef-jueces-svg-36 { top: 82%; left: 22%; width: 28px; animation-delay: 70s; }
+.cecyte-chef-jueces-svg-37 { top: 92%; right: 16%; width: 24px; animation-delay: 72s; }
+.cecyte-chef-jueces-svg-38 { top: 6%; left: 28%; width: 26px; animation-delay: 74s; }
+.cecyte-chef-jueces-svg-39 { top: 16%; right: 2%; width: 22px; animation-delay: 76s; }
+.cecyte-chef-jueces-svg-40 { top: 26%; left: 18%; width: 30px; animation-delay: 78s; }
+.cecyte-chef-jueces-svg-41 { top: 36%; right: 20%; width: 24px; animation-delay: 80s; }
+.cecyte-chef-jueces-svg-42 { top: 46%; left: 9%; width: 26px; animation-delay: 82s; }
+.cecyte-chef-jueces-svg-43 { top: 56%; right: 10%; width: 20px; animation-delay: 84s; }
+.cecyte-chef-jueces-svg-44 { top: 66%; left: 24%; width: 28px; animation-delay: 86s; }
+.cecyte-chef-jueces-svg-45 { top: 76%; right: 8%; width: 24px; animation-delay: 88s; }
+.cecyte-chef-jueces-svg-46 { top: 86%; left: 11%; width: 26px; animation-delay: 90s; }
+.cecyte-chef-jueces-svg-47 { top: 96%; right: 14%; width: 22px; animation-delay: 92s; }
+.cecyte-chef-jueces-svg-48 { top: 4%; left: 4%; width: 30px; animation-delay: 94s; }
+.cecyte-chef-jueces-svg-49 { top: 14%; right: 26%; width: 24px; animation-delay: 96s; }
+.cecyte-chef-jueces-svg-50 { top: 24%; left: 13%; width: 26px; animation-delay: 98s; }
+.cecyte-chef-jueces-svg-51 { top: 34%; right: 6%; width: 20px; animation-delay: 100s; }
+.cecyte-chef-jueces-svg-52 { top: 44%; left: 26%; width: 28px; animation-delay: 102s; }
+.cecyte-chef-jueces-svg-53 { top: 54%; right: 18%; width: 24px; animation-delay: 104s; }
+.cecyte-chef-jueces-svg-54 { top: 64%; left: 5%; width: 26px; animation-delay: 106s; }
+.cecyte-chef-jueces-svg-55 { top: 74%; right: 12%; width: 20px; animation-delay: 108s; }
+.cecyte-chef-jueces-svg-56 { top: 84%; left: 19%; width: 28px; animation-delay: 110s; }
+.cecyte-chef-jueces-svg-57 { top: 94%; right: 4%; width: 24px; animation-delay: 112s; }
+.cecyte-chef-jueces-svg-58 { top: 2%; left: 16%; width: 26px; animation-delay: 114s; }
+.cecyte-chef-jueces-svg-59 { top: 10%; right: 24%; width: 22px; animation-delay: 116s; }
+.cecyte-chef-jueces-svg-60 { top: 20%; left: 2%; width: 30px; animation-delay: 118s; }
+.cecyte-chef-jueces-svg-61 { top: 30%; right: 16%; width: 24px; animation-delay: 120s; }
+.cecyte-chef-jueces-svg-62 { top: 40%; left: 21%; width: 26px; animation-delay: 122s; }
+.cecyte-chef-jueces-svg-63 { top: 50%; right: 2%; width: 20px; animation-delay: 124s; }
+.cecyte-chef-jueces-svg-64 { top: 60%; left: 8%; width: 28px; animation-delay: 126s; }
+.cecyte-chef-jueces-svg-65 { top: 70%; right: 20%; width: 24px; animation-delay: 128s; }
+.cecyte-chef-jueces-svg-66 { top: 80%; left: 15%; width: 26px; animation-delay: 130s; }
+.cecyte-chef-jueces-svg-67 { top: 90%; right: 6%; width: 20px; animation-delay: 132s; }
+.cecyte-chef-jueces-svg-68 { top: 98%; left: 23%; width: 28px; animation-delay: 134s; }
+.cecyte-chef-jueces-svg-69 { top: 1%; right: 18%; width: 24px; animation-delay: 136s; }
+.cecyte-chef-jueces-svg-70 { top: 11%; left: 6%; width: 26px; animation-delay: 138s; }
+.cecyte-chef-jueces-svg-71 { top: 21%; right: 10%; width: 20px; animation-delay: 140s; }
+.cecyte-chef-jueces-svg-72 { top: 31%; left: 27%; width: 28px; animation-delay: 142s; }
+.cecyte-chef-jueces-svg-73 { top: 41%; right: 4%; width: 24px; animation-delay: 144s; }
+.cecyte-chef-jueces-svg-74 { top: 51%; left: 12%; width: 26px; animation-delay: 146s; }
+.cecyte-chef-jueces-svg-75 { top: 61%; right: 22%; width: 20px; animation-delay: 148s; }
+.cecyte-chef-jueces-svg-76 { top: 71%; left: 4%; width: 28px; animation-delay: 150s; }
+.cecyte-chef-jueces-svg-77 { top: 81%; right: 14%; width: 24px; animation-delay: 152s; }
+.cecyte-chef-jueces-svg-78 { top: 91%; left: 17%; width: 26px; animation-delay: 154s; }
+.cecyte-chef-jueces-svg-79 { top: 3%; right: 8%; width: 20px; animation-delay: 156s; }
+.cecyte-chef-jueces-svg-80 { top: 13%; left: 25%; width: 28px; animation-delay: 158s; }
+.cecyte-chef-jueces-svg-81 { top: 23%; right: 12%; width: 24px; animation-delay: 160s; }
+.cecyte-chef-jueces-svg-82 { top: 33%; left: 3%; width: 26px; animation-delay: 162s; }
+.cecyte-chef-jueces-svg-83 { top: 43%; right: 26%; width: 20px; animation-delay: 164s; }
+.cecyte-chef-jueces-svg-84 { top: 53%; left: 10%; width: 28px; animation-delay: 166s; }
+.cecyte-chef-jueces-svg-85 { top: 63%; right: 6%; width: 24px; animation-delay: 168s; }
+.cecyte-chef-jueces-svg-86 { top: 73%; left: 20%; width: 26px; animation-delay: 170s; }
+.cecyte-chef-jueces-svg-87 { top: 83%; right: 16%; width: 20px; animation-delay: 172s; }
+.cecyte-chef-jueces-svg-88 { top: 93%; left: 7%; width: 28px; animation-delay: 174s; }
+.cecyte-chef-jueces-svg-89 { top: 5%; right: 20%; width: 24px; animation-delay: 176s; }
+.cecyte-chef-jueces-svg-90 { top: 15%; left: 14%; width: 26px; animation-delay: 178s; }
+.cecyte-chef-jueces-svg-91 { top: 25%; right: 2%; width: 20px; animation-delay: 180s; }
+.cecyte-chef-jueces-svg-92 { top: 35%; left: 24%; width: 28px; animation-delay: 182s; }
+.cecyte-chef-jueces-svg-93 { top: 45%; right: 18%; width: 24px; animation-delay: 184s; }
+.cecyte-chef-jueces-svg-94 { top: 55%; left: 1%; width: 26px; animation-delay: 186s; }
+.cecyte-chef-jueces-svg-95 { top: 65%; right: 14%; width: 20px; animation-delay: 188s; }
+.cecyte-chef-jueces-svg-96 { top: 75%; left: 18%; width: 28px; animation-delay: 190s; }
+.cecyte-chef-jueces-svg-97 { top: 85%; right: 8%; width: 24px; animation-delay: 192s; }
+.cecyte-chef-jueces-svg-98 { top: 95%; left: 13%; width: 26px; animation-delay: 194s; }
+.cecyte-chef-jueces-svg-99 { top: 7%; right: 24%; width: 20px; animation-delay: 196s; }
+.cecyte-chef-jueces-svg-100 { top: 17%; left: 9%; width: 28px; animation-delay: 198s; }
+
 .cecyte-chef-jueces-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -1845,6 +2099,21 @@
   }
 }
 
+@keyframes cecyte-chef-jueces-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(0.3deg);
+  }
+}
+
 @keyframes cecyte-chef-scroll-pulse {
   0%, 100% {
     opacity: 0.6;
@@ -2068,6 +2337,123 @@
   
   .cecyte-chef-jueces-title {
     font-size: 2.4rem;
+  }
+  
+  /* Ajustar SVGs de jueces en tablet */
+  .cecyte-chef-jueces-svg {
+    opacity: 0.06;
+  }
+  
+  /* Reducir tamaños para todos los elementos en tablet */
+  .cecyte-chef-jueces-svg-1,
+  .cecyte-chef-jueces-svg-2,
+  .cecyte-chef-jueces-svg-5,
+  .cecyte-chef-jueces-svg-9,
+  .cecyte-chef-jueces-svg-11,
+  .cecyte-chef-jueces-svg-13,
+  .cecyte-chef-jueces-svg-21,
+  .cecyte-chef-jueces-svg-24,
+  .cecyte-chef-jueces-svg-28,
+  .cecyte-chef-jueces-svg-30,
+  .cecyte-chef-jueces-svg-32,
+  .cecyte-chef-jueces-svg-36,
+  .cecyte-chef-jueces-svg-40,
+  .cecyte-chef-jueces-svg-44,
+  .cecyte-chef-jueces-svg-48,
+  .cecyte-chef-jueces-svg-52,
+  .cecyte-chef-jueces-svg-56,
+  .cecyte-chef-jueces-svg-60,
+  .cecyte-chef-jueces-svg-64,
+  .cecyte-chef-jueces-svg-68,
+  .cecyte-chef-jueces-svg-72,
+  .cecyte-chef-jueces-svg-76,
+  .cecyte-chef-jueces-svg-80,
+  .cecyte-chef-jueces-svg-84,
+  .cecyte-chef-jueces-svg-88,
+  .cecyte-chef-jueces-svg-92,
+  .cecyte-chef-jueces-svg-96,
+  .cecyte-chef-jueces-svg-100 {
+    width: 20px;
+  }
+  
+  /* Tamaños medianos */
+  .cecyte-chef-jueces-svg-3,
+  .cecyte-chef-jueces-svg-4,
+  .cecyte-chef-jueces-svg-6,
+  .cecyte-chef-jueces-svg-7,
+  .cecyte-chef-jueces-svg-8,
+  .cecyte-chef-jueces-svg-10,
+  .cecyte-chef-jueces-svg-12,
+  .cecyte-chef-jueces-svg-14,
+  .cecyte-chef-jueces-svg-18,
+  .cecyte-chef-jueces-svg-20,
+  .cecyte-chef-jueces-svg-22,
+  .cecyte-chef-jueces-svg-25,
+  .cecyte-chef-jueces-svg-26,
+  .cecyte-chef-jueces-svg-29,
+  .cecyte-chef-jueces-svg-31,
+  .cecyte-chef-jueces-svg-33,
+  .cecyte-chef-jueces-svg-34,
+  .cecyte-chef-jueces-svg-37,
+  .cecyte-chef-jueces-svg-38,
+  .cecyte-chef-jueces-svg-41,
+  .cecyte-chef-jueces-svg-42,
+  .cecyte-chef-jueces-svg-45,
+  .cecyte-chef-jueces-svg-46,
+  .cecyte-chef-jueces-svg-49,
+  .cecyte-chef-jueces-svg-50,
+  .cecyte-chef-jueces-svg-53,
+  .cecyte-chef-jueces-svg-54,
+  .cecyte-chef-jueces-svg-57,
+  .cecyte-chef-jueces-svg-58,
+  .cecyte-chef-jueces-svg-61,
+  .cecyte-chef-jueces-svg-62,
+  .cecyte-chef-jueces-svg-65,
+  .cecyte-chef-jueces-svg-66,
+  .cecyte-chef-jueces-svg-69,
+  .cecyte-chef-jueces-svg-70,
+  .cecyte-chef-jueces-svg-73,
+  .cecyte-chef-jueces-svg-74,
+  .cecyte-chef-jueces-svg-77,
+  .cecyte-chef-jueces-svg-78,
+  .cecyte-chef-jueces-svg-81,
+  .cecyte-chef-jueces-svg-82,
+  .cecyte-chef-jueces-svg-85,
+  .cecyte-chef-jueces-svg-86,
+  .cecyte-chef-jueces-svg-89,
+  .cecyte-chef-jueces-svg-90,
+  .cecyte-chef-jueces-svg-93,
+  .cecyte-chef-jueces-svg-94,
+  .cecyte-chef-jueces-svg-97,
+  .cecyte-chef-jueces-svg-98 {
+    width: 16px;
+  }
+  
+  /* Tamaños pequeños */
+  .cecyte-chef-jueces-svg-15,
+  .cecyte-chef-jueces-svg-16,
+  .cecyte-chef-jueces-svg-17,
+  .cecyte-chef-jueces-svg-19,
+  .cecyte-chef-jueces-svg-23,
+  .cecyte-chef-jueces-svg-27,
+  .cecyte-chef-jueces-svg-35,
+  .cecyte-chef-jueces-svg-39,
+  .cecyte-chef-jueces-svg-43,
+  .cecyte-chef-jueces-svg-47,
+  .cecyte-chef-jueces-svg-51,
+  .cecyte-chef-jueces-svg-55,
+  .cecyte-chef-jueces-svg-59,
+  .cecyte-chef-jueces-svg-63,
+  .cecyte-chef-jueces-svg-67,
+  .cecyte-chef-jueces-svg-71,
+  .cecyte-chef-jueces-svg-75,
+  .cecyte-chef-jueces-svg-79,
+  .cecyte-chef-jueces-svg-83,
+  .cecyte-chef-jueces-svg-87,
+  .cecyte-chef-jueces-svg-91,
+  .cecyte-chef-jueces-svg-95,
+  .cecyte-chef-jueces-svg-99 {
+    width: 14px;
   }
   
   .cecyte-chef-juez-image-container {
@@ -2417,6 +2803,123 @@
   
   .cecyte-chef-jueces-title {
     font-size: 2.2rem;
+  }
+  
+  /* Ajustar SVGs de jueces en móvil */
+  .cecyte-chef-jueces-svg {
+    opacity: 0.04;
+  }
+  
+  /* Reducir tamaños para todos los elementos en móvil */
+  .cecyte-chef-jueces-svg-1,
+  .cecyte-chef-jueces-svg-2,
+  .cecyte-chef-jueces-svg-5,
+  .cecyte-chef-jueces-svg-9,
+  .cecyte-chef-jueces-svg-11,
+  .cecyte-chef-jueces-svg-13,
+  .cecyte-chef-jueces-svg-21,
+  .cecyte-chef-jueces-svg-24,
+  .cecyte-chef-jueces-svg-28,
+  .cecyte-chef-jueces-svg-30,
+  .cecyte-chef-jueces-svg-32,
+  .cecyte-chef-jueces-svg-36,
+  .cecyte-chef-jueces-svg-40,
+  .cecyte-chef-jueces-svg-44,
+  .cecyte-chef-jueces-svg-48,
+  .cecyte-chef-jueces-svg-52,
+  .cecyte-chef-jueces-svg-56,
+  .cecyte-chef-jueces-svg-60,
+  .cecyte-chef-jueces-svg-64,
+  .cecyte-chef-jueces-svg-68,
+  .cecyte-chef-jueces-svg-72,
+  .cecyte-chef-jueces-svg-76,
+  .cecyte-chef-jueces-svg-80,
+  .cecyte-chef-jueces-svg-84,
+  .cecyte-chef-jueces-svg-88,
+  .cecyte-chef-jueces-svg-92,
+  .cecyte-chef-jueces-svg-96,
+  .cecyte-chef-jueces-svg-100 {
+    width: 16px;
+  }
+  
+  /* Tamaños medianos */
+  .cecyte-chef-jueces-svg-3,
+  .cecyte-chef-jueces-svg-4,
+  .cecyte-chef-jueces-svg-6,
+  .cecyte-chef-jueces-svg-7,
+  .cecyte-chef-jueces-svg-8,
+  .cecyte-chef-jueces-svg-10,
+  .cecyte-chef-jueces-svg-12,
+  .cecyte-chef-jueces-svg-14,
+  .cecyte-chef-jueces-svg-18,
+  .cecyte-chef-jueces-svg-20,
+  .cecyte-chef-jueces-svg-22,
+  .cecyte-chef-jueces-svg-25,
+  .cecyte-chef-jueces-svg-26,
+  .cecyte-chef-jueces-svg-29,
+  .cecyte-chef-jueces-svg-31,
+  .cecyte-chef-jueces-svg-33,
+  .cecyte-chef-jueces-svg-34,
+  .cecyte-chef-jueces-svg-37,
+  .cecyte-chef-jueces-svg-38,
+  .cecyte-chef-jueces-svg-41,
+  .cecyte-chef-jueces-svg-42,
+  .cecyte-chef-jueces-svg-45,
+  .cecyte-chef-jueces-svg-46,
+  .cecyte-chef-jueces-svg-49,
+  .cecyte-chef-jueces-svg-50,
+  .cecyte-chef-jueces-svg-53,
+  .cecyte-chef-jueces-svg-54,
+  .cecyte-chef-jueces-svg-57,
+  .cecyte-chef-jueces-svg-58,
+  .cecyte-chef-jueces-svg-61,
+  .cecyte-chef-jueces-svg-62,
+  .cecyte-chef-jueces-svg-65,
+  .cecyte-chef-jueces-svg-66,
+  .cecyte-chef-jueces-svg-69,
+  .cecyte-chef-jueces-svg-70,
+  .cecyte-chef-jueces-svg-73,
+  .cecyte-chef-jueces-svg-74,
+  .cecyte-chef-jueces-svg-77,
+  .cecyte-chef-jueces-svg-78,
+  .cecyte-chef-jueces-svg-81,
+  .cecyte-chef-jueces-svg-82,
+  .cecyte-chef-jueces-svg-85,
+  .cecyte-chef-jueces-svg-86,
+  .cecyte-chef-jueces-svg-89,
+  .cecyte-chef-jueces-svg-90,
+  .cecyte-chef-jueces-svg-93,
+  .cecyte-chef-jueces-svg-94,
+  .cecyte-chef-jueces-svg-97,
+  .cecyte-chef-jueces-svg-98 {
+    width: 12px;
+  }
+  
+  /* Tamaños pequeños */
+  .cecyte-chef-jueces-svg-15,
+  .cecyte-chef-jueces-svg-16,
+  .cecyte-chef-jueces-svg-17,
+  .cecyte-chef-jueces-svg-19,
+  .cecyte-chef-jueces-svg-23,
+  .cecyte-chef-jueces-svg-27,
+  .cecyte-chef-jueces-svg-35,
+  .cecyte-chef-jueces-svg-39,
+  .cecyte-chef-jueces-svg-43,
+  .cecyte-chef-jueces-svg-47,
+  .cecyte-chef-jueces-svg-51,
+  .cecyte-chef-jueces-svg-55,
+  .cecyte-chef-jueces-svg-59,
+  .cecyte-chef-jueces-svg-63,
+  .cecyte-chef-jueces-svg-67,
+  .cecyte-chef-jueces-svg-71,
+  .cecyte-chef-jueces-svg-75,
+  .cecyte-chef-jueces-svg-79,
+  .cecyte-chef-jueces-svg-83,
+  .cecyte-chef-jueces-svg-87,
+  .cecyte-chef-jueces-svg-91,
+  .cecyte-chef-jueces-svg-95,
+  .cecyte-chef-jueces-svg-99 {
+    width: 10px;
   }
   
   .cecyte-chef-juez-image-container {
