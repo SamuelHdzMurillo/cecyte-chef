@@ -21,6 +21,7 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
     web: "",
     estatus: "activo",
     descripcion: "",
+    img: "",
   });
   const [formErrors, setFormErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -163,6 +164,7 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
       web: "",
       estatus: "activo",
       descripcion: "",
+      img: "",
     });
     setFormErrors({});
     setShowModal(true);
@@ -176,6 +178,7 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
       web: "",
       estatus: "activo",
       descripcion: "",
+      img: "",
     });
     setFormErrors({});
   };
@@ -189,6 +192,7 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
       web: "",
       estatus: "activo",
       descripcion: "",
+      img: "",
     });
     setFormErrors({});
     setSubmitting(false);
@@ -753,6 +757,26 @@ const LugaresInteresTable = ({ onLugarSelect }) => {
                         onChange={handleInputChange}
                         placeholder="Ingresa una descripción del lugar"
                       />
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-12 mb-3">
+                      <label htmlFor="img" className="form-label">
+                        URL de Imagen
+                      </label>
+                      <input
+                        type="url"
+                        className="form-control"
+                        id="img"
+                        name="img"
+                        value={formData.img}
+                        onChange={handleInputChange}
+                        placeholder="https://ejemplo.com/imagen.jpg"
+                      />
+                      <div className="form-text">
+                        Ingresa la URL de una imagen representativa del lugar
+                      </div>
                     </div>
                   </div>
                 </div>

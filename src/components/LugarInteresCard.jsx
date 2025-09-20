@@ -18,7 +18,7 @@ function LugarInteresCard({ lugar }) {
     <div className="lugar-interes-card">
       <div className="lugar-interes-card-image">
         <img 
-          src="/src/assets/fondos/LugaresVisita.png" 
+          src={lugar.img || "/src/assets/fondos/LugaresVisita.png"} 
           alt={lugar.nombre}
           onError={(e) => {
             e.target.src = '/src/assets/fondos/LugaresVisita.png'
