@@ -4,7 +4,7 @@
 
 /* Variables CSS para consistencia */
 :root {
-  --cecyte-chef-primary: #8B1538;
+  --cecyte-chef-primary: #9D3553;
   --cecyte-chef-secondary: #6B0F2A;
   --cecyte-chef-tertiary: #4A0A1C;
   --cecyte-chef-light: #f8f9fa;
@@ -228,13 +228,234 @@
 }
 
 /* ========================================
-   JUECES SECTION
+   JUECES SECTION - Premium Design
    ======================================== */
 .cecyte-chef-jueces-section {
-  padding: 5rem 0;
-  background: var(--cecyte-chef-white);
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
   position: relative;
   overflow: hidden;
+}
+
+/* Jueces Header */
+.cecyte-chef-jueces-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.cecyte-chef-jueces-badge {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.cecyte-chef-jueces-badge span {
+  background: #9D3553;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 6px 20px rgba(157, 53, 83, 0.3);
+}
+
+.cecyte-chef-jueces-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--cecyte-chef-dark);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.cecyte-chef-jueces-subtitle {
+  font-size: 1.2rem;
+  color: var(--cecyte-chef-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Jueces Grid */
+.cecyte-chef-jueces-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Juez Card */
+.cecyte-chef-juez-card {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cecyte-chef-juez-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.cecyte-chef-juez-card-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Image Container */
+.cecyte-chef-juez-image-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.cecyte-chef-juez-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cecyte-chef-juez-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.cecyte-chef-juez-card:hover .cecyte-chef-juez-image {
+  transform: scale(1.1);
+}
+
+.cecyte-chef-juez-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(157, 53, 83, 0.9), rgba(188, 149, 97, 0.9));
+  opacity: 0;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.cecyte-chef-juez-card:hover .cecyte-chef-juez-image-overlay {
+  opacity: 1;
+}
+
+.cecyte-chef-juez-quote {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Experience Badge */
+.cecyte-chef-juez-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+}
+
+.cecyte-chef-juez-badge span {
+  background: rgba(255, 255, 255, 0.95);
+  color: #9D3553;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Content */
+.cecyte-chef-juez-content {
+  padding: 2rem;
+}
+
+.cecyte-chef-juez-header {
+  margin-bottom: 1.5rem;
+}
+
+.cecyte-chef-juez-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cecyte-chef-dark);
+  margin-bottom: 0.5rem;
+}
+
+.cecyte-chef-juez-title {
+  font-size: 1rem;
+  color: #9D3553;
+  font-weight: 600;
+  margin: 0;
+}
+
+.cecyte-chef-juez-description {
+  font-size: 0.95rem;
+  color: var(--cecyte-chef-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Specialties */
+.cecyte-chef-juez-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cecyte-chef-juez-specialty {
+  background: rgba(157, 53, 83, 0.1);
+  color: #9D3553;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(157, 53, 83, 0.2);
+}
+
+/* Stats */
+.cecyte-chef-juez-stats {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cecyte-chef-juez-stat {
+  text-align: center;
+  flex: 1;
+}
+
+.cecyte-chef-juez-stat-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #9D3553;
+  line-height: 1;
+}
+
+.cecyte-chef-juez-stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--cecyte-chef-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.3rem;
 }
 
 /* ========================================
@@ -1995,7 +2216,7 @@
   transition: var(--cecyte-chef-transition);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+  box-shadow: 0 4px 15px rgba(157, 53, 83, 0.3);
   position: relative;
   overflow: hidden;
   display: inline-flex;
@@ -2006,7 +2227,7 @@
 .cecyte-chef-cta-button:hover {
   background: linear-gradient(135deg, var(--cecyte-chef-secondary) 0%, var(--cecyte-chef-tertiary) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(139, 21, 56, 0.4);
+  box-shadow: 0 8px 25px rgba(157, 53, 83, 0.4);
 }
 
 .cecyte-chef-cta-button-icon {
@@ -2073,7 +2294,7 @@
 .cecyte-chef-social-link:hover {
   color: var(--cecyte-chef-primary);
   transform: translateY(-2px);
-  background: rgba(139, 21, 56, 0.1);
+  background: rgba(157, 53, 83, 0.1);
 }
 
 /* ========================================
@@ -2082,25 +2303,25 @@
 @keyframes cecyte-chef-background-shift {
   0%, 100% {
     background: 
-      radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(157, 53, 83, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(107, 15, 42, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 40% 40%, rgba(74, 10, 28, 0.02) 0%, transparent 50%);
   }
   25% {
     background: 
-      radial-gradient(circle at 80% 20%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(157, 53, 83, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 20% 80%, rgba(107, 15, 42, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 60% 60%, rgba(74, 10, 28, 0.02) 0%, transparent 50%);
   }
   50% {
     background: 
-      radial-gradient(circle at 40% 40%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(157, 53, 83, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 60% 60%, rgba(107, 15, 42, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 20% 80%, rgba(74, 10, 28, 0.02) 0%, transparent 50%);
   }
   75% {
     background: 
-      radial-gradient(circle at 60% 60%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, rgba(157, 53, 83, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 40% 40%, rgba(107, 15, 42, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(74, 10, 28, 0.02) 0%, transparent 50%);
   }

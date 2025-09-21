@@ -353,327 +353,13 @@ function HomePage({ onLoginClick }) {
         </div>
       </div>
 
-      {/* Jueces Section */}
+      {/* Jueces Section - Premium Design */}
       <section className="cecyte-chef-jueces-section">
-        {/* Background SVGs for Jueces Section */}
-        <div className="cecyte-chef-jueces-background">
-          <div className="cecyte-chef-jueces-svgs">
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-1">
-              <img src={CUCHILLO} alt="Cuchillo" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-2">
-              <img src={SARTEN} alt="Sartén" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-3">
-              <img src={CAMARON} alt="Camarón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-4">
-              <img src={CHILE} alt="Chile" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-5">
-              <img src={CUCHARA} alt="Cuchara" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-6">
-              <img src={PILON} alt="Pilón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-7">
-              <img src={LANGOSTA} alt="Langosta" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-8">
-              <img src={CUBIERTOS} alt="Cubiertos" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-9">
-              <img src={DORADO} alt="Dorado" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-10">
-              <img src={PEZ} alt="Pez" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-11">
-              <img src={BALLENA} alt="Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-12">
-              <img src={BALANDRA} alt="Balandra" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-13">
-              <img src={PALMERA} alt="Palmera" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-14">
-              <img src={PITAHAYA} alt="Pitahaya" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-15">
-              <img src={EL_ARCO} alt="El Arco" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-16">
-              <img src={RUPESTRES} alt="Rupestres" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-17">
-              <img src={HACHA} alt="Hacha" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-18">
-              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-19">
-              <img src={TRIANGULOS} alt="Triángulos" />
-            </div>
-            
-            {/* Duplicados y variaciones para crear ~100 elementos */}
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-20">
-              <img src={CUCHILLO} alt="Cuchillo" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-21">
-              <img src={SARTEN} alt="Sartén" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-22">
-              <img src={CAMARON} alt="Camarón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-23">
-              <img src={CHILE} alt="Chile" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-24">
-              <img src={CUCHARA} alt="Cuchara" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-25">
-              <img src={PILON} alt="Pilón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-26">
-              <img src={LANGOSTA} alt="Langosta" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-27">
-              <img src={CUBIERTOS} alt="Cubiertos" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-28">
-              <img src={DORADO} alt="Dorado" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-29">
-              <img src={PEZ} alt="Pez" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-30">
-              <img src={BALLENA} alt="Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-31">
-              <img src={BALANDRA} alt="Balandra" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-32">
-              <img src={PALMERA} alt="Palmera" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-33">
-              <img src={PITAHAYA} alt="Pitahaya" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-34">
-              <img src={EL_ARCO} alt="El Arco" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-35">
-              <img src={RUPESTRES} alt="Rupestres" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-36">
-              <img src={HACHA} alt="Hacha" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-37">
-              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-38">
-              <img src={TRIANGULOS} alt="Triángulos" />
-            </div>
-            
-            {/* Tercera ronda */}
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-39">
-              <img src={CUCHILLO} alt="Cuchillo" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-40">
-              <img src={SARTEN} alt="Sartén" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-41">
-              <img src={CAMARON} alt="Camarón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-42">
-              <img src={CHILE} alt="Chile" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-43">
-              <img src={CUCHARA} alt="Cuchara" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-44">
-              <img src={PILON} alt="Pilón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-45">
-              <img src={LANGOSTA} alt="Langosta" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-46">
-              <img src={CUBIERTOS} alt="Cubiertos" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-47">
-              <img src={DORADO} alt="Dorado" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-48">
-              <img src={PEZ} alt="Pez" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-49">
-              <img src={BALLENA} alt="Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-50">
-              <img src={BALANDRA} alt="Balandra" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-51">
-              <img src={PALMERA} alt="Palmera" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-52">
-              <img src={PITAHAYA} alt="Pitahaya" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-53">
-              <img src={EL_ARCO} alt="El Arco" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-54">
-              <img src={RUPESTRES} alt="Rupestres" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-55">
-              <img src={HACHA} alt="Hacha" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-56">
-              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-57">
-              <img src={TRIANGULOS} alt="Triángulos" />
-            </div>
-            
-            {/* Cuarta ronda */}
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-58">
-              <img src={CUCHILLO} alt="Cuchillo" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-59">
-              <img src={SARTEN} alt="Sartén" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-60">
-              <img src={CAMARON} alt="Camarón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-61">
-              <img src={CHILE} alt="Chile" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-62">
-              <img src={CUCHARA} alt="Cuchara" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-63">
-              <img src={PILON} alt="Pilón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-64">
-              <img src={LANGOSTA} alt="Langosta" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-65">
-              <img src={CUBIERTOS} alt="Cubiertos" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-66">
-              <img src={DORADO} alt="Dorado" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-67">
-              <img src={PEZ} alt="Pez" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-68">
-              <img src={BALLENA} alt="Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-69">
-              <img src={BALANDRA} alt="Balandra" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-70">
-              <img src={PALMERA} alt="Palmera" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-71">
-              <img src={PITAHAYA} alt="Pitahaya" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-72">
-              <img src={EL_ARCO} alt="El Arco" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-73">
-              <img src={RUPESTRES} alt="Rupestres" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-74">
-              <img src={HACHA} alt="Hacha" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-75">
-              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-76">
-              <img src={TRIANGULOS} alt="Triángulos" />
-            </div>
-            
-            {/* Quinta ronda */}
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-77">
-              <img src={CUCHILLO} alt="Cuchillo" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-78">
-              <img src={SARTEN} alt="Sartén" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-79">
-              <img src={CAMARON} alt="Camarón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-80">
-              <img src={CHILE} alt="Chile" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-81">
-              <img src={CUCHARA} alt="Cuchara" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-82">
-              <img src={PILON} alt="Pilón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-83">
-              <img src={LANGOSTA} alt="Langosta" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-84">
-              <img src={CUBIERTOS} alt="Cubiertos" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-85">
-              <img src={DORADO} alt="Dorado" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-86">
-              <img src={PEZ} alt="Pez" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-87">
-              <img src={BALLENA} alt="Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-88">
-              <img src={BALANDRA} alt="Balandra" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-89">
-              <img src={PALMERA} alt="Palmera" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-90">
-              <img src={PITAHAYA} alt="Pitahaya" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-91">
-              <img src={EL_ARCO} alt="El Arco" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-92">
-              <img src={RUPESTRES} alt="Rupestres" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-93">
-              <img src={HACHA} alt="Hacha" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-94">
-              <img src={COLA_DE_LA_BALLENA} alt="Cola de la Ballena" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-95">
-              <img src={TRIANGULOS} alt="Triángulos" />
-            </div>
-            
-            {/* Sexta ronda - últimos elementos para llegar a 100 */}
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-96">
-              <img src={CUCHILLO} alt="Cuchillo" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-97">
-              <img src={SARTEN} alt="Sartén" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-98">
-              <img src={CAMARON} alt="Camarón" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-99">
-              <img src={CHILE} alt="Chile" />
-            </div>
-            <div className="cecyte-chef-jueces-svg cecyte-chef-jueces-svg-100">
-              <img src={CUCHARA} alt="Cuchara" />
-            </div>
-          </div>
-        </div>
-        
         <div className="cecyte-chef-container">
           <div className="cecyte-chef-jueces-header">
-            <span className="cecyte-chef-jueces-label">CONOCE A TUS JUECES</span>
+            <div className="cecyte-chef-jueces-badge">
+              <span>CONOCE A TUS JUECES</span>
+            </div>
             <h2 className="cecyte-chef-jueces-title">
               Expertos culinarios que evaluarán tu talento
             </h2>
@@ -685,84 +371,168 @@ function HomePage({ onLoginClick }) {
           <div className="cecyte-chef-jueces-grid">
             {/* Juez 1 */}
             <div className="cecyte-chef-juez-card">
-              <div className="cecyte-chef-juez-image-container">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-                  alt="Chef María González"
-                  className="cecyte-chef-juez-image"
-                />
-                <div className="cecyte-chef-juez-overlay">
-                  <div className="cecyte-chef-juez-quote">
-                    "La creatividad y la técnica deben ir de la mano para crear platillos excepcionales"
+              <div className="cecyte-chef-juez-card-inner">
+                <div className="cecyte-chef-juez-image-container">
+                  <div className="cecyte-chef-juez-image-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                      alt="Chef María González"
+                      className="cecyte-chef-juez-image"
+                    />
+                    <div className="cecyte-chef-juez-image-overlay">
+                      <div className="cecyte-chef-juez-quote">
+                        "La creatividad y la técnica deben ir de la mano para crear platillos excepcionales"
+                      </div>
+                    </div>
+                  </div>
+                  <div className="cecyte-chef-juez-badge">
+                    <span>15+ AÑOS</span>
                   </div>
                 </div>
-              </div>
-              <div className="cecyte-chef-juez-info">
-                <h3 className="cecyte-chef-juez-name">Chef María González</h3>
-                <p className="cecyte-chef-juez-title">Chef Ejecutiva - Hotel Marriott</p>
-                <p className="cecyte-chef-juez-description">
-                  Con más de 15 años de experiencia en cocina internacional, especialista en 
-                  gastronomía mediterránea y fusion cuisine. Graduada del Instituto Culinario de México.
-                </p>
-                <div className="cecyte-chef-juez-experience">
-                  <span className="cecyte-chef-juez-years">15+ años</span>
-                  <span className="cecyte-chef-juez-specialty">Cocina Internacional</span>
+                
+                <div className="cecyte-chef-juez-content">
+                  <div className="cecyte-chef-juez-header">
+                    <h3 className="cecyte-chef-juez-name">Chef María González</h3>
+                    <p className="cecyte-chef-juez-title">Chef Ejecutiva - Hotel Marriott</p>
+                  </div>
+                  
+                  <p className="cecyte-chef-juez-description">
+                    Con más de 15 años de experiencia en cocina internacional, especialista en 
+                    gastronomía mediterránea y fusion cuisine. Graduada del Instituto Culinario de México.
+                  </p>
+                  
+                  <div className="cecyte-chef-juez-specialties">
+                    <span className="cecyte-chef-juez-specialty">Cocina Internacional</span>
+                    <span className="cecyte-chef-juez-specialty">Fusion Cuisine</span>
+                    <span className="cecyte-chef-juez-specialty">Gastronomía Mediterránea</span>
+                  </div>
+                  
+                  <div className="cecyte-chef-juez-stats">
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">15+</span>
+                      <span className="cecyte-chef-juez-stat-label">Años</span>
+                    </div>
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">50+</span>
+                      <span className="cecyte-chef-juez-stat-label">Premios</span>
+                    </div>
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">3</span>
+                      <span className="cecyte-chef-juez-stat-label">Restaurantes</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Juez 2 */}
             <div className="cecyte-chef-juez-card">
-              <div className="cecyte-chef-juez-image-container">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-                  alt="Chef Carlos Mendoza"
-                  className="cecyte-chef-juez-image"
-                />
-                <div className="cecyte-chef-juez-overlay">
-                  <div className="cecyte-chef-juez-quote">
-                    "La pasión por los ingredientes locales es la base de una cocina auténtica"
+              <div className="cecyte-chef-juez-card-inner">
+                <div className="cecyte-chef-juez-image-container">
+                  <div className="cecyte-chef-juez-image-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                      alt="Chef Carlos Mendoza"
+                      className="cecyte-chef-juez-image"
+                    />
+                    <div className="cecyte-chef-juez-image-overlay">
+                      <div className="cecyte-chef-juez-quote">
+                        "La pasión por los ingredientes locales es la base de una cocina auténtica"
+                      </div>
+                    </div>
+                  </div>
+                  <div className="cecyte-chef-juez-badge">
+                    <span>12+ AÑOS</span>
                   </div>
                 </div>
-              </div>
-              <div className="cecyte-chef-juez-info">
-                <h3 className="cecyte-chef-juez-name">Chef Carlos Mendoza</h3>
-                <p className="cecyte-chef-juez-title">Propietario - Restaurante El Sabor</p>
-                <p className="cecyte-chef-juez-description">
-                  Chef especializado en cocina tradicional mexicana y técnicas ancestrales. 
-                  Reconocido por su trabajo con ingredientes locales y sostenibilidad culinaria.
-                </p>
-                <div className="cecyte-chef-juez-experience">
-                  <span className="cecyte-chef-juez-years">12+ años</span>
-                  <span className="cecyte-chef-juez-specialty">Cocina Tradicional</span>
+                
+                <div className="cecyte-chef-juez-content">
+                  <div className="cecyte-chef-juez-header">
+                    <h3 className="cecyte-chef-juez-name">Chef Carlos Mendoza</h3>
+                    <p className="cecyte-chef-juez-title">Propietario - Restaurante El Sabor</p>
+                  </div>
+                  
+                  <p className="cecyte-chef-juez-description">
+                    Chef especializado en cocina tradicional mexicana y técnicas ancestrales. 
+                    Reconocido por su trabajo con ingredientes locales y sostenibilidad culinaria.
+                  </p>
+                  
+                  <div className="cecyte-chef-juez-specialties">
+                    <span className="cecyte-chef-juez-specialty">Cocina Tradicional</span>
+                    <span className="cecyte-chef-juez-specialty">Ingredientes Locales</span>
+                    <span className="cecyte-chef-juez-specialty">Sostenibilidad</span>
+                  </div>
+                  
+                  <div className="cecyte-chef-juez-stats">
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">12+</span>
+                      <span className="cecyte-chef-juez-stat-label">Años</span>
+                    </div>
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">25+</span>
+                      <span className="cecyte-chef-juez-stat-label">Premios</span>
+                    </div>
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">2</span>
+                      <span className="cecyte-chef-juez-stat-label">Restaurantes</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Juez 3 */}
             <div className="cecyte-chef-juez-card">
-              <div className="cecyte-chef-juez-image-container">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-                  alt="Chef Ana Rodríguez"
-                  className="cecyte-chef-juez-image"
-                />
-                <div className="cecyte-chef-juez-overlay">
-                  <div className="cecyte-chef-juez-quote">
-                    "La presentación es tan importante como el sabor para crear una experiencia memorable"
+              <div className="cecyte-chef-juez-card-inner">
+                <div className="cecyte-chef-juez-image-container">
+                  <div className="cecyte-chef-juez-image-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                      alt="Chef Ana Rodríguez"
+                      className="cecyte-chef-juez-image"
+                    />
+                    <div className="cecyte-chef-juez-image-overlay">
+                      <div className="cecyte-chef-juez-quote">
+                        "La presentación es tan importante como el sabor para crear una experiencia memorable"
+                      </div>
+                    </div>
+                  </div>
+                  <div className="cecyte-chef-juez-badge">
+                    <span>10+ AÑOS</span>
                   </div>
                 </div>
-              </div>
-              <div className="cecyte-chef-juez-info">
-                <h3 className="cecyte-chef-juez-name">Chef Ana Rodríguez</h3>
-                <p className="cecyte-chef-juez-title">Instructora - CECYTE Culinary</p>
-                <p className="cecyte-chef-juez-description">
-                  Especialista en pastelería y repostería artística. Con formación en Francia, 
-                  combina técnicas clásicas con innovación moderna en la presentación de platillos.
-                </p>
-                <div className="cecyte-chef-juez-experience">
-                  <span className="cecyte-chef-juez-years">10+ años</span>
-                  <span className="cecyte-chef-juez-specialty">Pastelería Artística</span>
+                
+                <div className="cecyte-chef-juez-content">
+                  <div className="cecyte-chef-juez-header">
+                    <h3 className="cecyte-chef-juez-name">Chef Ana Rodríguez</h3>
+                    <p className="cecyte-chef-juez-title">Instructora - CECYTE Culinary</p>
+                  </div>
+                  
+                  <p className="cecyte-chef-juez-description">
+                    Especialista en pastelería y repostería artística. Con formación en Francia, 
+                    combina técnicas clásicas con innovación moderna en la presentación de platillos.
+                  </p>
+                  
+                  <div className="cecyte-chef-juez-specialties">
+                    <span className="cecyte-chef-juez-specialty">Pastelería Artística</span>
+                    <span className="cecyte-chef-juez-specialty">Repostería</span>
+                    <span className="cecyte-chef-juez-specialty">Presentación</span>
+                  </div>
+                  
+                  <div className="cecyte-chef-juez-stats">
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">10+</span>
+                      <span className="cecyte-chef-juez-stat-label">Años</span>
+                    </div>
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">30+</span>
+                      <span className="cecyte-chef-juez-stat-label">Premios</span>
+                    </div>
+                    <div className="cecyte-chef-juez-stat">
+                      <span className="cecyte-chef-juez-stat-number">1</span>
+                      <span className="cecyte-chef-juez-stat-label">Academia</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
