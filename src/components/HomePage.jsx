@@ -249,10 +249,7 @@ function HomePage({ onLoginClick }) {
               />
             </div>
             
-            {/* Event Badge */}
-            <div className="cecyte-chef-event-badge">
-              <span>II Concurso Nacional</span>
-            </div>
+            
             
             {/* Description */}
             <p className="cecyte-chef-hero-description">
