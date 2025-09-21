@@ -199,138 +199,78 @@ function HomePage({ onLoginClick }) {
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
       
-      {/* Hero Section - Clean & Modern Design */}
+      {/* Hero Section - SVG Background Design */}
       <section id="inicio" className="cecyte-chef-hero-section">
-        {/* Clean Background */}
+        {/* SVG Background Pattern - Dense Design */}
         <div className="cecyte-chef-hero-background">
-          <div className="cecyte-chef-hero-pattern"></div>
-          
-          {/* Minimalist Icons */}
-          <div className="cecyte-chef-minimal-icons">
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-1">
-              <img src={CUCHILLO} alt="Cuchillo" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-2">
-              <img src={SARTEN} alt="Sartén" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-3">
-              <img src={CAMARON} alt="Camarón" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-4">
-              <img src={CHILE} alt="Chile" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-5">
-              <img src={CUCHARA} alt="Cuchara" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-6">
-              <img src={PILON} alt="Pilón" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-7">
-              <img src={PITAHAYA} alt="Pitahaya" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-8">
-              <img src={PEZ} alt="Pez" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-9">
-              <img src={LANGOSTA} alt="Langosta" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-10">
-              <img src={CUBIERTOS} alt="Cubiertos" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-11">
-              <img src={DORADO} alt="Dorado" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-12">
-              <img src={HACHA} alt="Hacha" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-13">
-              <img src={PALMERA} alt="Palmera" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-14">
-              <img src={BALLENA} alt="Ballena" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-15">
-              <img src={BALANDRA} alt="Balandra" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-16">
-              <img src={EL_ARCO} alt="El Arco" />
-            </div>
-            <div className="cecyte-chef-minimal-icon cecyte-chef-minimal-17">
-              <img src={RUPESTRES} alt="Rupestres" />
-            </div>
+          <div className="cecyte-chef-svg-pattern">
+            {/* Generate 200+ SVG elements */}
+            {Array.from({ length: 200 }, (_, index) => {
+              const svgOptions = [
+                CUCHILLO, SARTEN, CAMARON, CHILE, CUCHARA, PILON, PITAHAYA, PEZ,
+                LANGOSTA, CUBIERTOS, DORADO, HACHA, PALMERA, BALLENA, BALANDRA, EL_ARCO,
+                RUPESTRES, TRIANGULOS, COLA_DE_LA_BALLENA
+              ];
+              const randomSvg = svgOptions[index % svgOptions.length];
+              const altText = [
+                'Cuchillo', 'Sartén', 'Camarón', 'Chile', 'Cuchara', 'Pilón', 'Pitahaya', 'Pez',
+                'Langosta', 'Cubiertos', 'Dorado', 'Hacha', 'Palmera', 'Ballena', 'Balandra', 'El Arco',
+                'Rupestres', 'Triángulos', 'Cola de la Ballena'
+              ][index % svgOptions.length];
+              
+              return (
+                <img
+                  key={index}
+                  src={randomSvg}
+                  alt={altText}
+                  className={`cecyte-chef-svg-item cecyte-chef-svg-${index + 1}`}
+                  style={{
+                    position: 'absolute',
+                    top: `${Math.random() * 100}%`,
+                    left: `${Math.random() * 100}%`,
+                    transform: `rotate(${Math.random() * 360}deg) scale(${0.5 + Math.random() * 0.5})`,
+                    animationDelay: `${Math.random() * 20}s`,
+                    animationDuration: `${15 + Math.random() * 10}s`
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
         
         <div className="cecyte-chef-container">
-          <div className="cecyte-chef-hero-layout">
-            {/* Left Column - Content & Logo */}
-            <div className="cecyte-chef-hero-left">
-              {/* Logo */}
-              <div className="cecyte-chef-logo-container">
-                <img
-                  src={CECYTE_CHEF_SIN_FONDO_HORIZONTAL}
-                  alt="CECYTE CHEF Baja California Sur"
-                  className="cecyte-chef-main-logo"
-                />
-              </div>
-              
-              {/* Event Badge */}
-              <div className="cecyte-chef-event-badge">
-                <span>II Concurso Nacional</span>
-              </div>
-              
-              
-              
-              {/* Description */}
-              <p className="cecyte-chef-hero-description">
-                Únete al concurso más prestigioso de gastronomía estudiantil. 
-                Compite con los mejores chefs del país y vive una experiencia 
-                única en Baja California Sur.
-              </p>
-              
-              {/* Action Buttons */}
-              <div className="cecyte-chef-hero-actions">
-                <button className="cecyte-chef-btn cecyte-chef-btn-primary" onClick={onLoginClick}>
-                  <span>Participar Ahora</span>
-                  <i className="bi bi-arrow-right"></i>
-                </button>
-                
-              </div>
+          <div className="cecyte-chef-hero-content">
+            {/* Logo Container */}
+            <div className="cecyte-chef-logo-section">
+              <img
+                src={CECYTE_CHEF_SIN_FONDO_HORIZONTAL}
+                alt="CECYTE CHEF Baja California Sur"
+                className="cecyte-chef-main-logo"
+              />
             </div>
             
-            {/* Right Column - Food Gallery */}
-            <div className="cecyte-chef-hero-right">
-              <div className="cecyte-chef-food-gallery">
-                <div className="cecyte-chef-gallery-grid">
-                  <div className="cecyte-chef-gallery-item cecyte-chef-gallery-1">
-                    <img src={PLATILLO_SALMON} alt="Salmón Premium" />
-                    <div className="cecyte-chef-gallery-overlay">
-                      <span>Salmón Premium</span>
-                    </div>
-                  </div>
-                  
-                  <div className="cecyte-chef-gallery-item cecyte-chef-gallery-2">
-                    <img src={PLATILLO_CAMARON} alt="Camarones del Mar" />
-                    <div className="cecyte-chef-gallery-overlay">
-                      <span>Camarones del Mar</span>
-                    </div>
-                  </div>
-                  
-                  <div className="cecyte-chef-gallery-item cecyte-chef-gallery-3">
-                    <img src={PLATILLO_NARANJA} alt="Especialidad Local" />
-                    <div className="cecyte-chef-gallery-overlay">
-                      <span>Especialidad Local</span>
-                    </div>
-                  </div>
-                  
-                  <div className="cecyte-chef-gallery-item cecyte-chef-gallery-4">
-                    <img src={PLATILLO_NARANJON} alt="Creación del Chef" />
-                    <div className="cecyte-chef-gallery-overlay">
-                      <span>Creación del Chef</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Event Badge */}
+            <div className="cecyte-chef-event-badge">
+              <span>II Concurso Nacional</span>
+            </div>
+            
+            {/* Description */}
+            <p className="cecyte-chef-hero-description">
+              Únete al concurso más prestigioso de gastronomía estudiantil. 
+              Compite con los mejores chefs del país y vive una experiencia 
+              única en Baja California Sur.
+            </p>
+            
+            {/* Action Buttons */}
+            <div className="cecyte-chef-hero-actions">
+              <button className="cecyte-chef-btn cecyte-chef-btn-primary" onClick={onLoginClick}>
+                <span>Participar Ahora</span>
+                <i className="bi bi-arrow-right"></i>
+              </button>
+              <button className="cecyte-chef-btn cecyte-chef-btn-secondary">
+                <span>Ver Programa</span>
+                <i className="bi bi-calendar-event"></i>
+              </button>
             </div>
           </div>
         </div>

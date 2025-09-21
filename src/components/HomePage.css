@@ -843,15 +843,17 @@
 }
 
 .cecyte-chef-btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--cecyte-chef-white);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(157, 53, 83, 0.1);
+  color: #9D3553;
+  border: 2px solid #9D3553;
+  box-shadow: 0 8px 30px rgba(157, 53, 83, 0.2);
 }
 
 .cecyte-chef-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #9D3553;
+  color: white;
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 40px rgba(157, 53, 83, 0.4);
 }
 
 .cecyte-chef-btn-icon {
@@ -1488,14 +1490,14 @@
 }
 
 /* ========================================
-   HERO SECTION - CLEAN & MODERN DESIGN
+   HERO SECTION - SVG Background Design
    ======================================== */
 .cecyte-chef-hero-section {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: #F8F9FA;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
   overflow: hidden;
 }
 
@@ -1506,19 +1508,47 @@
   right: 0;
   bottom: 0;
   z-index: 1;
+  opacity: 0.08;
 }
 
-.cecyte-chef-hero-pattern {
+.cecyte-chef-svg-pattern {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(52, 58, 64, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(52, 58, 64, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 40% 60%, rgba(52, 58, 64, 0.01) 0%, transparent 50%);
-  opacity: 0.6;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cecyte-chef-svg-item {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.4);
+  transition: all 0.3s ease;
+  animation: cecyte-chef-svg-float 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cecyte-chef-svg-item:hover {
+  filter: grayscale(0%) brightness(0.8);
+  transform: scale(1.2);
+}
+
+@keyframes cecyte-chef-svg-float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) translateX(5px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-4px) translateX(-3px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-12px) translateX(2px) rotate(1deg);
+  }
 }
 
 /* ========================================
@@ -1675,47 +1705,42 @@
 /* ========================================
    HERO LAYOUT
    ======================================== */
-.cecyte-chef-hero-layout {
+.cecyte-chef-hero-content {
   position: relative;
   z-index: 3;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   min-height: 100vh;
   padding: 2rem 0;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-/* ========================================
-   HERO LEFT COLUMN - CONTENT & LOGO
-   ======================================== */
-.cecyte-chef-hero-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
   gap: 2rem;
 }
 
-.cecyte-chef-logo-container {
+/* ========================================
+   HERO LOGO SECTION
+   ======================================== */
+.cecyte-chef-logo-section {
   animation: cecyte-chef-fade-in-up 0.8s ease-out 0.2s both;
+  margin-bottom: 1rem;
 }
 
 .cecyte-chef-main-logo {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
 }
 
 .cecyte-chef-main-logo:hover {
   transform: scale(1.02);
-  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.4));
 }
 
 /* ========================================
@@ -1731,19 +1756,22 @@
 .cecyte-chef-event-badge {
   display: inline-block;
   animation: cecyte-chef-fade-in-up 0.8s ease-out 0.4s both;
+  margin-bottom: 1rem;
 }
 
 .cecyte-chef-event-badge span {
   display: inline-block;
   background: #9D3553;
   color: white;
-  padding: 0.6rem 1.5rem;
-  border-radius: 25px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 15px rgba(157, 53, 83, 0.3);
+  letter-spacing: 2px;
+  box-shadow: 0 6px 20px rgba(157, 53, 83, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 /* Hero Title */
@@ -1781,10 +1809,14 @@
 
 /* Hero Description */
 .cecyte-chef-hero-description {
-  font-size: 1.2rem;
-  color: #6C757D;
+  font-size: 1.3rem;
+  color: #495057;
   line-height: 1.7;
   animation: cecyte-chef-fade-in-up 0.8s ease-out 0.8s both;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-weight: 300;
 }
 
 /* Hero Actions */
