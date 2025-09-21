@@ -43,7 +43,7 @@ function Navbar({ onLoginClick }) {
         <div className="main-navbar-container">
           {/* Menú de navegación */}
           <div className={`main-navbar-menu ${isMenuOpen ? "active" : ""}`}>
-            <Link to="/inicio" className="main-navbar-link" onClick={closeMenu}>
+            <Link to="/" className="main-navbar-link" onClick={closeMenu}>
               INICIO
             </Link>
             <Link
