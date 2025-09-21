@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   
   // Configuración de la base URL para producción
-  base: './',
+  base: '/cecyteChef/',
   
   // Configuración para variables de entorno
   define: {

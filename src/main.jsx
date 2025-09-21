@@ -10,7 +10,7 @@ import './utils/testRoles.js' // Importar funciones de prueba para desarrollo
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/cecyteChef">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
