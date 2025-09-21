@@ -2187,26 +2187,40 @@
   }
   
   .cecyte-chef-hero-layout {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    grid-template-rows: auto auto;
+    gap: 4rem;
     min-height: 100vh;
     padding: 2rem 1rem;
+    align-items: center;
+    justify-items: center;
   }
   
   .cecyte-chef-hero-left {
     order: 2;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 2rem;
     align-items: center;
     text-align: center;
     padding: 0 1rem;
+    width: 100%;
+    max-width: 500px;
   }
   
   .cecyte-chef-hero-right {
     order: 1;
     padding: 0 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   
   .cecyte-chef-main-logo {
     max-width: 400px;
+    width: 100%;
+    height: auto;
   }
   
   .cecyte-chef-title-line-1,
@@ -2220,25 +2234,36 @@
   
   .cecyte-chef-hero-description {
     font-size: 1.1rem;
+    line-height: 1.6;
   }
   
   .cecyte-chef-hero-actions {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     width: 100%;
-    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-btn {
     width: 100%;
-    max-width: 300px;
-    padding: 0.9rem 1.8rem;
-    font-size: 0.95rem;
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
   
   .cecyte-chef-gallery-grid {
     max-width: 400px;
-    gap: 1rem;
+    gap: 1.2rem;
+    width: 100%;
   }
   
   /* Ajustar elementos en tablet */
@@ -2297,9 +2322,21 @@
   
   /* Objetivo Section Responsive */
   .cecyte-chef-objetivo-grid {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-rows: auto auto;
+    gap: 3rem;
     text-align: center;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  .cecyte-chef-chef-image-container {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .cecyte-chef-chef-circle {
@@ -2308,30 +2345,89 @@
   }
   
   .cecyte-chef-objetivo-content {
+    order: 2;
     padding-left: 0;
+    width: 100%;
+    max-width: 600px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 2rem;
+    align-items: center;
   }
   
   .cecyte-chef-objetivo-title {
     font-size: 2rem;
+    line-height: 1.3;
+  }
+  
+  .cecyte-chef-objetivo-description {
+    font-size: 1rem;
+    line-height: 1.6;
   }
   
   .cecyte-chef-objetivo-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
     justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-objetivo-button {
-    flex: 1;
-    min-width: 200px;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(188, 149, 97, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-objetivo-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(188, 149, 97, 0.3);
   }
   
   /* Jueces Section Tablet */
   .cecyte-chef-jueces-grid {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
+    padding: 0 1rem;
   }
   
   .cecyte-chef-jueces-title {
     font-size: 2.4rem;
+    line-height: 1.2;
+  }
+  
+  .cecyte-chef-juez-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-juez-image-container {
+    height: 280px;
+    overflow: hidden;
+  }
+  
+  .cecyte-chef-juez-info {
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 1rem;
+    align-content: start;
+  }
+  
+  .cecyte-chef-juez-experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 1rem;
   }
   
   /* Ajustar SVGs de jueces en tablet */
@@ -2460,27 +2556,53 @@
     height: 90vh;
   }
   
+  .cecyte-chef-lugares-hero {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    padding: 0 2rem;
+  }
+  
   .cecyte-chef-title-line {
     font-size: 3rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-title-highlight {
     font-size: 3.5rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-lugares-description {
     font-size: 1.2rem;
     max-width: 80%;
+    line-height: 1.6;
   }
   
   .cecyte-chef-lugares-actions {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-lugares-button {
     width: 100%;
-    max-width: 300px;
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(188, 149, 97, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-lugares-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(188, 149, 97, 0.4);
   }
   
   /* Hoteles Section Tablet */
@@ -2488,27 +2610,53 @@
     height: 90vh;
   }
   
+  .cecyte-chef-hoteles-hero {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    padding: 0 2rem;
+  }
+  
   .cecyte-chef-hoteles-title .cecyte-chef-title-line {
     font-size: 3rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-hoteles-title .cecyte-chef-title-highlight {
     font-size: 3.5rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-hoteles-description {
     font-size: 1.2rem;
     max-width: 80%;
+    line-height: 1.6;
   }
   
   .cecyte-chef-hoteles-actions {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-hoteles-button {
     width: 100%;
-    max-width: 300px;
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(188, 149, 97, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-hoteles-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(188, 149, 97, 0.4);
   }
   
   /* Restaurantes Section Tablet */
@@ -2516,27 +2664,53 @@
     height: 90vh;
   }
   
+  .cecyte-chef-restaurantes-hero {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    padding: 0 2rem;
+  }
+  
   .cecyte-chef-restaurantes-title .cecyte-chef-title-line {
     font-size: 3rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-restaurantes-title .cecyte-chef-title-highlight {
     font-size: 3.5rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-restaurantes-description {
     font-size: 1.2rem;
     max-width: 80%;
+    line-height: 1.6;
   }
   
   .cecyte-chef-restaurantes-actions {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-restaurantes-button {
     width: 100%;
-    max-width: 300px;
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(188, 149, 97, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-restaurantes-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(188, 149, 97, 0.4);
   }
   
   .cecyte-chef-footer-content {
@@ -2556,53 +2730,85 @@
   }
   
   .cecyte-chef-hero-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     min-height: 100vh;
     padding: 1rem 0.5rem;
-    gap: 2rem;
+    gap: 3rem;
+    align-items: center;
+    justify-items: center;
   }
   
   .cecyte-chef-hero-left {
+    order: 2;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
     padding: 0 0.5rem;
+    width: 100%;
+    max-width: 400px;
   }
   
   .cecyte-chef-hero-right {
+    order: 1;
     padding: 0 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   
   .cecyte-chef-main-logo {
     max-width: 300px;
+    width: 100%;
+    height: auto;
   }
   
   .cecyte-chef-title-line-1,
   .cecyte-chef-title-line-3 {
     font-size: 2rem;
+    line-height: 1.2;
   }
   
   .cecyte-chef-title-line-2 {
     font-size: 2.5rem;
+    line-height: 1.2;
   }
   
   .cecyte-chef-hero-description {
     font-size: 1rem;
+    line-height: 1.5;
   }
   
   .cecyte-chef-hero-actions {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
     width: 100%;
-    align-items: center;
+    max-width: 350px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-btn {
     width: 100%;
-    max-width: 280px;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 1rem 1.8rem;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   }
   
   .cecyte-chef-gallery-grid {
     max-width: 350px;
-    gap: 0.8rem;
+    gap: 1rem;
+    width: 100%;
   }
   
   .cecyte-chef-scroll-indicator {
@@ -2805,33 +3011,113 @@
   }
   
   /* Objetivo Section Small Mobile */
+  .cecyte-chef-objetivo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 2.5rem;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    padding: 0 1rem;
+  }
+  
+  .cecyte-chef-chef-image-container {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .cecyte-chef-chef-circle {
     width: 200px;
     height: 200px;
   }
   
+  .cecyte-chef-objetivo-content {
+    order: 2;
+    padding-left: 0;
+    width: 100%;
+    max-width: 500px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
   .cecyte-chef-objetivo-title {
     font-size: 1.75rem;
+    line-height: 1.3;
+  }
+  
+  .cecyte-chef-objetivo-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
   
   .cecyte-chef-objetivo-buttons {
-    flex-direction: column;
-    gap: 0.8rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-objetivo-button {
     width: 100%;
-    min-width: auto;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(188, 149, 97, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-objetivo-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(188, 149, 97, 0.3);
   }
   
   /* Jueces Section Responsive */
   .cecyte-chef-jueces-grid {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    padding: 0 1rem;
   }
   
   .cecyte-chef-jueces-title {
     font-size: 2.2rem;
+    line-height: 1.2;
+  }
+  
+  .cecyte-chef-juez-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-juez-image-container {
+    height: 250px;
+    overflow: hidden;
+  }
+  
+  .cecyte-chef-juez-info {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 0.8rem;
+    align-content: start;
+  }
+  
+  .cecyte-chef-juez-experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
   }
   
   /* Ajustar SVGs de jueces en móvil */
@@ -2965,32 +3251,52 @@
   }
   
   .cecyte-chef-lugares-hero {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 1.5rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
     padding: 0 1rem;
   }
   
   .cecyte-chef-title-line {
     font-size: 2.5rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-title-highlight {
     font-size: 3rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-lugares-description {
     font-size: 1.1rem;
     max-width: 90%;
+    line-height: 1.5;
   }
   
   .cecyte-chef-lugares-actions {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-lugares-button {
-    padding: 1rem 2rem;
+    padding: 1rem 1.8rem;
     font-size: 0.9rem;
     width: 100%;
-    max-width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(188, 149, 97, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-lugares-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 18px rgba(188, 149, 97, 0.4);
   }
   
   /* Hoteles Section Responsive */
@@ -2999,32 +3305,52 @@
   }
   
   .cecyte-chef-hoteles-hero {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 1.5rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
     padding: 0 1rem;
   }
   
   .cecyte-chef-hoteles-title .cecyte-chef-title-line {
     font-size: 2.5rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-hoteles-title .cecyte-chef-title-highlight {
     font-size: 3rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-hoteles-description {
     font-size: 1.1rem;
     max-width: 90%;
+    line-height: 1.5;
   }
   
   .cecyte-chef-hoteles-actions {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-hoteles-button {
-    padding: 1rem 2rem;
+    padding: 1rem 1.8rem;
     font-size: 0.9rem;
     width: 100%;
-    max-width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(188, 149, 97, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-hoteles-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 18px rgba(188, 149, 97, 0.4);
   }
   
   /* Restaurantes Section Responsive */
@@ -3033,32 +3359,52 @@
   }
   
   .cecyte-chef-restaurantes-hero {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 1.5rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
     padding: 0 1rem;
   }
   
   .cecyte-chef-restaurantes-title .cecyte-chef-title-line {
     font-size: 2.5rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-restaurantes-title .cecyte-chef-title-highlight {
     font-size: 3rem;
+    line-height: 1.1;
   }
   
   .cecyte-chef-restaurantes-description {
     font-size: 1.1rem;
     max-width: 90%;
+    line-height: 1.5;
   }
   
   .cecyte-chef-restaurantes-actions {
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
   }
   
   .cecyte-chef-restaurantes-button {
-    padding: 1rem 2rem;
+    padding: 1rem 1.8rem;
     font-size: 0.9rem;
     width: 100%;
-    max-width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(188, 149, 97, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .cecyte-chef-restaurantes-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 18px rgba(188, 149, 97, 0.4);
   }
   
   /* Dividers Responsive */

@@ -109,8 +109,8 @@ const Footer = () => {
       <div className="cecyte-chef-footer-bottom">
         <div className="cecyte-chef-footer-bottom-content">
           <div className="cecyte-chef-footer-copyright">
-            <p>&copy; 2024 CECYTE CHEF. Todos los derechos reservados.</p>
-            <p>Desarrollado con ❤️ para la comunidad estudiantil</p>
+            <p>&copy; 2025 Cecyte Chef Departamento de Informatica. Todos los derechos reservados.</p>
+            
           </div>
         </div>
       </div>
