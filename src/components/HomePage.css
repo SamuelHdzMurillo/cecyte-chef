@@ -25,6 +25,56 @@
   line-height: 1.6;
   color: var(--cecyte-chef-dark);
   overflow-x: hidden;
+  position: relative;
+}
+
+/* ========================================
+   GLOBAL BACKGROUND SVGs
+   ======================================== */
+.cecyte-chef-global-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.cecyte-chef-global-svgs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cecyte-chef-global-svg-item {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.08;
+  filter: grayscale(100%) brightness(0.7);
+  transition: all 0.3s ease;
+  animation: cecyte-chef-global-float 25s ease-in-out infinite;
+}
+
+@keyframes cecyte-chef-global-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(0.5deg);
+  }
 }
 
 .cecyte-chef-container {
@@ -43,6 +93,94 @@
   .cecyte-chef-container {
     padding: 0 0.5rem;
   }
+  
+  .cecyte-chef-section-separator {
+    height: 60px;
+  }
+  
+  .cecyte-chef-separator-line {
+    margin: 0 1rem;
+  }
+  
+  .cecyte-chef-separator-svgs {
+    gap: 1rem;
+  }
+  
+  .cecyte-chef-separator-svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ========================================
+   SECTION SEPARATORS
+   ======================================== */
+.cecyte-chef-section-separator {
+  position: relative;
+  height: 80px;
+  background: linear-gradient(135deg, #9D3553 0%, #9D3553 50%, #9D3553 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cecyte-chef-separator-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  margin: 0 2rem;
+}
+
+.cecyte-chef-separator-svgs {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 2;
+  position: relative;
+}
+
+.cecyte-chef-separator-svg {
+  width: 28px;
+  height: 28px;
+  opacity: 0.8;
+  animation: cecyte-chef-separator-float 8s ease-in-out infinite;
+  filter: grayscale(100%) brightness(0) invert(1);
+  transition: all 0.3s ease;
+}
+
+.cecyte-chef-separator-svg:hover {
+  opacity: 1;
+  filter: grayscale(100%) brightness(0) invert(1);
+  transform: scale(1.1);
+}
+
+.cecyte-chef-separator-svg:nth-child(1) { animation-delay: 0s; }
+.cecyte-chef-separator-svg:nth-child(2) { animation-delay: 1s; }
+.cecyte-chef-separator-svg:nth-child(3) { animation-delay: 2s; }
+.cecyte-chef-separator-svg:nth-child(4) { animation-delay: 3s; }
+.cecyte-chef-separator-svg:nth-child(5) { animation-delay: 4s; }
+
+@keyframes cecyte-chef-separator-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-3px) rotate(2deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-1px) rotate(-1deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-4px) rotate(1deg);
+    opacity: 1;
+  }
 }
 
 /* ========================================
@@ -50,9 +188,68 @@
    ======================================== */
 .cecyte-chef-objetivo-section {
   padding: 4rem 0;
-  background: var(--cecyte-chef-white);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
   position: relative;
   overflow: hidden;
+  z-index: 1;
+}
+
+/* ========================================
+   OBJETIVO BACKGROUND SVGs
+   ======================================== */
+.cecyte-chef-objetivo-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.cecyte-chef-objetivo-svgs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+.cecyte-chef-objetivo-svg-item {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  opacity: 0.12;
+  filter: grayscale(100%) brightness(0.6);
+  transition: all 0.3s ease;
+  animation: cecyte-chef-objetivo-float 20s ease-in-out infinite;
+}
+
+.cecyte-chef-objetivo-svg-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes cecyte-chef-objetivo-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(0.5deg);
+  }
 }
 
 .cecyte-chef-objetivo-grid {
@@ -60,6 +257,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  position: relative;
+  z-index: 2;
   min-height: 500px;
 }
 
@@ -235,6 +434,7 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 /* Jueces Header */
@@ -456,6 +656,104 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-top: 0.3rem;
+}
+
+/* ========================================
+   JUECES BACKGROUND SVGs
+   ======================================== */
+.cecyte-chef-jueces-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.cecyte-chef-jueces-svgs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+.cecyte-chef-jueces-svg {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0.15;
+  filter: grayscale(100%) brightness(0.6);
+  transition: all 0.3s ease;
+  animation: cecyte-chef-jueces-float 15s ease-in-out infinite;
+}
+
+.cecyte-chef-jueces-svg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Posicionamiento de los SVGs */
+.cecyte-chef-jueces-svg-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.cecyte-chef-jueces-svg-2 { top: 20%; right: 8%; animation-delay: 1s; }
+.cecyte-chef-jueces-svg-3 { top: 30%; left: 15%; animation-delay: 2s; }
+.cecyte-chef-jueces-svg-4 { top: 40%; right: 12%; animation-delay: 3s; }
+.cecyte-chef-jueces-svg-5 { top: 50%; left: 8%; animation-delay: 4s; }
+.cecyte-chef-jueces-svg-6 { top: 60%; right: 15%; animation-delay: 5s; }
+.cecyte-chef-jueces-svg-7 { top: 70%; left: 12%; animation-delay: 6s; }
+.cecyte-chef-jueces-svg-8 { top: 80%; right: 5%; animation-delay: 7s; }
+.cecyte-chef-jueces-svg-9 { top: 15%; left: 25%; animation-delay: 8s; }
+.cecyte-chef-jueces-svg-10 { top: 25%; right: 25%; animation-delay: 9s; }
+.cecyte-chef-jueces-svg-11 { top: 35%; left: 35%; animation-delay: 10s; }
+.cecyte-chef-jueces-svg-12 { top: 45%; right: 35%; animation-delay: 11s; }
+.cecyte-chef-jueces-svg-13 { top: 55%; left: 25%; animation-delay: 12s; }
+.cecyte-chef-jueces-svg-14 { top: 65%; right: 25%; animation-delay: 13s; }
+.cecyte-chef-jueces-svg-15 { top: 75%; left: 35%; animation-delay: 14s; }
+.cecyte-chef-jueces-svg-16 { top: 85%; right: 35%; animation-delay: 15s; }
+.cecyte-chef-jueces-svg-17 { top: 12%; left: 45%; animation-delay: 16s; }
+.cecyte-chef-jueces-svg-18 { top: 22%; right: 45%; animation-delay: 17s; }
+.cecyte-chef-jueces-svg-19 { top: 32%; left: 55%; animation-delay: 18s; }
+.cecyte-chef-jueces-svg-20 { top: 42%; right: 55%; animation-delay: 19s; }
+.cecyte-chef-jueces-svg-21 { top: 52%; left: 45%; animation-delay: 20s; }
+.cecyte-chef-jueces-svg-22 { top: 62%; right: 45%; animation-delay: 21s; }
+.cecyte-chef-jueces-svg-23 { top: 72%; left: 55%; animation-delay: 22s; }
+.cecyte-chef-jueces-svg-24 { top: 82%; right: 55%; animation-delay: 23s; }
+.cecyte-chef-jueces-svg-25 { top: 18%; left: 65%; animation-delay: 24s; }
+.cecyte-chef-jueces-svg-26 { top: 28%; right: 65%; animation-delay: 25s; }
+.cecyte-chef-jueces-svg-27 { top: 38%; left: 75%; animation-delay: 26s; }
+.cecyte-chef-jueces-svg-28 { top: 48%; right: 75%; animation-delay: 27s; }
+.cecyte-chef-jueces-svg-29 { top: 58%; left: 65%; animation-delay: 28s; }
+.cecyte-chef-jueces-svg-30 { top: 68%; right: 65%; animation-delay: 29s; }
+.cecyte-chef-jueces-svg-31 { top: 78%; left: 75%; animation-delay: 30s; }
+.cecyte-chef-jueces-svg-32 { top: 88%; right: 75%; animation-delay: 31s; }
+.cecyte-chef-jueces-svg-33 { top: 8%; left: 85%; animation-delay: 32s; }
+.cecyte-chef-jueces-svg-34 { top: 38%; right: 85%; animation-delay: 33s; }
+.cecyte-chef-jueces-svg-35 { top: 68%; left: 85%; animation-delay: 34s; }
+.cecyte-chef-jueces-svg-36 { top: 98%; right: 85%; animation-delay: 35s; }
+.cecyte-chef-jueces-svg-37 { top: 5%; left: 95%; animation-delay: 36s; }
+.cecyte-chef-jueces-svg-38 { top: 95%; right: 95%; animation-delay: 37s; }
+
+@keyframes cecyte-chef-jueces-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(1deg);
+  }
 }
 
 /* ========================================
@@ -718,6 +1016,8 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .cecyte-chef-jueces-label {
@@ -755,6 +1055,8 @@
   gap: 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .cecyte-chef-juez-card {
@@ -871,6 +1173,7 @@
   height: 100vh;
   overflow: hidden;
   display: flex;
+  z-index: 1;
   align-items: center;
   justify-content: center;
   background: #000;
@@ -1138,6 +1441,7 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1390,6 +1694,7 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1678,14 +1983,14 @@
 .cecyte-chef-divider-svg-item {
   width: 24px;
   height: 24px;
-  opacity: 0.4;
+  opacity: 0.6;
   animation: cecyte-chef-svg-subtle 6s ease-in-out infinite;
-  filter: grayscale(100%) brightness(0.8);
+  filter: grayscale(100%) brightness(0.7);
   transition: all 0.3s ease;
 }
 
 .cecyte-chef-divider-svg-item:hover {
-  opacity: 0.6;
+  opacity: 0.8;
   filter: grayscale(50%) brightness(1);
 }
 
@@ -1702,11 +2007,11 @@
 @keyframes cecyte-chef-svg-subtle {
   0%, 100% {
     transform: translateY(0px);
-    opacity: 0.4;
+    opacity: 0.6;
   }
   50% {
     transform: translateY(-2px);
-    opacity: 0.6;
+    opacity: 0.8;
   }
 }
 
@@ -1720,6 +2025,7 @@
   align-items: center;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
   overflow: hidden;
+  z-index: 1;
 }
 
 .cecyte-chef-hero-background {
@@ -2182,6 +2488,8 @@
   padding: 5rem 0;
   background: var(--cecyte-chef-white);
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .cecyte-chef-cta-content {
@@ -3723,6 +4031,8 @@ html {
 .cecyte-chef-hospedajes-cards-section {
   padding: 80px 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  z-index: 1;
 }
 
 .cecyte-chef-hospedajes-header {
@@ -3883,6 +4193,8 @@ html {
    ======================================== */
 .cecyte-chef-restaurantes-cards-section {
   padding: 80px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .cecyte-chef-restaurantes-header {
@@ -3961,6 +4273,8 @@ html {
    ======================================== */
 .cecyte-chef-lugares-cards-section {
   padding: 80px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .cecyte-chef-lugares-header {
