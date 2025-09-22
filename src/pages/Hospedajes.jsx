@@ -5,7 +5,7 @@ import HospedajeCard from "../components/HospedajeCard";
 import hospedajesService from "../services/hospedajesService";
 import "../components/HomePage.css";
 import "../components/HospedajeCard.css";
-import { HOTELES } from "../assets/images";
+import { LUGARES_VISITA } from "../assets/images";
 
 function Hospedajes({ onLoginClick }) {
   const [hospedajes, setHospedajes] = useState([]);
@@ -52,8 +52,8 @@ function Hospedajes({ onLoginClick }) {
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
             <img 
-              src={HOTELES} 
-              alt="Hoteles y hospedaje en La Paz" 
+              src={LUGARES_VISITA} 
+              alt="Lugares de visita en La Paz" 
               className="cecyte-chef-parallax-image"
             />
           </div>
