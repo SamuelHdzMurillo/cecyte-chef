@@ -15,7 +15,6 @@ function UserDashboard() {
   const [sidebarMobileOpen, setSidebarMobileOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
-
   // Estados para el equipo del usuario
   const [userEquipo, setUserEquipo] = useState({
     equipo: null,
@@ -30,7 +29,9 @@ function UserDashboard() {
 
       // Primero intentar con equipo_id directo
       if (user?.equipo_id) {
-        const response = await fetch(`http://127.0.0.1:8000/api/equipos/${user.equipo_id}`);
+        const response = await fetch(
+          `https://chef-api.cecytebcs.edu.mx/public/api/equipos/${user.equipo_id}`
+        );
         if (response.ok) {
           const responseData = await response.json();
           let equipo;
@@ -39,7 +40,7 @@ function UserDashboard() {
           } else if (responseData) {
             equipo = responseData;
           }
-          
+
           if (equipo) {
             setUserEquipo({
               equipo: equipo,
@@ -54,7 +55,9 @@ function UserDashboard() {
       // Si no tiene equipo_id o no se encontró, buscar por email en participantes
       const response = await fetch("http://127.0.0.1:8000/api/equipos");
       if (!response.ok) {
-        throw new Error(`Error HTTP ${response.status}: ${response.statusText}`);
+        throw new Error(
+          `Error HTTP ${response.status}: ${response.statusText}`
+        );
       }
 
       const responseData = await response.json();
@@ -68,11 +71,14 @@ function UserDashboard() {
       }
 
       // Buscar el equipo donde el usuario sea participante
-      const userEquipo = equipos.find(equipo => 
-        equipo.participantes && equipo.participantes.some(participante => 
-          participante.correo_participante === user?.email ||
-          participante.nombre_participante === user?.name
-        )
+      const userEquipo = equipos.find(
+        (equipo) =>
+          equipo.participantes &&
+          equipo.participantes.some(
+            (participante) =>
+              participante.correo_participante === user?.email ||
+              participante.nombre_participante === user?.name
+          )
       );
 
       if (userEquipo) {
@@ -85,7 +91,7 @@ function UserDashboard() {
         setUserEquipo({
           equipo: null,
           loading: false,
-          error: "No se encontró un equipo asociado a tu usuario"
+          error: "No se encontró un equipo asociado a tu usuario",
         });
       }
     } catch (error) {
@@ -97,7 +103,6 @@ function UserDashboard() {
       });
     }
   };
-
 
   useEffect(() => {
     setLoading(false);
@@ -121,8 +126,6 @@ function UserDashboard() {
       setSidebarMobileOpen(false);
     }
   };
-
-
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
@@ -224,7 +227,6 @@ function UserDashboard() {
                 </a>
               </div>
             </div>
-
           </nav>
         </div>
       </div>
@@ -292,10 +294,7 @@ function UserDashboard() {
       >
         <div className="main-content">
           {/* Header con breadcrumb */}
-          <Header 
-            activeSection={activeSection}
-          />
-
+          <Header activeSection={activeSection} />
 
           {/* Contenido de Perfil */}
           {activeSection === "perfil" && (
@@ -312,7 +311,10 @@ function UserDashboard() {
                     <div className="row">
                       <div className="col-md-4 text-center">
                         <div className="mb-3">
-                          <i className="bi bi-person-circle" style={{ fontSize: "5rem", color: "#6c757d" }}></i>
+                          <i
+                            className="bi bi-person-circle"
+                            style={{ fontSize: "5rem", color: "#6c757d" }}
+                          ></i>
                         </div>
                         <h5>{user?.name || "Usuario"}</h5>
                         <p className="text-muted">Usuario del Sistema</p>
@@ -322,20 +324,34 @@ function UserDashboard() {
                         <table className="table table-borderless">
                           <tbody>
                             <tr>
-                              <td><strong>Nombre:</strong></td>
+                              <td>
+                                <strong>Nombre:</strong>
+                              </td>
                               <td>{user?.name || "No disponible"}</td>
                             </tr>
                             <tr>
-                              <td><strong>Email:</strong></td>
+                              <td>
+                                <strong>Email:</strong>
+                              </td>
                               <td>{user?.email || "No disponible"}</td>
                             </tr>
                             <tr>
-                              <td><strong>Rol:</strong></td>
-                              <td><span className="badge bg-secondary">Usuario</span></td>
+                              <td>
+                                <strong>Rol:</strong>
+                              </td>
+                              <td>
+                                <span className="badge bg-secondary">
+                                  Usuario
+                                </span>
+                              </td>
                             </tr>
                             <tr>
-                              <td><strong>Estado:</strong></td>
-                              <td><span className="badge bg-success">Activo</span></td>
+                              <td>
+                                <strong>Estado:</strong>
+                              </td>
+                              <td>
+                                <span className="badge bg-success">Activo</span>
+                              </td>
                             </tr>
                           </tbody>
                         </table>
@@ -377,7 +393,8 @@ function UserDashboard() {
                         <strong>Información:</strong> {userEquipo.error}
                         <br />
                         <small className="text-muted">
-                          Si crees que esto es un error, contacta al administrador.
+                          Si crees que esto es un error, contacta al
+                          administrador.
                         </small>
                       </div>
                     ) : userEquipo.equipo ? (
@@ -399,9 +416,6 @@ function UserDashboard() {
               </div>
             </div>
           )}
-
-
-
         </div>
       </div>
     </div>

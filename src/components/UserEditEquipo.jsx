@@ -8,7 +8,7 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
     estatus_del_equipo: "activo",
     nombre_anfitrion: "",
     telefono_anfitrion: "",
-    correo_anfitrion: ""
+    correo_anfitrion: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -22,16 +22,16 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
         estatus_del_equipo: equipo.estatus_del_equipo || "activo",
         nombre_anfitrion: equipo.nombre_anfitrion || "",
         telefono_anfitrion: equipo.telefono_anfitrion || "",
-        correo_anfitrion: equipo.correo_anfitrion || ""
+        correo_anfitrion: equipo.correo_anfitrion || "",
       });
     }
   }, [equipo]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -42,17 +42,20 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
 
     try {
       const token = authService.getToken();
-      
+
       // Enviar datos actualizados
-      const response = await fetch(`http://127.0.0.1:8000/api/equipos/${equipo.id}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch(
+        `https://chef-api.cecytebcs.edu.mx/public/api/equipos/${equipo.id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const responseData = await response.json();
 
@@ -142,7 +145,9 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
 
             {/* Información del Anfitrión */}
             <div className="col-12">
-              <h6 className="fw-bold text-dark mb-3 mt-4">Información del Anfitrión</h6>
+              <h6 className="fw-bold text-dark mb-3 mt-4">
+                Información del Anfitrión
+              </h6>
             </div>
 
             <div className="col-md-6">
@@ -161,9 +166,7 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Teléfono *
-              </label>
+              <label className="form-label fw-semibold">Teléfono *</label>
               <input
                 type="tel"
                 className="form-control"
@@ -199,7 +202,11 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
             >
               {loading ? (
                 <>
-                  <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
                   Guardando...
                 </>
               ) : (

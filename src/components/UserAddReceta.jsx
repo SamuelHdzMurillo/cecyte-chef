@@ -8,7 +8,7 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
     descripcion: "",
     ingredientes: "",
     preparacion: "",
-    observaciones: ""
+    observaciones: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -16,9 +16,9 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -29,22 +29,25 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
 
     try {
       const token = authService.getToken();
-      
+
       // Agregar la receta al equipo
-      const response = await fetch('http://127.0.0.1:8000/api/recetas', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          equipo_id: equipoId,
-          creado_por: authService.getUser()?.name || "Usuario",
-          fecha_creacion: new Date().toISOString()
-        })
-      });
+      const response = await fetch(
+        "https://chef-api.cecytebcs.edu.mx/public/api/recetas",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            equipo_id: equipoId,
+            creado_por: authService.getUser()?.name || "Usuario",
+            fecha_creacion: new Date().toISOString(),
+          }),
+        }
+      );
 
       const responseData = await response.json();
 
@@ -56,7 +59,7 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
           descripcion: "",
           ingredientes: "",
           preparacion: "",
-          observaciones: ""
+          observaciones: "",
         });
       } else {
         setError(responseData.message || "Error al agregar receta");
@@ -138,7 +141,8 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
                 required
               />
               <div className="form-text small">
-                Ejemplo: Tortillas de maíz, pollo deshebrado, salsa verde, queso fresco, crema, cebolla, cilantro
+                Ejemplo: Tortillas de maíz, pollo deshebrado, salsa verde, queso
+                fresco, crema, cebolla, cilantro
               </div>
             </div>
 
@@ -156,7 +160,8 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
                 required
               />
               <div className="form-text small">
-                Ejemplo: 1. Cocinar el pollo y deshebrarlo\n2. Preparar la salsa verde\n3. Enchilar las tortillas...
+                Ejemplo: 1. Cocinar el pollo y deshebrarlo\n2. Preparar la salsa
+                verde\n3. Enchilar las tortillas...
               </div>
             </div>
 

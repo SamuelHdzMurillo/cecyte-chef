@@ -61,7 +61,9 @@ function AdminDashboard() {
     try {
       setDashboardStats((prev) => ({ ...prev, loading: true, error: null }));
 
-      const response = await fetch("http://127.0.0.1:8000/api/equipos");
+      const response = await fetch(
+        "https://chef-api.cecytebcs.edu.mx/public/api/equipos"
+      );
       if (!response.ok) {
         throw new Error(
           `Error HTTP ${response.status}: ${response.statusText}`
@@ -124,7 +126,7 @@ function AdminDashboard() {
       setBuzonMensajes((prev) => ({ ...prev, loading: true, error: null }));
 
       const response = await fetch(
-        "http://127.0.0.1:8000/api/buzon-asistencia"
+        "https://chef-api.cecytebcs.edu.mx/public/api/buzon-asistencia"
       );
       if (!response.ok) {
         throw new Error(
@@ -169,7 +171,9 @@ function AdminDashboard() {
     try {
       setUsuariosNoAdmin((prev) => ({ ...prev, loading: true, error: null }));
 
-      const response = await fetch("http://127.0.0.1:8000/api/admin/users");
+      const response = await fetch(
+        "https://chef-api.cecytebcs.edu.mx/public/api/admin/users"
+      );
       if (!response.ok) {
         throw new Error(
           `Error HTTP ${response.status}: ${response.statusText}`
@@ -525,7 +529,6 @@ function AdminDashboard() {
             <i className="bi bi-list fs-4"></i>
           </button>
 
-          
           <div className="navbar-nav ms-auto">
             <div className="nav-item dropdown">
               <button
@@ -536,8 +539,8 @@ function AdminDashboard() {
               >
                 <div className="fw-bold">{user?.name || "Usuario"}</div>
                 <small className="opacity-75">
-                  {user?.role === "admin" || user?.role === "administrador" 
-                    ? "Administrador" 
+                  {user?.role === "admin" || user?.role === "administrador"
+                    ? "Administrador"
                     : "Usuario"}
                 </small>
               </button>
@@ -569,22 +572,27 @@ function AdminDashboard() {
       >
         <div className="main-content">
           {/* Header con breadcrumb */}
-          <Header 
+          <Header
             activeSection={activeSection}
             selectedItem={
-              selectedEquipoId || 
-              selectedRestauranteId || 
-              selectedHospedajeId || 
-              selectedComiteId || 
+              selectedEquipoId ||
+              selectedRestauranteId ||
+              selectedHospedajeId ||
+              selectedComiteId ||
               selectedLugarId
             }
             onBack={
-              selectedEquipoId ? handleBackToEquipos :
-              selectedRestauranteId ? handleBackToRestaurantes :
-              selectedHospedajeId ? handleBackToHospedajes :
-              selectedComiteId ? handleBackToComites :
-              selectedLugarId ? handleBackToLugares :
-              null
+              selectedEquipoId
+                ? handleBackToEquipos
+                : selectedRestauranteId
+                ? handleBackToRestaurantes
+                : selectedHospedajeId
+                ? handleBackToHospedajes
+                : selectedComiteId
+                ? handleBackToComites
+                : selectedLugarId
+                ? handleBackToLugares
+                : null
             }
           />
 
@@ -974,7 +982,6 @@ function AdminDashboard() {
                                     </td>
                                     <td>
                                       <div className="d-flex align-items-center">
-                                        
                                         <div>
                                           <div className="fw-bold">
                                             {usuario.name}

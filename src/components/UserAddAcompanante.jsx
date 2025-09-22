@@ -9,7 +9,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
     puesto: "",
     talla: "M",
     telefono: "",
-    email: ""
+    email: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -17,9 +17,9 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -30,20 +30,23 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
 
     try {
       const token = authService.getToken();
-      
+
       // Agregar el acompañante al equipo
-      const response = await fetch('http://127.0.0.1:8000/api/acompanantes', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          equipo_id: equipoId
-        })
-      });
+      const response = await fetch(
+        "https://chef-api.cecytebcs.edu.mx/public/api/acompanantes",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            equipo_id: equipoId,
+          }),
+        }
+      );
 
       const responseData = await response.json();
 
@@ -56,7 +59,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
           puesto: "",
           talla: "M",
           telefono: "",
-          email: ""
+          email: "",
         });
       } else {
         setError(responseData.message || "Error al agregar acompañante");
@@ -102,9 +105,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Rol *
-              </label>
+              <label className="form-label fw-semibold">Rol *</label>
               <select
                 className="form-select"
                 name="rol"
@@ -123,9 +124,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Puesto *
-              </label>
+              <label className="form-label fw-semibold">Puesto *</label>
               <input
                 type="text"
                 className="form-control"
@@ -138,9 +137,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Talla
-              </label>
+              <label className="form-label fw-semibold">Talla</label>
               <select
                 className="form-select"
                 name="talla"
@@ -157,9 +154,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Teléfono *
-              </label>
+              <label className="form-label fw-semibold">Teléfono *</label>
               <input
                 type="tel"
                 className="form-control"
@@ -186,11 +181,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
           </div>
 
           <div className="d-flex gap-2 mt-4">
-            <button
-              type="submit"
-              className="btn btn-info"
-              disabled={loading}
-            >
+            <button type="submit" className="btn btn-info" disabled={loading}>
               {loading ? (
                 <>
                   <span className="spinner-border spinner-border-sm me-2"></span>

@@ -19,7 +19,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
     tipo_sangre_participante: "O+",
     alergico: false,
     alergias: "",
-    foto_credencial: ""
+    foto_credencial: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -27,9 +27,9 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -40,24 +40,27 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
 
     try {
       const token = authService.getToken();
-      
+
       // Preparar datos para enviar como JSON
       const dataToSend = {
         ...formData,
         equipo_id: equipoId,
-        foto_credencial: formData.foto_credencial || null // Usa la ruta ingresada o null si está vacío
+        foto_credencial: formData.foto_credencial || null, // Usa la ruta ingresada o null si está vacío
       };
 
       // Enviar a la API correcta
-      const response = await fetch('http://127.0.0.1:8000/api/participantes', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(dataToSend)
-      });
+      const response = await fetch(
+        "https://chef-api.cecytebcs.edu.mx/public/api/participantes",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
 
       const responseData = await response.json();
 
@@ -80,7 +83,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
           tipo_sangre_participante: "O+",
           alergico: false,
           alergias: "",
-          foto_credencial: ""
+          foto_credencial: "",
         });
       } else {
         setError(responseData.message || "Error al agregar participante");
@@ -115,7 +118,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             <div className="col-12">
               <h6 className="fw-bold text-dark mb-3">Información Personal</h6>
             </div>
-            
+
             <div className="col-md-6">
               <label className="form-label fw-semibold">
                 Nombre Completo *
@@ -131,9 +134,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Rol *
-              </label>
+              <label className="form-label fw-semibold">Rol *</label>
               <select
                 className="form-select"
                 name="rol_participante"
@@ -150,9 +151,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Teléfono *
-              </label>
+              <label className="form-label fw-semibold">Teléfono *</label>
               <input
                 type="tel"
                 className="form-control"
@@ -179,13 +178,13 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
 
             {/* Información Académica */}
             <div className="col-12">
-              <h6 className="fw-bold text-dark mb-3 mt-4">Información Académica</h6>
+              <h6 className="fw-bold text-dark mb-3 mt-4">
+                Información Académica
+              </h6>
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Matrícula *
-              </label>
+              <label className="form-label fw-semibold">Matrícula *</label>
               <input
                 type="text"
                 className="form-control"
@@ -197,9 +196,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Plantel *
-              </label>
+              <label className="form-label fw-semibold">Plantel *</label>
               <input
                 type="text"
                 className="form-control"
@@ -211,9 +208,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                CCT del Plantel
-              </label>
+              <label className="form-label fw-semibold">CCT del Plantel</label>
               <input
                 type="text"
                 className="form-control"
@@ -224,9 +219,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Semestre *
-              </label>
+              <label className="form-label fw-semibold">Semestre *</label>
               <select
                 className="form-select"
                 name="semestre_participante"
@@ -234,16 +227,16 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
                 onChange={handleChange}
                 required
               >
-                {Array.from({ length: 12 }, (_, i) => i + 1).map(sem => (
-                  <option key={sem} value={sem}>{sem}° Semestre</option>
+                {Array.from({ length: 12 }, (_, i) => i + 1).map((sem) => (
+                  <option key={sem} value={sem}>
+                    {sem}° Semestre
+                  </option>
                 ))}
               </select>
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Especialidad
-              </label>
+              <label className="form-label fw-semibold">Especialidad</label>
               <input
                 type="text"
                 className="form-control"
@@ -255,9 +248,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Talla
-              </label>
+              <label className="form-label fw-semibold">Talla</label>
               <select
                 className="form-select"
                 name="talla_participante"
@@ -275,13 +266,13 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
 
             {/* Información Médica */}
             <div className="col-12">
-              <h6 className="fw-bold text-dark mb-3 mt-4">Información Médica</h6>
+              <h6 className="fw-bold text-dark mb-3 mt-4">
+                Información Médica
+              </h6>
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Tipo de Sangre
-              </label>
+              <label className="form-label fw-semibold">Tipo de Sangre</label>
               <select
                 className="form-select"
                 name="tipo_sangre_participante"
@@ -300,9 +291,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">
-                Medicamentos
-              </label>
+              <label className="form-label fw-semibold">Medicamentos</label>
               <input
                 type="text"
                 className="form-control"
@@ -345,9 +334,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
 
             {formData.alergico && (
               <div className="col-12">
-                <label className="form-label fw-semibold">
-                  Alergias
-                </label>
+                <label className="form-label fw-semibold">Alergias</label>
                 <input
                   type="text"
                   className="form-control"
@@ -377,7 +364,8 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
                 placeholder="Ej: credenciales/juan_perez_2024.jpg"
               />
               <div className="form-text">
-                Opcional: Ingresa la ruta de la imagen de credencial o déjalo vacío
+                Opcional: Ingresa la ruta de la imagen de credencial o déjalo
+                vacío
               </div>
             </div>
           </div>
