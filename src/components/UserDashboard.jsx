@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext.jsx";
 import Header from "./Header.jsx";
 import EquiposTable from "./EquiposTable.jsx";
 import UserEquipoDetalle from "./UserEquipoDetalle.jsx";
+import UserBuzonAsistencia from "./UserBuzonAsistencia.jsx";
 import "./Dashboard.css";
 import { CECYTE_CHEF_SIN_FONDO } from "../assets/images";
 
@@ -145,6 +146,8 @@ function UserDashboard() {
         return "Mi Perfil";
       case "equipos":
         return "Mis Equipos";
+      case "buzon":
+        return "Buzón de Asistencia";
       default:
         return "Mi Perfil";
     }
@@ -224,6 +227,26 @@ function UserDashboard() {
                 >
                   <i className="bi bi-people"></i>
                   <span>Equipos</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Soporte y Asistencia */}
+            <div className="nav-category">
+              <div className="nav-category-header">
+                <i className="bi bi-headset"></i>
+                <span>Soporte</span>
+              </div>
+              <div className="nav-category-items">
+                <a
+                  className={`nav-link ${
+                    activeSection === "buzon" ? "active" : ""
+                  }`}
+                  onClick={() => handleSectionChange("buzon")}
+                  href="#"
+                >
+                  <i className="bi bi-envelope"></i>
+                  <span>Buzón de Asistencia</span>
                 </a>
               </div>
             </div>
@@ -413,6 +436,15 @@ function UserDashboard() {
                     )}
                   </div>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Contenido de Buzón de Asistencia */}
+          {activeSection === "buzon" && (
+            <div className="row">
+              <div className="col-12">
+                <UserBuzonAsistencia />
               </div>
             </div>
           )}

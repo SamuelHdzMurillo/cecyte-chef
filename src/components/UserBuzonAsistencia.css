@@ -1,0 +1,116 @@
+.user-buzon-asistencia {
+  padding: 0;
+}
+
+.user-buzon-asistencia .card {
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 0.5rem;
+}
+
+.user-buzon-asistencia .card-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+}
+
+.user-buzon-asistencia .list-group-item {
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  padding: 1rem;
+}
+
+.user-buzon-asistencia .list-group-item:first-child {
+  border-top: none;
+}
+
+.user-buzon-asistencia .list-group-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.user-buzon-asistencia .badge {
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+}
+
+.user-buzon-asistencia .form-control:disabled {
+  background-color: #f8f9fa;
+  opacity: 0.7;
+}
+
+.user-buzon-asistencia .btn {
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+.user-buzon-asistencia .alert {
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.user-buzon-asistencia .spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .user-buzon-asistencia .d-flex.justify-content-between {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+  
+  .user-buzon-asistencia .btn {
+    width: 100%;
+  }
+  
+  .user-buzon-asistencia .d-flex.gap-2 {
+    flex-direction: column;
+  }
+  
+  .user-buzon-asistencia .d-flex.gap-2 .btn {
+    width: 100%;
+  }
+}
+
+/* Animation for form toggle */
+.user-buzon-asistencia .card {
+  transition: all 0.3s ease;
+}
+
+.user-buzon-asistencia .alert {
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects */
+.user-buzon-asistencia .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.user-buzon-asistencia .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+/* Focus states */
+.user-buzon-asistencia .form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.user-buzon-asistencia .btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
