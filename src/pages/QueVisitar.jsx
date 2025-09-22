@@ -17,10 +17,10 @@ function QueVisitar({ onLoginClick }) {
       try {
         setLoading(true);
         setError(null);
-        console.log('Iniciando petición a lugares de interés...');
+        console.log("Iniciando petición a lugares de interés...");
         const response = await lugaresInteresService.getLugaresInteres();
-        console.log('Respuesta recibida:', response);
-        
+        console.log("Respuesta recibida:", response);
+
         // Intentar diferentes estructuras de respuesta
         let lugaresData = [];
         if (Array.isArray(response)) {
@@ -30,12 +30,14 @@ function QueVisitar({ onLoginClick }) {
         } else if (response.lugares && Array.isArray(response.lugares)) {
           lugaresData = response.lugares;
         }
-        
+
         setLugares(lugaresData);
-        console.log('Lugares establecidos:', lugaresData);
+        console.log("Lugares establecidos:", lugaresData);
       } catch (err) {
-        console.error('Error al cargar lugares de interés:', err);
-        setError('Error al cargar los lugares de interés. Por favor, intenta de nuevo.');
+        console.error("Error al cargar lugares de interés:", err);
+        setError(
+          "Error al cargar los lugares de interés. Por favor, intenta de nuevo."
+        );
       } finally {
         setLoading(false);
       }
@@ -47,25 +49,25 @@ function QueVisitar({ onLoginClick }) {
   return (
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
-      
+
       {/* Lugares Section - Premium Parallax */}
       <section className="cecyte-chef-lugares-section">
         <div className="cecyte-chef-parallax-container">
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
-            <img 
-              src={LUGARES_VISITA} 
-              alt="Lugares para visitar en La Paz" 
+            <img
+              src={LUGARES_VISITA}
+              alt="Lugares para visitar en La Paz"
               className="cecyte-chef-parallax-image"
             />
           </div>
-          
+
           {/* Overlay with gradient and texture */}
           <div className="cecyte-chef-parallax-overlay">
             <div className="cecyte-chef-overlay-gradient"></div>
             <div className="cecyte-chef-overlay-texture"></div>
           </div>
-          
+
           {/* Content Layer */}
           <div className="cecyte-chef-parallax-content">
             <div className="cecyte-chef-container">
@@ -73,19 +75,20 @@ function QueVisitar({ onLoginClick }) {
                 <div className="cecyte-chef-lugares-badge">
                   <span>Turismo</span>
                 </div>
-                
+
                 <h1 className="cecyte-chef-lugares-title">
                   <span className="cecyte-chef-title-line">¿Qué</span>
                   <span className="cecyte-chef-title-highlight">visitar?</span>
                 </h1>
-                
+
                 <p className="cecyte-chef-lugares-description">
-                  Descubre los lugares más emblemáticos de La Paz, Baja California Sur. 
-                  Desde playas paradisíacas hasta sitios históricos y naturales únicos, 
-                  La Paz ofrece una experiencia turística incomparable que complementará 
-                  tu participación en el concurso culinario.
+                  Descubre los lugares más emblemáticos de La Paz, Baja
+                  California Sur. Desde playas paradisíacas hasta sitios
+                  históricos y naturales únicos, La Paz ofrece una experiencia
+                  turística incomparable que complementará tu participación en
+                  el concurso culinario.
                 </p>
-                
+
                 <div className="cecyte-chef-lugares-actions">
                   <button className="cecyte-chef-lugares-button cecyte-chef-btn-primary">
                     <span>Ver lugares</span>
@@ -93,12 +96,6 @@ function QueVisitar({ onLoginClick }) {
                       <i className="bi bi-geo-alt"></i>
                     </div>
                   </button>
-                </div>
-                
-                {/* Scroll indicator */}
-                <div className="cecyte-chef-scroll-indicator">
-                  <div className="cecyte-chef-scroll-line"></div>
-                  <span>Explora La Paz</span>
                 </div>
               </div>
             </div>
@@ -117,14 +114,14 @@ function QueVisitar({ onLoginClick }) {
                   Atrativos turísticos de La Paz
                 </h2>
               </div>
-              
+
               <p className="cecyte-chef-objetivo-description">
-                La Paz es una ciudad llena de atractivos naturales y culturales. 
-                Desde el famoso malecón con sus atardeceres espectaculares hasta 
-                las playas de arena blanca y aguas cristalinas, cada lugar tiene 
+                La Paz es una ciudad llena de atractivos naturales y culturales.
+                Desde el famoso malecón con sus atardeceres espectaculares hasta
+                las playas de arena blanca y aguas cristalinas, cada lugar tiene
                 una historia que contar y una belleza única que admirar.
               </p>
-              
+
               <div className="cecyte-chef-objetivo-buttons">
                 <button className="cecyte-chef-btn cecyte-chef-btn-primary">
                   <span>Lugares recomendados</span>
@@ -132,8 +129,6 @@ function QueVisitar({ onLoginClick }) {
                     <i className="bi bi-geo-alt"></i>
                   </div>
                 </button>
-                
-                
               </div>
             </div>
 
@@ -155,12 +150,13 @@ function QueVisitar({ onLoginClick }) {
       <section className="cecyte-chef-lugares-cards-section">
         <div className="cecyte-chef-container">
           <div className="cecyte-chef-lugares-header">
-            
             <h2 className="cecyte-chef-lugares-title">
-              Lugares de <span className="cecyte-chef-title-highlight">interés</span>
+              Lugares de{" "}
+              <span className="cecyte-chef-title-highlight">interés</span>
             </h2>
             <p className="cecyte-chef-lugares-description">
-              Descubre los atractivos turísticos más importantes de La Paz, Baja California Sur
+              Descubre los atractivos turísticos más importantes de La Paz, Baja
+              California Sur
             </p>
           </div>
 
@@ -176,7 +172,7 @@ function QueVisitar({ onLoginClick }) {
             <div className="cecyte-chef-error">
               <i className="bi bi-exclamation-triangle"></i>
               <p>{error}</p>
-              <button 
+              <button
                 className="cecyte-chef-btn cecyte-chef-btn-primary"
                 onClick={() => window.location.reload()}
               >
@@ -191,14 +187,12 @@ function QueVisitar({ onLoginClick }) {
           {/* Grid de tarjetas de lugares de interés */}
           {!loading && !error && lugares.length > 0 && (
             <div className="cecyte-chef-lugares-grid">
-              {console.log('Renderizando lugares:', lugares)}
+              {console.log("Renderizando lugares:", lugares)}
               {lugares.map((lugar) => (
                 <LugarInteresCard key={lugar.id} lugar={lugar} />
               ))}
             </div>
           )}
-
-          
 
           {!loading && !error && lugares.length === 0 && (
             <div className="cecyte-chef-empty">

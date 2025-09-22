@@ -18,8 +18,8 @@ function Hospedajes({ onLoginClick }) {
         setLoading(true);
         setError(null);
         const response = await hospedajesService.getHospedajes();
-        console.log('Respuesta hospedajes:', response);
-        
+        console.log("Respuesta hospedajes:", response);
+
         // Intentar diferentes estructuras de respuesta
         let hospedajesData = [];
         if (Array.isArray(response)) {
@@ -29,11 +29,13 @@ function Hospedajes({ onLoginClick }) {
         } else if (response.hospedajes && Array.isArray(response.hospedajes)) {
           hospedajesData = response.hospedajes;
         }
-        
+
         setHospedajes(hospedajesData);
       } catch (err) {
-        console.error('Error al cargar hospedajes:', err);
-        setError('Error al cargar los hospedajes. Por favor, intenta de nuevo.');
+        console.error("Error al cargar hospedajes:", err);
+        setError(
+          "Error al cargar los hospedajes. Por favor, intenta de nuevo."
+        );
       } finally {
         setLoading(false);
       }
@@ -45,25 +47,25 @@ function Hospedajes({ onLoginClick }) {
   return (
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
-      
+
       {/* Hoteles Section - Premium Parallax */}
       <section className="cecyte-chef-hoteles-section">
         <div className="cecyte-chef-parallax-container">
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
-            <img 
-              src={LUGARES_VISITA} 
-              alt="Lugares de visita en La Paz" 
+            <img
+              src={LUGARES_VISITA}
+              alt="Lugares de visita en La Paz"
               className="cecyte-chef-parallax-image"
             />
           </div>
-          
+
           {/* Overlay with gradient and texture */}
           <div className="cecyte-chef-parallax-overlay">
             <div className="cecyte-chef-overlay-gradient"></div>
             <div className="cecyte-chef-overlay-texture"></div>
           </div>
-          
+
           {/* Content Layer */}
           <div className="cecyte-chef-parallax-content">
             <div className="cecyte-chef-container">
@@ -71,19 +73,22 @@ function Hospedajes({ onLoginClick }) {
                 <div className="cecyte-chef-hoteles-badge">
                   <span>Hospedaje</span>
                 </div>
-                
+
                 <h1 className="cecyte-chef-hoteles-title">
                   <span className="cecyte-chef-title-line">¿Dónde</span>
-                  <span className="cecyte-chef-title-highlight">hospedarte?</span>
+                  <span className="cecyte-chef-title-highlight">
+                    hospedarte?
+                  </span>
                 </h1>
-                
+
                 <p className="cecyte-chef-hoteles-description">
-                  Descubre los mejores hoteles y resorts de La Paz, Baja California Sur. 
-                  Desde lujosos complejos turísticos hasta acogedores hoteles boutique, 
-                  encuentra el lugar perfecto para tu estadía con vistas espectaculares 
-                  al mar y comodidades de primera clase.
+                  Descubre los mejores hoteles y resorts de La Paz, Baja
+                  California Sur. Desde lujosos complejos turísticos hasta
+                  acogedores hoteles boutique, encuentra el lugar perfecto para
+                  tu estadía con vistas espectaculares al mar y comodidades de
+                  primera clase.
                 </p>
-                
+
                 <div className="cecyte-chef-hoteles-actions">
                   <button className="cecyte-chef-hoteles-button cecyte-chef-btn-primary">
                     <span>Ver hospedajes</span>
@@ -91,12 +96,6 @@ function Hospedajes({ onLoginClick }) {
                       <i className="bi bi-building"></i>
                     </div>
                   </button>
-                </div>
-                
-                {/* Scroll indicator */}
-                <div className="cecyte-chef-scroll-indicator">
-                  <div className="cecyte-chef-scroll-line"></div>
-                  <span>Explora las opciones</span>
                 </div>
               </div>
             </div>
@@ -115,13 +114,15 @@ function Hospedajes({ onLoginClick }) {
                   Opciones de alojamiento en La Paz
                 </h2>
               </div>
-              
+
               <p className="cecyte-chef-objetivo-description">
-                La Paz ofrece una amplia variedad de opciones de hospedaje para todos los gustos y presupuestos. 
-                Desde hoteles de lujo con vista al mar hasta hostales económicos en el centro histórico, 
-                encontrarás el lugar perfecto para tu estadía durante el concurso.
+                La Paz ofrece una amplia variedad de opciones de hospedaje para
+                todos los gustos y presupuestos. Desde hoteles de lujo con vista
+                al mar hasta hostales económicos en el centro histórico,
+                encontrarás el lugar perfecto para tu estadía durante el
+                concurso.
               </p>
-              
+
               <div className="cecyte-chef-objetivo-buttons">
                 <button className="cecyte-chef-btn cecyte-chef-btn-primary">
                   <span>Hoteles recomendados</span>
@@ -129,8 +130,6 @@ function Hospedajes({ onLoginClick }) {
                     <i className="bi bi-building"></i>
                   </div>
                 </button>
-                
-                
               </div>
             </div>
 
@@ -152,12 +151,13 @@ function Hospedajes({ onLoginClick }) {
       <section className="cecyte-chef-hospedajes-cards-section">
         <div className="cecyte-chef-container">
           <div className="cecyte-chef-hospedajes-header">
-            
             <h2 className="cecyte-chef-hospedajes-title">
-              Opciones de <span className="cecyte-chef-title-highlight">Hospedajes</span>
+              Opciones de{" "}
+              <span className="cecyte-chef-title-highlight">Hospedajes</span>
             </h2>
             <p className="cecyte-chef-hospedajes-description">
-              Descubre los mejores hoteles y hospedajes disponibles en La Paz, Baja California Sur
+              Descubre los mejores hoteles y hospedajes disponibles en La Paz,
+              Baja California Sur
             </p>
           </div>
 
@@ -173,7 +173,7 @@ function Hospedajes({ onLoginClick }) {
             <div className="cecyte-chef-error">
               <i className="bi bi-exclamation-triangle"></i>
               <p>{error}</p>
-              <button 
+              <button
                 className="cecyte-chef-btn cecyte-chef-btn-primary"
                 onClick={() => window.location.reload()}
               >

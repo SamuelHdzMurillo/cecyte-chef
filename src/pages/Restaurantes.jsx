@@ -18,22 +18,27 @@ function Restaurantes({ onLoginClick }) {
         setLoading(true);
         setError(null);
         const response = await restaurantesService.getRestaurantes();
-        console.log('Respuesta restaurantes:', response);
-        
+        console.log("Respuesta restaurantes:", response);
+
         // Intentar diferentes estructuras de respuesta
         let restaurantesData = [];
         if (Array.isArray(response)) {
           restaurantesData = response;
         } else if (response.data && Array.isArray(response.data)) {
           restaurantesData = response.data;
-        } else if (response.restaurantes && Array.isArray(response.restaurantes)) {
+        } else if (
+          response.restaurantes &&
+          Array.isArray(response.restaurantes)
+        ) {
           restaurantesData = response.restaurantes;
         }
-        
+
         setRestaurantes(restaurantesData);
       } catch (err) {
-        console.error('Error al cargar restaurantes:', err);
-        setError('Error al cargar los restaurantes. Por favor, intenta de nuevo.');
+        console.error("Error al cargar restaurantes:", err);
+        setError(
+          "Error al cargar los restaurantes. Por favor, intenta de nuevo."
+        );
       } finally {
         setLoading(false);
       }
@@ -45,25 +50,25 @@ function Restaurantes({ onLoginClick }) {
   return (
     <div className="cecyte-chef-homepage">
       <Navbar onLoginClick={onLoginClick} />
-      
+
       {/* Restaurantes Section - Premium Parallax */}
       <section className="cecyte-chef-restaurantes-section">
         <div className="cecyte-chef-parallax-container">
           {/* Background Layers for Advanced Parallax */}
           <div className="cecyte-chef-parallax-bg-layer cecyte-chef-bg-layer-1">
-            <img 
-              src={RESTAURANTE} 
-              alt="Restaurantes en La Paz" 
+            <img
+              src={RESTAURANTE}
+              alt="Restaurantes en La Paz"
               className="cecyte-chef-parallax-image"
             />
           </div>
-          
+
           {/* Overlay with gradient and texture */}
           <div className="cecyte-chef-parallax-overlay">
             <div className="cecyte-chef-overlay-gradient"></div>
             <div className="cecyte-chef-overlay-texture"></div>
           </div>
-          
+
           {/* Content Layer */}
           <div className="cecyte-chef-parallax-content">
             <div className="cecyte-chef-container">
@@ -71,19 +76,20 @@ function Restaurantes({ onLoginClick }) {
                 <div className="cecyte-chef-restaurantes-badge">
                   <span>Gastronomía</span>
                 </div>
-                
+
                 <h1 className="cecyte-chef-restaurantes-title">
                   <span className="cecyte-chef-title-line">¿Dónde</span>
                   <span className="cecyte-chef-title-highlight">comer?</span>
                 </h1>
-                
+
                 <p className="cecyte-chef-restaurantes-description">
-                  Descubre la rica gastronomía de La Paz, Baja California Sur. 
-                  Desde mariscos frescos del Mar de Cortés hasta platillos tradicionales mexicanos, 
-                  los restaurantes locales ofrecen una experiencia culinaria única que complementa 
-                  perfectamente tu participación en el concurso.
+                  Descubre la rica gastronomía de La Paz, Baja California Sur.
+                  Desde mariscos frescos del Mar de Cortés hasta platillos
+                  tradicionales mexicanos, los restaurantes locales ofrecen una
+                  experiencia culinaria única que complementa perfectamente tu
+                  participación en el concurso.
                 </p>
-                
+
                 <div className="cecyte-chef-restaurantes-actions">
                   <button className="cecyte-chef-restaurantes-button cecyte-chef-btn-primary">
                     <span>Ver restaurantes</span>
@@ -91,12 +97,6 @@ function Restaurantes({ onLoginClick }) {
                       <i className="bi bi-utensils"></i>
                     </div>
                   </button>
-                </div>
-                
-                {/* Scroll indicator */}
-                <div className="cecyte-chef-scroll-indicator">
-                  <div className="cecyte-chef-scroll-line"></div>
-                  <span>Descubre la gastronomía local</span>
                 </div>
               </div>
             </div>
@@ -115,14 +115,15 @@ function Restaurantes({ onLoginClick }) {
                   Sabores únicos de Baja California Sur
                 </h2>
               </div>
-              
+
               <p className="cecyte-chef-objetivo-description">
-                La Paz es famosa por su gastronomía marina y sus sabores únicos. 
-                Los restaurantes locales ofrecen desde ceviches frescos y tacos de pescado 
-                hasta platillos gourmet con ingredientes locales. Una experiencia culinaria 
-                que inspirará tu creatividad en el concurso.
+                La Paz es famosa por su gastronomía marina y sus sabores únicos.
+                Los restaurantes locales ofrecen desde ceviches frescos y tacos
+                de pescado hasta platillos gourmet con ingredientes locales. Una
+                experiencia culinaria que inspirará tu creatividad en el
+                concurso.
               </p>
-              
+
               <div className="cecyte-chef-objetivo-buttons">
                 <button className="cecyte-chef-btn cecyte-chef-btn-primary">
                   <span>Restaurantes recomendados</span>
@@ -130,8 +131,6 @@ function Restaurantes({ onLoginClick }) {
                     <i className="bi bi-utensils"></i>
                   </div>
                 </button>
-                
-                
               </div>
             </div>
 
@@ -153,12 +152,13 @@ function Restaurantes({ onLoginClick }) {
       <section className="cecyte-chef-restaurantes-cards-section">
         <div className="cecyte-chef-container">
           <div className="cecyte-chef-restaurantes-header">
-            
             <h2 className="cecyte-chef-restaurantes-title">
-              Restaurantes <span className="cecyte-chef-title-highlight">recomendados</span>
+              Restaurantes{" "}
+              <span className="cecyte-chef-title-highlight">recomendados</span>
             </h2>
             <p className="cecyte-chef-restaurantes-description">
-              Descubre los mejores restaurantes y sabores únicos de La Paz, Baja California Sur
+              Descubre los mejores restaurantes y sabores únicos de La Paz, Baja
+              California Sur
             </p>
           </div>
 
@@ -174,7 +174,7 @@ function Restaurantes({ onLoginClick }) {
             <div className="cecyte-chef-error">
               <i className="bi bi-exclamation-triangle"></i>
               <p>{error}</p>
-              <button 
+              <button
                 className="cecyte-chef-btn cecyte-chef-btn-primary"
                 onClick={() => window.location.reload()}
               >
@@ -190,7 +190,10 @@ function Restaurantes({ onLoginClick }) {
           {!loading && !error && restaurantes.length > 0 && (
             <div className="cecyte-chef-restaurantes-grid">
               {restaurantes.map((restaurante) => (
-                <RestauranteCard key={restaurante.id} restaurante={restaurante} />
+                <RestauranteCard
+                  key={restaurante.id}
+                  restaurante={restaurante}
+                />
               ))}
             </div>
           )}
