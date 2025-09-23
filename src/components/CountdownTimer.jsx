@@ -105,7 +105,7 @@ const CountdownTimer = () => {
             </div>
             <h2 className="cecyte-chef-countdown-title">
               <span className="cecyte-chef-countdown-title-main">
-                CecyteChef
+                CECYTE CHEF
               </span>
               <span className="cecyte-chef-countdown-title-sub">
                 26 de Noviembre
