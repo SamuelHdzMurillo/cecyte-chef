@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
 import Navbar from "./Navbar";
 import CountdownTimer from "./CountdownTimer";
@@ -34,9 +35,27 @@ import {
 } from "../assets/images";
 
 function HomePage({ onLoginClick }) {
+  const navigate = useNavigate();
   const parallaxRef = useRef(null);
   const hotelesParallaxRef = useRef(null);
   const restaurantesParallaxRef = useRef(null);
+
+  // Funciones de navegación
+  const handleNavigateToPrograma = () => {
+    navigate("/programa");
+  };
+
+  const handleNavigateToQueVisitar = () => {
+    navigate("/que-visitar");
+  };
+
+  const handleNavigateToHospedajes = () => {
+    navigate("/hospedajes");
+  };
+
+  const handleNavigateToRestaurantes = () => {
+    navigate("/restaurantes");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -415,7 +434,10 @@ function HomePage({ onLoginClick }) {
                 <span>Participar Ahora</span>
                 <i className="bi bi-arrow-right"></i>
               </button>
-              <button className="cecyte-chef-btn cecyte-chef-btn-secondary">
+              <button
+                className="cecyte-chef-btn cecyte-chef-btn-secondary"
+                onClick={handleNavigateToPrograma}
+              >
                 <span>Ver Programa</span>
                 <i className="bi bi-calendar-event"></i>
               </button>
@@ -1069,7 +1091,10 @@ function HomePage({ onLoginClick }) {
                 </p>
 
                 <div className="cecyte-chef-lugares-actions">
-                  <button className="cecyte-chef-lugares-button cecyte-chef-btn-primary">
+                  <button
+                    className="cecyte-chef-lugares-button cecyte-chef-btn-primary"
+                    onClick={handleNavigateToQueVisitar}
+                  >
                     <span>Explorar lugares</span>
                     <div className="cecyte-chef-btn-icon">
                       <i className="bi bi-arrow-right"></i>
@@ -1157,7 +1182,10 @@ function HomePage({ onLoginClick }) {
                 </p>
 
                 <div className="cecyte-chef-hoteles-actions">
-                  <button className="cecyte-chef-hoteles-button cecyte-chef-btn-primary">
+                  <button
+                    className="cecyte-chef-hoteles-button cecyte-chef-btn-primary"
+                    onClick={handleNavigateToHospedajes}
+                  >
                     <span>Ver hospedajes</span>
                     <div className="cecyte-chef-btn-icon">
                       <i className="bi bi-building"></i>
@@ -1238,7 +1266,10 @@ function HomePage({ onLoginClick }) {
                 </p>
 
                 <div className="cecyte-chef-restaurantes-actions">
-                  <button className="cecyte-chef-restaurantes-button cecyte-chef-btn-primary">
+                  <button
+                    className="cecyte-chef-restaurantes-button cecyte-chef-btn-primary"
+                    onClick={handleNavigateToRestaurantes}
+                  >
                     <span>Ver restaurantes</span>
                     <div className="cecyte-chef-btn-icon">
                       <i className="bi bi-shop"></i>
