@@ -1,31 +1,31 @@
-import React from 'react'
-import './HospedajeCard.css'
-import { HOTELES } from '../assets/images'
+import React from "react";
+import "./HospedajeCard.css";
+import { HOTELES } from "../assets/images";
 
 function HospedajeCard({ hospedaje }) {
   const handleContactar = () => {
     // Abrir WhatsApp con el número de teléfono
-    const telefono = hospedaje.numero_telefonico.replace(/\s/g, '')
-    const mensaje = `Hola, me interesa obtener información sobre ${hospedaje.nombre}`
-    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`
-    window.open(url, '_blank')
-  }
+    const telefono = hospedaje.numero_telefonico.replace(/\s/g, "");
+    const mensaje = `Hola, me interesa obtener información sobre ${hospedaje.nombre}`;
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+  };
 
   const handleEmail = () => {
     // Abrir cliente de email
-    const asunto = `Consulta sobre ${hospedaje.nombre}`
-    const url = `mailto:${hospedaje.correo}?subject=${encodeURIComponent(asunto)}`
-    window.open(url)
-  }
+    const asunto = `Consulta sobre ${hospedaje.nombre}`;
+    const url = `${hospedaje.correo}?subject=${encodeURIComponent(asunto)}`;
+    window.open(url);
+  };
 
   return (
     <div className="hospedaje-card">
       <div className="hospedaje-card-image">
-        <img 
-          src={hospedaje.img || HOTELES} 
+        <img
+          src={hospedaje.img || HOTELES}
           alt={hospedaje.nombre}
           onError={(e) => {
-            e.target.src = HOTELES
+            e.target.src = HOTELES;
           }}
         />
         <div className="hospedaje-card-overlay">
@@ -58,34 +58,29 @@ function HospedajeCard({ hospedaje }) {
               <i className="bi bi-telephone"></i>
               <span>{hospedaje.numero_telefonico}</span>
             </div>
-
-            <div className="hospedaje-card-email">
-              <i className="bi bi-envelope"></i>
-              <span>{hospedaje.correo}</span>
-            </div>
           </div>
         </div>
 
         <div className="hospedaje-card-actions">
-          <button 
+          <button
             className="hospedaje-card-btn hospedaje-card-btn-primary"
             onClick={handleContactar}
           >
             <i className="bi bi-whatsapp"></i>
             <span>Contactar</span>
           </button>
-          
-          <button 
+
+          <button
             className="hospedaje-card-btn hospedaje-card-btn-secondary"
             onClick={handleEmail}
           >
             <i className="bi bi-envelope"></i>
-            <span>Email</span>
+            <span>Oferta especial</span>
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default HospedajeCard
+export default HospedajeCard;
