@@ -195,7 +195,7 @@ function Login({ onBackClick }) {
               {/* Footer */}
               <div className="text-center mt-4">
                 <p className="text-muted small">
-                  &copy; 2024 CecyteChef. Todos los derechos reservados.
+                  &copy; 2025 CecyteChef. Todos los derechos reservados.
                 </p>
               </div>
             </div>
