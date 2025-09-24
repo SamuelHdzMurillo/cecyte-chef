@@ -106,9 +106,7 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
                 <option value="Plato Principal">Plato Principal</option>
                 <option value="Postre">Postre</option>
                 <option value="Bebida">Bebida</option>
-                <option value="Acompañamiento">Acompañamiento</option>
-                <option value="Salsa">Salsa</option>
-                <option value="Otro">Otro</option>
+                
               </select>
             </div>
 
@@ -141,8 +139,8 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
                 required
               />
               <div className="form-text small">
-                Ejemplo: Tortillas de maíz, pollo deshebrado, salsa verde, queso
-                fresco, crema, cebolla, cilantro
+                Ejemplo: 1KG de Tortillas de maíz, 300G de pollo deshebrado, 500ML de salsa verde, 1/2KG de queso
+  
               </div>
             </div>
 

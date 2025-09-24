@@ -106,21 +106,15 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
 
             <div className="col-md-6">
               <label className="form-label fw-semibold">Rol *</label>
-              <select
-                className="form-select"
+              <input
+                type="text"
+                className="form-control"
                 name="rol"
                 value={formData.rol}
                 onChange={handleChange}
+                placeholder="Ej: Asesor Académico, Coordinador, Docente, etc."
                 required
-              >
-                <option value="">Seleccionar rol</option>
-                <option value="Asesor Académico">Asesor Académico</option>
-                <option value="Coordinador">Coordinador</option>
-                <option value="Docente">Docente</option>
-                <option value="Director">Director</option>
-                <option value="Subdirector">Subdirector</option>
-                <option value="Otro">Otro</option>
-              </select>
+              />
             </div>
 
             <div className="col-md-6">
@@ -137,7 +131,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">Talla</label>
+              <label className="form-label fw-semibold">TALLA CAMISETA</label>
               <select
                 className="form-select"
                 name="talla"

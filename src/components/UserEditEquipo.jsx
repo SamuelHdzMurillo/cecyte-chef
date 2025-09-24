@@ -9,6 +9,8 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
     nombre_anfitrion: "",
     telefono_anfitrion: "",
     correo_anfitrion: "",
+    gas_propano_medida: "",
+    gas_propano_personalizada: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -23,6 +25,8 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
         nombre_anfitrion: equipo.nombre_anfitrion || "",
         telefono_anfitrion: equipo.telefono_anfitrion || "",
         correo_anfitrion: equipo.correo_anfitrion || "",
+        gas_propano_medida: equipo.gas_propano_medida || "",
+        gas_propano_personalizada: equipo.gas_propano_personalizada || "",
       });
     }
   }, [equipo]);
@@ -190,6 +194,46 @@ const UserEditEquipo = ({ equipo, onEquipoUpdated, onCancel }) => {
                 onChange={handleChange}
                 required
                 placeholder="Ej: maria.gonzalez@email.com"
+              />
+            </div>
+
+            {/* Información de Gas Propano */}
+            <div className="col-12">
+              <h6 className="fw-bold text-dark mb-3 mt-4">
+                Información de Gas Propano
+              </h6>
+            </div>
+
+            <div className="col-md-6">
+              <label className="form-label fw-semibold">
+                Medida de Gas Propano
+              </label>
+              <select
+                className="form-select"
+                name="gas_propano_medida"
+                value={formData.gas_propano_medida}
+                onChange={handleChange}
+              >
+                <option value="">Seleccionar medida</option>
+                <option value="1/2">1/2</option>
+                <option value="1/4">1/4</option>
+                <option value="16.4">16.4</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div className="col-md-6">
+              <label className="form-label fw-semibold">
+                Medida Personalizada
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="gas_propano_personalizada"
+                value={formData.gas_propano_personalizada}
+                onChange={handleChange}
+                placeholder="Especificar medida personalizada"
+                disabled={formData.gas_propano_medida !== "otro"}
               />
             </div>
           </div>

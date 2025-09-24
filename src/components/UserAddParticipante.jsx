@@ -20,6 +20,9 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
     alergico: false,
     alergias: "",
     foto_credencial: "",
+    numero_seguro_social: "",
+    nombre_contacto_emergencia: "",
+    telefono_contacto_emergencia: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -84,6 +87,9 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
           alergico: false,
           alergias: "",
           foto_credencial: "",
+          numero_seguro_social: "",
+          nombre_contacto_emergencia: "",
+          telefono_contacto_emergencia: "",
         });
       } else {
         setError(responseData.message || "Error al agregar participante");
@@ -135,19 +141,15 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
 
             <div className="col-md-6">
               <label className="form-label fw-semibold">Rol *</label>
-              <select
-                className="form-select"
+              <input
+                type="text"
+                className="form-control"
                 name="rol_participante"
                 value={formData.rol_participante}
                 onChange={handleChange}
+                placeholder="Ej: Estudiante, Chef Principal, Docente, etc."
                 required
-              >
-                <option value="estudiante">Estudiante</option>
-                <option value="chef_principal">Chef Principal</option>
-                <option value="sous_chef">Sous Chef</option>
-                <option value="docente">Docente</option>
-                <option value="coordinador">Coordinador</option>
-              </select>
+              />
             </div>
 
             <div className="col-md-6">
@@ -236,7 +238,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">Especialidad</label>
+              <label className="form-label fw-semibold">CARRERA TÉCNICA O ESPECIALIDAD</label>
               <input
                 type="text"
                 className="form-control"
@@ -248,7 +250,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">Talla</label>
+              <label className="form-label fw-semibold">Talla CAMISETA</label>
               <select
                 className="form-select"
                 name="talla_participante"
@@ -303,6 +305,18 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
+              <label className="form-label fw-semibold">Número de Seguro Social</label>
+              <input
+                type="text"
+                className="form-control"
+                name="numero_seguro_social"
+                value={formData.numero_seguro_social}
+                onChange={handleChange}
+                placeholder="Ej: 12345678901"
+              />
+            </div>
+
+            <div className="col-md-6">
               <div className="form-check">
                 <input
                   className="form-check-input"
@@ -345,6 +359,37 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
                 />
               </div>
             )}
+
+            {/* Contacto de Emergencia */}
+            <div className="col-12">
+              <h6 className="fw-bold text-dark mb-3 mt-4">
+                Contacto de Emergencia
+              </h6>
+            </div>
+
+            <div className="col-md-6">
+              <label className="form-label fw-semibold">Nombre del Contacto de Emergencia</label>
+              <input
+                type="text"
+                className="form-control"
+                name="nombre_contacto_emergencia"
+                value={formData.nombre_contacto_emergencia}
+                onChange={handleChange}
+                placeholder="Ej: María González"
+              />
+            </div>
+
+            <div className="col-md-6">
+              <label className="form-label fw-semibold">Teléfono del Contacto de Emergencia</label>
+              <input
+                type="tel"
+                className="form-control"
+                name="telefono_contacto_emergencia"
+                value={formData.telefono_contacto_emergencia}
+                onChange={handleChange}
+                placeholder="Ej: 6121234567"
+              />
+            </div>
 
             {/* Foto de Credencial */}
             <div className="col-12">

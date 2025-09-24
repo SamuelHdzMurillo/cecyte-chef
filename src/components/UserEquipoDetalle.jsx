@@ -19,7 +19,10 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
   const [showAddReceta, setShowAddReceta] = useState(false);
   const [showEditEquipo, setShowEditEquipo] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    gas_propano_medida: "",
+    gas_propano_personalizada: ""
+  });
 
   useEffect(() => {
     fetchEquipo();
@@ -33,6 +36,8 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
         nombre_anfitrion: equipo.nombre_anfitrion || "",
         telefono_anfitrion: equipo.telefono_anfitrion || "",
         correo_anfitrion: equipo.correo_anfitrion || "",
+        gas_propano_medida: equipo.gas_propano_medida || "",
+        gas_propano_personalizada: equipo.gas_propano_personalizada || "",
       });
     }
   }, [equipo]);
@@ -98,6 +103,8 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
         nombre_anfitrion: equipo.nombre_anfitrion || "",
         telefono_anfitrion: equipo.telefono_anfitrion || "",
         correo_anfitrion: equipo.correo_anfitrion || "",
+        gas_propano_medida: equipo.gas_propano_medida || "",
+        gas_propano_personalizada: equipo.gas_propano_personalizada || "",
       });
     }
   };
@@ -137,6 +144,8 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
       nombre_anfitrion: equipo.nombre_anfitrion || "",
       telefono_anfitrion: equipo.telefono_anfitrion || "",
       correo_anfitrion: equipo.correo_anfitrion || "",
+      gas_propano_medida: equipo.gas_propano_medida || "",
+      gas_propano_personalizada: equipo.gas_propano_personalizada || "",
     });
   };
 
@@ -340,6 +349,41 @@ const UserEquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 value={isEditing ? formData.nombre_equipo : equipo.nombre_equipo || ""} 
                 onChange={handleInputChange}
                 readOnly={!isEditing}
+              />
+            </div>
+            
+            {/* Cuarta fila - Medida de Gas Propano */}
+            <div className="col-md-6">
+              <label className="form-label small fw-semibold">
+                Medida de Gas Propano
+              </label>
+              <select 
+                className="form-select form-select-sm" 
+                name="gas_propano_medida"
+                value={isEditing ? formData.gas_propano_medida : equipo.gas_propano_medida || ""} 
+                onChange={handleInputChange}
+                disabled={!isEditing}
+              >
+                <option value="">Seleccionar medida</option>
+                <option value="1/2">1/2</option>
+                <option value="1/4">1/4</option>
+                <option value="16.4">16.4</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div className="col-md-6">
+              <label className="form-label small fw-semibold">
+                Medida Personalizada
+              </label>
+              <input 
+                type="text" 
+                className="form-control form-control-sm" 
+                name="gas_propano_personalizada"
+                value={isEditing ? formData.gas_propano_personalizada : equipo.gas_propano_personalizada || ""} 
+                onChange={handleInputChange}
+                readOnly={!isEditing || (isEditing ? formData.gas_propano_medida : equipo.gas_propano_medida) !== "otro"}
+                placeholder="Especificar medida personalizada"
+                disabled={!isEditing || (isEditing ? formData.gas_propano_medida : equipo.gas_propano_medida) !== "otro"}
               />
             </div>
           </div>
