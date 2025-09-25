@@ -68,8 +68,7 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
   const getStatusBadge = (status) => {
     const statusClasses = {
       activo: "badge bg-success",
-      inactivo: "badge bg-secondary",
-      suspendido: "badge bg-warning",
+      pendiente: "badge bg-warning",
       eliminado: "badge bg-danger",
     };
     return (
@@ -233,8 +232,7 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                   }
                 >
                   <option value="activo">Activo</option>
-                  <option value="inactivo">Inactivo</option>
-                  <option value="suspendido">Suspendido</option>
+                  <option value="pendiente">Pendiente</option>
                   <option value="eliminado">Eliminado</option>
                 </select>
               ) : (
