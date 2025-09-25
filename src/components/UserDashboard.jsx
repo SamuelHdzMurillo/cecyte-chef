@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import Header from "./Header.jsx";
 import EquiposTable from "./EquiposTable.jsx";
-import UserEquipoDetalle from "./UserEquipoDetalle.jsx";
+import UserEquipoDetalleMejorado from "./UserEquipoDetalleMejorado.jsx";
 import UserBuzonAsistencia from "./UserBuzonAsistencia.jsx";
 import UserAgregarAutoridad from "./UserAgregarAutoridad.jsx";
 import UserAddParticipante from "./UserAddParticipante.jsx";
@@ -483,10 +483,13 @@ function UserDashboard() {
                         </small>
                       </div>
                     ) : userEquipo.equipo ? (
-                      <UserEquipoDetalle
+                      <UserEquipoDetalleMejorado
                         equipoId={userEquipo.equipo.id}
                         onBack={() => setActiveSection("dashboard")}
                         embedded={true}
+                        onNavigateToForm={(formType) => {
+                          setActiveSection(formType);
+                        }}
                       />
                     ) : (
                       <div className="text-center py-4">
