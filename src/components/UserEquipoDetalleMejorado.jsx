@@ -21,6 +21,7 @@ const UserEquipoDetalleMejorado = ({
   const [formData, setFormData] = useState({
     gas_propano_medida: "",
     gas_propano_personalizada: "",
+    medida_gas_propano: "",
   });
 
   useEffect(() => {
@@ -29,6 +30,28 @@ const UserEquipoDetalleMejorado = ({
 
   useEffect(() => {
     if (equipo) {
+      console.log("=== DATOS COMPLETOS DEL EQUIPO ===");
+      console.log("Equipo completo:", JSON.stringify(equipo, null, 2));
+      console.log("=== CAMPOS ESPECÍFICOS ===");
+      console.log("medida_gas_propano:", equipo.medida_gas_propano);
+      console.log("gas_propano_medida:", equipo.gas_propano_medida);
+      console.log(
+        "gas_propano_personalizada:",
+        equipo.gas_propano_personalizada
+      );
+      console.log("=== PARTICIPANTES ===");
+      console.log("Participantes:", equipo.participantes);
+      console.log("=== ACOMPAÑANTES ===");
+      console.log("Acompañantes:", equipo.acompanantes);
+      console.log("=== RECETAS ===");
+      console.log("Recetas:", equipo.recetas);
+      console.log("=== EVENTO ===");
+      console.log("Evento:", equipo.evento);
+      console.log("=== FECHAS ===");
+      console.log("created_at:", equipo.created_at);
+      console.log("updated_at:", equipo.updated_at);
+      console.log("=====================================");
+
       setFormData({
         nombre_equipo: equipo.nombre_equipo || "",
         entidad_federativa: equipo.entidad_federativa || "",
@@ -37,6 +60,7 @@ const UserEquipoDetalleMejorado = ({
         correo_anfitrion: equipo.correo_anfitrion || "",
         gas_propano_medida: equipo.gas_propano_medida || "",
         gas_propano_personalizada: equipo.gas_propano_personalizada || "",
+        medida_gas_propano: equipo.medida_gas_propano || "",
       });
     }
   }, [equipo]);
@@ -47,6 +71,11 @@ const UserEquipoDetalleMejorado = ({
       const token = authService.getToken();
 
       const response = await apiService.get(`/equipos/${id}`, token);
+
+      console.log("=== RESPUESTA COMPLETA DEL SERVIDOR ===");
+      console.log("Response completa:", JSON.stringify(response, null, 2));
+      console.log("Response.data:", JSON.stringify(response.data, null, 2));
+      console.log("==========================================");
 
       if (response.data) {
         setEquipo(response.data);
@@ -89,16 +118,35 @@ const UserEquipoDetalleMejorado = ({
         correo_anfitrion: equipo.correo_anfitrion || "",
         gas_propano_medida: equipo.gas_propano_medida || "",
         gas_propano_personalizada: equipo.gas_propano_personalizada || "",
+        medida_gas_propano: equipo.medida_gas_propano || "",
       });
     }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    // Si se está editando la medida personalizada, guardar en medida_gas_propano
+    if (name === "gas_propano_personalizada") {
+      setFormData((prev) => ({
+        ...prev,
+        medida_gas_propano: value,
+        gas_propano_personalizada: value,
+      }));
+    } else if (name === "gas_propano_medida" && value !== "otro") {
+      // Si se selecciona una medida predefinida, limpiar la personalizada
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+        gas_propano_personalizada: "",
+        medida_gas_propano: "",
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSave = async () => {
@@ -133,6 +181,7 @@ const UserEquipoDetalleMejorado = ({
       correo_anfitrion: equipo.correo_anfitrion || "",
       gas_propano_medida: equipo.gas_propano_medida || "",
       gas_propano_personalizada: equipo.gas_propano_personalizada || "",
+      medida_gas_propano: equipo.medida_gas_propano || "",
     });
   };
 
@@ -334,7 +383,13 @@ const UserEquipoDetalleMejorado = ({
                   name="gas_propano_medida"
                   value={
                     isEditing
-                      ? formData.gas_propano_medida
+                      ? formData.medida_gas_propano &&
+                        formData.medida_gas_propano !== ""
+                        ? "otro"
+                        : formData.gas_propano_medida
+                      : equipo.medida_gas_propano &&
+                        equipo.medida_gas_propano !== ""
+                      ? "otro"
                       : equipo.gas_propano_medida || ""
                   }
                   onChange={handleInputChange}
@@ -360,23 +415,49 @@ const UserEquipoDetalleMejorado = ({
                   name="gas_propano_personalizada"
                   value={
                     isEditing
-                      ? formData.gas_propano_personalizada
-                      : equipo.gas_propano_personalizada || ""
+                      ? formData.medida_gas_propano || ""
+                      : equipo.medida_gas_propano || ""
                   }
                   onChange={handleInputChange}
                   readOnly={
                     !isEditing ||
                     (isEditing
-                      ? formData.gas_propano_medida
+                      ? formData.medida_gas_propano &&
+                        formData.medida_gas_propano !== ""
+                        ? "otro"
+                        : formData.gas_propano_medida
+                      : equipo.medida_gas_propano &&
+                        equipo.medida_gas_propano !== ""
+                      ? "otro"
                       : equipo.gas_propano_medida) !== "otro"
                   }
                   placeholder="Especificar medida personalizada"
                   disabled={
                     !isEditing ||
                     (isEditing
-                      ? formData.gas_propano_medida
+                      ? formData.medida_gas_propano &&
+                        formData.medida_gas_propano !== ""
+                        ? "otro"
+                        : formData.gas_propano_medida
+                      : equipo.medida_gas_propano &&
+                        equipo.medida_gas_propano !== ""
+                      ? "otro"
                       : equipo.gas_propano_medida) !== "otro"
                   }
+                />
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6">
+              <div className="info-item">
+                <label className="form-label fw-bold text-dark mb-2">
+                  <i className="bi bi-tag me-1 text-primary"></i>
+                  Estatus del Equipo
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={equipo.estatus_del_equipo || ""}
+                  readOnly
                 />
               </div>
             </div>
@@ -440,6 +521,92 @@ const UserEquipoDetalleMejorado = ({
         </div>
       </div>
 
+      {/* Información del Evento */}
+      {equipo.evento && (
+        <div className="card mb-4 shadow-sm border-0">
+          <div className="card-header bg-primary text-white border-0 py-3">
+            <h6 className="mb-0 fw-bold">
+              <i className="bi bi-calendar-event me-2"></i>
+              Información del Evento
+            </h6>
+          </div>
+          <div className="card-body py-4">
+            <div className="row g-4">
+              <div className="col-lg-6 col-md-6">
+                <div className="info-item">
+                  <label className="form-label fw-bold text-dark mb-2">
+                    <i className="bi bi-calendar me-1 text-primary"></i>
+                    Fecha de Inicio
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={formatDate(equipo.evento.inicio_evento)}
+                    readOnly
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-6">
+                <div className="info-item">
+                  <label className="form-label fw-bold text-dark mb-2">
+                    <i className="bi bi-calendar-check me-1 text-primary"></i>
+                    Fecha de Fin
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={formatDate(equipo.evento.fin_evento)}
+                    readOnly
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-6">
+                <div className="info-item">
+                  <label className="form-label fw-bold text-dark mb-2">
+                    <i className="bi bi-geo-alt me-1 text-primary"></i>
+                    Sede del Evento
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={equipo.evento.sede_evento || ""}
+                    readOnly
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-6">
+                <div className="info-item">
+                  <label className="form-label fw-bold text-dark mb-2">
+                    <i className="bi bi-people me-1 text-primary"></i>
+                    Límite de Participantes
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={equipo.evento.lim_de_participantes_evento || ""}
+                    readOnly
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-6">
+                <div className="info-item">
+                  <label className="form-label fw-bold text-dark mb-2">
+                    <i className="bi bi-check-circle me-1 text-primary"></i>
+                    Estatus del Evento
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={equipo.evento.estatus_evento || ""}
+                    readOnly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Participantes - Vista simplificada */}
       <div className="card mb-4 shadow-sm border-0">
         <div className="card-header bg-primary text-white border-0 py-3">
@@ -466,39 +633,105 @@ const UserEquipoDetalleMejorado = ({
                     <div className="card-body py-3">
                       <div className="d-flex align-items-center">
                         <div className="flex-shrink-0">
-                          <i className="bi bi-person-circle fs-2 text-primary"></i>
+                          <i className="bi bi-person-circle fs-2 text-dark"></i>
                         </div>
                         <div className="flex-grow-1 ms-3">
                           <h6 className="mb-1 fw-bold text-dark">
                             {participante.nombre_participante}
                           </h6>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-mortarboard me-1 text-primary"></i>
-                            <strong>Rol:</strong>{" "}
-                            {participante.rol_participante}
-                          </p>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-building me-1 text-primary"></i>
-                            <strong>Plantel:</strong>{" "}
-                            {participante.plantel_participante}
-                          </p>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-book me-1 text-primary"></i>
-                            <strong>Especialidad:</strong>{" "}
-                            {participante.especialidad_participante}
-                          </p>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-calendar me-1 text-primary"></i>
-                            <strong>Semestre:</strong>{" "}
-                            {participante.semestre_participante}
-                          </p>
-                          <p className="mb-0 text-dark small">
-                            <i className="bi bi-card-text me-1 text-primary"></i>
-                            <strong>Matrícula:</strong>
-                            <span className="badge bg-primary ms-1">
-                              {participante.matricula_participante}
-                            </span>
-                          </p>
+                          <div className="row g-2">
+                            <div className="col-md-6">
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-mortarboard me-1 text-primary"></i>
+                                <strong>Rol:</strong>{" "}
+                                {participante.rol_participante}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-building me-1 text-primary"></i>
+                                <strong>Plantel:</strong>{" "}
+                                {participante.plantel_participante}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-book me-1 text-primary"></i>
+                                <strong>Especialidad:</strong>{" "}
+                                {participante.especialidad_participante}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-calendar me-1 text-primary"></i>
+                                <strong>Semestre:</strong>{" "}
+                                {participante.semestre_participante}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-card-text me-1 text-primary"></i>
+                                <strong>Matrícula:</strong>
+                                <span className="badge bg-primary ms-1">
+                                  {participante.matricula_participante}
+                                </span>
+                              </p>
+                            </div>
+                            <div className="col-md-6">
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-telephone me-1 text-primary"></i>
+                                <strong>Teléfono:</strong>{" "}
+                                {participante.telefono_participante}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-envelope me-1 text-primary"></i>
+                                <strong>Correo:</strong>{" "}
+                                {participante.correo_participante}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-rulers me-1 text-primary"></i>
+                                <strong>Talla:</strong>{" "}
+                                {participante.talla_participante}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-building me-1 text-primary"></i>
+                                <strong>CCT:</strong> {participante.plantelcct}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-shield-check me-1 text-primary"></i>
+                                <strong>Seguro:</strong>{" "}
+                                {participante.seguro_facultativo ? "Sí" : "No"}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="row g-2 mt-2">
+                            <div className="col-md-6">
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-pill me-1 text-primary"></i>
+                                <strong>Medicamentos:</strong>{" "}
+                                {participante.medicamentos}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-heart-pulse me-1 text-primary"></i>
+                                <strong>Tipo de Sangre:</strong>{" "}
+                                {participante.tipo_sangre_participante}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-exclamation-triangle me-1 text-primary"></i>
+                                <strong>Alérgico:</strong>{" "}
+                                {participante.alergico ? "Sí" : "No"}
+                              </p>
+                            </div>
+                            <div className="col-md-6">
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-person-badge me-1 text-primary"></i>
+                                <strong>Contacto Emergencia:</strong>{" "}
+                                {participante.nombre_contacto_emergencia}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-telephone-fill me-1 text-primary"></i>
+                                <strong>Tel. Emergencia:</strong>{" "}
+                                {participante.telefono_contacto_emergencia}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-shield me-1 text-primary"></i>
+                                <strong>NSS:</strong>{" "}
+                                {participante.numero_seguro_social}
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -550,28 +783,39 @@ const UserEquipoDetalleMejorado = ({
                     <div className="card-body py-3">
                       <div className="d-flex align-items-center">
                         <div className="flex-shrink-0">
-                          <i className="bi bi-person-badge fs-2 text-info"></i>
+                          <i className="bi bi-person-badge fs-2 text-dark"></i>
                         </div>
                         <div className="flex-grow-1 ms-3">
                           <h6 className="mb-1 fw-bold text-dark">
                             {acompanante.nombre_acompanante}
                           </h6>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-briefcase me-1 text-primary"></i>
-                            <strong>Rol:</strong> {acompanante.rol}
-                          </p>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-building me-1 text-primary"></i>
-                            <strong>Puesto:</strong> {acompanante.puesto}
-                          </p>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-telephone me-1 text-primary"></i>
-                            <strong>Teléfono:</strong> {acompanante.telefono}
-                          </p>
-                          <p className="mb-0 text-dark small">
-                            <i className="bi bi-envelope me-1 text-primary"></i>
-                            <strong>Email:</strong> {acompanante.email}
-                          </p>
+                          <div className="row g-2">
+                            <div className="col-md-6">
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-briefcase me-1 text-primary"></i>
+                                <strong>Rol:</strong> {acompanante.rol}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-building me-1 text-primary"></i>
+                                <strong>Puesto:</strong> {acompanante.puesto}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-telephone me-1 text-primary"></i>
+                                <strong>Teléfono:</strong>{" "}
+                                {acompanante.telefono}
+                              </p>
+                            </div>
+                            <div className="col-md-6">
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-envelope me-1 text-primary"></i>
+                                <strong>Email:</strong> {acompanante.email}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-rulers me-1 text-primary"></i>
+                                <strong>Talla:</strong> {acompanante.talla}
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -623,46 +867,61 @@ const UserEquipoDetalleMejorado = ({
                     <div className="card-body py-3">
                       <div className="d-flex align-items-start">
                         <div className="flex-shrink-0">
-                          <i className="bi bi-journal-text fs-2 text-warning"></i>
+                          <i className="bi bi-journal-text fs-2 text-dark"></i>
                         </div>
                         <div className="flex-grow-1 ms-3">
                           <h6 className="mb-1 fw-bold text-dark">
                             {receta.descripcion}
                           </h6>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-tag me-1 text-primary"></i>
-                            <strong>Tipo:</strong> {receta.tipo_receta}
-                          </p>
-                          <p className="mb-1 text-dark small">
-                            <i className="bi bi-person me-1 text-primary"></i>
-                            <strong>Creado por:</strong> {receta.creado_por}
-                          </p>
+                          <div className="row g-2">
+                            <div className="col-md-6">
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-tag me-1 text-primary"></i>
+                                <strong>Tipo:</strong> {receta.tipo_receta}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-person me-1 text-primary"></i>
+                                <strong>Creado por:</strong> {receta.creado_por}
+                              </p>
+                              <p className="mb-1 text-dark small">
+                                <i className="bi bi-calendar me-1 text-primary"></i>
+                                <strong>Fecha:</strong>{" "}
+                                {formatDate(receta.fecha_creacion)}
+                              </p>
+                            </div>
+                          </div>
                           {receta.ingredientes && (
-                            <p className="mb-1 text-dark small">
-                              <i className="bi bi-list-ul me-1 text-primary"></i>
-                              <strong>Ingredientes:</strong>{" "}
-                              {receta.ingredientes.length > 50
-                                ? `${receta.ingredientes.substring(0, 50)}...`
-                                : receta.ingredientes}
-                            </p>
+                            <div className="mt-2">
+                              <p className="mb-1 text-dark small fw-bold">
+                                <i className="bi bi-list-ul me-1 text-primary"></i>
+                                Ingredientes:
+                              </p>
+                              <div className="bg-light p-2 rounded small text-dark">
+                                {receta.ingredientes}
+                              </div>
+                            </div>
                           )}
                           {receta.preparacion && (
-                            <p className="mb-1 text-dark small">
-                              <i className="bi bi-list-ol me-1 text-primary"></i>
-                              <strong>Preparación:</strong>{" "}
-                              {receta.preparacion.length > 50
-                                ? `${receta.preparacion.substring(0, 50)}...`
-                                : receta.preparacion}
-                            </p>
+                            <div className="mt-2">
+                              <p className="mb-1 text-dark small fw-bold">
+                                <i className="bi bi-list-ol me-1 text-primary"></i>
+                                Preparación:
+                              </p>
+                              <div className="bg-light p-2 rounded small text-dark">
+                                {receta.preparacion}
+                              </div>
+                            </div>
                           )}
                           {receta.observaciones && (
-                            <p className="mb-0 text-dark small">
-                              <i className="bi bi-chat-text me-1 text-primary"></i>
-                              <strong>Observaciones:</strong>{" "}
-                              {receta.observaciones.length > 50
-                                ? `${receta.observaciones.substring(0, 50)}...`
-                                : receta.observaciones}
-                            </p>
+                            <div className="mt-2">
+                              <p className="mb-1 text-dark small fw-bold">
+                                <i className="bi bi-chat-text me-1 text-primary"></i>
+                                Observaciones:
+                              </p>
+                              <div className="bg-light p-2 rounded small text-dark">
+                                {receta.observaciones}
+                              </div>
+                            </div>
                           )}
                         </div>
                       </div>
@@ -688,6 +947,59 @@ const UserEquipoDetalleMejorado = ({
           )}
         </div>
       </div>
+
+      {/* Cédulas de Registro */}
+      {equipo.cedulas_registro && equipo.cedulas_registro.length > 0 && (
+        <div className="card mb-4 shadow-sm border-0">
+          <div className="card-header bg-primary text-white border-0 py-3">
+            <div className="d-flex justify-content-between align-items-center">
+              <h6 className="mb-0 fw-bold">
+                <i className="bi bi-file-earmark-text me-2"></i>
+                Cédulas de Registro ({equipo.cedulas_registro.length})
+              </h6>
+            </div>
+          </div>
+          <div className="card-body py-3">
+            <div className="row g-3">
+              {equipo.cedulas_registro.map((cedula) => (
+                <div key={cedula.id} className="col-lg-6 col-md-12">
+                  <div className="card border-0 bg-light h-100">
+                    <div className="card-body py-3">
+                      <div className="d-flex align-items-start">
+                        <div className="flex-shrink-0">
+                          <i className="bi bi-file-earmark-text fs-2 text-dark"></i>
+                        </div>
+                        <div className="flex-grow-1 ms-3">
+                          <h6 className="mb-1 fw-bold text-dark">
+                            Cédula #{cedula.id}
+                          </h6>
+                          <p className="mb-1 text-dark small">
+                            <i className="bi bi-calendar me-1 text-primary"></i>
+                            <strong>Fecha:</strong>{" "}
+                            {formatDate(cedula.created_at)}
+                          </p>
+                          {cedula.tipo && (
+                            <p className="mb-1 text-dark small">
+                              <i className="bi bi-tag me-1 text-primary"></i>
+                              <strong>Tipo:</strong> {cedula.tipo}
+                            </p>
+                          )}
+                          {cedula.estado && (
+                            <p className="mb-0 text-dark small">
+                              <i className="bi bi-check-circle me-1 text-primary"></i>
+                              <strong>Estado:</strong> {cedula.estado}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
