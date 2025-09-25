@@ -6,6 +6,9 @@ import EquiposTable from "./EquiposTable.jsx";
 import UserEquipoDetalle from "./UserEquipoDetalle.jsx";
 import UserBuzonAsistencia from "./UserBuzonAsistencia.jsx";
 import UserAgregarAutoridad from "./UserAgregarAutoridad.jsx";
+import UserAddParticipante from "./UserAddParticipante.jsx";
+import UserAddAcompanante from "./UserAddAcompanante.jsx";
+import UserAddReceta from "./UserAddReceta.jsx";
 import "./Dashboard.css";
 import { CECYTE_CHEF_SIN_FONDO } from "../assets/images";
 
@@ -151,6 +154,12 @@ function UserDashboard() {
         return "Buzón de Asistencia";
       case "autoridad":
         return "Agregar Autoridad";
+      case "participante":
+        return "Agregar Participante";
+      case "acompanante":
+        return "Agregar Acompañante";
+      case "receta":
+        return "Agregar Receta";
       default:
         return "Mi Perfil";
     }
@@ -230,6 +239,46 @@ function UserDashboard() {
                 >
                   <i className="bi bi-people"></i>
                   <span>Equipos</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Gestión de Equipo */}
+            <div className="nav-category">
+              <div className="nav-category-header">
+                <i className="bi bi-gear"></i>
+                <span>Gestión de Equipo</span>
+              </div>
+              <div className="nav-category-items">
+                <a
+                  className={`nav-link ${
+                    activeSection === "participante" ? "active" : ""
+                  }`}
+                  onClick={() => handleSectionChange("participante")}
+                  href="#"
+                >
+                  <i className="bi bi-person-plus"></i>
+                  <span>Agregar Participante</span>
+                </a>
+                <a
+                  className={`nav-link ${
+                    activeSection === "acompanante" ? "active" : ""
+                  }`}
+                  onClick={() => handleSectionChange("acompanante")}
+                  href="#"
+                >
+                  <i className="bi bi-person-plus"></i>
+                  <span>Agregar Acompañante</span>
+                </a>
+                <a
+                  className={`nav-link ${
+                    activeSection === "receta" ? "active" : ""
+                  }`}
+                  onClick={() => handleSectionChange("receta")}
+                  href="#"
+                >
+                  <i className="bi bi-journal-plus"></i>
+                  <span>Agregar Receta</span>
                 </a>
               </div>
             </div>
@@ -467,6 +516,54 @@ function UserDashboard() {
             <div className="row">
               <div className="col-12">
                 <UserAgregarAutoridad />
+              </div>
+            </div>
+          )}
+
+          {/* Contenido de Agregar Participante */}
+          {activeSection === "participante" && (
+            <div className="row">
+              <div className="col-12">
+                <UserAddParticipante
+                  equipoId={userEquipo.equipo?.id || null}
+                  onParticipanteAdded={() => {
+                    // Recargar datos del equipo si es necesario
+                    fetchUserEquipo();
+                  }}
+                  onCancel={() => setActiveSection("equipos")}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Contenido de Agregar Acompañante */}
+          {activeSection === "acompanante" && (
+            <div className="row">
+              <div className="col-12">
+                <UserAddAcompanante
+                  equipoId={userEquipo.equipo?.id || null}
+                  onAcompananteAdded={() => {
+                    // Recargar datos del equipo si es necesario
+                    fetchUserEquipo();
+                  }}
+                  onCancel={() => setActiveSection("equipos")}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Contenido de Agregar Receta */}
+          {activeSection === "receta" && (
+            <div className="row">
+              <div className="col-12">
+                <UserAddReceta
+                  equipoId={userEquipo.equipo?.id || null}
+                  onRecetaAdded={() => {
+                    // Recargar datos del equipo si es necesario
+                    fetchUserEquipo();
+                  }}
+                  onCancel={() => setActiveSection("equipos")}
+                />
               </div>
             </div>
           )}

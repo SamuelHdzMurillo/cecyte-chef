@@ -14,6 +14,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,6 +52,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
       const responseData = await response.json();
 
       if (response.ok && responseData.success) {
+        setSuccess(true);
         onAcompananteAdded();
         // Limpiar formulario
         setFormData({
@@ -61,6 +63,11 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
           telefono: "",
           email: "",
         });
+
+        // Ocultar mensaje de éxito después de 3 segundos
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
       } else {
         setError(responseData.message || "Error al agregar acompañante");
       }
@@ -82,6 +89,24 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
       </div>
       <div className="card-body">
         <form onSubmit={handleSubmit}>
+          {/* Mensaje de éxito */}
+          {success && (
+            <div
+              className="alert alert-success alert-dismissible fade show"
+              role="alert"
+            >
+              <i className="bi bi-check-circle me-2"></i>
+              <strong>¡Acompañante agregado!</strong> El acompañante ha sido
+              registrado exitosamente en el equipo.
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => setSuccess(false)}
+              ></button>
+            </div>
+          )}
+
+          {/* Mensaje de error */}
           {error && (
             <div className="alert alert-danger" role="alert">
               <i className="bi bi-exclamation-triangle me-2"></i>

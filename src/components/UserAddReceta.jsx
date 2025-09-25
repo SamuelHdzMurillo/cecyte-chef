@@ -13,6 +13,7 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,6 +53,7 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
       const responseData = await response.json();
 
       if (response.ok && responseData.success) {
+        setSuccess(true);
         onRecetaAdded();
         // Limpiar formulario
         setFormData({
@@ -61,6 +63,11 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
           preparacion: "",
           observaciones: "",
         });
+
+        // Ocultar mensaje de éxito después de 3 segundos
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
       } else {
         setError(responseData.message || "Error al agregar receta");
       }
@@ -82,6 +89,24 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
       </div>
       <div className="card-body py-3">
         <form onSubmit={handleSubmit}>
+          {/* Mensaje de éxito */}
+          {success && (
+            <div
+              className="alert alert-success alert-dismissible fade show py-2"
+              role="alert"
+            >
+              <i className="bi bi-check-circle me-2"></i>
+              <strong>¡Receta agregada!</strong> La receta ha sido registrada
+              exitosamente en el equipo.
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => setSuccess(false)}
+              ></button>
+            </div>
+          )}
+
+          {/* Mensaje de error */}
           {error && (
             <div className="alert alert-danger py-2" role="alert">
               <i className="bi bi-exclamation-triangle me-2"></i>
@@ -106,7 +131,6 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
                 <option value="Plato Principal">Plato Principal</option>
                 <option value="Postre">Postre</option>
                 <option value="Bebida">Bebida</option>
-                
               </select>
             </div>
 
@@ -139,8 +163,8 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
                 required
               />
               <div className="form-text small">
-                Ejemplo: 1KG de Tortillas de maíz, 300G de pollo deshebrado, 500ML de salsa verde, 1/2KG de queso
-  
+                Ejemplo: 1KG de Tortillas de maíz, 300G de pollo deshebrado,
+                500ML de salsa verde, 1/2KG de queso
               </div>
             </div>
 

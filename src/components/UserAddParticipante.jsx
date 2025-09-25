@@ -27,6 +27,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -68,6 +69,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
       const responseData = await response.json();
 
       if (response.ok && responseData.success) {
+        setSuccess(true);
         onParticipanteAdded();
         // Limpiar formulario
         setFormData({
@@ -91,6 +93,11 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
           nombre_contacto_emergencia: "",
           telefono_contacto_emergencia: "",
         });
+
+        // Ocultar mensaje de éxito después de 3 segundos
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
       } else {
         setError(responseData.message || "Error al agregar participante");
       }
@@ -112,6 +119,24 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
       </div>
       <div className="card-body">
         <form onSubmit={handleSubmit}>
+          {/* Mensaje de éxito */}
+          {success && (
+            <div
+              className="alert alert-success alert-dismissible fade show"
+              role="alert"
+            >
+              <i className="bi bi-check-circle me-2"></i>
+              <strong>¡Participante agregado!</strong> El participante ha sido
+              registrado exitosamente en el equipo.
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => setSuccess(false)}
+              ></button>
+            </div>
+          )}
+
+          {/* Mensaje de error */}
           {error && (
             <div className="alert alert-danger" role="alert">
               <i className="bi bi-exclamation-triangle me-2"></i>
@@ -238,7 +263,9 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">CARRERA TÉCNICA O ESPECIALIDAD</label>
+              <label className="form-label fw-semibold">
+                CARRERA TÉCNICA O ESPECIALIDAD
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -305,7 +332,9 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">Número de Seguro Social</label>
+              <label className="form-label fw-semibold">
+                Número de Seguro Social
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -368,7 +397,9 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">Nombre del Contacto de Emergencia</label>
+              <label className="form-label fw-semibold">
+                Nombre del Contacto de Emergencia
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -380,7 +411,9 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label fw-semibold">Teléfono del Contacto de Emergencia</label>
+              <label className="form-label fw-semibold">
+                Teléfono del Contacto de Emergencia
+              </label>
               <input
                 type="tel"
                 className="form-control"
