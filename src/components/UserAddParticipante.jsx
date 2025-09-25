@@ -111,7 +111,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
 
   return (
     <div className="card border-0 shadow-sm">
-      <div className="card-header bg-success text-white">
+      <div className="card-header bg-primary text-white">
         <h6 className="mb-0 fw-bold">
           <i className="bi bi-person-plus me-2"></i>
           Agregar Nuevo Participante
@@ -451,7 +451,7 @@ const UserAddParticipante = ({ equipoId, onParticipanteAdded, onCancel }) => {
           <div className="d-flex gap-2 mt-4">
             <button
               type="submit"
-              className="btn btn-success"
+              className="btn btn-primary"
               disabled={loading}
             >
               {loading ? (

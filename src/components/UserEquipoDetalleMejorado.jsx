@@ -271,7 +271,7 @@ const UserEquipoDetalleMejorado = ({
                 {isEditing ? "Cancelar" : "Editar"}
               </button>
               <button
-                className="btn btn-outline-light px-4 py-2"
+                className="btn btn-outline-secondary px-4 py-2"
                 onClick={handleBack}
               >
                 <i className="bi bi-arrow-left me-2"></i>

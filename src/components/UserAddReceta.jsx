@@ -81,7 +81,7 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
 
   return (
     <div className="card border-0 shadow-sm">
-      <div className="card-header bg-warning text-dark py-2">
+      <div className="card-header bg-primary text-white py-2">
         <h6 className="mb-0 fw-bold">
           <i className="bi bi-journal-plus me-2"></i>
           Agregar Nueva Receta
@@ -205,7 +205,7 @@ const UserAddReceta = ({ equipoId, onRecetaAdded, onCancel }) => {
           <div className="d-flex gap-2 mt-3">
             <button
               type="submit"
-              className="btn btn-warning btn-sm px-3 py-1"
+              className="btn btn-primary btn-sm px-3 py-1"
               disabled={loading}
             >
               {loading ? (

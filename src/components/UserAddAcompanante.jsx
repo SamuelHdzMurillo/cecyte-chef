@@ -81,7 +81,7 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
 
   return (
     <div className="card border-0 shadow-sm">
-      <div className="card-header bg-info text-white">
+      <div className="card-header bg-primary text-white">
         <h6 className="mb-0 fw-bold">
           <i className="bi bi-person-badge-plus me-2"></i>
           Agregar Nuevo Acompañante
@@ -200,7 +200,11 @@ const UserAddAcompanante = ({ equipoId, onAcompananteAdded, onCancel }) => {
           </div>
 
           <div className="d-flex gap-2 mt-4">
-            <button type="submit" className="btn btn-info" disabled={loading}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={loading}
+            >
               {loading ? (
                 <>
                   <span className="spinner-border spinner-border-sm me-2"></span>
