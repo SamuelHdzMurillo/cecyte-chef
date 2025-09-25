@@ -5,6 +5,7 @@ import Header from "./Header.jsx";
 import EquiposTable from "./EquiposTable.jsx";
 import UserEquipoDetalle from "./UserEquipoDetalle.jsx";
 import UserBuzonAsistencia from "./UserBuzonAsistencia.jsx";
+import UserAgregarAutoridad from "./UserAgregarAutoridad.jsx";
 import "./Dashboard.css";
 import { CECYTE_CHEF_SIN_FONDO } from "../assets/images";
 
@@ -148,6 +149,8 @@ function UserDashboard() {
         return "Mis Equipos";
       case "buzon":
         return "Buzón de Asistencia";
+      case "autoridad":
+        return "Agregar Autoridad";
       default:
         return "Mi Perfil";
     }
@@ -247,6 +250,16 @@ function UserDashboard() {
                 >
                   <i className="bi bi-envelope"></i>
                   <span>Buzón de Asistencia</span>
+                </a>
+                <a
+                  className={`nav-link ${
+                    activeSection === "autoridad" ? "active" : ""
+                  }`}
+                  onClick={() => handleSectionChange("autoridad")}
+                  href="#"
+                >
+                  <i className="bi bi-person-badge"></i>
+                  <span>Agregar Autoridad</span>
                 </a>
               </div>
             </div>
@@ -445,6 +458,15 @@ function UserDashboard() {
             <div className="row">
               <div className="col-12">
                 <UserBuzonAsistencia />
+              </div>
+            </div>
+          )}
+
+          {/* Contenido de Agregar Autoridad */}
+          {activeSection === "autoridad" && (
+            <div className="row">
+              <div className="col-12">
+                <UserAgregarAutoridad />
               </div>
             </div>
           )}

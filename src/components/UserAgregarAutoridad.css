@@ -1,0 +1,110 @@
+/* Estilos para el componente UserAgregarAutoridad */
+.user-agregar-autoridad {
+  padding: 0;
+}
+
+.user-agregar-autoridad .card {
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 0.5rem;
+}
+
+.user-agregar-autoridad .card-header {
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+}
+
+.user-agregar-autoridad .card-body {
+  padding: 1.5rem;
+}
+
+.user-agregar-autoridad .form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.user-agregar-autoridad .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.user-agregar-autoridad .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.user-agregar-autoridad .form-control::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+.user-agregar-autoridad .form-text {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+.user-agregar-autoridad .btn {
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.user-agregar-autoridad .btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.user-agregar-autoridad .btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+.user-agregar-autoridad .btn-primary:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  opacity: 0.65;
+}
+
+.user-agregar-autoridad .alert {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.user-agregar-autoridad .alert-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border-left: 4px solid #198754;
+}
+
+.user-agregar-autoridad .alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border-left: 4px solid #dc3545;
+}
+
+.user-agregar-autoridad .spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-agregar-autoridad .card-body {
+    padding: 1rem;
+  }
+
+  .user-agregar-autoridad .btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
