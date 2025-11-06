@@ -72,13 +72,15 @@
 /* Distribución de columnas para usar todo el espacio horizontal */
 .equipos-table-container .table th:first-child,
 .equipos-table-container .table td:first-child {
-  width: 40%; /* Nombre del equipo - más espacio */
+  width: 35%; /* Nombre del equipo - más espacio */
   padding-right: 20px;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .equipos-table-container .table th:nth-child(2),
 .equipos-table-container .table td:nth-child(2) {
-   /* Evento - espacio medio */
+  /* Evento - espacio medio */
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -427,7 +429,8 @@
 }
 
 /* Estilos para formularios compactos */
-.form-control-sm, .form-select-sm {
+.form-control-sm,
+.form-select-sm {
   padding: 0.375rem 0.75rem;
   font-size: 0.875rem;
   border-radius: 0.375rem;

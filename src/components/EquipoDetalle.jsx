@@ -51,12 +51,60 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
   const handleSave = async () => {
     try {
       const token = authService.getToken();
-      await apiService.put(`/equipos/${id}`, equipo, token);
-      setEditMode(false);
-      // Mostrar mensaje de éxito
+
+      // Validar estatus válido según el backend (activo, inactivo, eliminado)
+      const validStatuses = ["activo", "inactivo", "eliminado"];
+      const currentStatus = equipo.estatus_del_equipo || "activo";
+      const validStatus = validStatuses.includes(currentStatus)
+        ? currentStatus
+        : "activo";
+
+      // Preparar solo los campos que acepta el backend según la validación
+      const dataToSave = {
+        nombre_equipo: equipo.nombre_equipo || "",
+        entidad_federativa: equipo.entidad_federativa || "",
+        nombre_anfitrion: equipo.nombre_anfitrion || "",
+        telefono_anfitrion: equipo.telefono_anfitrion || "",
+        correo_anfitrion: equipo.correo_anfitrion || "",
+        estatus_del_equipo: validStatus,
+      };
+
+      // medida_gas_propano debe ser numérico (nullable) según validación: 'nullable|numeric|min:0|max:999999.99'
+      if (
+        equipo.medida_gas_propano !== null &&
+        equipo.medida_gas_propano !== undefined &&
+        equipo.medida_gas_propano !== ""
+      ) {
+        const medidaNum = parseFloat(equipo.medida_gas_propano);
+        if (!isNaN(medidaNum) && medidaNum >= 0 && medidaNum <= 999999.99) {
+          dataToSave.medida_gas_propano = medidaNum;
+        }
+      } else {
+        // Si está vacío, enviar null para que sea nullable
+        dataToSave.medida_gas_propano = null;
+      }
+
+      const response = await apiService.put(
+        `/equipos/${id}`,
+        dataToSave,
+        token
+      );
+
+      if (response.success !== false) {
+        setEditMode(false);
+        fetchEquipo(); // Recargar datos actualizados
+        alert("Equipo actualizado correctamente");
+      } else {
+        console.error("Error en la respuesta:", response);
+        alert(response.message || "Error al actualizar el equipo");
+      }
     } catch (err) {
       console.error("Error al guardar:", err);
-      // Mostrar mensaje de error
+      const errorMessage =
+        err.response?.data?.message ||
+        err.message ||
+        "Error al actualizar el equipo";
+      alert(errorMessage);
     }
   };
 
@@ -68,7 +116,7 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
   const getStatusBadge = (status) => {
     const statusClasses = {
       activo: "badge bg-success",
-      pendiente: "badge bg-warning",
+      inactivo: "badge bg-secondary",
       eliminado: "badge bg-danger",
     };
     return (
@@ -226,13 +274,13 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
               {editMode ? (
                 <select
                   className="form-select"
-                  value={equipo.estatus_del_equipo || ""}
+                  value={equipo.estatus_del_equipo || "activo"}
                   onChange={(e) =>
                     setEquipo({ ...equipo, estatus_del_equipo: e.target.value })
                   }
                 >
                   <option value="activo">Activo</option>
-                  <option value="pendiente">Pendiente</option>
+                  <option value="inactivo">Inactivo</option>
                   <option value="eliminado">Eliminado</option>
                 </select>
               ) : (
@@ -244,6 +292,128 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 Fecha de Creación
               </label>
               <p className="mb-0 fs-6">{formatDate(equipo.created_at)}</p>
+            </div>
+            <div className="col-md-6">
+              <label className="form-label fw-semibold text-dark mb-2">
+                <i className="bi bi-fire me-1 text-primary"></i>
+                Medida de Tanque de Gas (kg)
+              </label>
+              {editMode ? (
+                <div>
+                  <select
+                    className="form-select mb-2"
+                    value={
+                      equipo.medida_gas_propano === 0.5
+                        ? "1/2"
+                        : equipo.medida_gas_propano === 0.25
+                        ? "1/4"
+                        : equipo.medida_gas_propano === 16.4
+                        ? "16.4"
+                        : equipo.medida_gas_propano !== null &&
+                          equipo.medida_gas_propano !== undefined &&
+                          equipo.medida_gas_propano !== ""
+                        ? "otro"
+                        : ""
+                    }
+                    onChange={(e) => {
+                      const selectedValue = e.target.value;
+                      if (selectedValue === "") {
+                        setEquipo({
+                          ...equipo,
+                          medida_gas_propano: null,
+                        });
+                      } else if (selectedValue === "1/2") {
+                        setEquipo({
+                          ...equipo,
+                          medida_gas_propano: 0.5,
+                        });
+                      } else if (selectedValue === "1/4") {
+                        setEquipo({
+                          ...equipo,
+                          medida_gas_propano: 0.25,
+                        });
+                      } else if (selectedValue === "16.4") {
+                        setEquipo({
+                          ...equipo,
+                          medida_gas_propano: 16.4,
+                        });
+                      } else if (selectedValue === "otro") {
+                        // Mantener el valor actual si existe y no es una opción predefinida
+                        const currentValue = equipo.medida_gas_propano;
+                        if (
+                          currentValue !== null &&
+                          currentValue !== undefined &&
+                          currentValue !== 0.5 &&
+                          currentValue !== 0.25 &&
+                          currentValue !== 16.4
+                        ) {
+                          // Mantener el valor actual
+                        } else {
+                          setEquipo({
+                            ...equipo,
+                            medida_gas_propano: null,
+                          });
+                        }
+                      }
+                    }}
+                  >
+                    <option value="">Seleccionar medida</option>
+                    <option value="1/2">1/2 kg</option>
+                    <option value="1/4">1/4 kg</option>
+                    <option value="16.4">16.4 kg</option>
+                    <option value="otro">Otro (especificar)</option>
+                  </select>
+                  {/* Mostrar input manual si el valor no es una opción predefinida */}
+                  {(() => {
+                    const currentValue = equipo.medida_gas_propano;
+                    const isPredefined =
+                      currentValue === 0.5 ||
+                      currentValue === 0.25 ||
+                      currentValue === 16.4;
+                    const showManualInput =
+                      currentValue === null ||
+                      currentValue === undefined ||
+                      !isPredefined;
+
+                    return showManualInput ? (
+                      <input
+                        type="number"
+                        className="form-control"
+                        placeholder="Especificar medida personalizada (kg)"
+                        min="0"
+                        max="999999.99"
+                        step="0.01"
+                        value={
+                          currentValue !== null &&
+                          currentValue !== undefined &&
+                          !isPredefined
+                            ? currentValue
+                            : ""
+                        }
+                        onChange={(e) => {
+                          const inputValue = e.target.value;
+                          const value =
+                            inputValue === "" || inputValue === null
+                              ? null
+                              : parseFloat(inputValue);
+                          setEquipo({
+                            ...equipo,
+                            medida_gas_propano: isNaN(value) ? null : value,
+                          });
+                        }}
+                      />
+                    ) : null;
+                  })()}
+                </div>
+              ) : (
+                <p className="mb-0 fs-6 fw-bold text-dark">
+                  {equipo.medida_gas_propano !== null &&
+                  equipo.medida_gas_propano !== undefined &&
+                  equipo.medida_gas_propano !== ""
+                    ? `${equipo.medida_gas_propano} kg`
+                    : "No especificado"}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -699,45 +869,132 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                         </strong>
                       )}
                     </div>
-                    <div className="card-body py-2">
+                    <div className="card-body py-3">
                       {editMode ? (
-                        <textarea
-                          className="form-control mb-2"
-                          rows="2"
-                          value={receta.descripcion || ""}
-                          placeholder="Descripción de la receta"
-                          onChange={(e) => {
-                            // Lógica para actualizar descripción
-                          }}
-                        />
+                        <>
+                          <textarea
+                            className="form-control mb-2"
+                            rows="2"
+                            value={receta.descripcion || ""}
+                            placeholder="Descripción de la receta"
+                            onChange={(e) => {
+                              // Lógica para actualizar descripción
+                            }}
+                          />
+                          <textarea
+                            className="form-control mb-2"
+                            rows="3"
+                            value={receta.ingredientes || ""}
+                            placeholder="Ingredientes"
+                            onChange={(e) => {
+                              // Lógica para actualizar ingredientes
+                            }}
+                          />
+                          <textarea
+                            className="form-control mb-2"
+                            rows="4"
+                            value={receta.preparacion || ""}
+                            placeholder="Preparación"
+                            onChange={(e) => {
+                              // Lógica para actualizar preparación
+                            }}
+                          />
+                          <textarea
+                            className="form-control mb-2"
+                            rows="2"
+                            value={receta.observaciones || ""}
+                            placeholder="Observaciones (opcional)"
+                            onChange={(e) => {
+                              // Lógica para actualizar observaciones
+                            }}
+                          />
+                        </>
                       ) : (
-                        <p className="mb-2 text-dark">{receta.descripcion}</p>
+                        <>
+                          {receta.descripcion && (
+                            <div className="mb-3">
+                              <h6 className="fw-semibold text-dark mb-2 d-flex align-items-center">
+                                <i className="bi bi-journal-text me-2 text-primary"></i>
+                                Descripción
+                              </h6>
+                              <p
+                                className="mb-0 text-dark"
+                                style={{
+                                  whiteSpace: "pre-line",
+                                  lineHeight: "1.6",
+                                }}
+                              >
+                                {receta.descripcion}
+                              </p>
+                            </div>
+                          )}
+
+                          {receta.ingredientes && (
+                            <div className="mb-3">
+                              <h6 className="fw-semibold text-dark mb-2 d-flex align-items-center">
+                                <i className="bi bi-list-ul me-2 text-success"></i>
+                                Ingredientes
+                              </h6>
+                              <div className="bg-light p-3 rounded border-start border-success border-4">
+                                <div
+                                  className="text-dark"
+                                  style={{
+                                    whiteSpace: "pre-line",
+                                    lineHeight: "1.6",
+                                    fontSize: "0.95rem",
+                                  }}
+                                >
+                                  {receta.ingredientes}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {receta.preparacion && (
+                            <div className="mb-3">
+                              <h6 className="fw-semibold text-dark mb-2 d-flex align-items-center">
+                                <i className="bi bi-list-ol me-2 text-info"></i>
+                                Preparación
+                              </h6>
+                              <div className="bg-light p-3 rounded border-start border-info border-4">
+                                <div
+                                  className="text-dark"
+                                  style={{
+                                    whiteSpace: "pre-line",
+                                    lineHeight: "1.6",
+                                    fontSize: "0.95rem",
+                                  }}
+                                >
+                                  {receta.preparacion?.replace(/\\n/g, "\n")}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {receta.observaciones && (
+                            <div className="mb-3">
+                              <h6 className="fw-semibold text-muted mb-2 d-flex align-items-center">
+                                <i className="bi bi-chat-text me-2 text-warning"></i>
+                                Observaciones
+                              </h6>
+                              <div className="bg-light p-3 rounded border-start border-warning border-4">
+                                <p
+                                  className="text-muted mb-0"
+                                  style={{
+                                    whiteSpace: "pre-line",
+                                    lineHeight: "1.6",
+                                    fontSize: "0.95rem",
+                                  }}
+                                >
+                                  {receta.observaciones}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                        </>
                       )}
 
-                      {editMode ? (
-                        <textarea
-                          className="form-control mb-2"
-                          rows="2"
-                          value={receta.observaciones || ""}
-                          placeholder="Observaciones (opcional)"
-                          onChange={(e) => {
-                            // Lógica para actualizar observaciones
-                          }}
-                        />
-                      ) : (
-                        receta.observaciones && (
-                          <div className="mb-2">
-                            <label className="form-label fw-semibold text-muted mb-1 small">
-                              Observaciones
-                            </label>
-                            <p className="text-muted small mb-0">
-                              {receta.observaciones}
-                            </p>
-                          </div>
-                        )
-                      )}
-
-                      <div className="d-flex align-items-center">
+                      <div className="d-flex align-items-center mt-3 pt-3 border-top">
                         <i className="bi bi-person-circle me-1 text-muted"></i>
                         <small className="text-muted">
                           Creado por: <strong>{receta.creado_por}</strong>

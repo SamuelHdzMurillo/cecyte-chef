@@ -344,16 +344,16 @@ const EquiposTable = ({ onEquipoSelect }) => {
             <table className="table table-hover mb-0 align-middle">
               <thead className="table-light">
                 <tr>
-                  <th scope="col" style={{ width: "200px" }}>
+                  <th scope="col" style={{ width: "35%" }}>
                     Nombre del Equipo
                   </th>
-                  <th scope="col" style={{ width: "180px" }}>
+                  <th scope="col" style={{ width: "30%" }}>
                     Contacto
                   </th>
-                  <th scope="col" style={{ width: "100px" }}>
+                  <th scope="col" style={{ width: "15%" }}>
                     Estatus
                   </th>
-                  <th scope="col" style={{ width: "80px" }}>
+                  <th scope="col" style={{ width: "10%" }}>
                     Acciones
                   </th>
                 </tr>
@@ -383,8 +383,11 @@ const EquiposTable = ({ onEquipoSelect }) => {
                     <tr key={equipo.id}>
                       <td>
                         <div
-                          className="fw-bold text-truncate"
-                          style={{ maxWidth: "150px" }}
+                          className="fw-bold"
+                          style={{
+                            wordWrap: "break-word",
+                            whiteSpace: "normal",
+                          }}
                           title={equipo.nombre_equipo}
                         >
                           {equipo.nombre_equipo}
