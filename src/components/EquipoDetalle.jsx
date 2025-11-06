@@ -54,19 +54,38 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
 
       // Validar estatus válido según el backend (activo, inactivo, eliminado)
       const validStatuses = ["activo", "inactivo", "eliminado"];
-      const currentStatus = equipo.estatus_del_equipo || "activo";
+      let currentStatus = equipo.estatus_del_equipo;
+
+      // Asegurar que el estatus sea un string válido
+      if (!currentStatus || typeof currentStatus !== "string") {
+        currentStatus = "activo";
+      }
+      currentStatus = currentStatus.trim().toLowerCase();
+
+      // Validar que esté en la lista de valores permitidos
       const validStatus = validStatuses.includes(currentStatus)
         ? currentStatus
         : "activo";
 
       // Preparar solo los campos que acepta el backend según la validación
+      // Asegurar que todos los valores sean strings explícitos
       const dataToSave = {
-        nombre_equipo: equipo.nombre_equipo || "",
-        entidad_federativa: equipo.entidad_federativa || "",
-        nombre_anfitrion: equipo.nombre_anfitrion || "",
-        telefono_anfitrion: equipo.telefono_anfitrion || "",
-        correo_anfitrion: equipo.correo_anfitrion || "",
-        estatus_del_equipo: validStatus,
+        nombre_equipo: equipo.nombre_equipo
+          ? String(equipo.nombre_equipo).trim()
+          : "",
+        entidad_federativa: equipo.entidad_federativa
+          ? String(equipo.entidad_federativa).trim()
+          : "",
+        nombre_anfitrion: equipo.nombre_anfitrion
+          ? String(equipo.nombre_anfitrion).trim()
+          : "",
+        telefono_anfitrion: equipo.telefono_anfitrion
+          ? String(equipo.telefono_anfitrion).trim()
+          : "",
+        correo_anfitrion: equipo.correo_anfitrion
+          ? String(equipo.correo_anfitrion).trim()
+          : "",
+        estatus_del_equipo: validStatus, // Ya validado y asegurado como string
       };
 
       // medida_gas_propano debe ser numérico (nullable) según validación: 'nullable|numeric|min:0|max:999999.99'
@@ -83,6 +102,19 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
         // Si está vacío, enviar null para que sea nullable
         dataToSave.medida_gas_propano = null;
       }
+
+      // Verificar que el estatus sea un string válido antes de enviar
+      if (typeof dataToSave.estatus_del_equipo !== "string") {
+        dataToSave.estatus_del_equipo = String(dataToSave.estatus_del_equipo);
+      }
+
+      console.log("Datos a enviar:", JSON.stringify(dataToSave, null, 2));
+      console.log(
+        "Estatus del equipo:",
+        dataToSave.estatus_del_equipo,
+        "Tipo:",
+        typeof dataToSave.estatus_del_equipo
+      );
 
       const response = await apiService.put(
         `/equipos/${id}`,
@@ -302,19 +334,27 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 <div>
                   <select
                     className="form-select mb-2"
-                    value={
-                      equipo.medida_gas_propano === 0.5
-                        ? "1/2"
-                        : equipo.medida_gas_propano === 0.25
-                        ? "1/4"
-                        : equipo.medida_gas_propano === 16.4
-                        ? "16.4"
-                        : equipo.medida_gas_propano !== null &&
-                          equipo.medida_gas_propano !== undefined &&
-                          equipo.medida_gas_propano !== ""
-                        ? "otro"
-                        : ""
-                    }
+                    value={(() => {
+                      const medida = equipo.medida_gas_propano;
+                      if (
+                        medida === null ||
+                        medida === undefined ||
+                        medida === ""
+                      ) {
+                        return "";
+                      }
+                      // Convertir a número para comparar (puede venir como string o número)
+                      const medidaNum = parseFloat(medida);
+                      if (medidaNum === 0.5) {
+                        return "1/2";
+                      } else if (medidaNum === 0.25) {
+                        return "1/4";
+                      } else if (medidaNum === 16.4) {
+                        return "16.4";
+                      } else {
+                        return "otro";
+                      }
+                    })()}
                     onChange={(e) => {
                       const selectedValue = e.target.value;
                       if (selectedValue === "") {
@@ -343,11 +383,23 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                         if (
                           currentValue !== null &&
                           currentValue !== undefined &&
-                          currentValue !== 0.5 &&
-                          currentValue !== 0.25 &&
-                          currentValue !== 16.4
+                          currentValue !== ""
                         ) {
-                          // Mantener el valor actual
+                          const medidaNum = parseFloat(currentValue);
+                          // Si no es una opción predefinida, mantener el valor actual
+                          if (
+                            medidaNum !== 0.5 &&
+                            medidaNum !== 0.25 &&
+                            medidaNum !== 16.4 &&
+                            !isNaN(medidaNum)
+                          ) {
+                            // Mantener el valor actual
+                          } else {
+                            setEquipo({
+                              ...equipo,
+                              medida_gas_propano: null,
+                            });
+                          }
                         } else {
                           setEquipo({
                             ...equipo,
@@ -366,13 +418,21 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                   {/* Mostrar input manual si el valor no es una opción predefinida */}
                   {(() => {
                     const currentValue = equipo.medida_gas_propano;
+                    // Convertir a número para comparar (puede venir como string o número)
+                    const medidaNum =
+                      currentValue !== null &&
+                      currentValue !== undefined &&
+                      currentValue !== ""
+                        ? parseFloat(currentValue)
+                        : null;
                     const isPredefined =
-                      currentValue === 0.5 ||
-                      currentValue === 0.25 ||
-                      currentValue === 16.4;
+                      medidaNum === 0.5 ||
+                      medidaNum === 0.25 ||
+                      medidaNum === 16.4;
                     const showManualInput =
                       currentValue === null ||
                       currentValue === undefined ||
+                      currentValue === "" ||
                       !isPredefined;
 
                     return showManualInput ? (
@@ -384,10 +444,11 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                         max="999999.99"
                         step="0.01"
                         value={
-                          currentValue !== null &&
-                          currentValue !== undefined &&
+                          medidaNum !== null &&
+                          medidaNum !== undefined &&
+                          !isNaN(medidaNum) &&
                           !isPredefined
-                            ? currentValue
+                            ? medidaNum
                             : ""
                         }
                         onChange={(e) => {
@@ -407,17 +468,30 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                 </div>
               ) : (
                 <p className="mb-0 fs-6 fw-bold text-dark">
-                  {equipo.medida_gas_propano !== null &&
-                  equipo.medida_gas_propano !== undefined &&
-                  equipo.medida_gas_propano !== ""
-                    ? equipo.medida_gas_propano === 0.5
-                      ? "1/2"
-                      : equipo.medida_gas_propano === 0.25
-                      ? "1/4"
-                      : equipo.medida_gas_propano === 16.4
-                      ? "16.4"
-                      : equipo.medida_gas_propano
-                    : "No especificado"}
+                  {(() => {
+                    const medida = equipo.medida_gas_propano;
+                    if (
+                      medida === null ||
+                      medida === undefined ||
+                      medida === ""
+                    ) {
+                      return "No especificado";
+                    }
+                    // Convertir a número para comparar (puede venir como string o número)
+                    const medidaNum = parseFloat(medida);
+                    if (medidaNum === 0.5) {
+                      return "1/2";
+                    } else if (medidaNum === 0.25) {
+                      return "1/4";
+                    } else if (medidaNum === 16.4) {
+                      return "16.4";
+                    } else {
+                      // Para otros valores, mostrar el número sin decimales innecesarios
+                      return medidaNum % 1 === 0
+                        ? medidaNum.toString()
+                        : medidaNum.toString();
+                    }
+                  })()}
                 </p>
               )}
             </div>
