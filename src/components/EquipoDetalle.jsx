@@ -296,7 +296,7 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
             <div className="col-md-6">
               <label className="form-label fw-semibold text-dark mb-2">
                 <i className="bi bi-fire me-1 text-primary"></i>
-                Medida de Tanque de Gas (kg)
+                Medida de Tanque de Gas
               </label>
               {editMode ? (
                 <div>
@@ -358,9 +358,9 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                     }}
                   >
                     <option value="">Seleccionar medida</option>
-                    <option value="1/2">1/2 kg</option>
-                    <option value="1/4">1/4 kg</option>
-                    <option value="16.4">16.4 kg</option>
+                    <option value="1/2">1/2</option>
+                    <option value="1/4">1/4</option>
+                    <option value="16.4">16.4</option>
                     <option value="otro">Otro (especificar)</option>
                   </select>
                   {/* Mostrar input manual si el valor no es una opción predefinida */}
@@ -379,7 +379,7 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                       <input
                         type="number"
                         className="form-control"
-                        placeholder="Especificar medida personalizada (kg)"
+                        placeholder="Especificar medida personalizada"
                         min="0"
                         max="999999.99"
                         step="0.01"
@@ -410,7 +410,13 @@ const EquipoDetalle = ({ equipoId, onBack, embedded = false }) => {
                   {equipo.medida_gas_propano !== null &&
                   equipo.medida_gas_propano !== undefined &&
                   equipo.medida_gas_propano !== ""
-                    ? `${equipo.medida_gas_propano} kg`
+                    ? equipo.medida_gas_propano === 0.5
+                      ? "1/2"
+                      : equipo.medida_gas_propano === 0.25
+                      ? "1/4"
+                      : equipo.medida_gas_propano === 16.4
+                      ? "16.4"
+                      : equipo.medida_gas_propano
                     : "No especificado"}
                 </p>
               )}
