@@ -12,8 +12,8 @@ const EquiposTable = ({ onEquipoSelect }) => {
   const [filterText, setFilterText] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [equiposPerPage] = useState(10);
-  const [sortField, setSortField] = useState("id");
-  const [sortDirection, setSortDirection] = useState("asc");
+  const [sortField, setSortField] = useState("updated_at");
+  const [sortDirection, setSortDirection] = useState("desc");
 
   // Filtros adicionales
   const [statusFilter, setStatusFilter] = useState("");
@@ -112,6 +112,17 @@ const EquiposTable = ({ onEquipoSelect }) => {
       bValue = b.evento?.nombre_evento || "";
     }
 
+    // Manejar fechas (updated_at, created_at)
+    if (sortField === "updated_at" || sortField === "created_at") {
+      const aDate = aValue ? new Date(aValue).getTime() : 0;
+      const bDate = bValue ? new Date(bValue).getTime() : 0;
+
+      if (aDate < bDate) return sortDirection === "asc" ? -1 : 1;
+      if (aDate > bDate) return sortDirection === "asc" ? 1 : -1;
+      return 0;
+    }
+
+    // Manejar strings
     if (typeof aValue === "string") {
       aValue = aValue.toLowerCase();
       bValue = bValue.toLowerCase();
